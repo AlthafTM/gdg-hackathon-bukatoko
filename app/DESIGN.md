@@ -10,21 +10,30 @@ Referensi: riset Carousell Indonesia di `../REA/carousell-indonesia`. Yang diamb
 
 ## Karakter
 
-Pasar loak yang dirapikan: kertas, label harga, cap toko. Bukan startup. Tidak ada gradien, tidak ada glow, tidak ada kartu melayang.
+Pasar warga yang segar dan teratur: kanvas putih lavender, identitas ungu, dan label harga hijau. Tidak ada gradien, tidak ada glow, tidak ada kartu melayang. Struktur dan alur marketplace tetap dipertahankan.
 
 ## Palet
 
-Dua warna inti plus satu aksen. Nilai di bawah ini yang dipakai CSS.
+Palet Purple / Lavender / Green mengikuti referensi pengguna: primary `#7C3AED`, secondary `#A78BFA`, accent `#22C55E`, background `#FAF9FF`, dan text `#1F1637` pada tema terang. Nilai di bawah ini adalah token semantik dalam `assets/styles.css`, dipakai bersama oleh ketujuh halaman dan dialog yang dibuat JavaScript.
 
 | Token | Light | Dark | Alasan |
 |---|---|---|---|
-| paper (kanvas) | #F4EFE4 | #14120C | kertas buram, bukan putih bersih, mata tidak silau di pasar outdoor |
-| surface (kartu) | #FFFCF5 | #1E1B13 | satu tingkat di atas kanvas, tanpa shadow |
-| ink | #1A1710 | #F3EDE0 | teks utama |
-| muted | #5F5749 | #A79E8C | metadata; tetap >= 4.5:1 |
-| line | #DCD2BF | #342F23 | garis 1px, pembatas struktural |
-| primary (warung green) | #1E6B4E | #4FB98C | aksi utama: Jual, Cari, Ajukan |
-| accent (kunyit) | #8A4B08 | #E9A94B | label harga dan penanda "dicari", dipakai hemat |
+| paper (kanvas) | #FAF9FF | #160F24 | putih lavender dan ungu gelap |
+| surface (kartu) | #FFFFFF | #241A38 | kartu, header, form dan dialog |
+| ink | #1F1637 | #FAF9FF | teks utama |
+| muted | #625675 | #C4B5D8 | metadata dan placeholder |
+| line / line-strong | #DED6ED / #9583AD | #473657 / #89749F | pembatas dan batas kontrol |
+| primary / primary-ink | #7C3AED / #FFFFFF | #A78BFA / #1F1637 | aksi utama: Jual, Cari, Ajukan |
+| primary-hover | #6D28D9 | #C4B5FD | hover tombol, terpisah dari ring fokus |
+| primary-soft | #F3E8FF | #38264F | hover, avatar, langkah aktif dan pesan sendiri |
+| secondary / secondary-ink | #A78BFA / #1F1637 | #A78BFA / #1F1637 | navigasi, tab dan tombol simpan aktif |
+| accent | #22C55E | #22C55E | aksen hijau pada label harga dan notifikasi |
+| accent-ink / accent-soft | #166534 / #F0FDF4 | #86EFAC / #123A25 | teks label harga, bintang dan strip demo |
+| accent-solid-ink | #052E16 | #052E16 | teks notifikasi di atas hijau solid |
+| danger | #B91C1C | #FCA5A5 | galat dan aksi destruktif tetap dibedakan |
+| focus | #7C3AED | #A78BFA | ring fokus keyboard |
+
+Hijau `#22C55E` tidak dipakai sebagai teks kecil di atas putih atau lavender. Gunakan `accent-ink` di atas `accent-soft`, dan `accent-solid-ink` di atas hijau solid. Tema gelap mempertahankan keluarga ungu/lavender/hijau dengan kontras yang sesuai; tema mengikuti sistem sampai pengguna memilih sendiri. Ikon situs dan SVG "foto contoh" memakai palet yang sama. Foto unggahan pengguna tetap ditampilkan apa adanya.
 
 ## Tipografi
 

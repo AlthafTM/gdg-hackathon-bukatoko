@@ -15,6 +15,7 @@ The same user can sell their own items and request items they want to buy.
 |---|---|
 | [`AGENTS.md`](AGENTS.md) | AI rules: local work by default, explicit commit authorization, collaborator checks and REA/design-skill guidance. |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Start, test, synchronize and publish workflow, with an optional local commit guard. |
+| [`docs/SKILLS.md`](docs/SKILLS.md) | Optional design and security skill setup, including Cloudflare's official `security-audit`. |
 | [`VERSION`](VERSION), [`CHANGELOG.md`](CHANGELOG.md), [`releases/`](releases/0.0.1.md) | Versioned history; small updates bump the last number, substantial changes bump the middle number. |
 | [`docs/RELEASING.md`](docs/RELEASING.md) | Release automation, validation, concurrency handling and recovery. |
 | [`REA/`](REA/README.md) | Reference material from the reverse-engineering skill's investigation of Carousell Indonesia. |
@@ -39,6 +40,7 @@ Our **wanted-item requests with a listed price range** are part of Bukatoko's in
 ## Working together
 
 - Read [the repository rules](AGENTS.md) and [contributor workflow](CONTRIBUTING.md) before starting. Local experiments/tests do not authorize committing or publishing; the user must explicitly request it.
+- Contributor AIs should suggest Cloudflare's official `security-audit` skill when missing during implementation/security work. Installation is optional and requires the user's agreement; see [skill setup](docs/SKILLS.md).
 - Run `python tools/repo_workflow.py begin` at task start, `check` before committing/pushing, and `precommit` after staging. Review and reconcile remote advances and overlapping work first.
 - Every approved `main` update includes release metadata. GitHub Actions publishes a tagged release after validation; see [releases](https://github.com/AlthafTM/gdg-hackathon-bukatoko/releases).
 - Keep app implementation and research references distinguishable.

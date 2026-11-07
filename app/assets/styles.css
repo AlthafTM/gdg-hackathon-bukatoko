@@ -2,19 +2,25 @@
 
 :root {
   color-scheme: light;
-  --paper: #F4EFE4;
-  --surface: #FFFCF5;
-  --ink: #1A1710;
-  --muted: #5F5749;
-  --line: #DCD2BF;
-  --line-strong: #B8AC95;
-  --primary: #1E6B4E;
+  --paper: #FAF9FF;
+  --surface: #FFFFFF;
+  --ink: #1F1637;
+  --muted: #625675;
+  --line: #DED6ED;
+  --line-strong: #9583AD;
+  --primary: #7C3AED;
   --primary-ink: #FFFFFF;
-  --primary-soft: #E4EDE5;
-  --accent: #8A4B08;
-  --accent-soft: #F6E3C4;
-  --danger: #8C2C22;
-  --focus: #175C43;
+  --primary-hover: #6D28D9;
+  --primary-soft: #F3E8FF;
+  --secondary: #A78BFA;
+  --secondary-ink: #1F1637;
+  --accent: #22C55E;
+  --accent-ink: #166534;
+  --accent-solid-ink: #052E16;
+  --accent-soft: #F0FDF4;
+  --danger: #B91C1C;
+  --focus: #7C3AED;
+  --scrim: rgba(31, 22, 55, 0.64);
   --radius-sm: 3px;
   --radius: 6px;
   --radius-lg: 10px;
@@ -32,19 +38,20 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --paper: #14120C;
-  --surface: #1E1B13;
-  --ink: #F3EDE0;
-  --muted: #A79E8C;
-  --line: #342F23;
-  --line-strong: #4A432F;
-  --primary: #4FB98C;
-  --primary-ink: #10231B;
-  --primary-soft: #1B2E25;
-  --accent: #E9A94B;
-  --accent-soft: #33270F;
-  --danger: #E38A7C;
-  --focus: #7FD3AC;
+  --paper: #160F24;
+  --surface: #241A38;
+  --ink: #FAF9FF;
+  --muted: #C4B5D8;
+  --line: #473657;
+  --line-strong: #89749F;
+  --primary: #A78BFA;
+  --primary-ink: #1F1637;
+  --primary-hover: #C4B5FD;
+  --primary-soft: #38264F;
+  --accent-ink: #86EFAC;
+  --accent-soft: #123A25;
+  --danger: #FCA5A5;
+  --focus: #A78BFA;
 }
 
 * { box-sizing: border-box; }
@@ -72,7 +79,7 @@ p { margin: 0 0 1em; }
 a { color: inherit; }
 a:hover { text-decoration: underline; }
 
-button, input, select, textarea { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; accent-color: var(--primary); }
 
 button, a[href], summary, label[for], select { cursor: pointer; }
 button:disabled { cursor: not-allowed; }
@@ -91,7 +98,7 @@ button:disabled { cursor: not-allowed; }
 /* Strip demo: jujur soal data contoh, bukan badge dekoratif */
 .strip {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-ink);
   border-bottom: 1px solid var(--line);
   font-size: var(--step-13);
 }
@@ -142,7 +149,7 @@ button:disabled { cursor: not-allowed; }
   align-items: center;
 }
 .nav a:hover { background: var(--primary-soft); color: var(--ink); }
-.nav a[aria-current="page"] { color: var(--ink); font-weight: 600; background: var(--primary-soft); }
+.nav a[aria-current="page"] { color: var(--secondary-ink); font-weight: 600; background: var(--secondary); }
 .hdr-actions {
   margin-left: auto;
   display: flex;
@@ -169,7 +176,7 @@ button:disabled { cursor: not-allowed; }
 }
 .btn:hover { text-decoration: none; }
 .btn-primary { background: var(--primary); color: var(--primary-ink); }
-.btn-primary:hover { background: var(--focus); }
+.btn-primary:hover { background: var(--primary-hover); }
 .btn-outline { border-color: var(--line-strong); background: transparent; }
 .btn-outline:hover { background: var(--primary-soft); }
 .btn-quiet { background: transparent; color: var(--muted); }
@@ -177,7 +184,7 @@ button:disabled { cursor: not-allowed; }
 .btn-danger { border-color: var(--danger); color: var(--danger); background: transparent; }
 .btn-sm { min-height: 36px; padding: 6px 12px; font-size: var(--step-13); }
 .btn-block { width: 100%; }
-.btn[aria-pressed="true"] { background: var(--primary-soft); border-color: var(--primary); }
+.btn[aria-pressed="true"] { background: var(--secondary); color: var(--secondary-ink); border-color: var(--primary); }
 
 /* Pencarian */
 .searchbar {
@@ -201,7 +208,7 @@ button:disabled { cursor: not-allowed; }
   color: var(--muted);
   pointer-events: none;
 }
-input[type="search"], input[type="text"], input[type="number"], input[type="url"], select, textarea {
+input[type="search"], input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="url"], select, textarea {
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
@@ -228,7 +235,7 @@ select { appearance: none; background-image: none; padding-right: 28px; }
   border-left-style: dashed;
   border-radius: var(--radius-sm);
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: var(--mono);
   font-size: var(--step-14);
   font-weight: 600;
@@ -480,7 +487,7 @@ section { padding: 32px 0; }
 .review { border-top: 1px solid var(--line); padding: 12px 0; }
 .review:first-of-type { border-top: 0; }
 .review-head { display: flex; gap: 8px; align-items: center; font-size: var(--step-13); color: var(--muted); }
-.stars { color: var(--accent); font-family: var(--mono); letter-spacing: 1px; }
+.stars { color: var(--accent-ink); font-family: var(--mono); letter-spacing: 1px; }
 
 /* Form (jual, cari) */
 .form-card {
@@ -523,7 +530,7 @@ section { padding: 32px 0; }
   padding: 6px 10px; font-size: var(--step-13); color: var(--muted);
   background: var(--surface);
 }
-.steps li[aria-current="step"] { border-color: var(--primary); color: var(--ink); font-weight: 600; }
+.steps li[aria-current="step"] { border-color: var(--primary); background: var(--primary-soft); color: var(--ink); font-weight: 600; }
 .steps .num { font-family: var(--mono); }
 
 /* Papan permintaan */
@@ -547,7 +554,7 @@ section { padding: 32px 0; }
 /* Modal */
 .modal-backdrop {
   position: fixed; inset: 0;
-  background: rgba(20, 18, 12, 0.62);
+  background: var(--scrim);
   display: grid; place-items: center;
   padding: 20px;
   z-index: 50;
@@ -674,8 +681,8 @@ section { padding: 32px 0; }
   border-bottom: 2px solid transparent;
   white-space: nowrap;
 }
-.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--primary); }
-.tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--secondary-ink); background: var(--secondary); border-bottom-color: var(--primary); }
+.tabs button:not([aria-selected="true"]):hover { color: var(--ink); }
 
 .row-item {
   display: grid;
@@ -800,7 +807,7 @@ section { padding: 32px 0; }
   padding: 0 5px;
   border-radius: 11px;
   background: var(--accent);
-  color: var(--paper);
+  color: var(--accent-solid-ink);
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
@@ -825,7 +832,7 @@ section { padding: 32px 0; }
   font-size: var(--step-14);
   max-width: 85%;
 }
-.chat-bubble.mine { margin-left: auto; }
+.chat-bubble.mine { margin-left: auto; background: var(--primary-soft); }
 .chat-bubble .card-meta { font-size: 11px; margin-top: 4px; }
 
 body.is-loading .detail-grid { opacity: 0.4; }
