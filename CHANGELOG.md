@@ -2,6 +2,16 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.3.0] - 2026-11-07
+
+- Add likes and public comments on listings and wanted requests, plus seller replies to wanted requests with notifications.
+- Add email verification, password reset, notification feed, listing expiry with renew, deals with handover state, review replies, moderator queue and richer search. See [release notes](releases/0.3.0.md).
+
+## [0.2.0] - 2026-11-07
+
+- Refresh the UI with the supplied logo, local Exo 2 font, consistent three-color theme, labeled icons and mobile navigation.
+- Restore category links and fix backend condition filtering. See [validation and known limits](releases/0.2.0.md).
+
 ## [0.1.1] - 2026-11-07
 
 - See [release notes](releases/0.1.1.md).

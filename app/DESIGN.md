@@ -1,63 +1,56 @@
-# Bukatoko: arah desain
+# BukaToko: arah desain
 
-Reading this as: marketplace barang bekas untuk warga kota kecil Indonesia, bahasa visual "pasar loak teratur", dial ENERGY 2 / RHYTHM 2 / MOTION 1.
+Reading this as: pasar barang milik warga yang profesional, sederhana, dan mudah dipindai. ENERGY 2 / RHYTHM 2 / MOTION 1. Mengikuti brief pengguna 7 November 2026: tiga warna utama, gradien halus, font berkarakter tetapi terbaca, dan logo yang disediakan pengguna.
 
-## Subjek dan audiens
+## Prioritas kegunaan
 
-Bukatoko dipakai orang yang menjual barang miliknya sendiri dan orang yang mencari barang tertentu dengan rentang harga. Bukan toko profesional. Pembeli datang dari HP, sering di sinyal lemah, dan yang mereka butuhkan pertama: harga, kondisi, lokasi, siapa penjualnya.
+Harga, kondisi dan lokasi harus terlihat pada kartu barang. Pencarian berada sebelum konten pembuka. Pengguna dapat langsung menjual barang atau membuat permintaan dengan rentang harga. Permintaan terbaru ditampilkan di samping pembuka karena dua sisi pasar ini sama pentingnya.
 
-Referensi: riset Carousell Indonesia di `../REA/carousell-indonesia`. Yang diambil hanya pelajaran strukturnya (IA, kepadatan kartu, state marketplace). Identitas visualnya sengaja tidak ditiru (R-30).
+Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
 
-## Karakter
+## Token dan alasan
 
-Pasar warga yang segar dan teratur: kanvas putih lavender, identitas ungu, dan label harga hijau. Tidak ada gradien, tidak ada glow, tidak ada kartu melayang. Struktur dan alur marketplace tetap dipertahankan.
-
-## Palet
-
-Palet Purple / Lavender / Green mengikuti referensi pengguna: primary `#7C3AED`, secondary `#A78BFA`, accent `#22C55E`, background `#FAF9FF`, dan text `#1F1637` pada tema terang. Nilai di bawah ini adalah token semantik dalam `assets/styles.css`, dipakai bersama oleh ketujuh halaman dan dialog yang dibuat JavaScript.
-
-| Token | Light | Dark | Alasan |
+| Peran | Terang | Gelap | Alasan |
 |---|---|---|---|
-| paper (kanvas) | #FAF9FF | #160F24 | putih lavender dan ungu gelap |
-| surface (kartu) | #FFFFFF | #241A38 | kartu, header, form dan dialog |
-| ink | #1F1637 | #FAF9FF | teks utama |
-| muted | #625675 | #C4B5D8 | metadata dan placeholder |
-| line / line-strong | #DED6ED / #9583AD | #473657 / #89749F | pembatas dan batas kontrol |
-| primary / primary-ink | #7C3AED / #FFFFFF | #A78BFA / #1F1637 | aksi utama: Jual, Cari, Ajukan |
-| primary-hover | #6D28D9 | #C4B5FD | hover tombol, terpisah dari ring fokus |
-| primary-soft | #F3E8FF | #38264F | hover, avatar, langkah aktif dan pesan sendiri |
-| secondary / secondary-ink | #A78BFA / #1F1637 | #A78BFA / #1F1637 | navigasi, tab dan tombol simpan aktif |
-| accent | #22C55E | #22C55E | aksen hijau pada label harga dan notifikasi |
-| accent-ink / accent-soft | #166534 / #F0FDF4 | #86EFAC / #123A25 | teks label harga, bintang dan strip demo |
-| accent-solid-ink | #052E16 | #052E16 | teks notifikasi di atas hijau solid |
-| danger | #B91C1C | #FCA5A5 | galat dan aksi destruktif tetap dibedakan |
-| focus | #7C3AED | #A78BFA | ring fokus keyboard |
+| Ungu utama | #6534C8 | #A78BFA | Aksi utama, tautan dan fokus keyboard |
+| Lavender pendukung | #E8DEF8 | #403052 | Navigasi aktif dan permukaan pendukung |
+| Hijau aksen | #20804C | #86EFAC | Harga, anggaran dan notifikasi |
+| Kanvas netral | #F8F7FC | #18151F | Memisahkan konten tanpa menambah warna merek |
+| Teks utama | #252039 | #FAF9FF | Kontras dan keterbacaan |
+| Teks pendukung | #625D73 | #C2BACE | Kondisi, lokasi, petunjuk dan metadata |
 
-Hijau `#22C55E` tidak dipakai sebagai teks kecil di atas putih atau lavender. Gunakan `accent-ink` di atas `accent-soft`, dan `accent-solid-ink` di atas hijau solid. Tema gelap mempertahankan keluarga ungu/lavender/hijau dengan kontras yang sesuai; tema mengikuti sistem sampai pengguna memilih sendiri. Ikon situs dan SVG "foto contoh" memakai palet yang sama. Foto unggahan pengguna tetap ditampilkan apa adanya.
+Merah hanya untuk galat dan tindakan destruktif. Gradien linear yang sangat ringan dari permukaan ke lavender hanya pada pembuka untuk menandai area orientasi, sesuai permintaan pengguna. Teks di atas gradien diperiksa pada ujung paling gelap.
 
-## Tipografi
+## Tipografi dan aset
 
-- Teks: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif`. Alasan: harga dan kondisi dibaca cepat, font sistem paling tajam di HP murah.
-- Angka harga: `ui-monospace, "SF Mono", Menlo, Consolas, monospace` dengan `font-variant-numeric: tabular-nums`. Alasan fungsional: angka rupiah harus rata kolom supaya bisa dibandingkan sekilas, bukan untuk gaya terminal.
-- Skala: 13 / 14 / 16 / 20 / 28 / 36 px. Berat 600 hanya untuk judul dan harga.
+- Exo 2 variabel, disimpan lokal sebagai `assets/fonts/Exo2.ttf`, digunakan untuk teks, heading, kontrol dan harga. Bentuk bersudut lembut memberi kedekatan karakter dengan referensi inpin tanpa mengorbankan label kecil. Bobot 400 untuk isi, 600-650 untuk judul dan harga. Angka harga memakai tabular numerals dari keluarga yang sama.
+- Nama yang paling dekat dengan permintaan font adalah inpin hongmengti. Lisensi bebas untuk pemakaian web/komersial tidak terverifikasi; font itu tidak dibundel. Exo 2 memakai SIL OFL 1.1, dengan teks lisensi utuh di `assets/fonts/OFL.txt`. Sumber: https://github.com/google/fonts/tree/main/ofl/exo2 . Alternatif ini bukan font identik.
+- `assets/logo.svg` adalah salinan SVG gabungan yang diberikan pengguna. Bentuk dan proporsi dipertahankan; tema gelap membalik luminansinya melalui CSS agar terbaca. Dimensi eksplisit mencegah pergeseran layout.
+- `assets/favicon.svg` memakai simbol keranjang yang diberikan pengguna. Ikon navigasi dan kategori dibuat sebagai SVG dalam `app.js`, dengan ukuran dan ketebalan garis konsisten, disertai label teks. Simbol menunjukkan tujuan atau jenis barang.
+- Nama, barang, permintaan dan foto bawaan tetap ditandai sebagai data contoh. Tidak membuat angka sosial, ulasan atau identitas baru.
 
-## Elemen signature
+## Komposisi
 
-Label harga berbentuk tag kertas: sudut 3px, garis putus-putus di sisi kiri, lubang tusuk kecil di ujungnya, rotasi maksimum 1.5 derajat. Dipakai di kartu barang, di judul seksi, dan di papan "Lagi Dicari". Satu gestur, diulang, sehingga halaman ini tidak bisa tertukar dengan marketplace lain.
+```text
+Desktop
+[Logo] [Jelajah | Lagi Dicari | Jual | Akun] [Tema | Bahasa | Masuk | Pasang]
+[Cari barang................................] [Lokasi] [Cari]
+[Judul + jual / buat permintaan]   [Permintaan terbaru + anggaran]
+[Delapan kategori dengan label]
+[Barang: foto / judul / kondisi / lokasi / harga]
 
-## Yang dilarang di proyek ini
+Ponsel
+[Logo] [Bahasa | Tema | Masuk]
+[Cari barang...............................]
+[Lokasi] [Cari]
+[Judul + jual / buat permintaan]
+[Permintaan terbaru]
+[Kategori 4 kolom, kartu barang]
+[Jelajah | Lagi Dicari | Jual | Akun] tetap di bawah
+```
 
-- Gradien biru-ungu, glow, glassmorphism, shadow besar.
-- Badge kapsul "Baru", "AI", "Terpercaya" tanpa isi.
-- Angka sosial tanpa sumber. Tidak ada "10.000+ pengguna".
-- Ulasan karangan. Ulasan hanya dirender kalau datanya ada.
-- Teks em dash.
-- Navbar berisi tautan ke halaman yang belum ada.
+Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Kartu menggunakan radius 10px, panel orientasi/dialog 18px, label 6px sesuai fungsi. Gerak hanya umpan balik hover/tekan; reduced motion dihormati.
 
-## Data dan placeholder
+## Batas sistem
 
-Semua barang, penjual, dan permintaan di situs ini data contoh untuk demo, ditandai di strip atas setiap halaman. Foto barang adalah placeholder SVG yang ditulis "foto contoh", bukan produk asli. Avatar penjual adalah inisial, bukan wajah.
-
-## Gerak
-
-Hover dan focus saja, 120ms. Tidak ada scroll reveal. Hormati `prefers-reduced-motion`.
+Frontend penuh tetap menggunakan API Python/SQLite. Adapter read-only hanya disisipkan oleh builder GitHub Pages pada HTML hasil ekspor. Pembaruan visual tidak mengubah batas hosting tersebut. Lihat `docs/PAGES.md` dan laporan pemeriksaan UI untuk hasil validasi aktual.
