@@ -8,8 +8,10 @@
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Saring barang bekas berdasarkan kata kunci, kategori, lokasi, kondisi, dan rentang harga.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css?v=20261107-3">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-1">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-1">
 <link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
+<script src="assets/locale.js?v=20261108-1"></script>
 </head>
 <body data-page="jelajah">
 <a class="sr-only" href="#main">Lewati ke konten</a>
@@ -59,7 +61,8 @@
     <form class="filters" id="filter-form" method="get" action="jelajah.html">
       <div class="field field-grow">
         <label for="f-q">Kata kunci</label>
-        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off">
+        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off" list="saran-q">
+        <datalist id="saran-q"></datalist>
       </div>
       <div class="field">
         <label for="f-kat">Kategori</label>
@@ -126,6 +129,13 @@
           <option value="all">Semua</option>
         </select>
       </div>
+      <div class="field">
+        <label for="f-foto">Foto</label>
+        <select id="f-foto" name="foto">
+          <option value="">Semua</option>
+          <option value="1">Hanya yang ada foto</option>
+        </select>
+      </div>
       <button class="btn btn-primary" type="submit">Terapkan</button>
     </form>
     <button class="btn btn-outline filter-save" id="save-search" type="button" hidden>Simpan pencarian ini</button>
@@ -181,8 +191,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/locale.js?v=20261107-3"></script>
-<script src="assets/motion.js?v=20261107-3"></script>
-<script src="assets/app.js?v=20261107-3"></script>
+<script src="assets/motion.js?v=20261108-1"></script>
+<script src="assets/react-ui.js?v=20261108-1"></script>
+<script src="assets/app.js?v=20261108-1"></script>
 </body>
 </html>

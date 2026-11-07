@@ -2,6 +2,15 @@
   "use strict";
   var language = localStorage.getItem("bk_lang") === "en" ? "en" : "id";
   var phrases = {
+    "Halaman tidak ditemukan · Bukatoko":"Page not found · Bukatoko",
+    "Demo: alamat yang kamu buka tidak ada di server ini.":"Demo: this address does not exist on this server.",
+    "Alamat ini tidak ada":"This page does not exist",
+    "Barang bisa sudah dihapus penjual, atau tautannya salah ketik. Coba mulai dari daftar barang yang masih aktif.":"The seller may have removed the item, or the link may contain a typo. Start with the active listings.",
+    "Ke beranda":"Go to home",
+    "Demo: panel ini hanya terbuka untuk akun dengan peran moderator.":"Demo: this panel is available only to moderator accounts.",
+    "Laporan terbuka dari pengguna. Menurunkan barang menyembunyikannya dari publik tanpa menghapus datanya. Membekukan akun juga mematikan semua sesi dan menurunkan barang aktifnya.":"Open reports from users. Removing a listing hides it without deleting its data. Suspending an account also revokes its sessions and hides its active listings.",
+    "Situs demo: tindakan moderator tercatat di tabel reports.":"Demo site: moderation actions are recorded on the server.",
+    "Notifikasi belum dibaca":"Unread notifications",
     "BukaToko - Jual apapun disini.":"BukaToko - Sell anything here.",
     "Kategori cepat":"Quick categories",
     "Jelajah":"Browse", "Lagi Dicari":"Wanted", "Jual":"Sell", "Akun":"Account", "Masuk":"Log in", "Keluar":"Log out",
@@ -105,11 +114,53 @@
     "Data contoh gagal dimuat. Muat ulang halaman.":"Could not load sample data. Reload the page.", "Barang tidak ditemukan.":"Item not found.", "Pengguna tidak ditemukan.":"User not found.", "Diblokir.":"Blocked.", "pembeli":"buyer",
     "Minimal 8 karakter. Ini demo: jangan pakai kata sandi yang kamu pakai di tempat lain.":"At least 8 characters. This is a demo: do not reuse a password from another service.", "Menunggu jawaban":"Awaiting a response", "Menyimpan barang...":"Saving item...", "Foto contoh":"Sample illustration", "Mengunggah...":"Uploading...", "Memproses...":"Processing...", "Bintang":"Rating", "Tarik":"Withdraw", "Buka":"Open",
     "Content-Length tidak valid":"Invalid request length", "Kamu sudah melaporkan barang ini.":"You have already reported this item.", "Maksimal 5 pencarian tersimpan. Hapus satu dulu.":"You can save up to 5 searches. Delete one first.", "Parameter pencarian tidak valid.":"Invalid search parameters.", "Pengguna tidak valid.":"Invalid user.", "Pesan kosong.":"Enter a message.", "Pesan maksimal 1000 karakter.":"Messages can contain up to 1000 characters.", "Pilih alasan laporan.":"Select a report reason.", "Tawaran ini sudah tidak aktif.":"This offer is no longer active.", "Tentukan lawan bicara.":"Select a conversation participant.", "Tidak bisa menawar barang sendiri.":"You cannot make an offer on your own item.", "Tulis barang yang dicari, minimal 5 karakter.":"Describe the wanted item using at least 5 characters.", "Ulasan hanya untuk pihak dengan tawaran yang sudah diterima, sekali per barang.":"Reviews are available once per item to parties with an accepted offer.",
-    "ada berkas kosong":"an uploaded file is empty", "bentuk multipart tidak terbaca":"could not read the uploaded file data", "bukan pihak dalam tawaran ini":"you are not a participant in this offer", "endpoint tidak dikenal":"unknown endpoint", "hanya pemilik barang yang bisa menandai terjual":"only the owner can mark this item sold", "hanya pemilik permintaan yang bisa menghapus":"only the request owner can delete it", "hanya pemilik yang bisa menghapus":"only the owner can delete this item", "hanya penjual yang bisa menerima tawaran":"only the seller can accept an offer", "kirim sebagai multipart/form-data":"send the upload as multipart/form-data", "permintaan tidak ditemukan":"request not found", "tawaran tidak ditemukan":"offer not found", "satu foto melebihi 6 MB. Kompres dulu.":"a photo exceeds 6 MB; compress it first", "terlalu banyak unggahan dari perangkat ini, coba lagi nanti":"too many uploads from this device; try again later", "tidak ada berkas pada permintaan":"no files were included", "ukuran permintaan tidak wajar":"request size exceeds the allowed limit", "server tidak mengembalikan berkas":"the server did not return a file", "unggahan ditolak server":"the server rejected the upload"
+    "ada berkas kosong":"an uploaded file is empty", "bentuk multipart tidak terbaca":"could not read the uploaded file data", "bukan pihak dalam tawaran ini":"you are not a participant in this offer", "endpoint tidak dikenal":"unknown endpoint", "hanya pemilik barang yang bisa menandai terjual":"only the owner can mark this item sold", "hanya pemilik permintaan yang bisa menghapus":"only the request owner can delete it", "hanya pemilik yang bisa menghapus":"only the owner can delete this item", "hanya penjual yang bisa menerima tawaran":"only the seller can accept an offer", "kirim sebagai multipart/form-data":"send the upload as multipart/form-data", "permintaan tidak ditemukan":"request not found", "tawaran tidak ditemukan":"offer not found", "satu foto melebihi 6 MB. Kompres dulu.":"a photo exceeds 6 MB; compress it first", "terlalu banyak unggahan dari perangkat ini, coba lagi nanti":"too many uploads from this device; try again later", "tidak ada berkas pada permintaan":"no files were included", "ukuran permintaan tidak wajar":"request size exceeds the allowed limit", "server tidak mengembalikan berkas":"the server did not return a file", "unggahan ditolak server":"the server rejected the upload",
+    "Email ini belum diverifikasi.":"This email is not verified yet.", "Kirim ulang":"Resend", "Verifikasi":"Verify",
+    "Notifikasi":"Notifications", "Transaksi":"Transactions", "Kode verifikasi":"Verification code",
+    "Panel moderator":"Moderator panel", "Kelola barang ini":"Manage this item", "Sunting barang":"Edit item",
+    "Tandai terjual":"Mark as sold", "Hapus barang":"Delete item", "Perpanjang 30 hari":"Extend 30 days",
+    "Terakhir kamu lihat":"Recently viewed", "Tersimpan di peramban ini saja, bukan di server.":"Stored in this browser only, not on the server.",
+    "Foto":"Photos", "Hanya yang ada foto":"With photos only", "Terbaru":"Newest", "Bintang tertinggi":"Highest rating",
+    "Bintang terendah":"Lowest rating", "Ulasan":"Reviews", "Sebaran ulasan":"Rating breakdown",
+    "Suka":"Like", "komentar":"comments", "tanggapan":"replies", "Saya punya barangnya":"I have this item",
+    "Tulis komentar":"Write a comment", "Belum ada komentar.":"No comments yet.", "Tandai semua dibaca":"Mark all as read",
+    "Belum ada notifikasi.":"No notifications yet.", "Belum ada transaksi. Transaksi muncul setelah penjual menerima tawaran.":"No transactions yet. They appear after a seller accepts an offer.",
+    "Tandai serah terima":"Mark as handed over", "Tanggapi permintaan":"Reply to request", "Tanggapan permintaan":"Request reply",
+    "Komentar baru":"New comment", "Permintaan saya":"My requests", "Pesan":"Messages", "Disimpan":"Saved", "Tawaran":"Offers", "Pencarian":"Searches",
+    "hanya moderator":"moderators only", "target tidak dikenal":"unknown target", "postingan tidak ditemukan":"post not found",
+    "Akun ini sedang dibekukan oleh moderator.":"This account is suspended by a moderator.",
+    "Kode verifikasi tidak cocok.":"That verification code does not match.",
+    "Kode reset salah atau sudah dipakai.":"That reset code is wrong or already used.",
+    "Kode reset kedaluwarsa. Minta kode baru.":"That reset code has expired. Request a new one.",
+    "Tulis komentar dulu.":"Write a comment first.", "Komentar maksimal 600 karakter.":"Comments can contain up to 600 characters.",
+    "Tidak perlu menanggapi permintaan sendiri.":"You do not need to answer your own request.",
+    "Barang itu bukan milikmu.":"That item is not yours.",
+    "Tulis pesan atau pilih barang yang kamu punya.":"Write a message or pick one of your own items.",
+    "hanya pemilik yang bisa memperpanjang":"only the owner can extend this item",
+    "Barang ini sudah diturunkan moderator dan tidak bisa diperpanjang.":"A moderator removed this item; it cannot be extended.",
+    "hanya penulis permintaan yang bisa menutupnya":"only the request author can close it",
+    "bukan pihak dalam transaksi ini":"you are not a party to this transaction",
+    "Serah terima hanya untuk tawaran yang sudah diterima.":"Handover applies only to accepted offers.",
+    "Tulis balasan dulu.":"Write a reply first.", "ulasan tidak ditemukan":"review not found",
+    "hanya yang diulas yang bisa membalas":"only the reviewed seller can reply",
+    "Ulasan ini sudah kamu balas sekali.":"You already replied to this review once.",
+    "Aksi tidak dikenal.":"Unknown action.", "laporan tidak ditemukan":"report not found",
+    "Laporan ini sudah ditindak.":"This report was already handled.",
+    "hanya pemilik barang yang bisa mengubah":"only the owner can edit this item",
+    "Lokasi wajib diisi.":"Location is required.", "Kategori wajib diisi.":"Category is required.",
+    "Tidak ada perubahan.":"No changes.",
+    "Token keamanan tidak cocok. Muat ulang halaman lalu coba lagi.":"Security token mismatch. Reload the page and try again.",
+    "berkas ini tidak terbaca sebagai gambar utuh.":"this file could not be read as a complete image.",
+
+
   };
   var reverse = Object.create(null);
   Object.keys(phrases).forEach(function (key) { if (!(phrases[key] in reverse)) reverse[phrases[key]] = key; });
   var patterns = [
+    [/^Suka (\d+)$/, function (_,n) { return "Like " + n; }],
+    [/^(\d+) komentar$/, function (_,n) { return n + " comments"; }],
+    [/^(\d+) tanggapan$/, function (_,n) { return n + " replies"; }],
+    [/^Foto referensi: (.+)$/, function (_,title) { return "Reference photo: " + title; }],
     [/^· (.+)$/, function (_,value) { return "· " + text(value,"en"); }],
     [/^(.+) dari (\d+) ulasan$/, function (_,score,n) { return score + " from " + n + " reviews"; }],
     [/^(Cari|Kategori|Lokasi|Kondisi|Harga min|Harga maks|Status): (.+)$/, function (_,label,value) { return text(label,"en") + ": " + text(value,"en"); }],
@@ -172,7 +223,7 @@
     entry.last = next; entries[key] = entry; records.set(owner,entries);
     if (value !== next) write(next);
   }
-  var protectedContent = 'script,style,code,textarea,.card-title,#p-nama,#akun-nama,#akun-email,.wanted-note,.wanted-item h3,.wanted-mini strong,.chat-bubble,.review p,.row-body h3,[data-user-content]';
+  var protectedContent = 'script,style,code,textarea,.card-title,#p-nama,#akun-nama,#akun-email,.wanted-note,.wanted-item h3,.wanted-mini strong,.chat-bubble,.review p,.comment p,.comment-head strong,.row-body h3,[data-user-content],[data-react-owned]';
   var observer;
   function render() {
     if (!document.body) return;
@@ -186,13 +237,27 @@
       (function (current) { localized(current,'text',current.nodeValue,function (value) { current.nodeValue=value; }); })(node);
     }
     document.querySelectorAll('[placeholder],[aria-label],[alt],meta[name="description"]').forEach(function (element) {
-      if (element.closest('[data-user-content]')) return;
+      if (element.closest('[data-user-content],[data-react-owned]')) return;
       ['placeholder','aria-label','alt','content'].forEach(function (key) {
         if (element.hasAttribute(key)) localized(element,key,element.getAttribute(key),function (value) { element.setAttribute(key,value); });
       });
     });
     if (observer) observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','alt']});
   }
-  window.BukatokoLocale = {text:text, setLanguage:function (next) { language=next==='en'?'en':'id'; render(); }, phrases:phrases};
-  document.addEventListener('DOMContentLoaded',function () { observer=new MutationObserver(render); render(); });
+  window.BukatokoLocale = {text:text, getLanguage:function () { return language; }, setLanguage:function (next) {
+    language=next==='en'?'en':'id'; render();
+    if (typeof CustomEvent === 'function') document.dispatchEvent(new CustomEvent('bukatoko:language'));
+  }, phrases:phrases};
+  document.addEventListener('DOMContentLoaded',function () {
+    if (!observer) observer=new MutationObserver(render);
+    render();
+  });
+  if (document.readyState === 'loading' && typeof MutationObserver === 'function') {
+    observer=new MutationObserver(function (mutations) {
+      if (mutations.some(function (mutation) {
+        return !mutation.target.closest || !mutation.target.closest('[data-react-owned]');
+      })) render();
+    });
+    observer.observe(document.documentElement,{subtree:true,childList:true});
+  }
 }());

@@ -1,0 +1,74 @@
+[
+  {
+    "file": "index.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/index.html",
+    "sha256": "29d8336caa918f63af47554bc7d3ff3e208cb58ecfb5b330a8cd9d976db0173d",
+    "bytes": 7152
+  },
+  {
+    "file": "jelajah.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/jelajah.html",
+    "sha256": "12fbe186627ce5c83248247a66d1b099f69bc93195883d30f59246df77226ba9",
+    "bytes": 8698
+  },
+  {
+    "file": "listing.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/listing.html",
+    "sha256": "28328581b80e47bf35fd552606ce361b92d4d0abcdcdcea21f099b98d57aa790",
+    "bytes": 8032
+  },
+  {
+    "file": "jual.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/jual.html",
+    "sha256": "2d600096040d543839b01bd65b4a34acf7fa6f7b0d7b3ea479e956143671ee69",
+    "bytes": 7589
+  },
+  {
+    "file": "cari.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/cari.html",
+    "sha256": "4bda7c3d623d64e2a64a8b5bae04e6b3b4e1dfb39bb5a3f955564d078c364f1d",
+    "bytes": 6693
+  },
+  {
+    "file": "akun.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/akun.html",
+    "sha256": "0f50fab6d797c9ce0624df1417e12890fdb4b1a045e262bf2e0355877caf3c82",
+    "bytes": 7452
+  },
+  {
+    "file": "profil.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/profil.html",
+    "sha256": "551da960290ef0c7478cb765ef8dde0900526694004a2e34210aed0b248c0407",
+    "bytes": 4096
+  },
+  {
+    "file": "moderasi.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/moderasi.html",
+    "sha256": "ede4feac3de776fab65052d68023e7d8226deb6dee12fb1617f11ebca5d4bbf0",
+    "bytes": 2446
+  },
+  {
+    "file": "404.html",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/404.html",
+    "sha256": "b87e660d9165c511b7c173b336059b3f350b669194b236c2ee03504b0c1a92e4",
+    "bytes": 1738
+  },
+  {
+    "file": "assets/app.js",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/assets/app.js",
+    "sha256": "6d3f764330de0b8746832715f06b5003433e7768f4236895402835aecbcb181a",
+    "bytes": 122201
+  },
+  {
+    "file": "assets/styles.css",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/assets/styles.css",
+    "sha256": "2837e255a4066bbb2393f9403338876f3749d4597105b4da36e76088538fb441",
+    "bytes": 42099
+  },
+  {
+    "file": "assets/locale.js",
+    "source": "https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech/assets/locale.js",
+    "sha256": "9f688796965bffdfb2b324f3ec6c42e83b606e8e225bcc7b6f0358b60bbfb830",
+    "bytes": 35308
+  }
+]

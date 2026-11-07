@@ -44,7 +44,7 @@ Use normal pushes. A stale direct push to `main` is rejected by Git; a stale fea
 1. Create `v<VERSION>` at that exact commit if absent.
 2. Refuse to move an existing tag that points somewhere else.
 3. Create a GitHub Release using `releases/<version>.md`.
-4. Attach the reference PDF and full TXT when present. GitHub also supplies the source archives for the tag.
+4. Attach the reference PDF, full TXT and versioned frontend-only ZIP when present. The workflow creates the frontend ZIP from checked-in compiled assets, without backend code, database or uploads. GitHub also supplies the source archives for the tag.
 5. Reuse an identical existing tag/release on a retry and upload any missing attachment. Refuse mismatched or incomplete existing assets rather than deleting/replacing them.
 
 Different commit releases do not cancel each other. Release jobs have `contents: write`; ordinary repository checks are read-only. PR code does not run with release credentials. The workflows never create a source commit or deploy the app. Their action dependencies are pinned to verified official action commits.

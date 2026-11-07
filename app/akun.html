@@ -8,8 +8,10 @@
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Barang yang disimpan, barang yang dipasang, permintaan, tawaran, pesan, dan pencarian tersimpan.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css?v=20261107-3">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-1">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-1">
 <link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
+<script src="assets/locale.js?v=20261108-1"></script>
 </head>
 <body data-page="akun">
 <a class="sr-only" href="#main">Lewati ke konten</a>
@@ -51,6 +53,15 @@
       <h2>Ringkasan akun</h2>
       <p>Masuk sebagai <strong id="akun-nama">-</strong> · <span id="akun-email" class="card-meta"></span></p>
 
+      <div id="verify-banner" class="form-card" hidden style="margin-top:12px;">
+        <p class="field-note" id="verify-note">Email ini belum diverifikasi.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <input id="verify-code" type="text" placeholder="Kode verifikasi" style="flex:1; min-width:180px;">
+          <button class="btn btn-outline" type="button" id="verify-send">Kirim ulang</button>
+          <button class="btn btn-primary" type="button" id="verify-submit">Verifikasi</button>
+        </div>
+      </div>
+
       <ul class="counts">
         <li><strong id="c-simpan">0</strong> disimpan</li>
         <li><strong id="c-barang">0</strong> barang saya</li>
@@ -68,6 +79,8 @@
         <button type="button" role="tab" data-tab="permintaan" aria-selected="false" aria-controls="panel-permintaan" id="tab-permintaan" tabindex="-1">Permintaan saya</button>
         <button type="button" role="tab" data-tab="tawaran" aria-selected="false" aria-controls="panel-tawaran" id="tab-tawaran" tabindex="-1">Tawaran</button>
         <button type="button" role="tab" data-tab="pesan" aria-selected="false" aria-controls="panel-pesan" id="tab-pesan" tabindex="-1">Pesan</button>
+        <button type="button" role="tab" data-tab="notifikasi" aria-selected="false" aria-controls="panel-notifikasi" id="tab-notifikasi" tabindex="-1">Notifikasi <span class="tab-count" id="c-notif">0</span></button>
+        <button type="button" role="tab" data-tab="transaksi" aria-selected="false" aria-controls="panel-transaksi" id="tab-transaksi" tabindex="-1">Transaksi</button>
         <button type="button" role="tab" data-tab="pencarian" aria-selected="false" aria-controls="panel-pencarian" id="tab-pencarian" tabindex="-1">Pencarian</button>
       </div>
 
@@ -78,6 +91,8 @@
       <section id="panel-tawaran" role="tabpanel" aria-labelledby="tab-tawaran" hidden></section>
       <section id="panel-pesan" role="tabpanel" aria-labelledby="tab-pesan" hidden></section>
       <section id="panel-pencarian" role="tabpanel" aria-labelledby="tab-pencarian" hidden></section>
+      <section id="panel-notifikasi" role="tabpanel" aria-labelledby="tab-notifikasi" hidden></section>
+      <section id="panel-transaksi" role="tabpanel" aria-labelledby="tab-transaksi" hidden></section>
 
       <aside class="account-note field-note">Menandai barang terjual mematikan tawaran baru. Menerima tawaran juga menandai barang terjual dan membuka kesempatan menulis ulasan bagi dua pihak.</aside>
       </div>
@@ -112,8 +127,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/locale.js?v=20261107-3"></script>
-<script src="assets/motion.js?v=20261107-3"></script>
-<script src="assets/app.js?v=20261107-3"></script>
+<script src="assets/motion.js?v=20261108-1"></script>
+<script src="assets/react-ui.js?v=20261108-1"></script>
+<script src="assets/app.js?v=20261108-1"></script>
 </body>
 </html>

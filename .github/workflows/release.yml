@@ -40,6 +40,8 @@ jobs:
             base="$(git rev-parse HEAD^)"
           fi
           python tools/repo_workflow.py validate-release --source HEAD --base-ref "$base"
+      - name: Package public frontend for the existing backend host
+        run: python tools/package_frontend.py
       - name: Publish immutable version and reference downloads
         env:
           GH_TOKEN: ${{ github.token }}

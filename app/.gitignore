@@ -1,5 +1,8 @@
 bukatoko.db
+bukatoko.db-wal
+bukatoko.db-shm
 uploads/
+backups/
 server.log
 __pycache__/
 *.pyc

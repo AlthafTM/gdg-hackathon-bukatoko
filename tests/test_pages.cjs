@@ -27,7 +27,9 @@ test('export contains only frontend and public fixtures', () => {
     assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
     assert.match(html, /assets\/favicon\.svg\?v=2/);
     assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
-    for (const module of ['preview.js','locale.js','motion.js']) {
+    assert.match(html, /assets\/react-ui\.css/);
+    assert.match(fs.readFileSync(path.join(root,'assets/THIRD-PARTY-NOTICES.txt'),'utf8'), /MIT/);
+    for (const module of ['preview.js','locale.js','motion.js','react-ui.js']) {
       assert.ok(html.indexOf('assets/'+module) >= 0);
       assert.ok(html.indexOf('assets/'+module) < html.indexOf('assets/app.js'));
       assert.ok(fs.existsSync(path.join(root,'assets',module)));
@@ -83,4 +85,14 @@ test('writes, private endpoints and missing resources are rejected without netwo
   await assert.rejects(preview.request('/api/listings/missing'), err => err.status === 404);
   await assert.rejects(preview.request('/api/users/missing'), err => err.status === 404);
   assert.equal(fetches.length, 1);
+});
+
+test('new public feature reads remain usable in the sample preview',async()=>{
+  const selected=await preview.request('/api/listings?ids=l1001,l1002&status=all');
+  assert.equal(selected.total,2);
+  assert.equal((await preview.request('/api/listings?has_photo=1')).total,0);
+  assert.ok((await preview.request('/api/suggest?q=kamera')).items.some(title=>/kamera/i.test(title)));
+  assert.equal((await preview.request('/api/comments?target_type=listing&target_id=l1001')).items.length,0);
+  assert.equal((await preview.request('/api/wanted/w1/replies')).total,0);
+  assert.equal(fetches.length,1);
 });

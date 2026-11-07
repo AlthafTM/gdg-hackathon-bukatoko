@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bukatoko:theme")==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel moderator · Bukatoko</title>
+<meta name="description" content="Antrean laporan barang untuk moderator Bukatoko.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-1">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-1">
+<link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
+<script src="assets/locale.js?v=20261108-1"></script>
+</head>
+<body data-page="moderasi">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: panel ini hanya terbuka untuk akun dengan peran moderator.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html" aria-label="BukaToko, beranda"><img class="brand-logo" src="assets/logo.svg" alt="BukaToko" width="486" height="95"></a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <a class="notif" id="notif-badge" href="akun.html#notifikasi" aria-label="Notifikasi belum dibaca" hidden></a>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding:28px 0 48px;">
+    <h1 style="font-size:28px; margin-bottom:6px;">Panel moderator</h1>
+    <p style="color:var(--muted); max-width:60ch; margin-bottom:18px;">Laporan terbuka dari pengguna. Menurunkan barang menyembunyikannya dari publik tanpa menghapus datanya. Membekukan akun juga mematikan semua sesi dan menurunkan barang aktifnya.</p>
+    <div id="mod-state"></div>
+    <div id="mod-list"></div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-note">Situs demo: tindakan moderator tercatat di tabel reports.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/motion.js?v=20261108-1"></script>
+<script src="assets/react-ui.js?v=20261108-1"></script>
+<script src="assets/app.js?v=20261108-1"></script>
+</body>
+</html>

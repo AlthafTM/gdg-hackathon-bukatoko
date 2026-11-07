@@ -16,9 +16,15 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.13'
+      - name: Install locked frontend build dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Compile React and Tailwind
+        run: npm run build
+      - name: Check the integrated backend in a disposable local fixture
+        run: python tools/check_app.py
       - name: Build the self-contained UI preview
         run: python tools/build_pages.py --app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
-      - run: node --test tests/test_pages.cjs tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs
+      - run: node --test tests/test_pages.cjs tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs tests/test_react.cjs
       - run: python tools/build_pages.py --output _site-live --api-origin https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
       - run: node --test tests/test_connection.cjs
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

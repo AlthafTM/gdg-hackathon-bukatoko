@@ -37,13 +37,13 @@ test('new visitors start in light theme and explicit dark preference remains usa
   const returning = fixture('dark'); returning.api.initTheme();
   assert.equal(returning.html.attrs['data-theme'], 'dark');
 });
-test('cards expose square media, working detail links, price, condition, city and seller', () => {
+test('cards expose 4:3 media, working detail links, price, condition, city and seller', () => {
   const {api} = fixture();
   const item = {id:'test-1',title:'Kamera bekas',price:900000,condition:'Bekas, mulus',city:'Bandung',
     owner:{name:'penjual'},created_at:'2026-11-07T00:00:00Z',photo_urls:['/uploads/sample.jpg'],status:'active'};
   const card = api.card(item), link = card.children[0], image = link.children[0], body = card.children[1];
   assert.equal(link.attrs.href,'listing.html?id=test-1');
-  assert.equal(image.attrs.width,'640'); assert.equal(image.attrs.height,'640');
+  assert.equal(image.attrs.width,'640'); assert.equal(image.attrs.height,'480');
   assert.equal(image.attrs.src,'/uploads/sample.jpg');
   assert.equal(body.children[1].attrs.href,link.attrs.href);
   assert.equal(body.children[2].textContent,item.condition);

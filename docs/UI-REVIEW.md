@@ -35,3 +35,7 @@ Setelah akses browser tersedia dan versi baru dipublikasikan, catat hasil setiap
 | Console | Tidak ada error; logo dan font termuat |
 
 Gerbang antislop: verifikasi kode dan fungsi backend di atas selesai; pemeriksaan visual dan click-through masih menunggu izin browser. Jangan mengubah status ini menjadi PASS penuh tanpa bukti render dan interaksi.
+
+## Follow-up, 0.3.0
+
+Browser access was available for this round. Checked in a real Chromium session against the Python server: logo and labelled icons render, the category rail scrolls instead of widening the page, like/comment controls work on listings and wanted requests, the wanted reply modal lists only the signed-in seller's active listings, the eight account tabs switch, and computed text contrast passes in both themes on home, browse, listing and account. Seven pages measure 390 px wide with no horizontal overflow at a 390 px viewport. Mobile bottom navigation, keyboard tab order and the reduced-motion path were reviewed by hand only; no screen reader was run.

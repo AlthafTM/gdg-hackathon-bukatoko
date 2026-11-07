@@ -1,16 +1,16 @@
 # BukaToko: arah desain
 
-Reading this as: katalog marketplace lokal yang padat informasi, teratur, dan mudah dinavigasi. ENERGY 2 / RHYTHM 2 / MOTION 2. Brief lanjutan 7 November 2026 meminta pembangunan ulang UI: kartu lebih mengotak, foto 16:9, spacing konsisten, gerak interaksi halus, terang default dan akun yang tersusun jelas.
+Reading this as: katalog marketplace lokal yang padat informasi, teratur, dan mudah dinavigasi. ENERGY 2 / RHYTHM 2 / MOTION 2. Revisi 8 November 2026 memakai React/Tailwind untuk katalog, bingkai foto 4:3 penuh sesuai klarifikasi terakhir, komponen ponsel/tablet lebih ringkas, ikon membulat, acid lime lebih terlihat dan gerak dengan anticipation ringan. Detail implementasi dan build ada di `../frontend/README.md`.
 
 ## Prioritas kegunaan
 
 Harga, kondisi dan lokasi harus terlihat pada kartu barang. Pencarian berada sebelum konten pembuka. Pengguna dapat langsung menjual barang atau membuat permintaan dengan rentang harga. Permintaan terbaru ditampilkan di samping pembuka karena dua sisi pasar ini sama pentingnya.
 
-Katalog desktop memakai filter kiri 312px, lebar halaman maksimum 1560px dengan gutter 32px, dan grid hasil tiga kolom. Pada tablet filter 272px dan hasil dua kolom; ponsel memakai filter lipat dan gutter 16px. Harga, judul, kondisi, lokasi dan penjual tetap berurutan. Bidang katalog 1:1 dan `object-fit: contain` menjaga foto produk tetap utuh. Galeri detail 4:3; thumbnail galeri kotak dan thumbnail daftar akun 16:9. Foto dan judul menuju detail yang sama.
+Katalog desktop memakai filter kiri 312px, lebar halaman maksimum 1560px dengan gutter 32px, dan grid hasil tiga kolom. Filter dilipat pada lebar sampai 1024px; tablet memakai hasil dua kolom dan gutter 24px, ponsel gutter 16px. Harga, judul, kondisi, lokasi dan penjual tetap berurutan. Bidang katalog 4:3 dengan `object-fit: cover` memenuhi panel secara proporsional; sebagian tepi foto 16:9 dapat terpotong. Tidak ada zoom hover tambahan. Galeri detail memakai contain agar sumber utuh dapat diperiksa. Foto dan judul menuju detail yang sama.
 
 Akun memiliki ringkasan penuh di atas, enam angka dalam grid, lalu tab vertikal di kiri dan panel isi di kanan. Pada layar sempit tab menjadi horizontal. Catatan informasi berada di kolom panel, setelah isinya, dengan gutter dan padding yang sama. Baris tanpa thumbnail memakai satu kolom, sehingga pesan atau tawaran tidak terdorong ke kolom foto kosong.
 
-Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Sesuai revisi terbaru, kartu/panel memakai radius 24px, elemen kecil 16px, dialog 28px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel agar bidang teks multiline tidak berbentuk oval. Glow ungu ringan hanya saat hover untuk menunjukkan panel aktif, bukan efek latar permanen. CSS memakai satu sistem komponen.
+Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Kartu/panel memakai radius 24px, elemen kecil 16px, dialog 28px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel. Hover menggabungkan bayangan violet/lime yang ringan; tidak dipertahankan pada perangkat touch. Utility Tailwind memakai prefix `tw:` tanpa Preflight agar tidak menimpa formulir/backend yang diintegrasikan.
 
 Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
 
@@ -71,14 +71,14 @@ Ponsel
 
 Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Sesuai permintaan terbaru, pop-up memakai fade dan scale 300ms; kartu/panel memakai reveal 420ms saat memasuki viewport dari kedua arah. Reveal diulang setelah elemen sepenuhnya meninggalkan viewport, tanpa stagger. Elemen berfokus tetap terlihat. Semua animasi/transisi dimatikan ketika reduced motion aktif. Terang menjadi default; tema gelap hanya dari pilihan pengguna yang tersimpan.
 
-`motion.js` mengganti tema dengan View Transitions: snapshot tema baru diungkap oleh clip-path lingkaran selama 620ms dari pusat tombol ke sudut viewport terjauh. Klik berikutnya menunggu transisi selesai. Browser tanpa API tersebut memakai transisi warna singkat; reduced motion mengganti tema langsung. Bootstrap di head menerapkan tema tersimpan sebelum CSS dimuat dan memberi kanvas root warna yang sesuai. Fade awal seluruh grid dihapus. Scroll reveal memakai IntersectionObserver, membersihkan referensi elemen yang dilepas, dan tidak menyembunyikan konten ketika API tidak tersedia. Rujukan implementasi: https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition dan https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API .
+`motion.js` mengganti tema dengan View Transitions: snapshot baru diungkap melalui lingkaran 900ms setelah delay 120ms dari pusat tombol ke sudut viewport terjauh. Klik berikutnya menunggu transisi selesai. Browser tanpa API tersebut memakai fade warna; reduced motion mengganti tema langsung. Transisi navigasi native memakai fade keluar/masuk terpisah dan header stabil; dukungannya mengikuti browser. Locale dimuat di head dan melewati subtree React, sedangkan font optional menghindari pergantian glyph terlambat. Scroll reveal memakai IntersectionObserver dengan pembersihan elemen yang dilepas. Rujukan: https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition .
 
 ## Landasan eksternal
 
 - REA, bagian informasi kartu, filter, navigasi kembali dan state kosong/galat: dipakai sebagai referensi struktur, bukan kontrak backend produksi.
 - https://baymard.com/research-articles/product-listing-information : atribut penting perlu terlihat pada listing agar pembeli tidak perlu membuka setiap detail untuk membandingkan barang. Mendukung hierarki harga/kondisi/lokasi.
 - https://blog.carousell.com/carousell-pro-tips/buying-guide/browse-carousell/ : pencarian, kategori dan filter mendukung penemuan barang. Mendukung pemisahan filter dan hasil.
-- Rasio awal 16:9 dilonggarkan pengguna; pemilihan katalog 1:1 dan galeri 4:3 adalah keputusan desain berdasarkan variasi bentuk barang, belum hasil A/B atau uji visual. Bentuk mengotak, tema terang dan animasi mengikuti instruksi pengguna. Riset gambar Baymard mendukung keterlihatan detail, bukan menetapkan satu rasio universal: https://baymard.com/research-articles/ensure-sufficient-image-resolution-and-zoom .
+- Rasio katalog terbaru 4:3 penuh mengikuti klarifikasi pengguna; galeri/zoom tetap dapat menampilkan sumber utuh. Ini bukan hasil A/B. Riset gambar Baymard mendukung keterlihatan detail, bukan menetapkan satu rasio universal: https://baymard.com/research-articles/ensure-sufficient-image-resolution-and-zoom .
 
 ## Batas sistem
 

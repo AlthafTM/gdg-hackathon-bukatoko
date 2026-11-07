@@ -10,7 +10,7 @@ function fixture(options={}) {
   const element={nodeType:1,isConnected:true,classList:{add:v=>classes.add(v),remove:v=>classes.delete(v)},
     getBoundingClientRect:()=>({top:900,bottom:1200}),matches:()=>true,querySelectorAll:()=>[]};
   const rootClasses=new Set();
-  const root={classList:{add:v=>rootClasses.add(v),remove:v=>rootClasses.delete(v)},animate:(frames,settings)=>{
+  const root={dataset:{},classList:{add:v=>rootClasses.add(v),remove:v=>rootClasses.delete(v)},animate:(frames,settings)=>{
     animations.push({frames,settings});return {finished:Promise.resolve()};}};
   const document={documentElement:root,body:{nodeType:1,matches:()=>false,querySelectorAll:()=>[element]}};
   if(!options.fallback)document.startViewTransition=update=>{update();return {ready:Promise.resolve(),finished:Promise.resolve()};};
@@ -28,6 +28,8 @@ test('theme reveal starts at the button and reaches the farthest viewport corner
   assert.equal(updates,1);assert.equal(f.animations.length,1);
   assert.equal(f.animations[0].frames.clipPath[0],'circle(0px at 120px 60px)');
   assert.equal(f.animations[0].settings.pseudoElement,'::view-transition-new(root)');
+  assert.equal(f.animations[0].settings.duration,900);
+  assert.equal(f.animations[0].settings.delay,120);
   const radius=Number(f.animations[0].frames.clipPath[1].match(/circle\(([\d.]+)/)[1]);
   assert.ok(radius>=Math.hypot(1080,740));
 });

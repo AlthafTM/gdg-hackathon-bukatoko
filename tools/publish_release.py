@@ -65,8 +65,11 @@ def publish(api, root, repository, sha):
         raise ValueError('Existing release is a draft; inspect it rather than silently changing its status.')
     # Upload independently so a retry can finish an interrupted first publication.
     assets = {a['name']: a for a in api.request('GET', f'/releases/{release["id"]}/assets?per_page=100')}
-    for name in ('CAROUSELL-DESIGN-DOCUMENT.pdf', 'CAROUSELL-DESIGN-DOCUMENT.txt'):
-        p = root / 'REA' / 'carousell-indonesia' / name
+    downloads = [root / 'REA' / 'carousell-indonesia' / name
+                 for name in ('CAROUSELL-DESIGN-DOCUMENT.pdf', 'CAROUSELL-DESIGN-DOCUMENT.txt')]
+    downloads.append(root / 'artifacts' / f'bukatoko-frontend-{version}.zip')
+    for p in downloads:
+        name = p.name
         if not p.is_file(): continue
         data = p.read_bytes()
         if name in assets:

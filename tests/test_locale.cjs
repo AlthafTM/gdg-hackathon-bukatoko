@@ -47,7 +47,7 @@ test('dynamic statuses, authentication errors and result counts translate',()=>{
   f.locale.setLanguage('en');assert.equal(f.nodes[1].nodeValue,'Request posted.');
   f.locale.setLanguage('id');assert.equal(f.nodes[1].nodeValue,'Permintaan terpasang.');
 });
-test('static UI copy in all seven pages has an English translation',()=>{
+test('static UI copy including moderation and missing-page screens has an English translation',()=>{
   const f=fixture();
   const allow=new Set(['Bandung','Bekasi','Denpasar','Jakarta Barat','Jakarta Pusat','Jakarta Selatan','Malang','Semarang','Sleman','Surabaya','Tangerang','Yogyakarta','BukaToko','Bukatoko','EN','min','Status']);
   const decode=s=>s.replace(/&amp;/g,'&').replace(/&larr;/g,'←').replace(/&#(?:x([\da-f]+)|(\d+));/gi,(_,h,d)=>String.fromCodePoint(parseInt(h||d,h?16:10)));

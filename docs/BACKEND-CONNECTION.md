@@ -1,5 +1,7 @@
 # Existing Instabox backend: frontend connection
 
+Version 0.6.0 unifies the feature-branch backend and the publicly served integration with the React/Tailwind catalog. See [integration evidence and frontend deployment](INTEGRATION-2026-11-08.md). The GitHub Release includes a frontend-only ZIP for the collaborator with hosting access; publishing the repository does not replace the running Instabox files.
+
 Configured backend origin:
 https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
 

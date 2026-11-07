@@ -65,6 +65,15 @@ class PublicationTests(unittest.TestCase):
             ensure_tag(self.api, 'v0.0.1', 'a'*40)
         self.assertFalse(any(method=='POST' for method,_ in self.api.calls))
 
+    def test_frontend_package_is_attached_once_when_present(self):
+        artifacts = self.root / 'artifacts'
+        artifacts.mkdir()
+        (artifacts / 'bukatoko-frontend-0.0.1.zip').write_bytes(b'frontend fixture')
+        publish(self.api, self.root, 'owner/repo', 'a'*40)
+        publish(self.api, self.root, 'owner/repo', 'a'*40)
+        self.assertEqual(3, len(self.api.assets))
+        self.assertIn('bukatoko-frontend-0.0.1.zip', [item['name'] for item in self.api.assets])
+
     def test_same_size_asset_change_is_rejected_by_digest(self):
         publish(self.api, self.root, 'owner/repo', 'a'*40)
         (self.assets / 'CAROUSELL-DESIGN-DOCUMENT.pdf').write_bytes(b'changed')

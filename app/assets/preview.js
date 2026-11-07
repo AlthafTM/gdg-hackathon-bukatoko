@@ -15,6 +15,8 @@
         (!p.get("kat") || item.category === p.get("kat")) &&
         (!p.get("city") || item.city === p.get("city")) &&
         (!p.get("owner") || String(item.owner.id) === p.get("owner")) &&
+        (!p.get("ids") || p.get("ids").split(",").includes(item.id)) &&
+        (!(p.get("foto") === "1" || p.get("has_photo") === "1") || !!(item.photo_urls && item.photo_urls.length)) &&
         (!p.get("kondisi") || item.condition.includes(p.get("kondisi"))) &&
         (!p.get("min") || item.price >= Number(p.get("min"))) &&
         (!p.get("max") || item.price <= Number(p.get("max"))) &&
@@ -38,12 +40,17 @@
       if (!snapshot) snapshot = fetch(new URL("assets/preview-data.json", root)).then(function (r) {
         if (!r.ok) throw new Error("Data contoh gagal dimuat. Muat ulang halaman.");
         return r.json();
-      });
+      }).catch(function (error) { snapshot = null; throw error; });
       return snapshot.then(function (data) {
         var url = new URL(path, root), route = url.pathname;
         if (route === "/api/me") return {user: null};
         if (route === "/api/listings") return listings(data, url.searchParams);
         if (route === "/api/wanted") return {items: data.wanted, total: data.wanted.length};
+        if (route === "/api/suggest") {
+          var needle = (url.searchParams.get("q") || "").toLowerCase();
+          return {items: data.listings.filter(function (item) { return needle && item.title.toLowerCase().includes(needle); }).slice(0,6).map(function (item) { return item.title; })};
+        }
+        if (route === "/api/comments" || /^\/api\/wanted\/[^/]+\/replies$/.test(route)) return {items:[],total:0};
         var match = route.match(/^\/api\/listings\/([^/]+)$/);
         if (match) {
           var item = data.listings.find(function (i) { return i.id === decodeURIComponent(match[1]); });

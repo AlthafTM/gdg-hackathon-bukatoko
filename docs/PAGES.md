@@ -10,6 +10,8 @@ Accounts, listing creation, uploads, saved items/searches, offers, messages, rev
 
 ## Build and check locally
 
+For the React/Tailwind update, run `npm ci --ignore-scripts` and `npm run build` before exporting. `npm test` checks the UI components; `python tools/check_app.py` runs the integrated backend suites using a disposable application/database copy. Node is needed for frontend development, not for serving the checked-in compiled assets with Python.
+
 1. Synchronize `main` using the contributor workflow.
 2. Run `python tools/build_pages.py --app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech` with an empty or absent `_site` directory. The link option does not change the data source or inject the remote API configuration.
 3. Run `node --test tests/test_pages.cjs` and `node --check app/assets/app.js`.

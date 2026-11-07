@@ -7,3 +7,5 @@ __pycache__/
 _site/
 _site-live/
 _site-before-ui/
+node_modules/
+artifacts/

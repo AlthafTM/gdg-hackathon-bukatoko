@@ -1,0 +1,21 @@
+{
+  "name": "bukatoko-ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node frontend/build.mjs",
+    "test": "node --test tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs tests/test_react.cjs",
+    "test:pages": "node --test tests/test_pages.cjs tests/test_connection.cjs"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.5",
+    "esbuild": "0.28.2",
+    "happy-dom": "21.0.4",
+    "tailwindcss": "4.3.5"
+  }
+}
