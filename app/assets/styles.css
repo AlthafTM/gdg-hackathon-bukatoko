@@ -1003,6 +1003,11 @@ body.is-loading .detail-grid { opacity: 0.4; }
 }
 
 @media (max-width: 720px) {
+  .mobile-bar { bottom: calc(72px + env(safe-area-inset-bottom)); }
+  body.has-mobile-bar { padding-bottom: calc(156px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 720px) {
   .filter-details > summary { display: flex; }
   .row-item { grid-template-columns: 64px minmax(0, 1fr); }
   .row-thumb { width: 64px; height: 64px; }
