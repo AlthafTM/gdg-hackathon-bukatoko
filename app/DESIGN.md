@@ -1,10 +1,16 @@
 # BukaToko: arah desain
 
-Reading this as: pasar barang milik warga yang profesional, sederhana, dan mudah dipindai. ENERGY 2 / RHYTHM 2 / MOTION 1. Mengikuti brief pengguna 7 November 2026: tiga warna utama, gradien halus, font berkarakter tetapi terbaca, dan logo yang disediakan pengguna.
+Reading this as: katalog marketplace lokal yang padat informasi, teratur, dan mudah dinavigasi. ENERGY 2 / RHYTHM 2 / MOTION 2. Brief lanjutan 7 November 2026 meminta pembangunan ulang UI: kartu lebih mengotak, foto 16:9, spacing konsisten, gerak interaksi halus, terang default dan akun yang tersusun jelas.
 
 ## Prioritas kegunaan
 
 Harga, kondisi dan lokasi harus terlihat pada kartu barang. Pencarian berada sebelum konten pembuka. Pengguna dapat langsung menjual barang atau membuat permintaan dengan rentang harga. Permintaan terbaru ditampilkan di samping pembuka karena dua sisi pasar ini sama pentingnya.
+
+Katalog desktop memakai filter kiri selebar 248px dan grid hasil tiga kolom; tablet beralih dua kolom. Ponsel memakai filter lipat dan grid dua kolom. Kartu menampilkan harga dahulu, judul dua baris, kondisi, lokasi, lalu penjual. Setelah pengguna membolehkan rasio alternatif, bidang katalog dipilih kotak 1:1: lebih fleksibel bagi foto ponsel, pakaian dan buku yang cenderung tinggi, serta barang rumah tangga yang bentuknya beragam. Foto asli memakai `object-fit: contain` agar tidak terpotong; placeholder dibuat 640x640. Galeri detail 4:3 menyediakan ruang inspeksi tanpa setinggi panel kotak pada desktop. Thumbnail galeri dan unggahan kotak; thumbnail kecil di daftar akun tetap 16:9 untuk menjaga baris tetap ringkas. Foto dan judul menuju detail yang sama.
+
+Akun memiliki ringkasan penuh di atas, enam angka dalam grid, lalu tab vertikal di kiri dan panel isi di kanan. Pada layar sempit tab menjadi horizontal. Catatan informasi berada di kolom panel, setelah isinya, dengan gutter dan padding yang sama. Baris tanpa thumbnail memakai satu kolom, sehingga pesan atau tawaran tidak terdorong ke kolom foto kosong.
+
+Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Inline style layout telah dihapus dari HTML dan komponen JavaScript. Radius hanya 3/6/8px. CSS lama diganti sebagai satu sistem komponen, bukan ditumpuk dengan tema tambahan.
 
 Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
 
@@ -49,7 +55,14 @@ Ponsel
 [Jelajah | Lagi Dicari | Jual | Akun] tetap di bawah
 ```
 
-Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Kartu menggunakan radius 10px, panel orientasi/dialog 18px, label 6px sesuai fungsi. Gerak hanya umpan balik hover/tekan; reduced motion dihormati.
+Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Gerak 180-240ms pada tombol, pembesaran foto saat hover, pembukaan dialog dan pergantian panel memberi umpan balik. Animasi otomatis hanya sekali pada panel/konten, tanpa stagger tiap kartu atau efek scroll. Semua animasi/transisi dimatikan ketika reduced motion aktif. Terang menjadi default; tema gelap hanya dari pilihan pengguna yang tersimpan.
+
+## Landasan eksternal
+
+- REA, bagian informasi kartu, filter, navigasi kembali dan state kosong/galat: dipakai sebagai referensi struktur, bukan kontrak backend produksi.
+- https://baymard.com/research-articles/product-listing-information : atribut penting perlu terlihat pada listing agar pembeli tidak perlu membuka setiap detail untuk membandingkan barang. Mendukung hierarki harga/kondisi/lokasi.
+- https://blog.carousell.com/carousell-pro-tips/buying-guide/browse-carousell/ : pencarian, kategori dan filter mendukung penemuan barang. Mendukung pemisahan filter dan hasil.
+- Rasio awal 16:9 dilonggarkan pengguna; pemilihan katalog 1:1 dan galeri 4:3 adalah keputusan desain berdasarkan variasi bentuk barang, belum hasil A/B atau uji visual. Bentuk mengotak, tema terang dan animasi mengikuti instruksi pengguna. Riset gambar Baymard mendukung keterlihatan detail, bukan menetapkan satu rasio universal: https://baymard.com/research-articles/ensure-sufficient-image-resolution-and-zoom .
 
 ## Batas sistem
 

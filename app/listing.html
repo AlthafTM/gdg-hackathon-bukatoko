@@ -41,12 +41,12 @@
       <a id="d-kategori-link" href="jelajah.html"><span id="d-kategori">Kategori</span></a> /
       <span id="d-crumb">Barang</span>
     </nav>
-    <p style="margin:8px 0 0;"><a class="btn btn-quiet btn-sm" id="back-link" href="jelajah.html">&larr; Kembali ke hasil</a></p>
+    <p class="mt-2"><a class="btn btn-quiet btn-sm" id="back-link" href="jelajah.html">&larr; Kembali ke hasil</a></p>
 
-    <div class="detail-grid" style="margin-top:16px;">
+    <div class="detail-grid mt-4">
       <div>
         <div class="gallery">
-          <img class="gallery-main" id="gallery-main" width="640" height="480" alt="Foto contoh barang">
+          <button class="gallery-open" id="gallery-open" type="button" aria-label="Perbesar foto barang"><img class="gallery-main" id="gallery-main" width="640" height="480" alt="Foto contoh barang"></button>
           <button class="gal-btn gal-prev" id="gal-prev" type="button" aria-label="Foto sebelumnya">&#8249;</button>
           <button class="gal-btn gal-next" id="gal-next" type="button" aria-label="Foto berikutnya">&#8250;</button>
           <span class="gal-count" id="gal-count" aria-live="polite">1 / 1</span>
@@ -76,8 +76,8 @@
 
         <div class="desc" id="d-deskripsi">Deskripsi barang.</div>
 
-        <section id="reviews" hidden aria-labelledby="reviews-heading" style="margin-top:28px;">
-          <h2 id="reviews-heading" style="font-size:20px; margin-bottom:8px;">Ulasan penjual</h2>
+        <section id="reviews" hidden aria-labelledby="reviews-heading" class="mt-6">
+          <h2 id="reviews-heading" class="mb-2">Ulasan penjual</h2>
           <div id="review-list"></div>
         </section>
       </div>
@@ -105,15 +105,15 @@
           <input id="tawaran" type="number" min="1" step="10000" inputmode="numeric" aria-describedby="offer-hint">
           <p class="offer-hint" id="offer-hint">Tawaran tidak boleh di atas harga pasang. Penjual bebas menerima atau menolak.</p>
           <p class="form-error" id="offer-error" hidden></p>
-          <button class="btn btn-primary btn-block" id="ajukan" type="button" style="margin-top:10px;">Kirim tawaran</button>
+          <button class="btn btn-primary btn-block mt-3" id="ajukan" type="button">Kirim tawaran</button>
         </div>
 
         <p class="seller-note">Pembayaran dan pengiriman disepakati langsung antara pembeli dan penjual. Bukatoko tidak menahan uang.</p>
       </aside>
     </div>
-    <div id="owner-panel" class="form-card" hidden style="margin-top:22px;"></div>
-    <div id="review-form-wrap" class="form-card" hidden style="margin-top:22px;">
-      <h2 style="font-size:18px; margin-bottom:4px;">Tulis ulasan</h2>
+    <div id="owner-panel" class="form-card mt-5" hidden></div>
+    <div id="review-form-wrap" class="form-card mt-5" hidden>
+      <h2 class="mb-2">Tulis ulasan</h2>
       <p class="field-note">Hanya untuk pihak yang tawarannya sudah diterima, satu kali per barang.</p>
     </div>
   </div>

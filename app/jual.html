@@ -35,13 +35,13 @@
 </header>
 
 <main id="main">
-  <div class="wrap" style="padding-top:28px; padding-bottom:48px; max-width:760px;">
-    <h1 style="font-size:28px; margin-bottom:6px;">Pasang barang</h1>
-    <p style="color:var(--muted); max-width:56ch;">Mulai dari foto, karena itu yang pertama dilihat pembeli. Setelah detail terisi, barang langsung muncul di halaman Jelajah.</p>
+  <div class="wrap page-shell page-shell-narrow">
+    <div class="page-heading"><h1>Pasang barang</h1>
+    <p>Mulai dari foto, karena itu yang pertama dilihat pembeli. Setelah detail terisi, barang langsung muncul di halaman Jelajah.</p></div>
 
-    <form id="jual-form" class="form-card" novalidate style="margin-top:20px;">
-      <fieldset style="border:0; padding:0; margin:0 0 22px;">
-        <legend style="font-size:16px; font-weight:600; margin-bottom:10px;">1. Foto barang</legend>
+    <form id="jual-form" class="form-card" novalidate>
+      <fieldset class="form-section">
+        <legend>1. Foto barang</legend>
         <div class="dropzone" id="dropzone">
           <p>Tarik foto ke sini, atau pilih dari perangkat. Maksimal 10 foto, format gambar.</p>
           <label class="btn btn-outline" for="f-foto">Pilih foto</label>
@@ -51,8 +51,8 @@
         <div class="photo-grid" id="photo-grid"></div>
       </fieldset>
 
-      <fieldset style="border:0; padding:0; margin:0;">
-        <legend style="font-size:16px; font-weight:600; margin-bottom:10px;">2. Detail barang</legend>
+      <fieldset class="form-section">
+        <legend>2. Detail barang</legend>
         <div class="form-grid">
           <div class="field full">
             <label for="f-judul">Judul <span class="req">wajib</span></label>
@@ -113,7 +113,7 @@
         <p class="form-error" id="jual-error" hidden></p>
         <p class="field-note" id="jual-status" aria-live="polite" hidden></p>
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+        <div class="action-group mt-5">
           <button class="btn btn-primary" id="jual-submit" type="submit">Terbitkan barang</button>
           <a class="btn btn-quiet" href="jelajah.html">Batal</a>
         </div>

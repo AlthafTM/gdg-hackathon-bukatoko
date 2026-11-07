@@ -2,6 +2,11 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.3.0] - 2026-11-07
+
+- Rebuild the marketplace layout, filters, cards, account panels and shared spacing system.
+- Use square catalog images, a 4:3 detail gallery, light mode by default and reduced-motion-aware transitions. See [validation and limits](releases/0.3.0.md).
+
 ## [0.2.0] - 2026-11-07
 
 - Refresh the UI with the supplied logo, local Exo 2 font, consistent three-color theme, labeled icons and mobile navigation.

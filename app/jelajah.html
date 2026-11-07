@@ -35,13 +35,14 @@
 </header>
 
 <main id="main">
-  <div class="wrap" style="padding-top:24px; padding-bottom:48px;">
+  <div class="wrap page-shell">
     <nav class="breadcrumb" aria-label="Remah roti">
       <a href="index.html">Beranda</a> / <span id="crumb-kat">Semua kategori</span>
     </nav>
-    <h1 id="explore-title" style="margin:8px 0 4px; font-size:28px;">Semua barang</h1>
+    <h1 id="explore-title">Semua barang</h1>
     <p class="result-count" id="jumlah" aria-live="polite">0 barang</p>
 
+    <div class="catalog-layout">
     <details class="filter-details" id="filter-details" open>
     <summary>Filter dan urutan</summary>
     <form class="filters" id="filter-form" method="get" action="jelajah.html">
@@ -118,8 +119,9 @@
     </form>
     </details>
 
+    <div class="catalog-results">
     <div class="active-filters" id="filter-aktif"></div>
-    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+    <div class="result-actions">
       <button class="btn btn-outline btn-sm" id="save-search" type="button" hidden>Simpan pencarian ini</button>
     </div>
 
@@ -136,8 +138,10 @@
 
     <div id="state-box" class="state" hidden></div>
     <div class="grid" id="hasil"></div>
-    <div style="text-align:center; margin-top:20px;">
+    <div class="pagination">
       <button class="btn btn-outline" id="load-more" type="button" hidden>Muat lagi</button>
+    </div>
+    </div>
     </div>
   </div>
 </main>

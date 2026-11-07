@@ -55,7 +55,8 @@
     hobi: '<path d="M5 12V9a7 7 0 0 1 14 0v3M3 11h4v9H3zM17 11h4v9h-4zM17 20c0 2-2 2-5 2"/>',
     buku: '<path d="M12 5C9 2 5 2 2 3v16c3-1 7-1 10 2 3-3 7-3 10-2V3c-3-1-7-1-10 2v16Z"/>',
     otomotif: '<path d="m4 10 2-6h12l2 6M3 10h18v9H3zM6 19v3M18 19v3M6 14h2M16 14h2"/>',
-    olahraga: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5 5c9 2 12 5 14 14M19 5C10 7 7 10 5 19"/>'
+    olahraga: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5 5c9 2 12 5 14 14M19 5C10 7 7 10 5 19"/>',
+    location: '<path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>'
   };
 
   function icon(name) {
@@ -172,28 +173,17 @@
 
   function initTheme() {
     var saved = localStorage.getItem("bukatoko:theme");
-    var systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-    applyTheme(saved || (systemTheme.matches ? "dark" : "light"));
+    applyTheme(saved === "dark" ? "dark" : "light");
     var btn = qs("#theme-toggle");
     if (!btn) return;
     function label() {
-      var dark = document.documentElement.getAttribute("data-theme") === "dark" ||
-        (!document.documentElement.getAttribute("data-theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
       btn.textContent = dark ? t("light") : t("dark");
       btn.setAttribute("aria-label", dark ? "Ganti ke tema terang" : "Ganti ke tema gelap");
     }
     label();
-    systemTheme.addEventListener("change", function (event) {
-      if (!localStorage.getItem("bukatoko:theme")) {
-        applyTheme(event.matches ? "dark" : "light");
-        label();
-      }
-    });
     btn.addEventListener("click", function () {
-      var dark = document.documentElement.getAttribute("data-theme") === "dark" ||
-        (!document.documentElement.getAttribute("data-theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
       var next = dark ? "light" : "dark";
       applyTheme(next);
       localStorage.setItem("bukatoko:theme", next);
@@ -223,7 +213,7 @@
     var idx = 0;
     for (var i = 0; i < String(seed).length; i++) idx += String(seed).charCodeAt(i);
     var pal = PALETTES[idx % PALETTES.length];
-    var w = 640, h = ratio === "square" ? 640 : 480;
+    var w = 640, h = ratio === "landscape" ? 360 : 640;
     var svg =
       '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + " " + h + '">' +
       '<defs><pattern id="h" width="18" height="18" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">' +
@@ -315,11 +305,11 @@
       ]);
       form.appendChild(nameField);
     }
-    var mail = el("div", { class: "field", style: "margin-top:12px;" }, [
+    var mail = el("div", { class: "field mt-3" }, [
       el("label", { for: "auth-email", text: isLogin ? "Email atau nama" : "Email" }),
       el("input", { id: "auth-email", type: isLogin ? "text" : "email", autocomplete: "email", placeholder: "nama@email.com", required: null })
     ]);
-    var pw = el("div", { class: "field", style: "margin-top:12px;" }, [
+    var pw = el("div", { class: "field mt-3" }, [
       el("label", { for: "auth-password", text: "Kata sandi" }),
       el("input", { id: "auth-password", type: "password", autocomplete: isLogin ? "current-password" : "new-password", minlength: "8", required: null })
     ]);
@@ -340,9 +330,8 @@
     form.appendChild(foot);
 
     var swap = el("button", {
-      class: "btn btn-quiet btn-sm btn-block", type: "button",
-      text: isLogin ? "Belum punya akun? Daftar" : "Sudah punya akun? Masuk",
-      style: "margin-top:8px;"
+      class: "btn btn-quiet btn-sm btn-block mt-2", type: "button",
+      text: isLogin ? "Belum punya akun? Daftar" : "Sudah punya akun? Masuk"
     });
     swap.addEventListener("click", function () { authModal(isLogin ? "signup" : "login"); });
     form.appendChild(swap);
@@ -428,18 +417,20 @@
       class: "card-media",
       src: real || photo(item.id, item.category),
       alt: (real ? "Foto barang: " : "Foto contoh untuk ") + item.title,
-      width: "640", height: "480", loading: "lazy"
+      width: "640", height: "640", loading: "lazy", decoding: "async"
     });
     var title = el("a", { class: "card-title", href: "listing.html?id=" + encodeURIComponent(item.id), text: item.title });
     var foot = el("div", { class: "card-foot" }, [el("span", { class: "tag", text: rp(item.price) })]);
     if (item.old_price) foot.appendChild(el("span", { class: "tag tag-old", text: rp(item.old_price) }));
     var body = el("div", { class: "card-body" }, [
-      el("div", { class: "card-meta", text: (item.owner ? item.owner.name : "") + " · " + timeAgo(item.created_at) }),
-      title,
-      el("span", { class: "card-meta", text: item.condition + " · " + item.city }),
-      foot
+      foot, title,
+      el("span", { class: "card-meta", text: item.condition }),
+      el("span", { class: "card-meta card-location" }, [icon("location"), document.createTextNode(item.city)]),
+      el("div", { class: "card-meta card-seller", text: (item.owner ? item.owner.name : "") + " · " + timeAgo(item.created_at) })
     ]);
-    var wrap = el("article", { class: "card" }, [media, body]);
+    var imageLink = el("a", { class: "card-image-link", href: "listing.html?id=" + encodeURIComponent(item.id),
+      "aria-label": "Lihat " + item.title, tabindex: "-1" }, [media]);
+    var wrap = el("article", { class: "card" }, [imageLink, body]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
       wrap.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
@@ -842,9 +833,8 @@
       }
 
       // lightbox
-      gallery.style.cursor = "zoom-in";
-      gallery.addEventListener("click", function () {
-        var body = [el("img", { src: src(current), alt: gallery.alt, width: "1200", height: "900", style: "width:100%;height:auto;border-radius:6px;" })];
+      qs("#gallery-open").addEventListener("click", function () {
+        var body = [el("img", { src: src(current), alt: gallery.alt, width: "1280", height: "720", class: "zoom-image" })];
         modalShell("modal-lightbox", item.title, body);
         openModal("modal-lightbox");
       });
@@ -966,7 +956,7 @@
         var extra = qs("#owner-panel");
         extra.hidden = false;
         extra.innerHTML = "";
-        extra.appendChild(el("h2", { text: "Tawaran masuk (" + (item.offers || []).length + ")", style: "font-size:18px;" }));
+        extra.appendChild(el("h2", { text: "Tawaran masuk (" + (item.offers || []).length + ")", class: "section-title" }));
         if (!item.offers || !item.offers.length) {
           extra.appendChild(el("p", { class: "card-meta", text: "Belum ada yang menawar barang ini." }));
         } else {
@@ -1002,7 +992,7 @@
           });
         }
         if (item.status !== "sold") {
-          var soldBtn = el("button", { class: "btn btn-outline", type: "button", text: "Tandai terjual", style: "margin-top:12px;" });
+          var soldBtn = el("button", { class: "btn btn-outline mt-3", type: "button", text: "Tandai terjual" });
           soldBtn.addEventListener("click", function () {
             soldBtn.disabled = true;
             api("/api/listings/" + item.id + "/sold", { method: "POST" }).then(function () {
@@ -1012,7 +1002,7 @@
           });
           extra.appendChild(soldBtn);
         }
-        var del = el("button", { class: "btn btn-danger", type: "button", text: "Hapus barang", style: "margin-top:12px;margin-left:8px;" });
+        var del = el("button", { class: "btn btn-danger mt-3 owner-delete", type: "button", text: "Hapus barang" });
         del.addEventListener("click", function () {
           if (!window.confirm("Hapus barang ini? Foto dan tawarannya ikut hilang.")) return;
           api("/api/listings/" + item.id, { method: "DELETE" }).then(function () {
@@ -1047,7 +1037,7 @@
         qs("#review-form-wrap").appendChild(starRow);
         var rbody = el("textarea", { id: "review-body", rows: "3", placeholder: "Ceritakan pengalaman transaksi", maxlength: "800" });
         qs("#review-form-wrap").appendChild(rbody);
-        var rsubmit = el("button", { class: "btn btn-primary", type: "button", text: "Kirim ulasan", style: "margin-top:8px;" });
+        var rsubmit = el("button", { class: "btn btn-primary mt-2", type: "button", text: "Kirim ulasan" });
         rsubmit.addEventListener("click", function () {
           rsubmit.disabled = true;
           api("/api/listings/" + item.id + "/reviews", { method: "POST", body: { stars: stars, body: rbody.value } })
@@ -1078,7 +1068,7 @@
           });
           modalShell("modal-report", "Laporkan barang", [
             el("div", { class: "field" }, [el("label", { for: "report-reason", text: "Alasan" }), sel]),
-            el("div", { class: "field", style: "margin-top:12px;" }, [el("label", { for: "report-detail", text: "Keterangan" }), detail]),
+            el("div", { class: "field mt-3" }, [el("label", { for: "report-detail", text: "Keterangan" }), detail]),
             err
           ], foot);
           openModal("modal-report");
@@ -1131,7 +1121,7 @@
       var box = el("div", { class: "chat-box", id: "chat-box" });
       var input = el("input", { id: "chat-input", type: "text", placeholder: "Tulis pesan untuk " + item.owner.name, maxlength: "1000" });
       var send = el("button", { class: "btn btn-primary", type: "button", text: t("send") });
-      var foot = el("div", { style: "display:flex;gap:8px;margin-top:12px;" }, [input, send]);
+      var foot = el("div", { class: "message-composer" }, [input, send]);
       var body = [el("p", { class: "field-note", text: "Percakapan khusus barang ini. Penjual menerima di tab Pesan." }), box, foot];
       modalShell("modal-chat", "Tanya " + item.owner.name, body);
       openModal("modal-chat");
@@ -1143,8 +1133,7 @@
         }
         msgs.forEach(function (m) {
           var bubble = el("div", {
-            class: "chat-bubble" + (m.mine ? " mine" : ""),
-            style: m.mine ? "text-align:right;background:var(--primary-soft);" : "background:var(--paper);"
+            class: "chat-bubble" + (m.mine ? " mine" : "")
           }, [
             el("div", { text: m.body }),
             el("div", { class: "card-meta", text: m.sender + " · " + timeAgo(m.created_at) })
@@ -1447,7 +1436,7 @@
     var box = el("div", { class: "chat-box", id: "thread-box" });
     var input = el("input", { id: "thread-input", type: "text", placeholder: "Tulis balasan", maxlength: "1000" });
     var send = el("button", { class: "btn btn-primary", type: "button", text: t("send") });
-    modalShell("modal-thread", title, [box, el("div", { style: "display:flex;gap:8px;margin-top:12px;" }, [input, send])]);
+    modalShell("modal-thread", title, [box, el("div", { class: "message-composer" }, [input, send])]);
     openModal("modal-thread");
 
     function paint(msgs) {
@@ -1455,8 +1444,7 @@
       if (!msgs.length) box.appendChild(el("p", { class: "card-meta", text: "Belum ada pesan." }));
       msgs.forEach(function (m) {
         box.appendChild(el("div", {
-          class: "chat-bubble",
-          style: m.mine ? "text-align:right;background:var(--primary-soft);" : "background:var(--paper);"
+          class: "chat-bubble" + (m.mine ? " mine" : "")
         }, [
           el("div", { text: m.body }),
           el("div", { class: "card-meta", text: m.sender + " · " + timeAgo(m.created_at) })
@@ -1486,6 +1474,10 @@
 
   function initAkun() {
     var tabs = qsa(".tabs button");
+    var tabLayout = window.matchMedia("(max-width: 860px)");
+    function orientTabs() { qs(".tabs").setAttribute("aria-orientation", tabLayout.matches ? "horizontal" : "vertical"); }
+    orientTabs();
+    tabLayout.addEventListener("change", orientTabs);
     var panels = {
       disimpan: qs("#panel-disimpan"),
       barang: qs("#panel-barang"),
@@ -1504,7 +1496,7 @@
       if (opts.src !== undefined) {
         r.appendChild(el("img", {
           class: "row-thumb", src: opts.src || photo(opts.id, opts.label || ""),
-          alt: opts.alt || "Foto contoh", width: "72", height: "72", loading: "lazy"
+          alt: opts.alt || "Foto contoh", width: "160", height: "90", loading: "lazy"
         }));
       }
       var body = el("div", { class: "row-body" });
@@ -1520,7 +1512,7 @@
         actions.appendChild(b);
       });
       r.appendChild(actions);
-      if (opts.noThumb) r.style.gridTemplateColumns = "minmax(0,1fr) auto";
+      if (opts.noThumb || opts.src === undefined) r.classList.add("no-thumb");
       return r;
     }
 
@@ -1637,7 +1629,7 @@
         var any = false;
         if (data.incoming.length) {
           any = true;
-          p.appendChild(el("h2", { text: "Masuk (penjual)", style: "font-size:16px;margin:4px 0 8px;" }));
+          p.appendChild(el("h2", { text: "Masuk (penjual)", class: "section-title" }));
           data.incoming.forEach(function (o) {
             var acts = [];
             if (o.status === "proposed") {
@@ -1667,7 +1659,7 @@
         }
         if (data.outgoing.length) {
           any = true;
-          p.appendChild(el("h2", { text: "Keluar (pembeli)", style: "font-size:16px;margin:18px 0 8px;" }));
+          p.appendChild(el("h2", { text: "Keluar (pembeli)", class: "section-title-spaced" }));
           data.outgoing.forEach(function (o) {
             var acts = [];
             if (o.status === "proposed") {
@@ -1778,9 +1770,10 @@
     tabs.forEach(function (b, i) {
       b.addEventListener("click", function () { select(b.dataset.tab); });
       b.addEventListener("keydown", function (e) {
-        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        if (!["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
         e.preventDefault();
-        var n = e.key === "ArrowRight" ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length;
+        var n = e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 :
+          (e.key === "ArrowRight" || e.key === "ArrowDown") ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length;
         tabs[n].focus();
         select(tabs[n].dataset.tab);
       });

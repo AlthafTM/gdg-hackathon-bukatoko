@@ -35,27 +35,27 @@
 </header>
 
 <main id="main">
-  <div class="wrap" style="padding-top:28px; padding-bottom:48px;">
-    <h1 style="font-size:28px; margin-bottom:6px;">Lagi Dicari</h1>
-    <p style="color:var(--muted); max-width:58ch;">Kebalikan dari daftar jualan: di sini warga menulis barang yang mereka cari, lengkap dengan rentang harga. Kalau kamu punya barangnya, tawarkan langsung.</p>
+  <div class="wrap page-shell">
+    <div class="page-heading"><h1>Lagi Dicari</h1>
+    <p>Tulis barang yang kamu butuhkan dan rentang anggarannya. Punya barang yang cocok? Temukan permintaan warga di sini.</p></div>
 
-    <div style="display:grid; grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr); gap:28px; align-items:start; margin-top:22px;" class="cari-grid">
+    <div class="cari-grid">
       <section aria-labelledby="daftar-heading">
-        <h2 id="daftar-heading" style="font-size:20px; margin-bottom:12px;">Permintaan terbaru</h2>
+        <h2 id="daftar-heading" class="section-title">Permintaan terbaru</h2>
         <div class="wanted-list" id="wanted-list"></div>
       </section>
 
       <section aria-labelledby="tulis-heading">
         <form class="form-card" id="wanted-form" novalidate>
-          <h2 id="tulis-heading" style="font-size:18px; margin-bottom:4px;">Tulis permintaan</h2>
-          <p class="field-note" style="margin-bottom:14px;">Semakin spesifik, semakin mudah penjual menemukanmu.</p>
+          <h2 id="tulis-heading">Tulis permintaan</h2>
+          <p class="field-note mb-4">Semakin spesifik, semakin mudah penjual menemukanmu.</p>
 
-          <div class="field" style="margin-bottom:12px;">
+          <div class="field mb-4">
             <label for="w-judul">Barang yang dicari <span class="req">wajib</span></label>
             <input id="w-judul" type="text" maxlength="90" placeholder="misal: Laptop bekas buat kuliah arsitektur">
           </div>
 
-          <div class="field" style="margin-bottom:12px;">
+          <div class="field mb-4">
             <label for="w-kat">Kategori <span class="req">wajib</span></label>
             <select id="w-kat">
               <option value="">Pilih kategori</option>
@@ -70,7 +70,7 @@
             </select>
           </div>
 
-          <div class="field" style="margin-bottom:12px;">
+          <div class="field mb-4">
             <label for="w-min">Rentang harga (Rp) <span class="req">wajib</span></label>
             <div class="range-row">
               <input id="w-min" type="number" min="1000" step="1000" inputmode="numeric" placeholder="min">
@@ -78,7 +78,7 @@
             </div>
           </div>
 
-          <div class="field" style="margin-bottom:12px;">
+          <div class="field mb-4">
             <label for="w-lokasi">Lokasi <span class="req">wajib</span></label>
             <select id="w-lokasi">
               <option value="">Pilih lokasi</option>
@@ -97,7 +97,7 @@
             </select>
           </div>
 
-          <div class="field" style="margin-bottom:12px;">
+          <div class="field mb-4">
             <label for="w-catatan">Catatan</label>
             <textarea id="w-catatan" rows="4" maxlength="400" placeholder="Syarat yang penting: ukuran, kelengkapan, boleh minus di bagian mana."></textarea>
           </div>
