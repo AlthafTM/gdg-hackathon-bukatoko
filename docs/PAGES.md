@@ -1,5 +1,7 @@
 # GitHub Pages read-only preview
 
+Connection update: a separate connected build is now prepared for the user-provided Instabox backend. See [backend setup and validation](BACKEND-CONNECTION.md). The default local export remains read-only; the prepared publishing workflow selects `_site-live`. The public site is unchanged until an authorized deployment, and the remote backend must also be updated.
+
 URL: https://althaftm.github.io/gdg-hackathon-bukatoko/
 
 The live preview uses the existing app design and built-in sample listings. It supports browsing, search, category/city/price filters, sorting, pagination, item details, seller profiles and wanted requests with price ranges. Images are the app's generated placeholders.

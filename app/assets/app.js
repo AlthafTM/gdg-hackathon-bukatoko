@@ -42,11 +42,21 @@
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function uiText(value) { return window.BukatokoLocale ? window.BukatokoLocale.text(value) : value; }
+  function categoryHref(category, search) {
+    var current = new URLSearchParams(search || "");
+    var params = new URLSearchParams();
+    ["q","lok","kondisi","min","max","urut","status"].forEach(function (key) {
+      if (current.has(key)) params.set(key,current.get(key));
+    });
+    if (category) params.set("kat", category); else params.delete("kat");
+    return "jelajah.html" + (params.toString() ? "?" + params.toString() : "");
+  }
 
   var iconPaths = {
-    search: '<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',
+    home: '<path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2Z"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/>',
     explore: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
-    wanted: '<path d="M4 4h16v12H10l-6 5V4Z"/><path d="M8 8h8M8 12h5"/>',
+    wanted: '<path d="M6 4h12a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-7l-6 4v-4a3 3 0 0 1-2-3V7a3 3 0 0 1 3-3Z"/><path d="M8 8h8M8 12h5"/>',
     sell: '<path d="m3 12 9-9h8v8l-9 10-8-9Z"/><circle cx="16.5" cy="6.5" r="1"/>',
     account: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
     elektronik: '<path d="M3 6h18v12H3zM8 21h8M12 18v3"/><path d="m7 10 3 2-3 2M13 14h4"/>',
@@ -75,6 +85,9 @@
   }
 
   function initShell() {
+    var homeLink = el("a", {href:"index.html","data-i18n":"home",text:"Beranda"});
+    if (document.body.dataset.page === "home") homeLink.setAttribute("aria-current", "page");
+    qs(".nav").prepend(homeLink);
     if (!qs(".searchbar")) {
       var searchInput = el("input", {id:"q-global",type:"search",name:"q",placeholder:"Cari barang yang kamu butuhkan",autocomplete:"off"});
       var search = el("div", {class:"searchbar desktop-search"}, [el("div", {class:"wrap"}, [
@@ -86,6 +99,16 @@
     }
     var globalInput = qs("#q-global");
     if (globalInput) globalInput.value = new URLSearchParams(location.search).get("q") || "";
+    var categoryBar = el("div", {class:"quick-category-bar"}, [el("div", {class:"wrap"}, [
+      el("nav", {class:"quick-categories","aria-label":"Kategori cepat"})])]);
+    var categoryNav = qs(".quick-categories", categoryBar);
+    var selectedCategory = new URLSearchParams(location.search).get("kat") || "";
+    [["","Semua"],["elektronik","Elektronik"],["ponsel","Ponsel & Tablet"],["fesyen","Fesyen"],
+      ["rumah","Rumah Tangga"],["hobi","Hobi & Koleksi"],["buku","Buku"],["otomotif","Otomotif"],["olahraga","Olahraga"]].forEach(function (category) {
+      categoryNav.appendChild(el("a", {class:"btn btn-sm",href:categoryHref(category[0],location.search),
+        "data-category":category[0],"aria-current":category[0]===selectedCategory ? "page" : null,text:category[1]}));
+    });
+    qs(".searchbar").insertAdjacentElement("afterend", categoryBar);
     qsa("label").forEach(function (label) {
       if (!qs(".req", label)) return;
       var field = document.getElementById(label.htmlFor);
@@ -121,7 +144,7 @@
   /* ---------- i18n ringkas ---------- */
   var T = {
     id: {
-      explore: "Jelajah", wanted: "Lagi Dicari", sell: "Jual", account: "Akun",
+      home: "Beranda", explore: "Jelajah", wanted: "Lagi Dicari", sell: "Jual", account: "Akun",
       login: "Masuk", logout: "Keluar", sellCta: "Pasang barang", dark: "Gelap", light: "Terang",
       search: "Cari barang", allCities: "Semua lokasi", apply: "Terapkan",
       newest: "Paling baru", cheapest: "Termurah", priciest: "Termahal",
@@ -131,7 +154,7 @@
       report: "Laporkan", block: "Blokir penjual", review: "Tulis ulasan"
     },
     en: {
-      explore: "Browse", wanted: "Wanted", sell: "Sell", account: "Account",
+      home: "Home", explore: "Browse", wanted: "Wanted", sell: "Sell", account: "Account",
       login: "Log in", logout: "Log out", sellCta: "Post an item", dark: "Dark", light: "Light",
       search: "Search items", allCities: "All locations", apply: "Apply",
       newest: "Newest", cheapest: "Cheapest", priciest: "Most expensive",
@@ -165,15 +188,20 @@
   }
 
   /* ---------- api ---------- */
+  var API_ORIGIN = window.BukatokoConfig && window.BukatokoConfig.apiOrigin || "";
+  function backendURL(path) {
+    if (!path || !API_ORIGIN || !/^\/(api|uploads)\//.test(path)) return path;
+    return API_ORIGIN + path;
+  }
   function api(path, opts) {
     if (window.BukatokoPreview) return window.BukatokoPreview.request(path, opts);
     opts = opts || {};
-    var init = { method: opts.method || "GET", credentials: "same-origin", headers: {} };
+    var init = { method: opts.method || "GET", credentials: API_ORIGIN ? "include" : "same-origin", headers: {} };
     if (opts.body !== undefined) {
       init.headers["Content-Type"] = "application/json";
       init.body = JSON.stringify(opts.body);
     }
-    return fetch(path, init).then(function (res) {
+    return fetch(backendURL(path), init).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
         if (!res.ok) {
           var err = new Error((data && data.error) || ("Permintaan gagal (" + res.status + ")"));
@@ -205,9 +233,9 @@
     btn.addEventListener("click", function () {
       var dark = document.documentElement.getAttribute("data-theme") === "dark";
       var next = dark ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem("bukatoko:theme", next);
-      label();
+      function update() { applyTheme(next); localStorage.setItem("bukatoko:theme", next); label(); }
+      if (window.BukatokoMotion) window.BukatokoMotion.theme(btn, update);
+      else update();
     });
     btn._relabel = label;
   }
@@ -225,11 +253,23 @@
 
   /* ---------- foto placeholder ---------- */
   var PALETTES = [
-    ["#F3E8FF", "#1F1637"], ["#FAF9FF", "#7C3AED"], ["#A78BFA", "#1F1637"],
-    ["#F0FDF4", "#166534"], ["#7C3AED", "#FAF9FF"], ["#22C55E", "#052E16"]
+    ["#F1EDFA", "#5B35A7"], ["#EEF5F0", "#286344"], ["#F2F0F6", "#605476"]
   ];
 
+  var STOCK_PHOTOS = {
+    l1001:20377495, l1002:18946640, l1003:5825422, l1004:6993182,
+    l1005:29304264, l1006:6608247, l1007:7034089, l1008:36884742,
+    l1009:38120058, l1010:25947097, l1011:12786598, l1012:29619139,
+    l1013:6843241, l1014:5404459
+  };
+  function referencePhoto(seed) {
+    var id = STOCK_PHOTOS[String(seed).split("-")[0]];
+    return id ? "assets/stock/pexels-" + id + ".jpg" : null;
+  }
+
   function photo(seed, label, ratio) {
+    var stock = referencePhoto(seed);
+    if (stock) return stock;
     var idx = 0;
     for (var i = 0; i < String(seed).length; i++) idx += String(seed).charCodeAt(i);
     var pal = PALETTES[idx % PALETTES.length];
@@ -252,9 +292,12 @@
     ];
     var drawing = '<path d="m20 34 44-19 44 19v57L64 108 20 91Z"/><path d="m20 34 44 19 44-19M64 53v55M42 24l44 20"/>';
     shapes.some(function (entry) { if (!entry[0].test(subject)) return false; drawing=entry[1]; return true; });
+    drawing = drawing.replace(/<(rect|circle)\b/g, '<$1 fill="#FFFFFF"')
+      .replace(/<path d="([^"]*Z)"\/>/g, '<path fill="#FFFFFF" d="$1"/>');
     var svg =
       '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + " " + h + '">' +
       '<rect width="' + w + '" height="' + h + '" fill="' + pal[0] + '"/>' +
+      '<ellipse cx="320" cy="' + (h * .73) + '" rx="190" ry="18" fill="' + pal[1] + '" opacity=".08"/>' +
       '<g transform="translate(128 ' + Math.round(h*.1) + ') scale(3)" fill="none" stroke="' + pal[1] + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' + drawing + '</g>' +
       '<text x="50%" y="' + (h * 0.87) + '" text-anchor="middle" font-family="sans-serif" font-size="20" fill="' + pal[1] + '">foto contoh / sample illustration</text>' +
       "</svg>";
@@ -445,8 +488,8 @@
     var real = item.photo_urls && item.photo_urls[0];
     var media = el("img", {
       class: "card-media",
-      src: real || photo(item.id, item.title + " " + item.category),
-      alt: (real ? "Foto barang: " : "Foto contoh untuk ") + item.title,
+      src: backendURL(real) || photo(item.id, item.title + " " + item.category),
+      alt: (real ? "Foto barang: " : referencePhoto(item.id) ? "Foto referensi: " : "Foto contoh untuk ") + item.title,
       width: "640", height: "640", loading: "lazy", decoding: "async"
     });
     var title = el("a", { class: "card-title", href: "listing.html?id=" + encodeURIComponent(item.id), text: item.title });
@@ -462,6 +505,7 @@
     ]);
     var imageLink = el("a", { class: "card-image-link", href: "listing.html?id=" + encodeURIComponent(item.id),
       "aria-label": "Lihat " + item.title, tabindex: "-1" }, [media]);
+    if (!real && referencePhoto(item.id)) imageLink.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
     var wrap = el("article", { class: "card" }, [imageLink, body]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
@@ -583,6 +627,16 @@
     var items = [];
     var offset = 0;
     var total = 0;
+    var requestVersion = 0;
+    qsa(".quick-categories [data-category]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button > 0) return;
+        event.preventDefault();
+        state.kat = link.dataset.category;
+        syncForm();
+        load(false);
+      });
+    });
 
     function queryString() {
       var p = new URLSearchParams();
@@ -607,6 +661,11 @@
       qs("#f-q").value = state.q;
       var mainQuery = qs("#q-global");
       if (mainQuery) mainQuery.value = state.q;
+      qsa(".quick-categories [data-category]").forEach(function (link) {
+        link.href = categoryHref(link.dataset.category, queryString().toString());
+        if (link.dataset.category === state.kat) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
       qs("#f-kat").value = state.kat;
       qs("#f-lok").value = state.city;
       qs("#f-kondisi").value = state.kondisi;
@@ -658,6 +717,8 @@
     }
 
     function load(append) {
+      var version = ++requestVersion;
+      syncForm();
       var min = state.min === "" ? null : Number(state.min);
       var max = state.max === "" ? null : Number(state.max);
       if (min !== null && max !== null && min > max) {
@@ -676,9 +737,12 @@
       if (!append) { skeletons(4, grid); stateBoxEl.hidden = true; }
       syncUrl();
       var p = queryString();
+      if (state.city) p.set("city", state.city);
+      p.delete("lok");
       p.set("limit", "24");
       p.set("offset", String(offset));
       api("/api/listings?" + p.toString()).then(function (data) {
+        if (version !== requestVersion) return;
         loading.hidden = true;
         items = append ? items.concat(data.items) : data.items;
         total = data.total;
@@ -703,6 +767,7 @@
         if (saveBtn) saveBtn.hidden = false;
         renderChips();
       }).catch(function (err) {
+        if (version !== requestVersion) return;
         loading.hidden = true;
         grid.innerHTML = "";
         fail(stateBoxEl, err, function () { load(append); });
@@ -822,8 +887,8 @@
       }
 
       /* galeri */
-      var urls = item.photo_urls || [];
-      var count = item.photo_count || 1;
+      var urls = (item.photo_urls || []).map(backendURL);
+      var count = urls.length || 1;
       var current = 1;
       var thumbs = qs("#thumbs");
       var galCount = qs("#gal-count");
@@ -833,7 +898,7 @@
       function show(n) {
         current = n;
         gallery.src = src(n);
-        gallery.alt = (urls[n - 1] ? "Foto " + n : "Foto contoh " + n) + " untuk " + item.title;
+        gallery.alt = urls[n - 1] ? "Foto " + n + " untuk " + item.title : (referencePhoto(item.id) ? "Foto referensi: " : "Foto contoh untuk ") + item.title;
         if (galCount) galCount.textContent = n + " / " + count;
         qsa("#thumbs button").forEach(function (b, i) {
           b.setAttribute("aria-current", i + 1 === n ? "true" : "false");
@@ -853,6 +918,7 @@
         })(i);
       }
       show(1);
+      if (!urls.length && referencePhoto(item.id)) thumbs.insertAdjacentElement("afterend", el("p", {class:"photo-reference-note",text:"Foto referensi stok; model dan kondisi bisa berbeda."}));
 
       var prev = qs("#gal-prev"), next = qs("#gal-next");
       if (count > 1) {
@@ -975,7 +1041,9 @@
       }
 
       qs("#share").addEventListener("click", function () {
-        var url = window.BukatokoPreview ? window.BukatokoPreview.listingUrl(item.id) : location.origin + "/p/" + item.id;
+        var url = window.BukatokoPreview ? window.BukatokoPreview.listingUrl(item.id) : API_ORIGIN
+          ? new URL("listing.html?id=" + encodeURIComponent(item.id), location.href).href
+          : location.origin + "/p/" + item.id;
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(url).then(function () { toast("Tautan disalin: " + url); },
             function () { toast(url); });
@@ -1237,7 +1305,7 @@
           var form = new FormData();
           form.append("photo", prepared, prepared.name || "foto.jpg");
           if (onProgress) onProgress(i + 1, files.length);
-          return fetch("/api/upload", { method: "POST", body: form, credentials: "same-origin" })
+          return fetch(backendURL("/api/upload"), { method: "POST", body: form, credentials: API_ORIGIN ? "include" : "same-origin" })
             .then(function (res) {
               return res.json().catch(function () { return {}; }).then(function (data) {
                 if (!res.ok) throw new Error((data && data.error) || "unggahan ditolak server");
@@ -1534,7 +1602,7 @@
       var r = el("div", { class: "row-item" });
       if (opts.src !== undefined) {
         r.appendChild(el("img", {
-          class: "row-thumb", src: opts.src || photo(opts.id, opts.label || opts.title || ""),
+          class: "row-thumb", src: backendURL(opts.src) || photo(opts.id, opts.label || opts.title || ""),
           alt: opts.alt || "Foto contoh", width: "160", height: "90", loading: "lazy"
         }));
       }
@@ -1863,6 +1931,7 @@
     applyLang();
     initTheme();
     initAuth();
+    if (window.BukatokoMotion) window.BukatokoMotion.init();
     S.lastQuery = sessionStorage.getItem("bk_last_query") || "";
     refreshMe().catch(function () { S.me = null; paintUser(); }).then(function () {
       bootPage();

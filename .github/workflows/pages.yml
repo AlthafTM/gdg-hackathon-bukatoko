@@ -17,11 +17,13 @@ jobs:
         with:
           python-version: '3.13'
       - run: python tools/build_pages.py
-      - run: node --test tests/test_pages.cjs tests/test_ui.cjs tests/test_locale.cjs
+      - run: node --test tests/test_pages.cjs tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs
+      - run: python tools/build_pages.py --output _site-live --api-origin https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
+      - run: node --test tests/test_connection.cjs
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
-          path: _site
+          path: _site-live
   deploy:
     needs: build
     runs-on: ubuntu-latest

@@ -22,6 +22,8 @@ tail -f server.log
 
 Untuk mengaksesnya dari perangkat lain, teruskan port 8123 lewat apa pun yang tersedia di mesinmu (reverse proxy, tunnel, atau port publik penyedia VPS). Aplikasi ini sendiri hanya mengikat `127.0.0.1`.
 
+Untuk frontend GitHub Pages dengan backend Instabox, ikuti [konfigurasi koneksi backend](../docs/BACKEND-CONNECTION.md). Mode lintas situs bersifat opt-in dan membutuhkan allowlist origin serta HTTPS; pengaturan lokal bawaan tetap same-origin.
+
 ## Akun contoh
 
 Data awal berisi 10 penjual dengan kata sandi yang sama: `demo1234`.

@@ -1,0 +1,148 @@
+{
+  "license": "Pexels License",
+  "license_url": "https://www.pexels.com/license/",
+  "verified_on": "2026-11-07",
+  "notice": "Reference stock photos for sample listings; not seller photos, exact model verification or brand endorsement.",
+  "photos": [
+    {
+      "listing": "l1001",
+      "id": 20377495,
+      "author": "Takeshi Arai",
+      "page": "https://www.pexels.com/photo/camera-on-black-background-20377495/",
+      "file": "pexels-20377495.jpg",
+      "download_url": "https://images.pexels.com/photos/20377495/pexels-photo-20377495.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "8131c0d1e1953ef35da2ee90c91610a22ffd1217d2e929b152b63ba6368a4dcd",
+      "bytes": 68783
+    },
+    {
+      "listing": "l1002",
+      "id": 18946640,
+      "author": "Melvin Buezo",
+      "page": "https://www.pexels.com/photo/display-of-sports-shoes-18946640/",
+      "file": "pexels-18946640.jpg",
+      "download_url": "https://images.pexels.com/photos/18946640/pexels-photo-18946640.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "c6d236c57b5f985d7bc00a9946cb6e89c3b04a0f55ff2704ee481ed278f16923",
+      "bytes": 147970
+    },
+    {
+      "listing": "l1003",
+      "id": 5825422,
+      "author": "Charlotte May",
+      "page": "https://www.pexels.com/photo/kitchen-with-modern-appliances-5825422/",
+      "file": "pexels-5825422.jpg",
+      "download_url": "https://images.pexels.com/photos/5825422/pexels-photo-5825422.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "f237593b68a6605a3d2992fa4be89adbea830fadb7d5048fc40b29e1f0632a76",
+      "bytes": 119555
+    },
+    {
+      "listing": "l1004",
+      "id": 6993182,
+      "author": "Michael Adeleye",
+      "page": "https://www.pexels.com/photo/a-close-up-shot-of-a-nintendo-switch-6993182/",
+      "file": "pexels-6993182.jpg",
+      "download_url": "https://images.pexels.com/photos/6993182/pexels-photo-6993182.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "5fe37da739906a3bd0309ab6c3696c50b50ba7590e86b6edc0ef94b6321d48cd",
+      "bytes": 34708
+    },
+    {
+      "listing": "l1005",
+      "id": 29304264,
+      "author": "Hoang Editor",
+      "page": "https://www.pexels.com/photo/modern-home-office-with-wooden-desk-29304264/",
+      "file": "pexels-29304264.jpg",
+      "download_url": "https://images.pexels.com/photos/29304264/pexels-photo-29304264.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "e94fe5d33e92255f1e4bdbac4c946fbce2e056ba9cd98bb420ff8e5cb595dfed",
+      "bytes": 78879
+    },
+    {
+      "listing": "l1006",
+      "id": 6608247,
+      "author": "Evan Mahmud Shuvo",
+      "page": "https://www.pexels.com/photo/close-up-shot-of-an-iphone-12-6608247/",
+      "file": "pexels-6608247.jpg",
+      "download_url": "https://images.pexels.com/photos/6608247/pexels-photo-6608247.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "dcd9dc2ac1ecfc1bf7f31216c6cc0d3eee3a49f81834df3eb0ffc538ed2b2f77",
+      "bytes": 57227
+    },
+    {
+      "listing": "l1007",
+      "id": 7034089,
+      "author": "George Milton",
+      "page": "https://www.pexels.com/photo/close-up-photo-of-stack-of-books-7034089/",
+      "file": "pexels-7034089.jpg",
+      "download_url": "https://images.pexels.com/photos/7034089/pexels-photo-7034089.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "a1394933cf961980f22afff41a880188a25221b1c70097e2c444daa52c82123e",
+      "bytes": 93847
+    },
+    {
+      "listing": "l1008",
+      "id": 36884742,
+      "author": "Frederick Adegoke Snr.",
+      "page": "https://www.pexels.com/photo/close-up-of-a-worn-motorcycle-helmet-36884742/",
+      "file": "pexels-36884742.jpg",
+      "download_url": "https://images.pexels.com/photos/36884742/pexels-photo-36884742.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "29f1e18cae351ac3aceea1fff3803f40aa45139b5c6979b793e49c3be7eaa745",
+      "bytes": 74302
+    },
+    {
+      "listing": "l1009",
+      "id": 38120058,
+      "author": "Karl Byron",
+      "page": "https://www.pexels.com/photo/acoustic-guitar-in-warm-dramatic-light-38120058/",
+      "file": "pexels-38120058.jpg",
+      "download_url": "https://images.pexels.com/photos/38120058/pexels-photo-38120058.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "bf9a6487ed3b9c4733f1fcb4d86ff2c99db78f903dbe4a39c954806487cfc0bd",
+      "bytes": 43838
+    },
+    {
+      "listing": "l1010",
+      "id": 25947097,
+      "author": "Javier Gonzalez",
+      "page": "https://www.pexels.com/photo/a-bicycle-in-a-city-25947097/",
+      "file": "pexels-25947097.jpg",
+      "download_url": "https://images.pexels.com/photos/25947097/pexels-photo-25947097.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "3b792f007f42c0eaf6905c2eb5d47d196c00000212b7002c71348de7c9f9d188",
+      "bytes": 178180
+    },
+    {
+      "listing": "l1011",
+      "id": 12786598,
+      "author": "Pew Nguyen",
+      "page": "https://www.pexels.com/photo/a-computer-setup-on-a-wooden-desk-12786598/",
+      "file": "pexels-12786598.jpg",
+      "download_url": "https://images.pexels.com/photos/12786598/pexels-photo-12786598.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "d144280cad5b3b0ec7256950e103a43428458a7b8ce49f9e6092c715e2a32832",
+      "bytes": 62521
+    },
+    {
+      "listing": "l1012",
+      "id": 29619139,
+      "author": "Israyosoy S.",
+      "page": "https://www.pexels.com/photo/specialty-coffee-brewing-with-v60-dripper-29619139/",
+      "file": "pexels-29619139.jpg",
+      "download_url": "https://images.pexels.com/photos/29619139/pexels-photo-29619139.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "d09a0a571efb11c84f3d7d24f7d012e98c7517dc2d210ec574da44c72f1a7104",
+      "bytes": 54068
+    },
+    {
+      "listing": "l1013",
+      "id": 6843241,
+      "author": "Antoni Shkraba",
+      "page": "https://www.pexels.com/photo/blue-denim-jacket-in-close-up-view-6843241/",
+      "file": "pexels-6843241.jpg",
+      "download_url": "https://images.pexels.com/photos/6843241/pexels-photo-6843241.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "3a7030353022b177afb99754a7021954042be0fba298d2790c76c80b49a80493",
+      "bytes": 257349
+    },
+    {
+      "listing": "l1014",
+      "id": 5404459,
+      "author": "Josh Kobayashi",
+      "page": "https://www.pexels.com/photo/a-stack-of-books-on-the-shelf-5404459/",
+      "file": "pexels-5404459.jpg",
+      "download_url": "https://images.pexels.com/photos/5404459/pexels-photo-5404459.jpeg?auto=compress&cs=tinysrgb&w=960",
+      "sha256": "c204562c3474f6ed5fe5f8bba66d481b0ed8b3ec490655836a4c27a858d10ec6",
+      "bytes": 149783
+    }
+  ]
+}

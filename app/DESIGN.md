@@ -6,11 +6,11 @@ Reading this as: katalog marketplace lokal yang padat informasi, teratur, dan mu
 
 Harga, kondisi dan lokasi harus terlihat pada kartu barang. Pencarian berada sebelum konten pembuka. Pengguna dapat langsung menjual barang atau membuat permintaan dengan rentang harga. Permintaan terbaru ditampilkan di samping pembuka karena dua sisi pasar ini sama pentingnya.
 
-Katalog desktop memakai filter kiri selebar 248px dan grid hasil tiga kolom; tablet beralih dua kolom. Ponsel memakai filter lipat dan grid dua kolom. Kartu menampilkan harga dahulu, judul dua baris, kondisi, lokasi, lalu penjual. Setelah pengguna membolehkan rasio alternatif, bidang katalog dipilih kotak 1:1: lebih fleksibel bagi foto ponsel, pakaian dan buku yang cenderung tinggi, serta barang rumah tangga yang bentuknya beragam. Foto asli memakai `object-fit: contain` agar tidak terpotong; placeholder dibuat 640x640. Galeri detail 4:3 menyediakan ruang inspeksi tanpa setinggi panel kotak pada desktop. Thumbnail galeri dan unggahan kotak; thumbnail kecil di daftar akun tetap 16:9 untuk menjaga baris tetap ringkas. Foto dan judul menuju detail yang sama.
+Katalog desktop memakai filter kiri 312px, lebar halaman maksimum 1560px dengan gutter 32px, dan grid hasil tiga kolom. Pada tablet filter 272px dan hasil dua kolom; ponsel memakai filter lipat dan gutter 16px. Harga, judul, kondisi, lokasi dan penjual tetap berurutan. Bidang katalog 1:1 dan `object-fit: contain` menjaga foto produk tetap utuh. Galeri detail 4:3; thumbnail galeri kotak dan thumbnail daftar akun 16:9. Foto dan judul menuju detail yang sama.
 
 Akun memiliki ringkasan penuh di atas, enam angka dalam grid, lalu tab vertikal di kiri dan panel isi di kanan. Pada layar sempit tab menjadi horizontal. Catatan informasi berada di kolom panel, setelah isinya, dengan gutter dan padding yang sama. Baris tanpa thumbnail memakai satu kolom, sehingga pesan atau tawaran tidak terdorong ke kolom foto kosong.
 
-Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Inline style layout telah dihapus dari HTML dan komponen JavaScript. Sesuai revisi pengguna, kartu/panel memakai radius 16px, elemen kecil 12px, dialog 20px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel agar bidang teks multiline tidak berbentuk oval. Glow ungu ringan hanya saat hover untuk menunjukkan panel aktif, bukan efek latar permanen. CSS memakai satu sistem komponen.
+Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Sesuai revisi terbaru, kartu/panel memakai radius 24px, elemen kecil 16px, dialog 28px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel agar bidang teks multiline tidak berbentuk oval. Glow ungu ringan hanya saat hover untuk menunjukkan panel aktif, bukan efek latar permanen. CSS memakai satu sistem komponen.
 
 Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
 
@@ -18,12 +18,12 @@ Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan
 
 | Peran | Terang | Gelap | Alasan |
 |---|---|---|---|
-| Ungu utama | #6534C8 | #A78BFA | Aksi utama, tautan dan fokus keyboard |
-| Lavender pendukung | #E8DEF8 | #403052 | Navigasi aktif dan permukaan pendukung |
-| Hijau aksen | #20804C | #86EFAC | Harga, anggaran dan notifikasi |
-| Kanvas netral | #F8F7FC | #18151F | Memisahkan konten tanpa menambah warna merek |
-| Teks utama | #252039 | #FAF9FF | Kontras dan keterbacaan |
-| Teks pendukung | #625D73 | #C2BACE | Kondisi, lokasi, petunjuk dan metadata |
+| Electric violet | #7038E8 | #B49CFF | Aksi utama, tautan dan fokus keyboard |
+| Violet lembut | #EFE8FF | #342A50 | Navigasi aktif dan permukaan pendukung |
+| Acid lime | #C8F542 | #D1FF52 | Notifikasi dan aksen tersier, teks charcoal |
+| Kanvas netral | #F6F7F9 | #17191F | Permukaan terang dan deep charcoal |
+| Teks utama | #202228 | #F5F6FA | Kontras dan keterbacaan |
+| Teks pendukung | #59606D | #BDC2CE | Kondisi, lokasi, petunjuk dan metadata |
 
 Merah hanya untuk galat dan tindakan destruktif. Gradien linear yang sangat ringan dari permukaan ke lavender hanya pada pembuka untuk menandai area orientasi, sesuai permintaan pengguna. Teks di atas gradien diperiksa pada ujung paling gelap.
 
@@ -35,11 +35,15 @@ Merah hanya untuk galat dan tindakan destruktif. Gradien linear yang sangat ring
 - `assets/favicon.svg` memakai simbol keranjang yang diberikan pengguna. Ikon navigasi dan kategori dibuat sebagai SVG dalam `app.js`, dengan ukuran dan ketebalan garis konsisten, disertai label teks. Simbol menunjukkan tujuan atau jenis barang.
 - Judul browser dan heading beranda memakai `BukaToko - Jual apapun disini.`; versi Inggris mengikuti pilihan bahasa. Detail barang/profil tidak menimpa judul merek. Metadata Open Graph tetap mendeskripsikan barang, disisipkan terpisah dari judul browser. Favicon keranjang memakai warna ungu adaptif terang/gelap serta URL versi baru untuk memperbarui cache.
 - Nama, barang, permintaan dan foto bawaan tetap ditandai sebagai data contoh. Tidak membuat angka sosial, ulasan atau identitas baru.
-- Foto bawaan merupakan ilustrasi SVG buatan aplikasi: bentuk kamera, ponsel, sepatu, buku, gitar, sepeda, kulkas, meja, monitor, jaket atau konsol dipilih dari konteks judul. Tetap diberi label bilingual foto contoh/sample illustration. Foto unggahan nyata tidak diganti.
+- Empat belas listing sampel memakai foto asli Pexels yang disimpan lokal. Lisensi, fotografer, halaman sumber dan hash unduhan dicatat di `assets/stock/photos.json`; batas pemakaian di `assets/stock/README.md`. Label bilingual menandai foto referensi, bukan bukti model/kondisi barang sebenarnya. Galeri menghitung foto tersedia, bukan angka foto fiktif fixture. Unggahan penjual selalu didahulukan; SVG kontekstual hanya cadangan ID tanpa foto.
 
 ## Pencarian dan bahasa
 
-Pencarian utama tersedia di atas konten pada desktop, termasuk halaman lain melalui shell bersama. Isian kata kunci sidebar memakai padding normal; padding ikon hanya untuk input dengan ikon. Tombol simpan pencarian berada di toolbar hasil, sehingga kartu pertama dan panel filter mulai pada baris yang sama.
+Pencarian utama tersedia di atas konten pada desktop, termasuk halaman lain melalui shell bersama. Area luar bar transparan, input dan tombol berbentuk pill. Isian kata kunci sidebar memakai padding 16px tanpa ruang ikon; selector dasar memakai `:where` agar override ikon tidak kalah specificity. Tombol simpan pencarian berada di bawah formulir filter, satu konteks dengan kriteria yang disimpan. Judul pada papan permintaan memakai satu baris grid bersama, lalu daftar permintaan dan kartu formulir memakai baris berikutnya sehingga sejajar meskipun terjemahan membungkus.
+
+Kategori cepat berada tepat setelah area pencarian. Pada Jelajah, kategori memperbarui hasil tanpa reload, mempertahankan query/lokasi/harga/kondisi/urutan/status dan mengabaikan hasil respons lama. URL tautan juga tersedia untuk navigasi normal/keyboard atau membuka tab baru. Parameter URL lokasi `lok` diterjemahkan ke parameter API `city`.
+
+CSS, script dan font memakai URL versi baru; Nunito dipreload agar permintaan font berjalan lebih awal. Ini memperbarui cache aset pada navigasi berikutnya setelah deployment, bukan bukti bahwa tampilan browser sudah diverifikasi.
 
 `assets/locale.js` melokalisasi teks UI Indonesia/Inggris, placeholder, label aksesibilitas, dialog, status dan pesan galat. Nilai input dan nilai option backend dipertahankan; judul/deskripsi produk, nama pengguna, ulasan dan percakapan tidak diterjemahkan. Konten asinkron diproses lewat observer yang dihentikan sementara saat menerapkan terjemahan agar tidak membentuk loop. Bahasa dokumen ikut berubah; bahasa akun tidak memicu reload. Teks boleh membungkus, ukuran ruang tidak dikunci pada panjang satu bahasa.
 
@@ -65,7 +69,9 @@ Ponsel
 [Jelajah | Lagi Dicari | Jual | Akun] tetap di bawah
 ```
 
-Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Gerak 180-240ms pada tombol, pembesaran foto saat hover, pembukaan dialog dan pergantian panel memberi umpan balik. Animasi otomatis hanya sekali pada panel/konten, tanpa stagger tiap kartu atau efek scroll. Semua animasi/transisi dimatikan ketika reduced motion aktif. Terang menjadi default; tema gelap hanya dari pilihan pengguna yang tersimpan.
+Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di ponsel, navigasi bawah memiliki safe-area dan ruang cadangan agar tidak menutupi konten; aksi detail barang berada di atasnya. Sesuai permintaan terbaru, pop-up memakai fade dan scale 300ms; kartu/panel memakai reveal 420ms saat memasuki viewport dari kedua arah. Reveal diulang setelah elemen sepenuhnya meninggalkan viewport, tanpa stagger. Elemen berfokus tetap terlihat. Semua animasi/transisi dimatikan ketika reduced motion aktif. Terang menjadi default; tema gelap hanya dari pilihan pengguna yang tersimpan.
+
+`motion.js` mengganti tema dengan View Transitions: snapshot tema baru diungkap oleh clip-path lingkaran selama 620ms dari pusat tombol ke sudut viewport terjauh. Klik berikutnya menunggu transisi selesai. Browser tanpa API tersebut memakai transisi warna singkat; reduced motion mengganti tema langsung. Bootstrap di head menerapkan tema tersimpan sebelum CSS dimuat dan memberi kanvas root warna yang sesuai. Fade awal seluruh grid dihapus. Scroll reveal memakai IntersectionObserver, membersihkan referensi elemen yang dilepas, dan tidak menyembunyikan konten ketika API tidak tersedia. Rujukan implementasi: https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition dan https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API .
 
 ## Landasan eksternal
 
@@ -76,4 +82,4 @@ Teks rata kiri. Tablet memakai header dua baris dan kategori empat kolom. Di pon
 
 ## Batas sistem
 
-Frontend penuh tetap menggunakan API Python/SQLite. Adapter read-only hanya disisipkan oleh builder GitHub Pages pada HTML hasil ekspor. Pembaruan visual tidak mengubah batas hosting tersebut. Lihat `docs/PAGES.md` dan laporan pemeriksaan UI untuk hasil validasi aktual.
+Frontend penuh tetap menggunakan API Python/SQLite. Build tanpa konfigurasi menyisipkan adapter read-only; build terhubung menyisipkan origin API Instabox dan tidak memuat adapter. GitHub Pages tetap hanya menyajikan frontend; proses Python dan data tetap berada di server terpisah. Konfigurasi backend dan batas validasi ada di `../docs/BACKEND-CONNECTION.md`.

@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
+const crypto = require('node:crypto');
 const root = process.env.BUKATOKO_PAGES_DIR || path.resolve(__dirname, '../_site');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'assets/preview-data.json')));
 let fetches = [];
@@ -25,10 +26,27 @@ test('export contains only frontend and public fixtures', () => {
     assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
     assert.match(html, /assets\/favicon\.svg\?v=2/);
     assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
-    assert.ok(html.indexOf('assets/preview.js') < html.indexOf('assets/app.js'));
-    assert.ok(html.indexOf('assets/locale.js') < html.indexOf('assets/app.js'));
+    for (const module of ['preview.js','locale.js','motion.js']) {
+      assert.ok(html.indexOf('assets/'+module) >= 0);
+      assert.ok(html.indexOf('assets/'+module) < html.indexOf('assets/app.js'));
+      assert.ok(fs.existsSync(path.join(root,'assets',module)));
+    }
   }
 });
+test('export includes the credited reference photos without missing or altered assets', () => {
+  const stock=path.join(root,'assets/stock');
+  const manifest=JSON.parse(fs.readFileSync(path.join(stock,'photos.json'),'utf8'));
+  assert.equal(manifest.license_url,'https://www.pexels.com/license/');
+  assert.equal(manifest.photos.length,data.listings.length);
+  for(const item of data.listings){
+    const photo=manifest.photos.find(p=>p.listing===item.id);
+    assert.ok(photo); assert.match(photo.file,/^pexels-\d+\.jpg$/);
+    const bytes=fs.readFileSync(path.join(stock,photo.file));
+    assert.equal(bytes.length,photo.bytes);
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),photo.sha256);
+  }
+});
+
 test('search, filters, pagination and sort use the sample snapshot', async () => {
   const page = await preview.request('/api/listings?kat=elektronik&city=Bandung&min=5000000&max=6000000');
   assert.equal(page.total, 1);

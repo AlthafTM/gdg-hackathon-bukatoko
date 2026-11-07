@@ -15,14 +15,14 @@ function fixture(savedTheme) {
   }
   const html = new Element('html'), button = new Element('button');
   const storage = new Map(savedTheme ? [['bukatoko:theme',savedTheme]] : []);
-  const context = {window: {}, localStorage: {getItem: k => storage.get(k), setItem: (k,v) => storage.set(k,v)},
+  const context = {window: {}, URLSearchParams, localStorage: {getItem: k => storage.get(k), setItem: (k,v) => storage.set(k,v)},
     sessionStorage: {getItem: () => ''}, document: {readyState: 'loading', documentElement: html,
       addEventListener: () => {}, querySelector: s => s === '#theme-toggle' ? button : null,
       createElement: tag => new Element(tag), createElementNS: (_,tag) => new Element(tag),
       createTextNode: text => ({textContent: text})}};
   const source = fs.readFileSync(path.resolve(__dirname,'../app/assets/app.js'),'utf8');
   const instrumented = source.replace('if (document.readyState === "loading")',
-    'window.testUI = {card: card, initTheme: initTheme}; if (document.readyState === "loading")');
+    'window.testUI = {card: card, initTheme: initTheme, categoryHref: categoryHref}; if (document.readyState === "loading")');
   vm.runInNewContext(instrumented, context);
   return {api: context.window.testUI, html, button, storage};
 }
@@ -69,4 +69,27 @@ test('built-in illustrations match item context without replacing real photos', 
   const camera=illustration('Kamera Fujifilm'),phone=illustration('iPhone 12'),book=illustration('Set buku sastra');
   assert.notEqual(camera,phone);assert.notEqual(phone,book);
   assert.match(camera,/r="18"/);assert.match(phone,/height="87"/);assert.match(book,/M64 28/);
+});
+test('seed listings use credited stock photos while uploads take precedence', () => {
+  const {api}=fixture();
+  const item={id:'l1001',title:'Kamera',price:10000,condition:'Bekas',city:'Bandung',created_at:'2026-11-07',status:'active'};
+  const stock=api.card(item).children[0];
+  assert.equal(stock.children[0].attrs.src,'assets/stock/pexels-20377495.jpg');
+  assert.match(stock.children[0].attrs.alt,/Foto referensi/);
+  assert.equal(stock.children[1].textContent,'Foto referensi');
+  const uploaded=api.card({...item,photo_urls:['/uploads/own.jpg']}).children[0];
+  assert.equal(uploaded.children[0].attrs.src,'/uploads/own.jpg');
+  assert.equal(uploaded.children.length,1);
+});
+
+test('quick categories preserve search filters and reset pagination', () => {
+  const {api}=fixture();
+  const href=api.categoryHref('buku','?q=arsitektur&lok=Bandung&min=50000&offset=24');
+  const result=new URL(href,'https://example.test/');
+  assert.equal(result.searchParams.get('kat'),'buku');
+  assert.equal(result.searchParams.get('q'),'arsitektur');
+  assert.equal(result.searchParams.get('lok'),'Bandung');
+  assert.equal(result.searchParams.get('min'),'50000');
+  assert.equal(result.searchParams.has('offset'),false);
+  assert.equal(new URL(api.categoryHref('','?kat=buku&q=novel'),'https://example.test/').searchParams.has('kat'),false);
 });

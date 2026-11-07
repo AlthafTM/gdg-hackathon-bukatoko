@@ -2,17 +2,20 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bukatoko:theme")==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Warga menulis barang yang mereka cari beserta rentang harga yang sanggup dibayar. Penjual bisa langsung menawarkan.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=20261107-3">
+<link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
 </head>
 <body data-page="cari">
 <a class="sr-only" href="#main">Lewati ke konten</a>
 
 <div class="strip">
-  <div class="wrap"><p>Demo: semua permintaan di halaman ini data contoh. Permintaan yang kamu tulis hanya tersimpan di peramban ini.</p></div>
+  <div class="wrap"><p>Demo: permintaan bawaan adalah data contoh. Permintaan yang kamu tulis tersimpan di server demo ini.</p></div>
 </div>
 
 <header class="hdr">
@@ -40,15 +43,11 @@
     <p>Tulis barang yang kamu butuhkan dan rentang anggarannya. Punya barang yang cocok? Temukan permintaan warga di sini.</p></div>
 
     <div class="cari-grid">
-      <section aria-labelledby="daftar-heading">
-        <h2 id="daftar-heading" class="section-title">Permintaan terbaru</h2>
-        <div class="wanted-list" id="wanted-list"></div>
-      </section>
-
-      <section aria-labelledby="tulis-heading">
-        <form class="form-card" id="wanted-form" novalidate>
-          <h2 id="tulis-heading">Tulis permintaan</h2>
-          <p class="field-note mb-4">Semakin spesifik, semakin mudah penjual menemukanmu.</p>
+        <h2 id="daftar-heading" class="section-title wanted-list-heading">Permintaan terbaru</h2>
+        <div class="request-form-heading"><h2 id="tulis-heading">Tulis permintaan</h2>
+        <p class="field-note">Semakin spesifik, semakin mudah penjual menemukanmu.</p></div>
+        <div class="wanted-list" id="wanted-list" role="region" aria-labelledby="daftar-heading"></div>
+        <form class="form-card" id="wanted-form" aria-labelledby="tulis-heading" novalidate>
 
           <div class="field mb-4">
             <label for="w-judul">Barang yang dicari <span class="req" aria-hidden="true">*</span></label>
@@ -106,7 +105,6 @@
           <p class="form-error" id="wanted-error" hidden></p>
           <button class="btn btn-primary btn-block" type="submit">Pasang permintaan</button>
         </form>
-      </section>
     </div>
   </div>
 </main>
@@ -138,7 +136,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/locale.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/locale.js?v=20261107-3"></script>
+<script src="assets/motion.js?v=20261107-3"></script>
+<script src="assets/app.js?v=20261107-3"></script>
 </body>
 </html>

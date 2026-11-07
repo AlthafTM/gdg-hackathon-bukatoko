@@ -5,4 +5,5 @@ __pycache__/
 .env.*
 !.env.example
 _site/
+_site-live/
 _site-before-ui/

@@ -2,6 +2,11 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.5.0] - 2026-11-07
+
+- Refresh search/navigation, responsive panel widths, charcoal/violet/lime colors, real reference photography and theme/scroll motion.
+- Prepare the supplied Instabox backend connection with opt-in CORS/cookie configuration and connected Pages export. See [validation and limits](releases/0.5.0.md).
+
 ## [0.4.0] - 2026-11-07
 
 - Polish rounded typography, search alignment, controls, contextual sample illustrations and required-field labels.

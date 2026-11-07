@@ -72,6 +72,9 @@ def main():
     code, data = call(anon, "GET", "/api/listings?kondisi=mulus")
     check("filter kondisi diteruskan ke backend", code == 200 and data["total"] > 0 and
           all("mulus" in item["condition"].lower() for item in data["items"]), str(data))
+    code, data = call(anon, "GET", "/api/listings?city=Bandung&kat=elektronik")
+    check("filter lokasi dan kategori tetap digabung", code == 200 and data["total"] > 0 and
+          all(item["city"] == "Bandung" and item["category"] == "elektronik" for item in data["items"]), str(data))
 
     code, data = call(seller, "POST", "/api/login", {"email": "rangga.putra", "password": "demo1234"})
     check("login penjual seed", code == 200 and data["user"]["name"] == "rangga.putra", str(data))

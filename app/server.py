@@ -30,6 +30,16 @@ from urllib.parse import parse_qs, unquote, urlsplit
 ROOT = Path(__file__).resolve().parent
 UPLOAD_DIR = ROOT / "uploads"
 DB_PATH = Path(os.environ.get("BUKATOKO_DB") or (ROOT / "bukatoko.db"))
+CORS_ORIGINS = frozenset(filter(None, (value.strip().rstrip('/') for value in
+    os.environ.get("BUKATOKO_CORS_ORIGINS", "").split(','))))
+CROSS_SITE_COOKIES = os.environ.get("BUKATOKO_CROSS_SITE_COOKIES", "") == "1"
+for allowed_origin in CORS_ORIGINS:
+    parsed_origin = urlsplit(allowed_origin)
+    if (parsed_origin.scheme != "https" or not parsed_origin.hostname or parsed_origin.username
+            or parsed_origin.password or parsed_origin.path or parsed_origin.query or parsed_origin.fragment):
+        raise ValueError("BUKATOKO_CORS_ORIGINS must contain exact HTTPS origins.")
+if CROSS_SITE_COOKIES and not CORS_ORIGINS:
+    raise ValueError("Cross-site cookies require an explicit CORS origin allowlist.")
 
 MAX_BODY = 25 * 1024 * 1024
 MAX_FILE_BYTES = 6 * 1024 * 1024
@@ -1037,6 +1047,38 @@ def escape_attr(text: str) -> str:
 class Handler(SimpleHTTPRequestHandler):
     server_version = "Bukatoko/2.0"
 
+    def end_headers(self):
+        if self.headers.get("Origin") in CORS_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", self.headers["Origin"])
+            self.send_header("Access-Control-Allow-Credentials", "true")
+        self.send_header("Vary", "Origin")
+        super().end_headers()
+
+    def _write_origin_allowed(self):
+        origin = self.headers.get("Origin")
+        if not origin:
+            return not CROSS_SITE_COOKIES
+        host = self.headers.get("Host", "")
+        return origin in CORS_ORIGINS or origin in (f"http://{host}", f"https://{host}")
+
+    def _session_cookie(self, token, expired=False):
+        age = 0 if expired else SESSION_DAYS * 86400
+        policy = "SameSite=None; Secure" if CROSS_SITE_COOKIES else "SameSite=Lax"
+        return f"{COOKIE}={token}; Path=/; Max-Age={age}; HttpOnly; {policy}"
+
+    def do_OPTIONS(self):  # noqa: N802
+        requested_headers = {v.strip().lower() for v in self.headers.get("Access-Control-Request-Headers", "").split(',') if v.strip()}
+        if (not urlsplit(self.path).path.startswith('/api/') or self.headers.get("Origin") not in CORS_ORIGINS
+                or self.headers.get("Access-Control-Request-Method") not in ("GET", "POST", "DELETE")
+                or not requested_headers.issubset({"content-type"})):
+            self._json(403, {"error": "Origin atau preflight tidak diizinkan."})
+            return
+        self.send_response(204)
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
@@ -1157,6 +1199,9 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self):  # noqa: N802
+        if not self._write_origin_allowed():
+            self._json(403, {"error": "Origin permintaan tidak diizinkan."})
+            return
         path = unquote(urlsplit(self.path).path)
 
         if path == "/api/upload":
@@ -1176,7 +1221,7 @@ class Handler(SimpleHTTPRequestHandler):
                 self.send_response(code)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.send_header("Set-Cookie",
-                                 f"{COOKIE}={payload['token']}; Path=/; Max-Age={SESSION_DAYS * 86400}; HttpOnly; SameSite=Lax")
+                                 self._session_cookie(payload['token']))
                 self.send_header("Content-Length", str(len(raw)))
                 self.send_header("Cache-Control", "no-store")
                 self.end_headers()
@@ -1186,7 +1231,7 @@ class Handler(SimpleHTTPRequestHandler):
                 raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
                 self.send_response(code)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.send_header("Set-Cookie", f"{COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax")
+                self.send_header("Set-Cookie", self._session_cookie("", expired=True))
                 self.send_header("Content-Length", str(len(raw)))
                 self.end_headers()
                 self.wfile.write(raw)
@@ -1257,6 +1302,9 @@ class Handler(SimpleHTTPRequestHandler):
         self._json(200, {"files": saved})
 
     def do_DELETE(self):  # noqa: N802
+        if not self._write_origin_allowed():
+            self._json(403, {"error": "Origin permintaan tidak diizinkan."})
+            return
         path = unquote(urlsplit(self.path).path)
         if not path.startswith("/api/"):
             self._json(404, {"error": "endpoint tidak dikenal"})

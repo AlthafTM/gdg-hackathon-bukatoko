@@ -2,17 +2,20 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bukatoko:theme")==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Detail barang, kondisi, lokasi, dan penjual di Bukatoko.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=20261107-3">
+<link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
 </head>
 <body data-page="listing">
 <a class="sr-only" href="#main">Lewati ke konten</a>
 
 <div class="strip">
-  <div class="wrap"><p>Demo: barang, penjual, dan permintaan di sini data contoh. Foto bawaan adalah placeholder; foto yang kamu unggah sendiri disimpan di server demo ini.</p></div>
+  <div class="wrap"><p>Demo: barang, penjual, dan permintaan di sini data contoh. Foto stok hanya referensi; foto yang kamu unggah sendiri disimpan di server demo ini.</p></div>
 </div>
 
 <header class="hdr">
@@ -164,7 +167,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/locale.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/locale.js?v=20261107-3"></script>
+<script src="assets/motion.js?v=20261107-3"></script>
+<script src="assets/app.js?v=20261107-3"></script>
 </body>
 </html>

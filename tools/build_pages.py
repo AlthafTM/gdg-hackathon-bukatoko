@@ -1,15 +1,24 @@
 """Export only public sample fixtures and frontend assets for GitHub Pages."""
 import ast
+import argparse
 import json
+from html import escape
 from pathlib import Path
 import re
 import shutil
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / '_site'
 
 
-def build():
+def build(api_origin=''):
+    if api_origin:
+        origin = urlsplit(api_origin)
+        if (origin.scheme != 'https' or not origin.hostname or origin.username or origin.password
+                or origin.path not in ('', '/') or origin.query or origin.fragment):
+            raise SystemExit('API origin must be an HTTPS origin without credentials, path, query or fragment.')
+        api_origin = f'https://{origin.netloc}'
     if OUTPUT.exists() and any(OUTPUT.iterdir()):
         raise SystemExit('Use an empty _site directory; refusing to overwrite existing output.')
     (OUTPUT / 'assets').mkdir(parents=True, exist_ok=True)
@@ -34,22 +43,36 @@ def build():
         json.dumps({'listings': listings, 'wanted': wanted, 'users': list(users.values())},
                    ensure_ascii=False, indent=2) + '\n', encoding='utf8')
     notice = ('Pratinjau GitHub Pages: hanya lihat. Semua barang, penjual dan permintaan adalah '
-              'data contoh; foto berupa placeholder. Masuk, jual, pesan dan tawaran memerlukan server Python lokal.')
+              'data contoh; foto stok hanya referensi. Masuk, jual, pesan dan tawaran memerlukan server Python lokal.')
+    if api_origin:
+        notice = 'Demo terhubung ke server. Foto stok hanya referensi. Jangan gunakan kata sandi pribadi atau data sensitif.'
+        (OUTPUT / 'assets/runtime-config.js').write_text(
+            'window.BukatokoConfig = ' + json.dumps({'apiOrigin': api_origin}).replace('<', '\\u003c') + ';\n', encoding='utf8')
     for source in (ROOT / 'app').glob('*.html'):
         html = source.read_text(encoding='utf8')
         html = re.sub(r'(<div class="strip">\s*<div class="wrap"><p>).*?(</p>)',
                       lambda m: m[1] + notice + m[2], html, count=1, flags=re.S)
+        if api_origin:
+            direct = '"' + escape(api_origin + '/index.html', quote=True) + '"'
+            html = html.replace(notice + '</p>', notice + ' <a href=' + direct + '>Buka aplikasi langsung</a></p>', 1)
         html = re.sub(r'(<p class="foot-note">).*?(</p>)',
                       lambda m: m[1] + notice + m[2], html, flags=re.S)
-        html = html.replace('<script src="assets/app.js"></script>',
-                            '<script src="assets/preview.js"></script>\n<script src="assets/app.js"></script>')
+        adapter = 'runtime-config.js' if api_origin else 'preview.js'
+        html = re.sub(r'(<script src="assets/app\.js(?:\?[^\"]*)?"></script>)',
+                      lambda m: '<script src="assets/' + adapter + '?v=20261107-4"></script>\n' + m[1], html)
         (OUTPUT / source.name).write_text(html, encoding='utf8')
-    for name in ('styles.css', 'app.js', 'locale.js', 'preview.js', 'favicon.svg', 'logo.svg'):
+    for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'preview.js', 'favicon.svg', 'logo.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)
     shutil.copytree(ROOT / 'app/assets/fonts', OUTPUT / 'assets/fonts')
+    shutil.copytree(ROOT / 'app/assets/stock', OUTPUT / 'assets/stock')
     (OUTPUT / '.nojekyll').touch()
-    print(f'Built {OUTPUT}: {len(listings)} sample listings, {len(wanted)} wanted requests; no database or uploads.')
+    print(f'Built {OUTPUT}: mode={"connected" if api_origin else "read-only"}; no database or uploads bundled.')
 
 
 if __name__ == '__main__':
-    build()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--api-origin', default='')
+    parser.add_argument('--output', choices=('_site', '_site-live'), default='_site')
+    args = parser.parse_args()
+    OUTPUT = ROOT / args.output
+    build(args.api_origin)
