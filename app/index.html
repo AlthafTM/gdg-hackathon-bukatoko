@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bukatoko: jual barang sendiri, cari yang kamu butuhkan</title>
+<meta name="description" content="Pasar barang bekas warga sekitar. Pasang barang yang mau dijual, atau tulis barang yang sedang kamu cari beserta rentang harganya.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="home">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: barang, penjual, dan permintaan di sini data contoh. Foto bawaan adalah placeholder; foto yang kamu unggah sendiri disimpan di server demo ini.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" aria-current="page" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<div class="searchbar">
+  <div class="wrap">
+    <form class="search-form" action="jelajah.html" method="get" role="search">
+      <div class="search-input-wrap">
+        <span class="ico" aria-hidden="true">&#9906;</span>
+        <label class="sr-only" for="q-home">Cari barang</label>
+        <input id="q-home" type="search" name="q" placeholder="Kamera, sepatu 42, kulkas, buku resep" autocomplete="off">
+      </div>
+      <label class="sr-only" for="lok-home">Lokasi</label>
+      <select id="lok-home" name="lok">
+        <option value="">Semua lokasi</option>
+        <option>Bandung</option>
+        <option>Jakarta Selatan</option>
+        <option>Jakarta Pusat</option>
+        <option>Jakarta Barat</option>
+        <option>Surabaya</option>
+        <option>Yogyakarta</option>
+        <option>Semarang</option>
+        <option>Malang</option>
+        <option>Denpasar</option>
+        <option>Tangerang</option>
+        <option>Bekasi</option>
+        <option>Sleman</option>
+      </select>
+      <button class="btn btn-primary" type="submit">Cari barang</button>
+    </form>
+  </div>
+</div>
+
+<main id="main">
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div>
+        <h1>Barang yang sudah tidak kamu pakai masih berguna bagi tetangga sendiri.</h1>
+        <p>Bukatoko tempat jual beli barang bekas antar warga. Dua hal bisa kamu lakukan di sini: memasang barang untuk dijual, atau menulis barang yang sedang kamu cari lengkap dengan rentang harga yang sanggup dibayar.</p>
+        <div class="intro-actions">
+          <a class="btn btn-primary" href="jual.html">Jual barang</a>
+          <a class="btn btn-outline" href="cari.html">Tulis barang yang dicari</a>
+        </div>
+        <p class="field-note" id="home-counts" style="margin-top:14px;"></p>
+      </div>
+      <aside class="intro-card" aria-labelledby="wanted-heading">
+        <h3 id="wanted-heading">Lagi dicari warga</h3>
+        <div id="wanted-mini"></div>
+        <a class="btn btn-quiet btn-sm btn-block" href="cari.html" style="margin-top:12px; justify-content:flex-start;">Lihat semua permintaan</a>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="state" id="home-state" hidden></div>
+      <div class="sec-head">
+        <h2>Kategori</h2>
+        <p>Pilih satu, langsung tersaring.</p>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-kategori"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Harga turun</h2>
+        <p>Penjual menurunkan harga dari angka sebelumnya.</p>
+        <a class="more" href="jelajah.html?urut=murah">Urutkan termurah</a>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-turun"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Baru dipasang</h2>
+        <p>Urut dari yang paling baru.</p>
+        <a class="more" href="jelajah.html">Lihat semua</a>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-rekomendasi"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Punya barang menganggur?</h2>
+      </div>
+      <div class="form-card">
+        <p style="margin-bottom:14px;">Pasang dalam tiga langkah: pilih foto, isi detail, terbitkan. Maksimal 10 foto, dan tidak ada batas jumlah barang.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="jual.html">Mulai jual</a>
+          <a class="btn btn-outline" href="cari.html">Atau cari barang orang lain</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html" data-i18n="sellCta">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: detail barang tersimpan di peramban ini, foto di server demo mesin ini. Tidak ada transaksi uang di sini.</p>
+  </div>
+</footer>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

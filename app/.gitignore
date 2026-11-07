@@ -1,0 +1,6 @@
+bukatoko.db
+uploads/
+server.log
+__pycache__/
+*.pyc
+_review/

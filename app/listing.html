@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detail barang · Bukatoko</title>
+<meta name="description" content="Detail barang, kondisi, lokasi, dan penjual di Bukatoko.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="listing">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: barang, penjual, dan permintaan di sini data contoh. Foto bawaan adalah placeholder; foto yang kamu unggah sendiri disimpan di server demo ini.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap detail" id="detail-root">
+    <nav class="breadcrumb" aria-label="Remah roti">
+      <a href="index.html">Beranda</a> /
+      <a id="d-kategori-link" href="jelajah.html"><span id="d-kategori">Kategori</span></a> /
+      <span id="d-crumb">Barang</span>
+    </nav>
+    <p style="margin:8px 0 0;"><a class="btn btn-quiet btn-sm" id="back-link" href="jelajah.html">&larr; Kembali ke hasil</a></p>
+
+    <div class="detail-grid" style="margin-top:16px;">
+      <div>
+        <div class="gallery">
+          <img class="gallery-main" id="gallery-main" width="640" height="480" alt="Foto contoh barang">
+          <button class="gal-btn gal-prev" id="gal-prev" type="button" aria-label="Foto sebelumnya">&#8249;</button>
+          <button class="gal-btn gal-next" id="gal-next" type="button" aria-label="Foto berikutnya">&#8250;</button>
+          <span class="gal-count" id="gal-count" aria-live="polite">1 / 1</span>
+          <div class="thumbs" id="thumbs" role="group" aria-label="Pilih foto"></div>
+        </div>
+
+        <h1 class="detail-title" id="d-judul">Memuat barang</h1>
+        <div class="price-row">
+          <span class="tag" id="d-harga">Rp 0</span>
+          <span class="tag tag-old" id="d-harga-lama" hidden>Rp 0</span>
+        </div>
+
+        <div class="detail-meta">
+          <span id="d-kondisi">Kondisi</span>
+          <span id="d-lokasi">Lokasi</span>
+          <span id="d-waktu">Waktu pasang</span>
+        </div>
+
+        <section class="spec" aria-label="Rincian barang">
+          <dl>
+            <dt>Kategori</dt><dd id="d-kat-copy">-</dd>
+            <dt>Kondisi</dt><dd id="d-kondisi-copy">-</dd>
+            <dt>Lokasi barang</dt><dd id="d-lokasi-copy">-</dd>
+            <dt>Cara ambil</dt><dd>COD di tempat umum atau kirim paket, disepakati dengan penjual</dd>
+          </dl>
+        </section>
+
+        <div class="desc" id="d-deskripsi">Deskripsi barang.</div>
+
+        <section id="reviews" hidden aria-labelledby="reviews-heading" style="margin-top:28px;">
+          <h2 id="reviews-heading" style="font-size:20px; margin-bottom:8px;">Ulasan penjual</h2>
+          <div id="review-list"></div>
+        </section>
+      </div>
+
+      <aside class="seller" aria-label="Penjual dan tawaran">
+        <div class="seller-id">
+          <span class="avatar" id="s-avatar" aria-hidden="true">?</span>
+          <div>
+            <a class="seller-name" id="s-nama" href="profil.html">penjual</a>
+            <div class="seller-sub" id="s-rating">Belum ada ulasan</div>
+            <div class="seller-sub" id="s-bergabung">Bergabung</div>
+          </div>
+        </div>
+
+        <div class="seller-actions">
+          <button class="btn btn-primary" id="chat" type="button">Tanya penjual</button>
+          <button class="btn btn-outline" id="simpan" type="button" aria-pressed="false">Simpan barang</button>
+          <button class="btn btn-quiet btn-sm" id="share" type="button">Bagikan tautan</button>
+          <button class="btn btn-quiet btn-sm" id="report" type="button">Laporkan barang</button>
+          <button class="btn btn-quiet btn-sm" id="block" type="button">Blokir penjual</button>
+        </div>
+
+        <div class="offer">
+          <label for="tawaran">Ajukan harga</label>
+          <input id="tawaran" type="number" min="1" step="10000" inputmode="numeric" aria-describedby="offer-hint">
+          <p class="offer-hint" id="offer-hint">Tawaran tidak boleh di atas harga pasang. Penjual bebas menerima atau menolak.</p>
+          <p class="form-error" id="offer-error" hidden></p>
+          <button class="btn btn-primary btn-block" id="ajukan" type="button" style="margin-top:10px;">Kirim tawaran</button>
+        </div>
+
+        <p class="seller-note">Pembayaran dan pengiriman disepakati langsung antara pembeli dan penjual. Bukatoko tidak menahan uang.</p>
+      </aside>
+    </div>
+    <div id="owner-panel" class="form-card" hidden style="margin-top:22px;"></div>
+    <div id="review-form-wrap" class="form-card" hidden style="margin-top:22px;">
+      <h2 style="font-size:18px; margin-bottom:4px;">Tulis ulasan</h2>
+      <p class="field-note">Hanya untuk pihak yang tawarannya sudah diterima, satu kali per barang.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Barang sejenis</h2>
+        <a class="more" href="jelajah.html">Lihat semua</a>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-terkait"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="mobile-bar" id="mobile-bar" role="region" aria-label="Aksi cepat barang ini">
+  <span class="tag" id="bar-harga">Rp 0</span>
+  <button class="btn btn-outline" id="bar-chat" type="button">Tanya</button>
+  <button class="btn btn-primary" id="bar-tawar" type="button">Ajukan harga</button>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html" data-i18n="sellCta">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: detail barang tersimpan di peramban ini, foto di server demo mesin ini. Tidak ada transaksi uang di sini.</p>
+  </div>
+</footer>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

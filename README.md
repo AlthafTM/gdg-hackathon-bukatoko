@@ -20,6 +20,7 @@ The same user can sell their own items and request items they want to buy.
 | [`docs/RELEASING.md`](docs/RELEASING.md) | Release automation, validation, concurrency handling and recovery. |
 | [`REA/`](REA/README.md) | Reference material from the reverse-engineering skill's investigation of Carousell Indonesia. |
 | [`REA/carousell-indonesia/`](REA/carousell-indonesia/README.md) | PDF, full plain text, editable report, screenshots, evidence and reproduction tools. |
+| [`app/`](app/README.md) | Bukatoko web app: static frontend plus a Python API server (SQLite, photo upload). Run locally with `python app/server.py 8123`. |
 | [`LICENSE`](LICENSE) | Repository license. Third-party reference material retains its original ownership. |
 
 ## Start here
