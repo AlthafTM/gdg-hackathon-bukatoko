@@ -21,8 +21,8 @@
   },
   {
     "path": "CAROUSELL-DESIGN-DOCUMENT.txt",
-    "bytes": 186513,
-    "sha256": "9c3ceeff117c50bd711f201386f478703f66f5573ebfc2151cc1ffc33ebc2176"
+    "bytes": 184547,
+    "sha256": "005c56a2eafe0ad0bbc2c39dd9de7ea3fba5991226311f5fda03309fd6a24840"
   },
   {
     "path": "evidence/asset-manifest.json",
@@ -231,8 +231,8 @@
   },
   {
     "path": "tools/export_txt.py",
-    "bytes": 3225,
-    "sha256": "4dd574afa4f1c2d820325f0c91187b998db717cd506a29be91382c6fe1f48190"
+    "bytes": 3247,
+    "sha256": "1817a83113a2f8974b9418bfb55e1413e2f08bc913e2c89f2128c40fd5ab9421"
   },
   {
     "path": "tools/inspect-assets.cjs",
@@ -241,8 +241,8 @@
   },
   {
     "path": "tools/verify_package.py",
-    "bytes": 3669,
-    "sha256": "4d2fdea882cc4228e05e5b18bb2a20d2f8cff330b51cdde5cefe0c471567afc5"
+    "bytes": 3695,
+    "sha256": "6534ae490ab97bfd2fa54162ebaecbd5278b18e354bb538408dff12ffb7d5bd6"
   },
   {
     "path": "visual-review.md",

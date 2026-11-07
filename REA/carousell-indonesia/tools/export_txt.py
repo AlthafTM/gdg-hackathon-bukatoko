@@ -31,7 +31,7 @@ def convert(text):
         if not in_code and re.match(r'^#{1,6} ',line):
             title=re.sub(r'^#{1,6} ','',inline(line))
             out.extend(['',title,'='*min(90,len(title)),''])
-        else:out.append(line if in_code else inline(line))
+        else:out.append(line if in_code else inline(line).rstrip())
         i+=1
     return '\n'.join(out)
 
@@ -54,5 +54,5 @@ parts.extend(['\n'+'='*90,'COMPLETE STATIC ENDPOINT-REGISTRATION INVENTORY','='*
 for i,e in enumerate(json.loads((ROOT/'evidence/endpoint-candidates.json').read_text()),1):
     parts.extend(['',str(i)+'. '+e['methodExpression']+' '+e['path'],'Source file: web-assets/'+e['file'],'Offset: '+str(e['offset']),'Registration: '+e['source']])
 out=ROOT/'CAROUSELL-DESIGN-DOCUMENT.txt'
-out.write_text('\n'.join(parts)+'\n',encoding='utf8')
+out.write_text('\n'.join(parts)+'\n',encoding='utf8',newline='\n')
 print(out)

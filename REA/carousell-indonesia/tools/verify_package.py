@@ -23,7 +23,7 @@ def files():
 
 if args.write_manifest:
     manifest=[{'path':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':digest(p)} for p in files()]
-    (ROOT/'package-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf8')
+    (ROOT/'package-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf8',newline='\n')
 manifest=json.loads((ROOT/'package-manifest.json').read_text())
 errors=[]
 for entry in manifest:
@@ -48,6 +48,6 @@ plain=(ROOT/'CAROUSELL-DESIGN-DOCUMENT.txt').read_text(encoding='utf8')
 plain_required=['GDGoC ITB Stack Hackathon','Request an item','COMPLETE DESIGN DOCUMENT','OFFICIAL APP AND HELP SOURCE LEDGER','COLLABORATOR HANDOFF AND REPRODUCTION','326.','/chat/1.0/header','U12']
 missing_plain=[s for s in plain_required if s not in plain]
 result={'pageCount':len(pages),'pdfBytes':(ROOT/'CAROUSELL-DESIGN-DOCUMENT.pdf').stat().st_size,'plainTextBytes':(ROOT/'CAROUSELL-DESIGN-DOCUMENT.txt').stat().st_size,'manifestFiles':len(manifest),'assetCount':len(assets),'endpointOccurrences':len(json.loads((ROOT/'evidence/endpoint-candidates.json').read_text())),'screenshotCount':len(list((ROOT/'screenshots').glob('*.jpg'))),'expandedReaBytes':size,'expandedReaSha256':h.hexdigest(),'integrityErrors':errors,'unlistedFiles':unlisted,'missingPdfContent':missing,'missingPlainTextContent':missing_plain,'emptyPages':[i+1 for i,t in enumerate(pages) if len(t.strip())<100],'automatedPass':not errors and not missing and not missing_plain and not unlisted,'visualReview':'See visual-review.md for the authored PDF review. Render and review again after rebuilding; automated parsing does not establish visual quality.'}
-(ROOT/'pdf-validation.json').write_text(json.dumps(result,indent=2),encoding='utf8')
+(ROOT/'pdf-validation.json').write_text(json.dumps(result,indent=2),encoding='utf8',newline='\n')
 print(json.dumps(result,indent=2))
 raise SystemExit(0 if result['automatedPass'] else 1)

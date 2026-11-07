@@ -1,0 +1,5 @@
+#!/bin/sh
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 tools/repo_workflow.py precommit
+fi
+exec python tools/repo_workflow.py precommit

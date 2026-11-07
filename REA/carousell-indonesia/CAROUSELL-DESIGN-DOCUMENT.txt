@@ -31,6 +31,18 @@ Repository contents
 
 
 
+Location: AGENTS.md (AGENTS.md)
+Purpose: AI rules: local work by default, explicit commit authorization, collaborator checks and REA/design-skill guidance.
+
+Location: CONTRIBUTING.md (CONTRIBUTING.md)
+Purpose: Start, test, synchronize and publish workflow, with an optional local commit guard.
+
+Location: VERSION (VERSION), CHANGELOG.md (CHANGELOG.md), releases/ (releases/0.0.1.md)
+Purpose: Versioned history; small updates bump the last number, substantial changes bump the middle number.
+
+Location: docs/RELEASING.md (docs/RELEASING.md)
+Purpose: Release automation, validation, concurrency handling and recovery.
+
 Location: REA/ (REA/README.md)
 Purpose: Reference material from the reverse-engineering skill's investigation of Carousell Indonesia.
 
@@ -66,6 +78,9 @@ Working together
 ================
 
 
+- Read the repository rules (AGENTS.md) and contributor workflow (CONTRIBUTING.md) before starting. Local experiments/tests do not authorize committing or publishing; the user must explicitly request it.
+- Run python tools/repo_workflow.py begin at task start, check before committing/pushing, and precommit after staging. Review and reconcile remote advances and overlapping work first.
+- Every approved main update includes release metadata. GitHub Actions publishes a tagged release after validation; see releases (https://github.com/AlthafTM/gdg-hackathon-bukatoko/releases).
 - Keep app implementation and research references distinguishable.
 - Use focused branches and pull requests to make changes reviewable.
 - Preserve dated research evidence; record new observations separately.
@@ -82,9 +97,9 @@ Carousell Indonesia: reverse-engineering and reconstruction design
 ==================================================================
 
 
-Target: https://id.carousell.com/  
-Research date: 7 November 2026, Asia/Jakarta  
-Status: Final report of the accessible public surface, with explicit residual unknowns  
+Target: https://id.carousell.com/
+Research date: 7 November 2026, Asia/Jakarta
+Status: Final report of the accessible public surface, with explicit residual unknowns
 Method: Local reverse-engineer-anything skill, REA runtime/static tools, direct browser observation, and official app-store/help sources
 
 
