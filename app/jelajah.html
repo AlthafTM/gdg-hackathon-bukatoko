@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jelajah barang · Bukatoko</title>
+<meta name="description" content="Saring barang bekas berdasarkan kata kunci, kategori, lokasi, kondisi, dan rentang harga.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="jelajah">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: barang, penjual, dan permintaan di sini data contoh. Foto bawaan adalah placeholder; foto yang kamu unggah sendiri disimpan di server demo ini.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" aria-current="page" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding-top:24px; padding-bottom:48px;">
+    <nav class="breadcrumb" aria-label="Remah roti">
+      <a href="index.html">Beranda</a> / <span id="crumb-kat">Semua kategori</span>
+    </nav>
+    <h1 id="explore-title" style="margin:8px 0 4px; font-size:28px;">Semua barang</h1>
+    <p class="result-count" id="jumlah" aria-live="polite">0 barang</p>
+
+    <details class="filter-details" id="filter-details" open>
+    <summary>Filter dan urutan</summary>
+    <form class="filters" id="filter-form" method="get" action="jelajah.html">
+      <div class="field field-grow">
+        <label for="f-q">Kata kunci</label>
+        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="f-kat">Kategori</label>
+        <select id="f-kat" name="kat">
+          <option value="">Semua</option>
+          <option value="elektronik">Elektronik</option>
+          <option value="ponsel">Ponsel &amp; Tablet</option>
+          <option value="fesyen">Fesyen</option>
+          <option value="rumah">Rumah Tangga</option>
+          <option value="hobi">Hobi &amp; Koleksi</option>
+          <option value="buku">Buku</option>
+          <option value="otomotif">Otomotif</option>
+          <option value="olahraga">Olahraga</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-lok">Lokasi</label>
+        <select id="f-lok" name="lok">
+          <option value="">Semua lokasi</option>
+          <option>Bandung</option>
+          <option>Jakarta Selatan</option>
+          <option>Jakarta Pusat</option>
+          <option>Jakarta Barat</option>
+          <option>Surabaya</option>
+          <option>Yogyakarta</option>
+          <option>Semarang</option>
+          <option>Malang</option>
+          <option>Denpasar</option>
+          <option>Tangerang</option>
+          <option>Bekasi</option>
+          <option>Sleman</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-kondisi">Kondisi</label>
+        <select id="f-kondisi" name="kondisi">
+          <option value="">Apa saja</option>
+          <option value="mulus">Mulus</option>
+          <option value="ringan">Pemakaian ringan</option>
+          <option value="normal">Berfungsi normal</option>
+          <option value="baik">Kondisi baik</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-min">Harga (Rp)</label>
+        <div class="range-row">
+          <input id="f-min" type="number" name="min" min="0" step="50000" placeholder="min" inputmode="numeric">
+          <input id="f-max" type="number" name="max" min="0" step="50000" placeholder="maks" inputmode="numeric" aria-label="Harga maksimum dalam rupiah">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-urut">Urutkan</label>
+        <select id="f-urut" name="urut">
+          <option value="baru">Paling baru</option>
+          <option value="murah">Termurah</option>
+          <option value="mahal">Termahal</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-status">Status</label>
+        <select id="f-status" name="status">
+          <option value="active">Masih dijual</option>
+          <option value="sold">Sudah terjual</option>
+          <option value="all">Semua</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Terapkan</button>
+    </form>
+    </details>
+
+    <div class="active-filters" id="filter-aktif"></div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+      <button class="btn btn-outline btn-sm" id="save-search" type="button" hidden>Simpan pencarian ini</button>
+    </div>
+
+    <div id="home-state" class="state" hidden></div>
+
+    <div id="loading" hidden>
+      <div class="grid">
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+      </div>
+    </div>
+
+    <div id="state-box" class="state" hidden></div>
+    <div class="grid" id="hasil"></div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn btn-outline" id="load-more" type="button" hidden>Muat lagi</button>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html" data-i18n="sellCta">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: detail barang tersimpan di peramban ini, foto di server demo mesin ini. Tidak ada transaksi uang di sini.</p>
+  </div>
+</footer>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

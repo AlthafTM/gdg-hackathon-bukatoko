@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil penjual · Bukatoko</title>
+<meta name="description" content="Barang, ulasan, dan status penjual di Bukatoko.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="profil">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: profil dan ulasan berasal dari basis data server demo ini.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding:28px 0 48px;" id="profil-root">
+    <div class="seller-id" style="margin-bottom:18px;">
+      <span class="avatar" id="p-avatar" aria-hidden="true">?</span>
+      <div>
+        <h1 id="p-nama" style="font-size:24px;">-</h1>
+        <div class="card-meta" id="p-rating">-</div>
+        <div class="card-meta" id="p-bergabung">-</div>
+      </div>
+      <button class="btn btn-outline btn-sm" id="p-block" type="button" style="margin-left:auto;">Blokir penjual</button>
+    </div>
+
+    <h2 style="font-size:20px; margin-bottom:12px;">Barang</h2>
+    <div class="grid" id="profil-listings"></div>
+
+    <h2 style="font-size:20px; margin:32px 0 12px;">Ulasan</h2>
+    <div id="profil-reviews"></div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: data di SQLite, foto di folder uploads mesin ini.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

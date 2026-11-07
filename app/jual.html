@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pasang barang · Bukatoko</title>
+<meta name="description" content="Pasang barang yang mau kamu jual: pilih foto dulu, lalu isi detail dan harga.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="jual">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: detail barang tersimpan di peramban ini, fotonya diunggah ke server demo di mesin ini (folder uploads). Tidak ada layanan pihak ketiga.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" aria-current="page" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding-top:28px; padding-bottom:48px; max-width:760px;">
+    <h1 style="font-size:28px; margin-bottom:6px;">Pasang barang</h1>
+    <p style="color:var(--muted); max-width:56ch;">Mulai dari foto, karena itu yang pertama dilihat pembeli. Setelah detail terisi, barang langsung muncul di halaman Jelajah.</p>
+
+    <form id="jual-form" class="form-card" novalidate style="margin-top:20px;">
+      <fieldset style="border:0; padding:0; margin:0 0 22px;">
+        <legend style="font-size:16px; font-weight:600; margin-bottom:10px;">1. Foto barang</legend>
+        <div class="dropzone" id="dropzone">
+          <p>Tarik foto ke sini, atau pilih dari perangkat. Maksimal 10 foto, format gambar.</p>
+          <label class="btn btn-outline" for="f-foto">Pilih foto</label>
+          <input id="f-foto" type="file" accept="image/*" multiple class="sr-only">
+          <p class="field-note" id="photo-count" aria-live="polite">0 dari 10 foto</p>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+      </fieldset>
+
+      <fieldset style="border:0; padding:0; margin:0;">
+        <legend style="font-size:16px; font-weight:600; margin-bottom:10px;">2. Detail barang</legend>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="f-judul">Judul <span class="req">wajib</span></label>
+            <input id="f-judul" type="text" maxlength="90" placeholder="misal: Kamera mirrorless Fujifilm X-T20 body saja">
+          </div>
+          <div class="field">
+            <label for="f-kat">Kategori <span class="req">wajib</span></label>
+            <select id="f-kat">
+              <option value="">Pilih kategori</option>
+              <option value="elektronik">Elektronik</option>
+              <option value="ponsel">Ponsel &amp; Tablet</option>
+              <option value="fesyen">Fesyen</option>
+              <option value="rumah">Rumah Tangga</option>
+              <option value="hobi">Hobi &amp; Koleksi</option>
+              <option value="buku">Buku</option>
+              <option value="otomotif">Otomotif</option>
+              <option value="olahraga">Olahraga</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-kondisi">Kondisi</label>
+            <select id="f-kondisi">
+              <option value="Bekas, mulus">Bekas, mulus</option>
+              <option value="Bekas, pemakaian ringan">Bekas, pemakaian ringan</option>
+              <option value="Bekas, berfungsi normal">Bekas, berfungsi normal</option>
+              <option value="Bekas, ada minus">Bekas, ada minus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-harga">Harga (Rp) <span class="req">wajib</span></label>
+            <input id="f-harga" type="number" min="1000" step="1000" inputmode="numeric" placeholder="misal: 850000">
+          </div>
+          <div class="field">
+            <label for="f-lokasi">Lokasi <span class="req">wajib</span></label>
+            <select id="f-lokasi">
+              <option value="">Pilih lokasi</option>
+              <option>Bandung</option>
+              <option>Jakarta Selatan</option>
+              <option>Jakarta Pusat</option>
+              <option>Jakarta Barat</option>
+              <option>Surabaya</option>
+              <option>Yogyakarta</option>
+              <option>Semarang</option>
+              <option>Malang</option>
+              <option>Denpasar</option>
+              <option>Tangerang</option>
+              <option>Bekasi</option>
+              <option>Sleman</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-deskripsi">Deskripsi</label>
+            <textarea id="f-deskripsi" rows="5" maxlength="1200" placeholder="Tulis kondisi apa adanya: minus, kelengkapan, alasan jual, dan cara ambil."></textarea>
+            <p class="field-note">Sebutkan minus barang kalau ada. Pembeli lebih percaya pada keterangan jujur.</p>
+          </div>
+        </div>
+
+        <p class="form-error" id="jual-error" hidden></p>
+        <p class="field-note" id="jual-status" aria-live="polite" hidden></p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+          <button class="btn btn-primary" id="jual-submit" type="submit">Terbitkan barang</button>
+          <a class="btn btn-quiet" href="jelajah.html">Batal</a>
+        </div>
+        <p class="field-note">Terbit butuh nama tampilan. Kalau belum masuk, akan muncul kotak masuk dulu.</p>
+      </fieldset>
+    </form>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html" data-i18n="sellCta">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: detail barang tersimpan di peramban ini, foto di server demo mesin ini. Tidak ada transaksi uang di sini.</p>
+  </div>
+</footer>
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

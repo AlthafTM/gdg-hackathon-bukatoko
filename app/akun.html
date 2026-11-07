@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akun · Bukatoko</title>
+<meta name="description" content="Barang yang disimpan, barang yang dipasang, permintaan, tawaran, pesan, dan pencarian tersimpan.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="akun">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+<div class="strip">
+  <div class="wrap"><p>Demo: akun, barang, tawaran, dan pesan tersimpan di basis data server demo ini. Jangan pakai kata sandi yang kamu pakai di tempat lain.</p></div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">bt</span>bukatoko</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" aria-current="page" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding:28px 0 48px; max-width:900px;">
+    <h1 style="font-size:28px; margin-bottom:4px;" data-i18n="account">Akun</h1>
+
+    <div id="akun-need-login" hidden>
+      <p style="color:var(--muted); max-width:52ch;">Masuk dulu untuk melihat barang tersimpan, barang yang kamu pasang, tawaran, pesan, dan pencarian tersimpan.</p>
+      <button class="btn btn-primary" id="akun-login" type="button" style="margin-top:12px;">Masuk atau daftar</button>
+    </div>
+
+    <div id="akun-content" hidden>
+      <p style="color:var(--muted); margin-bottom:0;">Masuk sebagai <strong id="akun-nama">-</strong> · <span id="akun-email" class="card-meta"></span></p>
+
+      <ul class="counts">
+        <li><strong id="c-simpan">0</strong> disimpan</li>
+        <li><strong id="c-barang">0</strong> barang saya</li>
+        <li><strong id="c-minta">0</strong> permintaan</li>
+        <li><strong id="c-tawar">0</strong> tawaran masuk</li>
+        <li><strong id="c-pesan">0</strong> pesan belum dibaca</li>
+        <li><strong id="c-cari">0</strong> barang baru</li>
+      </ul>
+
+      <div class="tabs" role="tablist" aria-label="Isi akun">
+        <button type="button" role="tab" data-tab="disimpan" aria-selected="true" aria-controls="panel-disimpan" id="tab-disimpan">Disimpan</button>
+        <button type="button" role="tab" data-tab="barang" aria-selected="false" aria-controls="panel-barang" id="tab-barang" tabindex="-1">Barang saya</button>
+        <button type="button" role="tab" data-tab="permintaan" aria-selected="false" aria-controls="panel-permintaan" id="tab-permintaan" tabindex="-1">Permintaan saya</button>
+        <button type="button" role="tab" data-tab="tawaran" aria-selected="false" aria-controls="panel-tawaran" id="tab-tawaran" tabindex="-1">Tawaran</button>
+        <button type="button" role="tab" data-tab="pesan" aria-selected="false" aria-controls="panel-pesan" id="tab-pesan" tabindex="-1">Pesan</button>
+        <button type="button" role="tab" data-tab="pencarian" aria-selected="false" aria-controls="panel-pencarian" id="tab-pencarian" tabindex="-1">Pencarian</button>
+      </div>
+
+      <section id="panel-disimpan" role="tabpanel" aria-labelledby="tab-disimpan"></section>
+      <section id="panel-barang" role="tabpanel" aria-labelledby="tab-barang" hidden></section>
+      <section id="panel-permintaan" role="tabpanel" aria-labelledby="tab-permintaan" hidden></section>
+      <section id="panel-tawaran" role="tabpanel" aria-labelledby="tab-tawaran" hidden></section>
+      <section id="panel-pesan" role="tabpanel" aria-labelledby="tab-pesan" hidden></section>
+      <section id="panel-pencarian" role="tabpanel" aria-labelledby="tab-pencarian" hidden></section>
+
+      <p class="field-note" style="margin-top:24px;">Menandai barang terjual mematikan tawaran baru. Menerima tawaran juga menandai barang terjual dan membuka kesempatan menulis ulasan bagi dua pihak.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Bukatoko</h3>
+        <ul>
+          <li><a href="jelajah.html">Jelajah barang</a></li>
+          <li><a href="cari.html">Papan permintaan</a></li>
+          <li><a href="jual.html">Pasang barang</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cara kerja</h3>
+        <ul>
+          <li>Harga dan kondisi diisi penjual</li>
+          <li>Tawar menawar lewat percakapan</li>
+          <li>Bayar dan kirim disepakati dua pihak</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Situs demo: data di SQLite, foto di folder uploads mesin ini. Tidak ada transaksi uang di sini.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
