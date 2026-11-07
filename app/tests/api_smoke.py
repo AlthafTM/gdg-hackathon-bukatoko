@@ -201,6 +201,8 @@ def main():
     code, body = call(anon, "GET", "/p/l1001")
     text = body.decode() if isinstance(body, bytes) else str(body)
     check("halaman /p/<id> punya og:title", code == 200 and 'property="og:title"' in text, str(code))
+    check("judul merek tetap terpisah dari metadata barang", '<title>BukaToko - Jual apapun disini.</title>' in text and
+          'Kamera mirrorless Fujifilm X-T20' in text, str(code))
 
     print(f"\n{ok} ok, {fail} gagal")
     return 1 if fail else 0

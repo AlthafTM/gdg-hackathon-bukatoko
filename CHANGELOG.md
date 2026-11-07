@@ -2,6 +2,11 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.4.0] - 2026-11-07
+
+- Polish rounded typography, search alignment, controls, contextual sample illustrations and required-field labels.
+- Add complete UI translation coverage and the requested BukaToko browser title/favicon; preserve product link metadata. See [validation and limits](releases/0.4.0.md).
+
 ## [0.3.0] - 2026-11-07
 
 - Rebuild the marketplace layout, filters, cards, account panels and shared spacing system.

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jelajah barang · Bukatoko</title>
+<title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Saring barang bekas berdasarkan kata kunci, kategori, lokasi, kondisi, dan rentang harga.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="jelajah">
@@ -34,14 +34,23 @@
   </div>
 </header>
 
+<div class="searchbar desktop-search">
+  <div class="wrap"><form class="search-form" action="jelajah.html" method="get" role="search" aria-label="Pencarian utama">
+    <div class="search-input-wrap"><span class="ico" data-icon="search" aria-hidden="true"></span><label class="sr-only" for="q-global">Cari barang</label><input id="q-global" type="search" name="q" placeholder="Cari barang yang kamu butuhkan" autocomplete="off"></div>
+    <button class="btn btn-primary" type="submit">Cari barang</button>
+  </form></div>
+</div>
+
 <main id="main">
   <div class="wrap page-shell">
     <nav class="breadcrumb" aria-label="Remah roti">
       <a href="index.html">Beranda</a> / <span id="crumb-kat">Semua kategori</span>
     </nav>
     <h1 id="explore-title">Semua barang</h1>
-    <p class="result-count" id="jumlah" aria-live="polite">0 barang</p>
+    <div class="catalog-toolbar"><p class="result-count" id="jumlah" aria-live="polite">0 barang</p>
+      <button class="btn btn-outline btn-sm" id="save-search" type="button" hidden>Simpan pencarian ini</button></div>
 
+    <div class="active-filters" id="filter-aktif"></div>
     <div class="catalog-layout">
     <details class="filter-details" id="filter-details" open>
     <summary>Filter dan urutan</summary>
@@ -120,10 +129,6 @@
     </details>
 
     <div class="catalog-results">
-    <div class="active-filters" id="filter-aktif"></div>
-    <div class="result-actions">
-      <button class="btn btn-outline btn-sm" id="save-search" type="button" hidden>Simpan pencarian ini</button>
-    </div>
 
     <div id="home-state" class="state" hidden></div>
 
@@ -173,6 +178,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/locale.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

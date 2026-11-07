@@ -10,7 +10,7 @@ Katalog desktop memakai filter kiri selebar 248px dan grid hasil tiga kolom; tab
 
 Akun memiliki ringkasan penuh di atas, enam angka dalam grid, lalu tab vertikal di kiri dan panel isi di kanan. Pada layar sempit tab menjadi horizontal. Catatan informasi berada di kolom panel, setelah isinya, dengan gutter dan padding yang sama. Baris tanpa thumbnail memakai satu kolom, sehingga pesan atau tawaran tidak terdorong ke kolom foto kosong.
 
-Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Inline style layout telah dihapus dari HTML dan komponen JavaScript. Radius hanya 3/6/8px. CSS lama diganti sebagai satu sistem komponen, bukan ditumpuk dengan tema tambahan.
+Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Inline style layout telah dihapus dari HTML dan komponen JavaScript. Sesuai revisi pengguna, kartu/panel memakai radius 16px, elemen kecil 12px, dialog 20px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel agar bidang teks multiline tidak berbentuk oval. Glow ungu ringan hanya saat hover untuk menunjukkan panel aktif, bukan efek latar permanen. CSS memakai satu sistem komponen.
 
 Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
 
@@ -29,11 +29,21 @@ Merah hanya untuk galat dan tindakan destruktif. Gradien linear yang sangat ring
 
 ## Tipografi dan aset
 
-- Exo 2 variabel, disimpan lokal sebagai `assets/fonts/Exo2.ttf`, digunakan untuk teks, heading, kontrol dan harga. Bentuk bersudut lembut memberi kedekatan karakter dengan referensi inpin tanpa mengorbankan label kecil. Bobot 400 untuk isi, 600-650 untuk judul dan harga. Angka harga memakai tabular numerals dari keluarga yang sama.
-- Nama yang paling dekat dengan permintaan font adalah inpin hongmengti. Lisensi bebas untuk pemakaian web/komersial tidak terverifikasi; font itu tidak dibundel. Exo 2 memakai SIL OFL 1.1, dengan teks lisensi utuh di `assets/fonts/OFL.txt`. Sumber: https://github.com/google/fonts/tree/main/ofl/exo2 . Alternatif ini bukan font identik.
+- Nunito variabel, disimpan lokal sebagai `assets/fonts/nunito/Nunito.ttf`, digunakan untuk teks, heading, kontrol dan harga. Pengguna secara khusus meminta ujung huruf membulat dan menolak Nunito Sans. Bobot 400 untuk isi, 700 untuk judul kartu, 750 untuk heading. Angka harga memakai tabular numerals dari keluarga yang sama.
+- Nunito memakai SIL OFL 1.1, dengan teks lisensi utuh di `assets/fonts/nunito/OFL.txt`. Sumber resmi: https://github.com/google/fonts/tree/main/ofl/nunito . Font inpin tidak dibundel; berkas Exo 2 lama dipertahankan sebagai aset historis tetapi tidak dipakai oleh CSS aktif.
 - `assets/logo.svg` adalah salinan SVG gabungan yang diberikan pengguna. Bentuk dan proporsi dipertahankan; tema gelap membalik luminansinya melalui CSS agar terbaca. Dimensi eksplisit mencegah pergeseran layout.
 - `assets/favicon.svg` memakai simbol keranjang yang diberikan pengguna. Ikon navigasi dan kategori dibuat sebagai SVG dalam `app.js`, dengan ukuran dan ketebalan garis konsisten, disertai label teks. Simbol menunjukkan tujuan atau jenis barang.
+- Judul browser dan heading beranda memakai `BukaToko - Jual apapun disini.`; versi Inggris mengikuti pilihan bahasa. Detail barang/profil tidak menimpa judul merek. Metadata Open Graph tetap mendeskripsikan barang, disisipkan terpisah dari judul browser. Favicon keranjang memakai warna ungu adaptif terang/gelap serta URL versi baru untuk memperbarui cache.
 - Nama, barang, permintaan dan foto bawaan tetap ditandai sebagai data contoh. Tidak membuat angka sosial, ulasan atau identitas baru.
+- Foto bawaan merupakan ilustrasi SVG buatan aplikasi: bentuk kamera, ponsel, sepatu, buku, gitar, sepeda, kulkas, meja, monitor, jaket atau konsol dipilih dari konteks judul. Tetap diberi label bilingual foto contoh/sample illustration. Foto unggahan nyata tidak diganti.
+
+## Pencarian dan bahasa
+
+Pencarian utama tersedia di atas konten pada desktop, termasuk halaman lain melalui shell bersama. Isian kata kunci sidebar memakai padding normal; padding ikon hanya untuk input dengan ikon. Tombol simpan pencarian berada di toolbar hasil, sehingga kartu pertama dan panel filter mulai pada baris yang sama.
+
+`assets/locale.js` melokalisasi teks UI Indonesia/Inggris, placeholder, label aksesibilitas, dialog, status dan pesan galat. Nilai input dan nilai option backend dipertahankan; judul/deskripsi produk, nama pengguna, ulasan dan percakapan tidak diterjemahkan. Konten asinkron diproses lewat observer yang dihentikan sementara saat menerapkan terjemahan agar tidak membentuk loop. Bahasa dokumen ikut berubah; bahasa akun tidak memicu reload. Teks boleh membungkus, ukuran ruang tidak dikunci pada panjang satu bahasa.
+
+Penanda wajib memakai `*`, dijelaskan di bawah formulir sebagai `* Wajib diisi.`/`* Required fields.`. Field terkait tetap memiliki semantik required untuk pembaca layar dan validasi. Nilai kategori/kondisi tetap mengikuti kontrak backend Indonesia meskipun label tampil Inggris.
 
 ## Komposisi
 

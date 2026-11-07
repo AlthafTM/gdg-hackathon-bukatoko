@@ -15,15 +15,18 @@ test('export contains only frontend and public fixtures', () => {
   assert.equal(data.listings.length, 14);
   assert.equal(data.wanted.length, 5);
   assert.doesNotMatch(JSON.stringify(data), /example\.com|pass_hash|demo1234/);
-  assert.ok(fs.statSync(path.join(root, 'assets/fonts/Exo2.ttf')).size > 1000);
-  assert.match(fs.readFileSync(path.join(root, 'assets/fonts/OFL.txt'), 'utf8'), /SIL OPEN FONT LICENSE/);
+  assert.ok(fs.statSync(path.join(root, 'assets/fonts/nunito/Nunito.ttf')).size > 1000);
+  assert.match(fs.readFileSync(path.join(root, 'assets/fonts/nunito/OFL.txt'), 'utf8'), /SIL OPEN FONT LICENSE/);
   assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html'].sort());
   for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.match(html, /Pratinjau GitHub Pages/);
     assert.match(html, /src="assets\/logo.svg"/);
+    assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
+    assert.match(html, /assets\/favicon\.svg\?v=2/);
     assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
     assert.ok(html.indexOf('assets/preview.js') < html.indexOf('assets/app.js'));
+    assert.ok(html.indexOf('assets/locale.js') < html.indexOf('assets/app.js'));
   }
 });
 test('search, filters, pagination and sort use the sample snapshot', async () => {

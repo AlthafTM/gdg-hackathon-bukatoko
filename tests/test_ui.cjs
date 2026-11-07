@@ -48,7 +48,7 @@ test('cards expose square media, working detail links, price, condition, city an
   assert.equal(body.children[1].attrs.href,link.attrs.href);
   assert.equal(body.children[2].textContent,item.condition);
   assert.equal(body.children[3].children[1].textContent,item.city);
-  assert.match(body.children[4].textContent,/penjual/);
+  assert.match(body.children[4].children[0].textContent,/penjual/);
 });
 test('sample cards stay labeled and sold items retain their state', () => {
   const {api} = fixture();
@@ -59,4 +59,14 @@ test('sample cards stay labeled and sold items retain their state', () => {
   const svg = decodeURIComponent(image.attrs.src.split(',').slice(1).join(','));
   assert.match(svg,/height="640"/);
   assert.match(svg,/foto contoh/);
+});
+test('built-in illustrations match item context without replacing real photos', () => {
+  const {api} = fixture();
+  function illustration(title) {
+    const card = api.card({id:'demo',title,category:'elektronik',price:10000,condition:'Bekas',city:'Bandung',created_at:'2026-11-07',status:'active'});
+    return decodeURIComponent(card.children[0].children[0].attrs.src);
+  }
+  const camera=illustration('Kamera Fujifilm'),phone=illustration('iPhone 12'),book=illustration('Set buku sastra');
+  assert.notEqual(camera,phone);assert.notEqual(phone,book);
+  assert.match(camera,/r="18"/);assert.match(phone,/height="87"/);assert.match(book,/M64 28/);
 });

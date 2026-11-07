@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lagi Dicari: papan permintaan barang · Bukatoko</title>
+<title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Warga menulis barang yang mereka cari beserta rentang harga yang sanggup dibayar. Penjual bisa langsung menawarkan.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="cari">
@@ -51,12 +51,12 @@
           <p class="field-note mb-4">Semakin spesifik, semakin mudah penjual menemukanmu.</p>
 
           <div class="field mb-4">
-            <label for="w-judul">Barang yang dicari <span class="req">wajib</span></label>
+            <label for="w-judul">Barang yang dicari <span class="req" aria-hidden="true">*</span></label>
             <input id="w-judul" type="text" maxlength="90" placeholder="misal: Laptop bekas buat kuliah arsitektur">
           </div>
 
           <div class="field mb-4">
-            <label for="w-kat">Kategori <span class="req">wajib</span></label>
+            <label for="w-kat">Kategori <span class="req" aria-hidden="true">*</span></label>
             <select id="w-kat">
               <option value="">Pilih kategori</option>
               <option value="elektronik">Elektronik</option>
@@ -71,7 +71,7 @@
           </div>
 
           <div class="field mb-4">
-            <label for="w-min">Rentang harga (Rp) <span class="req">wajib</span></label>
+            <label for="w-min">Rentang harga (Rp) <span class="req" aria-hidden="true">*</span></label>
             <div class="range-row">
               <input id="w-min" type="number" min="1000" step="1000" inputmode="numeric" placeholder="min">
               <input id="w-max" type="number" min="1000" step="1000" inputmode="numeric" placeholder="maks" aria-label="Harga maksimum dalam rupiah">
@@ -79,7 +79,7 @@
           </div>
 
           <div class="field mb-4">
-            <label for="w-lokasi">Lokasi <span class="req">wajib</span></label>
+            <label for="w-lokasi">Lokasi <span class="req" aria-hidden="true">*</span></label>
             <select id="w-lokasi">
               <option value="">Pilih lokasi</option>
               <option>Bandung</option>
@@ -102,6 +102,7 @@
             <textarea id="w-catatan" rows="4" maxlength="400" placeholder="Syarat yang penting: ukuran, kelengkapan, boleh minus di bagian mana."></textarea>
           </div>
 
+          <p class="required-note">* Wajib diisi.</p>
           <p class="form-error" id="wanted-error" hidden></p>
           <button class="btn btn-primary btn-block" type="submit">Pasang permintaan</button>
         </form>
@@ -137,6 +138,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/locale.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

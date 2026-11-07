@@ -44,7 +44,7 @@ def build():
         html = html.replace('<script src="assets/app.js"></script>',
                             '<script src="assets/preview.js"></script>\n<script src="assets/app.js"></script>')
         (OUTPUT / source.name).write_text(html, encoding='utf8')
-    for name in ('styles.css', 'app.js', 'preview.js', 'favicon.svg', 'logo.svg'):
+    for name in ('styles.css', 'app.js', 'locale.js', 'preview.js', 'favicon.svg', 'logo.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)
     shutil.copytree(ROOT / 'app/assets/fonts', OUTPUT / 'assets/fonts')
     (OUTPUT / '.nojekyll').touch()

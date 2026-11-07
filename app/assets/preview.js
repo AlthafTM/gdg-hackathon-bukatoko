@@ -31,7 +31,7 @@
       limit: limit, offset: offset, has_more: offset + limit < items.length};
   }
   window.BukatokoPreview = {
-    notice: function () { window.alert(message); },
+    notice: function () { window.alert(window.BukatokoLocale ? window.BukatokoLocale.text(message) : message); },
     listingUrl: function (id) { return new URL("listing.html?id=" + encodeURIComponent(id), root).href; },
     request: function (path, opts) {
       if (opts && opts.method && opts.method.toUpperCase() !== "GET") return denied(403, message);

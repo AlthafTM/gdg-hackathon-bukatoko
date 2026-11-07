@@ -41,10 +41,11 @@
 
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function uiText(value) { return window.BukatokoLocale ? window.BukatokoLocale.text(value) : value; }
 
   var iconPaths = {
     search: '<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',
-    explore: '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>',
+    explore: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
     wanted: '<path d="M4 4h16v12H10l-6 5V4Z"/><path d="M8 8h8M8 12h5"/>',
     sell: '<path d="m3 12 9-9h8v8l-9 10-8-9Z"/><circle cx="16.5" cy="6.5" r="1"/>',
     account: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
@@ -66,7 +67,7 @@
     node.setAttribute("aria-hidden", "true");
     node.setAttribute("fill", "none");
     node.setAttribute("stroke", "currentColor");
-    node.setAttribute("stroke-width", "1.7");
+    node.setAttribute("stroke-width", "1.6");
     node.setAttribute("stroke-linejoin", "round");
     node.setAttribute("stroke-linecap", "round");
     node.innerHTML = iconPaths[name] || iconPaths.explore;
@@ -74,6 +75,24 @@
   }
 
   function initShell() {
+    if (!qs(".searchbar")) {
+      var searchInput = el("input", {id:"q-global",type:"search",name:"q",placeholder:"Cari barang yang kamu butuhkan",autocomplete:"off"});
+      var search = el("div", {class:"searchbar desktop-search"}, [el("div", {class:"wrap"}, [
+        el("form", {class:"search-form",action:"jelajah.html",method:"get",role:"search","aria-label":"Pencarian utama"}, [
+          el("div", {class:"search-input-wrap"}, [el("span", {class:"ico","data-icon":"search","aria-hidden":"true"}),
+            el("label", {class:"sr-only",for:"q-global",text:"Cari barang"}), searchInput]),
+          el("button", {class:"btn btn-primary",type:"submit",text:"Cari barang"})])])]);
+      qs(".hdr").insertAdjacentElement("afterend", search);
+    }
+    var globalInput = qs("#q-global");
+    if (globalInput) globalInput.value = new URLSearchParams(location.search).get("q") || "";
+    qsa("label").forEach(function (label) {
+      if (!qs(".req", label)) return;
+      var field = document.getElementById(label.htmlFor);
+      if (field) { field.required = true; field.setAttribute("aria-required", "true"); }
+    });
+    var maxBudget = qs("#w-max");
+    if (maxBudget) { maxBudget.required = true; maxBudget.setAttribute("aria-required", "true"); }
     qsa(".nav a").forEach(function (link) {
       var key = link.getAttribute("data-i18n");
       var label = el("span", {class: "nav-label", text: link.textContent});
@@ -142,6 +161,7 @@
       btn.textContent = S.lang === "id" ? "EN" : "ID";
       btn.setAttribute("aria-label", S.lang === "id" ? "Ganti ke bahasa Inggris" : "Switch to Indonesian");
     }
+    if (window.BukatokoLocale) window.BukatokoLocale.setLanguage(S.lang);
   }
 
   /* ---------- api ---------- */
@@ -197,7 +217,7 @@
   function toast(msg) {
     var node = qs("#toast");
     if (!node) return;
-    node.textContent = msg;
+    node.textContent = uiText(msg);
     node.classList.add("is-on");
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { node.classList.remove("is-on"); }, 2800);
@@ -214,18 +234,29 @@
     for (var i = 0; i < String(seed).length; i++) idx += String(seed).charCodeAt(i);
     var pal = PALETTES[idx % PALETTES.length];
     var w = 640, h = ratio === "landscape" ? 360 : 640;
+    var subject = String(label || "").toLowerCase();
+    var shapes = [
+      [/kamera|camera|fujifilm/, '<rect x="25" y="34" width="78" height="50" rx="9"/><path d="m42 34 5-12h27l6 12"/><circle cx="65" cy="59" r="18"/><circle cx="65" cy="59" r="10"/><path d="M88 44h6"/>'],
+      [/iphone|ponsel|phone/, '<rect x="43" y="10" width="44" height="87" rx="9"/><rect x="49" y="18" width="32" height="66" rx="4"/><path d="M59 91h12M60 13h10"/>'],
+      [/sepatu|shoe|vans/, '<path d="m22 60 8-31 24 7 12 23 36 12q10 3 10 13v9H19V74q0-9 3-14Z"/><path d="M22 82h88M54 48l13-4M60 58l13-4M29 39l16 5"/>'],
+      [/helm|helmet/, '<path d="M16 67a48 48 0 0 1 96 0v24H69L51 72H16Z"/><path d="M69 40h41M66 40v25h44M23 91h29"/>'],
+      [/kulkas|fridge/, '<rect x="36" y="7" width="58" height="94" rx="6"/><path d="M36 39h58M45 22v10M45 52v18M44 101v4M86 101v4"/>'],
+      [/buku|book/, '<path d="M64 28Q40 13 15 24v67q25-11 49 5 24-16 49-5V24Q88 13 64 28Z"/><path d="M64 28v68M26 38l25 3M26 50l25 3M77 41l25-3M77 53l25-3"/>'],
+      [/gitar|guitar/, '<path d="m79 9 14 6-17 44q12 10 8 23c-5 19-28 23-43 10-15-14-9-35 7-39 9-2 13-7 15-13Z"/><circle cx="58" cy="75" r="9"/><path d="m51 88 16 5M66 61l19-45"/>'],
+      [/sepeda|bike/, '<circle cx="29" cy="78" r="23"/><circle cx="100" cy="78" r="23"/><path d="m29 78 23-40 25 40H29l35-21 36 21-21-53h13M45 38h22"/>'],
+      [/kopi|coffee|brew|grinder/, '<path d="M26 30h56v43a23 23 0 0 1-46 0V30M82 38h12a17 17 0 0 1 0 34H82M22 105h75M44 10v10M64 7v13"/>'],
+      [/meja|table|rak|rumah/, '<path d="M12 35h104v14H12zM22 49v49M106 49v49M29 58h70M45 12h39v23"/>'],
+      [/monitor|laptop|elektronik/, '<rect x="12" y="15" width="104" height="66" rx="6"/><path d="M12 70h104M64 81v16M43 99h42M23 27h82"/>'],
+      [/jaket|fesyen|jacket/, '<path d="m44 19-27 16-9 41 23 6 8-28v47h50V54l8 28 23-6-9-41-27-16-20 12Z"/><path d="m44 19 20 12 20-12M64 31v70M47 70h-6M81 70h6"/>'],
+      [/switch|game|hobi/, '<rect x="9" y="30" width="110" height="57" rx="13"/><rect x="32" y="36" width="64" height="45" rx="3"/><path d="M19 45v17M13 53h12M106 45v2M106 68v2"/>']
+    ];
+    var drawing = '<path d="m20 34 44-19 44 19v57L64 108 20 91Z"/><path d="m20 34 44 19 44-19M64 53v55M42 24l44 20"/>';
+    shapes.some(function (entry) { if (!entry[0].test(subject)) return false; drawing=entry[1]; return true; });
     var svg =
       '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + " " + h + '">' +
-      '<defs><pattern id="h" width="18" height="18" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">' +
-      '<line x1="0" y1="0" x2="0" y2="18" stroke="' + pal[1] + '" stroke-width="2" opacity="0.12"/></pattern></defs>' +
       '<rect width="' + w + '" height="' + h + '" fill="' + pal[0] + '"/>' +
-      '<rect width="' + w + '" height="' + h + '" fill="url(#h)"/>' +
-      '<g fill="none" stroke="' + pal[1] + '" stroke-width="7" opacity="0.5">' +
-      '<rect x="' + (w * 0.26) + '" y="' + (h * 0.2) + '" width="' + (w * 0.48) + '" height="' + (h * 0.42) + '" rx="12"/>' +
-      '<path d="M' + (w * 0.26) + " " + (h * 0.5) + ' L' + (w * 0.4) + " " + (h * 0.35) + " L" + (w * 0.55) + " " + (h * 0.5) + ' L' + (w * 0.74) + " " + (h * 0.33) + '"/>' +
-      "</g>" +
-      '<text x="50%" y="' + (h * 0.79) + '" text-anchor="middle" font-family="ui-monospace, monospace" font-size="' + Math.round(h * 0.062) + '" fill="' + pal[1] + '">foto contoh</text>' +
-      '<text x="50%" y="' + (h * 0.89) + '" text-anchor="middle" font-family="ui-monospace, monospace" font-size="' + Math.round(h * 0.045) + '" fill="' + pal[1] + '">' + esc(label || "") + "</text>" +
+      '<g transform="translate(128 ' + Math.round(h*.1) + ') scale(3)" fill="none" stroke="' + pal[1] + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' + drawing + '</g>' +
+      '<text x="50%" y="' + (h * 0.87) + '" text-anchor="middle" font-family="sans-serif" font-size="20" fill="' + pal[1] + '">foto contoh / sample illustration</text>' +
       "</svg>";
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
@@ -402,7 +433,6 @@
         applyLang();
         var tt = qs("#theme-toggle");
         if (tt && tt._relabel) tt._relabel();
-        if (document.body.dataset.page === "akun") boot.page && boot.page();
       });
     }
     qsa("[data-open-auth]").forEach(function (b) {
@@ -415,7 +445,7 @@
     var real = item.photo_urls && item.photo_urls[0];
     var media = el("img", {
       class: "card-media",
-      src: real || photo(item.id, item.category),
+      src: real || photo(item.id, item.title + " " + item.category),
       alt: (real ? "Foto barang: " : "Foto contoh untuk ") + item.title,
       width: "640", height: "640", loading: "lazy", decoding: "async"
     });
@@ -426,7 +456,9 @@
       foot, title,
       el("span", { class: "card-meta", text: item.condition }),
       el("span", { class: "card-meta card-location" }, [icon("location"), document.createTextNode(item.city)]),
-      el("div", { class: "card-meta card-seller", text: (item.owner ? item.owner.name : "") + " · " + timeAgo(item.created_at) })
+      el("div", { class: "card-meta card-seller" }, [
+        el("span", {"data-user-content":"",text:item.owner ? item.owner.name : ""}),
+        document.createTextNode(" · "), el("span", {text:timeAgo(item.created_at)})])
     ]);
     var imageLink = el("a", { class: "card-image-link", href: "listing.html?id=" + encodeURIComponent(item.id),
       "aria-label": "Lihat " + item.title, tabindex: "-1" }, [media]);
@@ -573,6 +605,8 @@
 
     function syncForm() {
       qs("#f-q").value = state.q;
+      var mainQuery = qs("#q-global");
+      if (mainQuery) mainQuery.value = state.q;
       qs("#f-kat").value = state.kat;
       qs("#f-lok").value = state.city;
       qs("#f-kondisi").value = state.kondisi;
@@ -761,7 +795,7 @@
     });
 
     function render(item) {
-      document.title = item.title + " · Bukatoko";
+      qs("#d-judul").setAttribute("data-user-content", "");
       qs("#d-judul").textContent = item.title;
       qs("#d-harga").textContent = rp(item.price);
       var old = qs("#d-harga-lama");
@@ -776,6 +810,8 @@
       qs("#d-kondisi-copy").textContent = item.condition;
       qs("#d-lokasi-copy").textContent = item.city;
       qs("#d-deskripsi").textContent = item.description || "Penjual belum menulis deskripsi.";
+      if (item.description) qs("#d-deskripsi").setAttribute("data-user-content", "");
+      qs("#d-crumb").setAttribute("data-user-content", "");
       qs("#d-crumb").textContent = item.title;
 
       // kembali ke hasil dengan filter terakhir
@@ -792,7 +828,7 @@
       var thumbs = qs("#thumbs");
       var galCount = qs("#gal-count");
 
-      function src(n) { return urls[n - 1] || photo(item.id + (n === 1 ? "" : "-" + n), "foto " + n); }
+      function src(n) { return urls[n - 1] || photo(item.id + (n === 1 ? "" : "-" + n), item.title + " " + item.category); }
 
       function show(n) {
         current = n;
@@ -809,7 +845,7 @@
         (function (n) {
           var th = el("button", { type: "button", "aria-current": n === 1 ? "true" : "false", "aria-label": "Lihat foto " + n });
           th.appendChild(el("img", {
-            src: urls[n - 1] || photo(item.id + "-" + n, "foto " + n, "square"),
+            src: urls[n - 1] || photo(item.id + "-" + n, item.title + " " + item.category, "square"),
             alt: "", width: "68", height: "68", loading: "lazy"
           }));
           th.addEventListener("click", function () { show(n); });
@@ -836,12 +872,14 @@
       qs("#gallery-open").addEventListener("click", function () {
         var body = [el("img", { src: src(current), alt: gallery.alt, width: "1280", height: "720", class: "zoom-image" })];
         modalShell("modal-lightbox", item.title, body);
+        qs("#modal-lightbox-title").setAttribute("data-user-content", "");
         openModal("modal-lightbox");
       });
 
       /* penjual */
       var owner = item.owner || { name: "penjual", joined: "" };
       qs("#s-nama").textContent = owner.name;
+      qs("#s-nama").setAttribute("data-user-content", "");
       qs("#s-nama").href = "profil.html?u=" + encodeURIComponent(owner.name);
       qs("#s-avatar").textContent = (owner.name || "?").slice(0, 1).toUpperCase();
       qs("#s-bergabung").textContent = "Bergabung " + (owner.joined || "-");
@@ -859,7 +897,7 @@
         item.reviews.forEach(function (r) {
           list.appendChild(el("div", { class: "review" }, [
             el("div", { class: "review-head" }, [
-              el("strong", { text: r.author }),
+              el("strong", { "data-user-content":"", text: r.author }),
               el("span", { text: "· " + r.role }),
               el("span", { class: "stars", text: "★".repeat(r.stars) + "☆".repeat(5 - r.stars) }),
               el("span", { text: "· " + timeAgo(r.created_at) })
@@ -1004,7 +1042,7 @@
         }
         var del = el("button", { class: "btn btn-danger mt-3 owner-delete", type: "button", text: "Hapus barang" });
         del.addEventListener("click", function () {
-          if (!window.confirm("Hapus barang ini? Foto dan tawarannya ikut hilang.")) return;
+          if (!window.confirm(uiText("Hapus barang ini? Foto dan tawarannya ikut hilang."))) return;
           api("/api/listings/" + item.id, { method: "DELETE" }).then(function () {
             toast("Barang dihapus.");
             setTimeout(function () { location.href = "akun.html"; }, 600);
@@ -1078,7 +1116,7 @@
       qs("#block").addEventListener("click", function () {
         requireAuth(function () {
           if (item.is_owner) { toast("Ini barang kamu sendiri."); return; }
-          if (!window.confirm("Blokir " + owner.name + "? Barang mereka tidak akan muncul lagi untukmu.")) return;
+          if (!window.confirm(uiText("Blokir " + owner.name + "? Barang mereka tidak akan muncul lagi untukmu."))) return;
           api("/api/blocks", { method: "POST", body: { user_id: owner.id } })
             .then(function () { toast(owner.name + " diblokir."); setTimeout(function () { location.href = "jelajah.html"; }, 700); })
             .catch(function (err) { toast(err.message); });
@@ -1332,7 +1370,9 @@
         list.appendChild(el("article", { class: "wanted-item" }, [
           el("div", {}, [
             el("h3", { text: w.title }),
-            el("span", { class: "card-meta", text: kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at) + " · " + w.owner.name }),
+            el("span", { class: "card-meta" }, [
+              el("span", {text:kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at)}),
+              document.createTextNode(" · "), el("span", {"data-user-content":"",text:w.owner.name})]),
             el("p", { class: "wanted-note", text: w.note })
           ]),
           actions
@@ -1386,7 +1426,6 @@
     }
     skeletons(3, qs("#profil-listings"));
     api("/api/users/" + encodeURIComponent(name)).then(function (data) {
-      document.title = data.user.name + " · Bukatoko";
       qs("#p-nama").textContent = data.user.name;
       qs("#p-avatar").textContent = data.user.name.slice(0, 1).toUpperCase();
       qs("#p-bergabung").textContent = "Bergabung " + data.user.joined;
@@ -1408,7 +1447,7 @@
         data.reviews.forEach(function (r) {
           reviews.appendChild(el("div", { class: "review" }, [
             el("div", { class: "review-head" }, [
-              el("strong", { text: r.author }),
+              el("strong", { "data-user-content":"", text: r.author }),
               el("span", { text: "· " + r.role }),
               el("span", { class: "stars", text: "★".repeat(r.stars) + "☆".repeat(5 - r.stars) }),
               el("span", { text: "· " + timeAgo(r.created_at) })
@@ -1420,7 +1459,7 @@
       if (data.is_self) qs("#p-block").hidden = true;
       qs("#p-block").addEventListener("click", function () {
         requireAuth(function () {
-          if (!window.confirm("Blokir " + data.user.name + "?")) return;
+          if (!window.confirm(uiText("Blokir " + data.user.name + "?"))) return;
           api("/api/blocks", { method: "POST", body: { user_id: data.user.id } })
             .then(function () { toast("Diblokir."); setTimeout(function () { location.href = "jelajah.html"; }, 600); })
             .catch(function (err) { toast(err.message); });
@@ -1495,7 +1534,7 @@
       var r = el("div", { class: "row-item" });
       if (opts.src !== undefined) {
         r.appendChild(el("img", {
-          class: "row-thumb", src: opts.src || photo(opts.id, opts.label || ""),
+          class: "row-thumb", src: opts.src || photo(opts.id, opts.label || opts.title || ""),
           alt: opts.alt || "Foto contoh", width: "160", height: "90", loading: "lazy"
         }));
       }
@@ -1578,7 +1617,7 @@
           }
           acts.push({
             label: "Hapus", variant: "btn-danger", onClick: function (btn) {
-              if (!window.confirm("Hapus barang ini?")) return;
+              if (!window.confirm(uiText("Hapus barang ini?"))) return;
               btn.disabled = true;
               api("/api/listings/" + i.id, { method: "DELETE" }).then(function () { loadMyListings(); refreshMe(); })
                 .catch(function (err) { btn.disabled = false; toast(err.message); });

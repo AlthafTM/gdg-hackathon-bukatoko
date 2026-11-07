@@ -1143,8 +1143,7 @@ class Handler(SimpleHTTPRequestHandler):
             f'<meta property="og:url" content="{escape_attr(self.path)}">\n'
             '<meta name="twitter:card" content="summary_large_image">\n'
         )
-        html = html.replace("<title>Detail barang · Bukatoko</title>",
-                            f"<title>{escape_attr(title)}</title>\n{meta}")
+        html = html.replace("</head>", f"{meta}</head>", 1)
         # halaman disajikan di /p/<id>, jadi path relatif aset harus dipatok ke akar
         html = html.replace("<head>", '<head>\n<base href="/">', 1)
         html = html.replace('<body data-page="listing">',

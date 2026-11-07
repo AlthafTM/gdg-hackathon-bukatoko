@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pasang barang · Bukatoko</title>
+<title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Pasang barang yang mau kamu jual: pilih foto dulu, lalu isi detail dan harga.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body data-page="jual">
@@ -55,11 +55,11 @@
         <legend>2. Detail barang</legend>
         <div class="form-grid">
           <div class="field full">
-            <label for="f-judul">Judul <span class="req">wajib</span></label>
+            <label for="f-judul">Judul <span class="req" aria-hidden="true">*</span></label>
             <input id="f-judul" type="text" maxlength="90" placeholder="misal: Kamera mirrorless Fujifilm X-T20 body saja">
           </div>
           <div class="field">
-            <label for="f-kat">Kategori <span class="req">wajib</span></label>
+            <label for="f-kat">Kategori <span class="req" aria-hidden="true">*</span></label>
             <select id="f-kat">
               <option value="">Pilih kategori</option>
               <option value="elektronik">Elektronik</option>
@@ -82,11 +82,11 @@
             </select>
           </div>
           <div class="field">
-            <label for="f-harga">Harga (Rp) <span class="req">wajib</span></label>
+            <label for="f-harga">Harga (Rp) <span class="req" aria-hidden="true">*</span></label>
             <input id="f-harga" type="number" min="1000" step="1000" inputmode="numeric" placeholder="misal: 850000">
           </div>
           <div class="field">
-            <label for="f-lokasi">Lokasi <span class="req">wajib</span></label>
+            <label for="f-lokasi">Lokasi <span class="req" aria-hidden="true">*</span></label>
             <select id="f-lokasi">
               <option value="">Pilih lokasi</option>
               <option>Bandung</option>
@@ -110,6 +110,7 @@
           </div>
         </div>
 
+        <p class="required-note">* Wajib diisi.</p>
         <p class="form-error" id="jual-error" hidden></p>
         <p class="field-note" id="jual-status" aria-live="polite" hidden></p>
 
@@ -150,6 +151,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/locale.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>
