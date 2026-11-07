@@ -20,13 +20,13 @@ These rules apply to AI work throughout this repository. Read `CONTRIBUTING.md` 
 
 1. Before fetching, inspect branch/status and staged, unstaged and untracked files. Preserve edits made by the user or other collaborators. Never clean, reset, stash or switch away their work without authorization.
 2. Run `python tools/repo_workflow.py begin` at task start. It checks local state, compares the advertised remote head, fetches `origin/main`, and records a per-worktree baseline. It never merges or edits project files.
-3. Use a focused branch and separate worktree for independent tasks. Before editing, inspect incoming commits and their changed paths. If the checkout is behind/diverged, integrate carefully first; do not build on a knowingly stale base.
+3. Work and commit directly on `main` by default. Create or use a separate branch only when the user explicitly specifies separation for the task. Do not create feature branches or PRs automatically. Before editing, inspect incoming commits and their changed paths. If the checkout is behind/diverged, integrate carefully first; do not build on a knowingly stale base.
 4. Before committing, run `python tools/repo_workflow.py check` again. It checks for new remote commits and reports overlapping paths, including staged, unstaged, untracked and task-branch changes. A remote advance must be reviewed and integrated before committing. Same-file overlaps require reviewing the actual hunks, not blindly choosing ours/theirs.
 5. After reconciliation, rerun affected tests, refresh the baseline with `begin`, re-evaluate the version, and rerun `check`. This is a review checkpoint, not permission to ignore incoming work.
 6. Stage only intended paths. Run `python tools/repo_workflow.py precommit` against the staged release metadata. Inspect the staged diff before making an authorized commit.
 7. Run `check` immediately before pushing. Use ordinary pushes only; never force-push shared history or overwrite another contributor's commit. If Git rejects a push, inspect/fetch/reconcile and retest; do not bypass the rejection.
 
-Checks reduce overlap; they cannot lock out commits made a moment later or detect every semantic conflict. A normal push rejects stale shared history. Prefer a reviewed PR with up-to-date checks; branch protection requires separate repository configuration and is not enabled merely by this file.
+Checks reduce overlap; they cannot lock out commits made a moment later or detect every semantic conflict. A normal push rejects stale shared history. Review the diff and run up-to-date checks before publishing directly to `main`. Branch protection requires separate repository configuration and is not enabled merely by this file.
 
 ## Design-skill choice
 

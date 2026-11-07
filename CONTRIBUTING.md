@@ -13,7 +13,7 @@ python tools/repo_workflow.py begin
 
 The helper prints local state before contacting the remote, checks/fetches `main` and the current task branch when it exists remotely, and stores their baseline heads inside Git's per-worktree metadata. It never checks out, merges, rebases, commits or pushes. If the current checkout is stale, review the reported commits and integrate first. Do not discard dirty work to make the check pass.
 
-Create a focused feature branch after synchronizing, then run `begin` again on that branch. Use a separate worktree per independent task. Keep scope clear so two people do not unintentionally edit the same feature. Inspect the relevant REA sections before implementing UI or marketplace flows.
+Work and commit on `main` by default after synchronizing. Use a separate branch only when the user explicitly requests separation; do not automatically create feature branches or PRs. If a separate branch is requested, run `begin` again there. Keep scope clear so two people do not unintentionally edit the same feature. Inspect the relevant REA sections before implementing UI or marketplace flows.
 
 ## Implement and test
 
@@ -29,7 +29,7 @@ Only after the user requests **"commit to GitHub"** (or an equally explicit publ
 2. Prepare the next version with `python tools/repo_workflow.py bump patch` for a small update or `bump minor` for a substantial change. The initial release metadata is already `0.0.1`; do not bump it again for the first workflow publication.
 3. Complete `releases/<version>.md` and the matching changelog entry. Include actual checks and unresolved limits; no TODO placeholders.
 4. Stage specific intended paths with `git add -- <paths>`. Inspect `git diff --cached` and run `python tools/repo_workflow.py precommit`. This validates the index, not just unstaged working files.
-5. Make the authorized commit. Run `check` again immediately before an ordinary push. Prefer feature branches and PR review for shared work. A request to publish a feature branch is not permission to merge it into `main` unless the user's scope includes that merge.
+5. Make the authorized commit. Run `check` again immediately before an ordinary push. Push to `main` by default; use a separate branch only when explicitly requested. A request to publish a feature branch is not permission to merge it into `main` unless the user's scope includes that merge.
 6. If a collaborator moves `main` or the target branch, review/integrate and retest. Never force-push to hide the conflict. Version/changelog/release notes commonly overlap and need explicit reconciliation too.
 7. For a `main` update, watch the release workflow and report its outcome. See [release operations](docs/RELEASING.md).
 
@@ -41,7 +41,7 @@ git add -- <reviewed-paths>
 python tools/repo_workflow.py precommit
 git commit -m "Describe the resulting change"
 python tools/repo_workflow.py check
-git push origin <your-branch>
+git push origin main
 ```
 
 These examples are not standing permission for an AI to run commit/push.

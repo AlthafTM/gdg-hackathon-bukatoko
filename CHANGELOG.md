@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.1.1] - 2026-11-07
+
+- See [release notes](releases/0.1.1.md).
+
 ## [0.1.0] - 2026-11-07
 
 - Apply the purple/lavender/green palette across all seven pages, shared controls, light/dark themes, favicon and demo illustrations; initialize the system theme correctly while preserving manual selection.

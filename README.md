@@ -44,9 +44,22 @@ Our **wanted-item requests with a listed price range** are part of Bukatoko's in
 - Run `python tools/repo_workflow.py begin` at task start, `check` before committing/pushing, and `precommit` after staging. Review and reconcile remote advances and overlapping work first.
 - Every approved `main` update includes release metadata. GitHub Actions publishes a tagged release after validation; see [releases](https://github.com/AlthafTM/gdg-hackathon-bukatoko/releases).
 - Keep app implementation and research references distinguishable.
-- Use focused branches and pull requests to make changes reviewable.
+- Work and commit directly on `main` unless the user explicitly requests a separate branch. Review diffs and synchronize before publishing.
 - Preserve dated research evidence; record new observations separately.
 - Update the editable report, generated PDF/text and integrity manifest together when changing the research package.
 - Do not commit credentials, private account exports or temporary build/review files.
 
-The current handoff provides research and design references. The implementation stack and detailed hackathon feature scope are for the team to choose.
+The app uses a Python/SQLite server with a plain HTML/CSS/JavaScript frontend. See [app setup](app/README.md).
+
+
+## Web preview
+
+Open the [read-only Bukatoko preview](https://althaftm.github.io/gdg-hackathon-bukatoko/). Browse sample listings, search/filter/sort, open item details and seller profiles, and view wanted requests with price ranges. The existing purple, lavender and green design is preserved.
+
+GitHub Pages serves public sample fixtures only. Sign-in, posting, uploads, saving, offers, messages and reviews require the local Python server; the preview does not accept credentials or transaction data. See [Pages setup and verification](docs/PAGES.md).
+
+## Contributors
+
+- [DHO212](https://github.com/DHO212) — marketplace app, Python/SQLite API and API smoke tests ([PR #1](https://github.com/AlthafTM/gdg-hackathon-bukatoko/pull/1)).
+- [ColdCloverr](https://github.com/ColdCloverr) — purple, lavender and green palette ([PR #2](https://github.com/AlthafTM/gdg-hackathon-bukatoko/pull/2)).
+- [AlthafTM](https://github.com/AlthafTM) — project maintenance, research references and collaboration workflow.

@@ -95,6 +95,7 @@
 
   /* ---------- api ---------- */
   function api(path, opts) {
+    if (window.BukatokoPreview) return window.BukatokoPreview.request(path, opts);
     opts = opts || {};
     var init = { method: opts.method || "GET", credentials: "same-origin", headers: {} };
     if (opts.body !== undefined) {
@@ -252,6 +253,7 @@
   }
 
   function authModal(mode) {
+    if (window.BukatokoPreview) { window.BukatokoPreview.notice(); return; }
     var isLogin = mode !== "signup";
     var body = [];
     var form = el("form", { id: "auth-form" });
@@ -467,8 +469,10 @@
       var counts = qs("#home-counts");
       if (counts) {
         var aktif = listings.filter(function (i) { return i.status === "active"; }).length;
-        counts.textContent = "Server mencatat " + aktif + " barang aktif dan " + wanted.length +
-          " permintaan. Angka ini dari basis data, bukan klaim pemasaran.";
+        counts.textContent = window.BukatokoPreview
+          ? "Pratinjau memuat " + aktif + " barang contoh dan " + wanted.length + " permintaan contoh."
+          : "Server mencatat " + aktif + " barang aktif dan " + wanted.length +
+            " permintaan. Angka ini dari basis data, bukan klaim pemasaran.";
       }
       if (homeState) homeState.hidden = true;
     }).catch(function (err) {
@@ -893,7 +897,7 @@
       }
 
       qs("#share").addEventListener("click", function () {
-        var url = location.origin + "/p/" + item.id;
+        var url = window.BukatokoPreview ? window.BukatokoPreview.listingUrl(item.id) : location.origin + "/p/" + item.id;
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(url).then(function () { toast("Tautan disalin: " + url); },
             function () { toast(url); });
