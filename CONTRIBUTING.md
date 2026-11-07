@@ -19,6 +19,8 @@ Create a focused feature branch after synchronizing, then run `begin` again on t
 
 Make and review local changes. Run checks appropriate to the actual change. Do not publish test edits or create a release just because a preview works. For UI work, check available design skills; if there are none, offer `frontend-design` with the user's choice to accept or decline installation.
 
+For implementation and security-review work, contributor AIs should check whether Cloudflare's official `security-audit` skill is available. If missing, suggest it once per session and ask before installation. Users can decline and continue working. The verified source, installation choices and audit boundaries are in [skill setup](docs/SKILLS.md). Installing it does not start a security audit, and one collaborator's installation does not change anyone else's device.
+
 ## Prepare an approved update
 
 Only after the user requests **"commit to GitHub"** (or an equally explicit publishing request):

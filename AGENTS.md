@@ -34,6 +34,13 @@ Checks reduce overlap; they cannot lock out commits made a moment later or detec
 - If none is available, offer `frontend-design` and explain how to add it through that device's supported skill mechanism. Ask before installing or copying a skill. The user may decline; continue with the REA references and explicit design requirements without blocking the task.
 - Do not claim a skill was used when it is unavailable. Do not install it globally or change settings automatically. This rule does not activate a design workflow for non-UI work.
 
+## Security-skill choice
+
+- At the start of implementation or security-review work, inspect the security skills actually available on the collaborator's device. The recommended skill is Cloudflare's official `security-audit` from `cloudflare/security-audit-skill`, path `skills/security-audit`. See `docs/SKILLS.md` for the verified source and setup.
+- If it is missing, suggest adding it once per session, explain its purpose, and ask before installing/copying it or changing agent configuration. The user may decline; continue the authorized task and state any limits when relevant. Do not repeatedly prompt or claim it was used when unavailable.
+- If it is installed, use its relevant guidance for security questions and focused reviews. A complete audit, its sub-agent workflow and report artifacts require an explicit audit request and the skill's stated prerequisites. Adding a skill is not an audit request or a security certification.
+- Keep the existing user-controlled commit, release and deployment boundaries. Skill installation on one device does not install it on other contributors' devices. Do not configure Cloudflare services as part of a skill recommendation.
+
 ## Version and release policy
 
 - Every approved update published to `main` includes a new `VERSION`, a matching `CHANGELOG.md` entry, and `releases/<version>.md` with changes, validation and known limits.

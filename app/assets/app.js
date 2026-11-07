@@ -121,7 +121,8 @@
 
   function initTheme() {
     var saved = localStorage.getItem("bukatoko:theme");
-    if (saved) applyTheme(saved);
+    var systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    applyTheme(saved || (systemTheme.matches ? "dark" : "light"));
     var btn = qs("#theme-toggle");
     if (!btn) return;
     function label() {
@@ -132,6 +133,12 @@
       btn.setAttribute("aria-label", dark ? "Ganti ke tema terang" : "Ganti ke tema gelap");
     }
     label();
+    systemTheme.addEventListener("change", function (event) {
+      if (!localStorage.getItem("bukatoko:theme")) {
+        applyTheme(event.matches ? "dark" : "light");
+        label();
+      }
+    });
     btn.addEventListener("click", function () {
       var dark = document.documentElement.getAttribute("data-theme") === "dark" ||
         (!document.documentElement.getAttribute("data-theme") &&
@@ -157,8 +164,8 @@
 
   /* ---------- foto placeholder ---------- */
   var PALETTES = [
-    ["#E7DCC4", "#8A6B3A"], ["#DCE5DA", "#31705A"], ["#E5DCE6", "#6D4A72"],
-    ["#E6DFD2", "#7A5A32"], ["#D9E2E8", "#3A5F72"], ["#E9DFD6", "#8B4B32"]
+    ["#F3E8FF", "#1F1637"], ["#FAF9FF", "#7C3AED"], ["#A78BFA", "#1F1637"],
+    ["#F0FDF4", "#166534"], ["#7C3AED", "#FAF9FF"], ["#22C55E", "#052E16"]
   ];
 
   function photo(seed, label, ratio) {
@@ -177,7 +184,7 @@
       '<path d="M' + (w * 0.26) + " " + (h * 0.5) + ' L' + (w * 0.4) + " " + (h * 0.35) + " L" + (w * 0.55) + " " + (h * 0.5) + ' L' + (w * 0.74) + " " + (h * 0.33) + '"/>' +
       "</g>" +
       '<text x="50%" y="' + (h * 0.79) + '" text-anchor="middle" font-family="ui-monospace, monospace" font-size="' + Math.round(h * 0.062) + '" fill="' + pal[1] + '">foto contoh</text>' +
-      '<text x="50%" y="' + (h * 0.89) + '" text-anchor="middle" font-family="ui-monospace, monospace" font-size="' + Math.round(h * 0.045) + '" fill="' + pal[1] + '" opacity="0.85">' + esc(label || "") + "</text>" +
+      '<text x="50%" y="' + (h * 0.89) + '" text-anchor="middle" font-family="ui-monospace, monospace" font-size="' + Math.round(h * 0.045) + '" fill="' + pal[1] + '">' + esc(label || "") + "</text>" +
       "</svg>";
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
