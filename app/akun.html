@@ -27,7 +27,7 @@
     <div class="hdr-actions">
       <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
       <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
-      <span class="notif" id="notif-badge" hidden></span>
+      <a class="notif" id="notif-badge" href="akun.html#notifikasi" aria-label="Notifikasi belum dibaca" hidden></a>
       <button class="btn btn-outline btn-sm" id="auth-button" type="button">Masuk</button>
       <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
     </div>
@@ -45,6 +45,14 @@
 
     <div id="akun-content" hidden>
       <p style="color:var(--muted); margin-bottom:0;">Masuk sebagai <strong id="akun-nama">-</strong> · <span id="akun-email" class="card-meta"></span></p>
+      <div id="verify-banner" class="form-card" hidden style="margin-top:12px;">
+        <p class="field-note" id="verify-note">Email ini belum diverifikasi.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <input id="verify-code" type="text" placeholder="Kode verifikasi" style="flex:1; min-width:180px;">
+          <button class="btn btn-outline" type="button" id="verify-send">Kirim ulang</button>
+          <button class="btn btn-primary" type="button" id="verify-submit">Verifikasi</button>
+        </div>
+      </div>
 
       <ul class="counts">
         <li><strong id="c-simpan">0</strong> disimpan</li>
@@ -61,6 +69,8 @@
         <button type="button" role="tab" data-tab="permintaan" aria-selected="false" aria-controls="panel-permintaan" id="tab-permintaan" tabindex="-1">Permintaan saya</button>
         <button type="button" role="tab" data-tab="tawaran" aria-selected="false" aria-controls="panel-tawaran" id="tab-tawaran" tabindex="-1">Tawaran</button>
         <button type="button" role="tab" data-tab="pesan" aria-selected="false" aria-controls="panel-pesan" id="tab-pesan" tabindex="-1">Pesan</button>
+        <button type="button" role="tab" data-tab="notifikasi" aria-selected="false" aria-controls="panel-notifikasi" id="tab-notifikasi" tabindex="-1">Notifikasi <span class="tab-count" id="c-notif">0</span></button>
+        <button type="button" role="tab" data-tab="transaksi" aria-selected="false" aria-controls="panel-transaksi" id="tab-transaksi" tabindex="-1">Transaksi</button>
         <button type="button" role="tab" data-tab="pencarian" aria-selected="false" aria-controls="panel-pencarian" id="tab-pencarian" tabindex="-1">Pencarian</button>
       </div>
 
@@ -70,6 +80,8 @@
       <section id="panel-tawaran" role="tabpanel" aria-labelledby="tab-tawaran" hidden></section>
       <section id="panel-pesan" role="tabpanel" aria-labelledby="tab-pesan" hidden></section>
       <section id="panel-pencarian" role="tabpanel" aria-labelledby="tab-pencarian" hidden></section>
+      <section id="panel-notifikasi" role="tabpanel" aria-labelledby="tab-notifikasi" hidden></section>
+      <section id="panel-transaksi" role="tabpanel" aria-labelledby="tab-transaksi" hidden></section>
 
       <p class="field-note" style="margin-top:24px;">Menandai barang terjual mematikan tawaran baru. Menerima tawaran juga menandai barang terjual dan membuka kesempatan menulis ulasan bagi dua pihak.</p>
     </div>

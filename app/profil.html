@@ -27,7 +27,7 @@
     <div class="hdr-actions">
       <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
       <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
-      <span class="notif" id="notif-badge" hidden></span>
+      <a class="notif" id="notif-badge" href="akun.html#notifikasi" aria-label="Notifikasi belum dibaca" hidden></a>
       <button class="btn btn-outline btn-sm" id="auth-button" type="button">Masuk</button>
       <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
     </div>
@@ -42,6 +42,7 @@
         <h1 id="p-nama" style="font-size:24px;">-</h1>
         <div class="card-meta" id="p-rating">-</div>
         <div class="card-meta" id="p-bergabung">-</div>
+        <div class="card-meta" id="p-stats"></div>
       </div>
       <button class="btn btn-outline btn-sm" id="p-block" type="button" style="margin-left:auto;">Blokir penjual</button>
     </div>
@@ -49,7 +50,17 @@
     <h2 style="font-size:20px; margin-bottom:12px;">Barang</h2>
     <div class="grid" id="profil-listings"></div>
 
-    <h2 style="font-size:20px; margin:32px 0 12px;">Ulasan</h2>
+    <div class="sec-head" style="margin-top:32px;">
+      <h2 style="font-size:20px;">Ulasan</h2>
+      <label class="card-meta" for="p-sort" style="display:flex; align-items:center; gap:6px;">Urutkan
+        <select id="p-sort" style="min-height:44px; padding:6px 10px;">
+          <option value="baru">Terbaru</option>
+          <option value="tinggi">Bintang tertinggi</option>
+          <option value="rendah">Bintang terendah</option>
+        </select>
+      </label>
+    </div>
+    <div id="p-bars"></div>
     <div id="profil-reviews"></div>
   </div>
 </main>

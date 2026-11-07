@@ -93,6 +93,187 @@
     }
   }
 
+  /* ---------- riwayat lihat (peramban sendiri) ---------- */
+  var RECENT_KEY = "bukatoko:recent";
+
+  function cookieValue(name) {
+    var parts = document.cookie ? document.cookie.split("; ") : [];
+    for (var i = 0; i < parts.length; i++) {
+      var eq = parts[i].indexOf("=");
+      if (eq > 0 && parts[i].slice(0, eq) === name) return decodeURIComponent(parts[i].slice(eq + 1));
+    }
+    return "";
+  }
+
+  function recentIds() {
+    try {
+      var raw = JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
+      return Array.isArray(raw) ? raw.filter(function (x) { return typeof x === "string"; }).slice(0, 8) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function rememberViewed(id) {
+    if (!id) return;
+    try {
+      var list = recentIds().filter(function (x) { return x !== id; });
+      list.unshift(id);
+      localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 8)));
+    } catch (e) {
+      // mode privat atau kuota penuh: riwayat cukup dilewati, tidak mengganggu halaman
+    }
+  }
+
+  function paintRecent() {
+    var rail = qs("#recent-rail");
+    var section = qs("#recent-section");
+    if (!rail || !section) return;
+    var ids = recentIds();
+    if (!ids.length) {
+      section.hidden = true;
+      return;
+    }
+    api("/api/listings?ids=" + encodeURIComponent(ids.join(",")) + "&status=all&limit=8").then(function (data) {
+      var byId = {};
+      (data.items || []).forEach(function (i) { byId[i.id] = i; });
+      var ordered = ids.map(function (id) { return byId[id]; }).filter(Boolean);
+      if (!ordered.length) {
+        section.hidden = true;
+        return;
+      }
+      rail.innerHTML = "";
+      ordered.forEach(function (i) { rail.appendChild(card(i)); });
+      section.hidden = false;
+    }).catch(function () {
+      section.hidden = true;
+    });
+  }
+
+  /* ---------- suka & komentar ---------- */
+  function socialBar(targetType, targetId, counts) {
+    var wrap = el("div", { class: "social-bar" });
+    var liked = !!counts.liked;
+    var likeBtn = el("button", {
+      class: "btn btn-quiet btn-sm", type: "button",
+      "aria-pressed": liked ? "true" : "false",
+      text: (liked ? "Suka · " : "Suka  ") + (counts.likes || 0)
+    });
+    likeBtn.addEventListener("click", function () {
+      requireAuth(function () {
+        likeBtn.disabled = true;
+        api("/api/likes", { method: "POST", body: { target_type: targetType, target_id: targetId } })
+          .then(function (data) {
+            likeBtn.textContent = (data.liked ? "Suka · " : "Suka  ") + data.likes;
+            likeBtn.setAttribute("aria-pressed", data.liked ? "true" : "false");
+          })
+          .catch(function (err) { toast(err.message); })
+          .then(function () { likeBtn.disabled = false; });
+      });
+    });
+    var toggle = el("button", {
+      class: "btn btn-quiet btn-sm", type: "button",
+      "aria-expanded": "false",
+      text: (counts.comments || 0) + " komentar"
+    });
+    var box = el("div", { class: "comment-slot" });
+    var loaded = false;
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      box.hidden = open;
+      if (!open && !loaded) {
+        loaded = true;
+        box.appendChild(commentSection(targetType, targetId));
+      }
+    });
+    box.hidden = true;
+    wrap.appendChild(likeBtn);
+    wrap.appendChild(toggle);
+    wrap.appendChild(box);
+    return wrap;
+  }
+
+  function commentSection(targetType, targetId) {
+    var wrap = el("div", { class: "comment-box" });
+    var listEl = el("div", {});
+    var input = el("input", { type: "text", placeholder: "Tulis komentar", maxlength: "600" });
+    var send = el("button", { class: "btn btn-sm btn-primary", type: "button", text: "Kirim" });
+
+    function load() {
+      api("/api/comments?target_type=" + targetType + "&target_id=" + encodeURIComponent(targetId))
+        .then(function (data) {
+          listEl.innerHTML = "";
+          if (!data.items.length) {
+            listEl.appendChild(el("p", { class: "card-meta", text: "Belum ada komentar." }));
+            return;
+          }
+          data.items.forEach(function (c) {
+            listEl.appendChild(el("div", { class: "comment" }, [
+              el("div", { class: "comment-head" }, [
+                el("strong", { text: c.author }),
+                el("span", { class: "card-meta", text: " · " + timeAgo(c.created_at) })
+              ]),
+              el("p", { text: c.body })
+            ]));
+          });
+        })
+        .catch(function (err) { listEl.textContent = err.message; });
+    }
+
+    send.addEventListener("click", function () {
+      var text = input.value.trim();
+      if (!text) return;
+      requireAuth(function () {
+        send.disabled = true;
+        api("/api/comments", { method: "POST",
+          body: { target_type: targetType, target_id: targetId, body: text } })
+          .then(function () { input.value = ""; load(); })
+          .catch(function (err) { toast(err.message); })
+          .then(function () { send.disabled = false; });
+      });
+    });
+
+    wrap.appendChild(listEl);
+    wrap.appendChild(el("div", { class: "comment-form" }, [input, send]));
+    load();
+    return wrap;
+  }
+
+  function replyWantedModal(w) {
+    var sel = el("select", { id: "reply-listing" });
+    sel.appendChild(el("option", { value: "", text: "Tanpa lampiran barang" }));
+    var msg = el("textarea", { id: "reply-body", rows: "3", maxlength: "600", placeholder: "Ceritakan barangmu dan cara serah terima" });
+    var err = el("p", { class: "form-error", hidden: null });
+    var send = el("button", { class: "btn btn-primary", type: "button", text: "Kirim tanggapan" });
+
+    api("/api/listings?owner=" + S.me.id + "&limit=50").then(function (data) {
+      (data.items || []).forEach(function (i) {
+        if (i.status !== "active") return;
+        sel.appendChild(el("option", { value: i.id, text: i.title + " · " + rp(i.price) }));
+      });
+    }).catch(function () { /* daftar barang opsional */ });
+
+    send.addEventListener("click", function () {
+      err.hidden = true;
+      send.disabled = true;
+      api("/api/wanted/" + w.id + "/reply", {
+        method: "POST", body: { listing_id: sel.value || "", body: msg.value.trim() }
+      })
+        .then(function () { toast("Tanggapan terkirim ke " + w.owner.name + "."); closeModals(); })
+        .catch(function (ex) { err.textContent = ex.message; err.hidden = false; send.disabled = false; });
+    });
+
+    modalShell("modal-wanted-reply", "Tanggapi permintaan", [
+      el("p", { class: "field-note", text: "Permintaan " + w.owner.name + ": " + w.title + " (" +
+        rp(w.price_min) + " sampai " + rp(w.price_max) + ")" }),
+      el("div", { class: "field" }, [el("label", { for: "reply-listing", text: "Lampirkan barangmu (opsional)" }), sel]),
+      el("div", { class: "field", style: "margin-top:10px;" }, [el("label", { for: "reply-body", text: "Pesan" }), msg]),
+      err, send
+    ]);
+    openModal("modal-wanted-reply");
+  }
+
   /* ---------- api ---------- */
   function api(path, opts) {
     if (window.BukatokoPreview) return window.BukatokoPreview.request(path, opts);
@@ -101,6 +282,10 @@
     if (opts.body !== undefined) {
       init.headers["Content-Type"] = "application/json";
       init.body = JSON.stringify(opts.body);
+    }
+    if (init.method !== "GET" && init.method !== "HEAD") {
+      var csrf = cookieValue("bk_csrf");
+      if (csrf) init.headers["X-CSRF-Token"] = csrf;
     }
     return fetch(path, init).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
@@ -197,12 +382,18 @@
     var back = qs("#" + id);
     if (back) back.remove();
     back = el("div", { class: "modal-backdrop", id: id, hidden: null });
-    var box = el("div", { class: "modal", role: "dialog", "aria-modal": "true", "aria-labelledby": id + "-title" }, [
-      el("h2", { id: id + "-title", text: title })
+    var closeBtn = el("button", { class: "modal-close", type: "button", "aria-label": "Tutup dialog" });
+    closeBtn.appendChild(el("span", { "aria-hidden": "true", text: "×" }));
+    closeBtn.addEventListener("click", closeModals);
+    var head = el("div", { class: "modal-head" }, [
+      el("h2", { id: id + "-title", text: title }), closeBtn
     ]);
+    var box = el("div", { class: "modal", role: "dialog", "aria-modal": "true", "aria-labelledby": id + "-title" }, [head]);
     (Array.isArray(body) ? body : [body]).forEach(function (n) { if (n) box.appendChild(n); });
     if (foot) box.appendChild(foot);
     back.appendChild(box);
+    // klik latar menutup, klik isi dialog tidak
+    back.addEventListener("click", function (e) { if (e.target === back) closeModals(); });
     document.body.appendChild(back);
     return back;
   }
@@ -246,9 +437,15 @@
       btn.title = S.me ? S.me.email : "";
     }
     if (badge) {
-      var n = S.me && S.me.counts ? (S.me.counts.unread + S.me.counts.offers + S.me.counts.matches) : 0;
-      badge.textContent = n > 9 ? "9+" : String(n);
+      var n = S.me && S.me.counts ? (S.me.counts.notif || 0) : 0;
+      var pill = badge.querySelector(".pill");
+      if (!pill) {
+        pill = el("span", { class: "pill" });
+        badge.appendChild(pill);
+      }
+      pill.textContent = n > 9 ? "9+" : String(n);
       badge.hidden = n === 0;
+      badge.setAttribute("aria-label", n ? n + " notifikasi belum dibaca" : "Notifikasi");
     }
   }
 
@@ -297,6 +494,15 @@
     swap.addEventListener("click", function () { authModal(isLogin ? "signup" : "login"); });
     form.appendChild(swap);
 
+    if (isLogin) {
+      var forgot = el("button", {
+        class: "btn btn-quiet btn-sm btn-block", type: "button",
+        text: "Lupa kata sandi?", style: "margin-top:4px;"
+      });
+      forgot.addEventListener("click", function () { resetModal(); });
+      form.appendChild(forgot);
+    }
+
     body.push(el("p", { class: "field-note", text: isLogin ? "Masuk untuk menawar, menyimpan, dan memasang barang." : "Daftar dengan email dan kata sandi. Data lain tidak diminta." }));
     body.push(form);
 
@@ -315,13 +521,20 @@
       submit.disabled = true;
       submit.textContent = "Memproses...";
       api(isLogin ? "/api/login" : "/api/signup", { method: "POST", body: payload })
-        .then(function () { return api("/api/me"); })
+        .then(function (res) {
+          S.demoVerify = (res && res.demo_verify_code) || "";
+          return api("/api/me");
+        })
         .then(function (me) {
           S.me = me && me.id ? me : null;
           paintUser();
           if (!S.me) throw new Error("Sesi tidak terbentuk. Coba masuk lagi.");
           closeModals();
-          toast(isLogin ? "Masuk sebagai " + S.me.name : "Akun dibuat. Selamat datang, " + S.me.name + ".");
+          if (S.demoVerify) {
+            toast("Akun dibuat. Kode verifikasi demo: " + S.demoVerify);
+          } else {
+            toast(isLogin ? "Masuk sebagai " + S.me.name : "Akun dibuat. Selamat datang, " + S.me.name + ".");
+          }
           var pending = window.__afterAuth;
           window.__afterAuth = null;
           if (typeof pending === "function") pending();
@@ -333,6 +546,54 @@
           submit.textContent = isLogin ? t("login") : "Daftar";
         });
     });
+  }
+
+  function resetModal() {
+    var mail = el("input", { id: "reset-email", type: "text", autocomplete: "email", placeholder: "nama@email.com" });
+    var code = el("input", { id: "reset-code", type: "text", inputmode: "numeric", placeholder: "6 angka" });
+    var pw = el("input", { id: "reset-password", type: "password", autocomplete: "new-password", minlength: "8" });
+    var info = el("p", { class: "field-note" });
+    var err = el("p", { class: "form-error", hidden: null });
+
+    var ask = el("button", { class: "btn btn-outline", type: "button", text: "Kirim kode" });
+    ask.addEventListener("click", function () {
+      err.hidden = true;
+      ask.disabled = true;
+      api("/api/reset/request", { method: "POST", body: { email: mail.value.trim() } })
+        .then(function (data) {
+          if (data.demo_reset_code) {
+            info.textContent = "Mode demo tanpa email: kodenya " + data.demo_reset_code +
+              " (berlaku " + (data.expires_minutes || 30) + " menit).";
+            code.value = data.demo_reset_code;
+          } else {
+            info.textContent = data.message || "Cek email untuk kodenya.";
+          }
+        })
+        .catch(function (ex) { err.textContent = ex.message; err.hidden = false; })
+        .then(function () { ask.disabled = false; });
+    });
+
+    var save = el("button", { class: "btn btn-primary", type: "button", text: "Simpan sandi baru" });
+    save.addEventListener("click", function () {
+      err.hidden = true;
+      save.disabled = true;
+      api("/api/reset/confirm", { method: "POST",
+        body: { email: mail.value.trim(), code: code.value.trim(), password: pw.value } })
+        .then(function () { toast("Sandi diganti. Masuk dengan sandi baru."); authModal("login"); })
+        .catch(function (ex) { err.textContent = ex.message; err.hidden = false; save.disabled = false; });
+    });
+
+    modalShell("modal-reset", "Lupa kata sandi", [
+      el("p", { class: "field-note", text: "Masukkan email akunmu. Mesin ini belum punya SMTP, jadi kode reset ditampilkan di layar." }),
+      el("div", { class: "field" }, [el("label", { for: "reset-email", text: "Email atau nama" }), mail]),
+      ask,
+      info,
+      el("div", { class: "field", style: "margin-top:10px;" }, [el("label", { for: "reset-code", text: "Kode" }), code]),
+      el("div", { class: "field", style: "margin-top:10px;" }, [el("label", { for: "reset-password", text: "Kata sandi baru" }), pw]),
+      err,
+      save
+    ]);
+    openModal("modal-reset");
   }
 
   function requireAuth(then) {
@@ -451,6 +712,21 @@
         railBaru.innerHTML = "";
         listings.slice(0, 8).forEach(function (i) { railBaru.appendChild(card(i)); });
       }
+      var railKat = qs("#rail-kategori");
+      if (railKat) {
+        railKat.innerHTML = "";
+        var counts = {};
+        listings.forEach(function (i) { counts[i.category] = (counts[i.category] || 0) + 1; });
+        Object.keys(KATEGORI).forEach(function (k) {
+          if (!counts[k]) return;
+          railKat.appendChild(el("a", {
+            class: "cat-chip", href: "jelajah.html?kat=" + encodeURIComponent(k)
+          }, [
+            el("strong", { text: KATEGORI[k] }),
+            el("span", { text: counts[k] + " barang" })
+          ]));
+        });
+      }
       if (railTurun) {
         railTurun.innerHTML = "";
         listings.filter(function (i) { return i.old_price; }).slice(0, 8).forEach(function (i) {
@@ -475,6 +751,7 @@
             " permintaan. Angka ini dari basis data, bukan klaim pemasaran.";
       }
       if (homeState) homeState.hidden = true;
+      paintRecent();
     }).catch(function (err) {
       if (railBaru) railBaru.innerHTML = "";
       if (railTurun) railTurun.innerHTML = "";
@@ -493,7 +770,8 @@
       min: p.get("min") || "",
       max: p.get("max") || "",
       sort: p.get("urut") || "baru",
-      status: p.get("status") || "active"
+      status: p.get("status") || "active",
+      foto: p.get("foto") || ""
     };
   }
 
@@ -521,6 +799,7 @@
       if (state.max) p.set("max", state.max);
       if (state.sort && state.sort !== "baru") p.set("urut", state.sort);
       if (state.status && state.status !== "active") p.set("status", state.status);
+      if (state.foto) p.set("foto", state.foto);
       return p;
     }
 
@@ -540,6 +819,8 @@
       qs("#f-urut").value = state.sort;
       var st = qs("#f-status");
       if (st) st.value = state.status;
+      var fto = qs("#f-foto");
+      if (fto) fto.value = state.foto;
       var crumb = qs("#crumb-kat");
       if (crumb) crumb.textContent = state.kat ? kategoriName(state.kat) : "Semua kategori";
       var h1 = qs("#explore-title");
@@ -601,6 +882,7 @@
       if (!append) { skeletons(4, grid); stateBoxEl.hidden = true; }
       syncUrl();
       var p = queryString();
+      if (state.foto) p.set("has_photo", "1");
       p.set("limit", "24");
       p.set("offset", String(offset));
       api("/api/listings?" + p.toString()).then(function (data) {
@@ -634,6 +916,25 @@
       });
     }
 
+    var qInput = qs("#f-q");
+    var saran = qs("#saran-q");
+    if (qInput && saran) {
+      var timer = 0;
+      qInput.addEventListener("input", function () {
+        var v = qInput.value.trim();
+        clearTimeout(timer);
+        if (v.length < 2) { saran.innerHTML = ""; return; }
+        timer = setTimeout(function () {
+          api("/api/suggest?q=" + encodeURIComponent(v)).then(function (data) {
+            saran.innerHTML = "";
+            (data.items || []).forEach(function (title) {
+              saran.appendChild(el("option", { value: title }));
+            });
+          }).catch(function () { /* saran hanya pelengkap */ });
+        }, 250);
+      });
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       state.q = qs("#f-q").value.trim();
@@ -644,6 +945,7 @@
       state.max = qs("#f-max").value;
       state.sort = qs("#f-urut").value;
       if (qs("#f-status")) state.status = qs("#f-status").value;
+      if (qs("#f-foto")) state.foto = qs("#f-foto").value;
       var details = qs("#filter-details");
       if (details) details.removeAttribute("open");
       load(false);
@@ -694,6 +996,109 @@
   }
 
   /* ---------- detail barang ---------- */
+  function editModal(item) {
+    var fields = el("div", { class: "form-grid" });
+    var title = el("input", { id: "e-title", type: "text", value: item.title, maxlength: "90", required: null });
+    var price = el("input", { id: "e-price", type: "number", inputmode: "numeric", min: "1", step: "1000", value: String(item.price), required: null });
+    var city = el("input", { id: "e-city", type: "text", value: item.city, maxlength: "40", required: null });
+    var desc = el("textarea", { id: "e-desc", rows: "4", maxlength: "2000" });
+    desc.value = item.description || "";
+    var kat = el("select", { id: "e-kat" });
+    Object.keys(KATEGORI).forEach(function (k) {
+      var o = el("option", { value: k, text: KATEGORI[k] });
+      if (k === item.category) o.selected = true;
+      kat.appendChild(o);
+    });
+    var cond = el("select", { id: "e-cond" });
+    ["Bekas", "Seperti baru", "Baru"].forEach(function (c) {
+      var o = el("option", { value: c, text: c });
+      if (c === item.condition) o.selected = true;
+      cond.appendChild(o);
+    });
+
+    fields.appendChild(el("div", { class: "field" }, [el("label", { for: "e-title", text: "Judul" }), title]));
+    fields.appendChild(el("div", { class: "field" }, [el("label", { for: "e-price", text: "Harga (Rp)" }), price]));
+    fields.appendChild(el("div", { class: "field" }, [el("label", { for: "e-kat", text: "Kategori" }), kat]));
+    fields.appendChild(el("div", { class: "field" }, [el("label", { for: "e-cond", text: "Kondisi" }), cond]));
+    fields.appendChild(el("div", { class: "field" }, [el("label", { for: "e-city", text: "Lokasi" }), city]));
+    fields.appendChild(el("div", { class: "field", style: "grid-column:1/-1;" }, [el("label", { for: "e-desc", text: "Deskripsi" }), desc]));
+
+    var photos = (item.photo_urls || []).slice();
+    var photoWrap = el("div", { class: "edit-photos", id: "e-photos" });
+    function paintPhotos() {
+      photoWrap.innerHTML = "";
+      if (!photos.length) {
+        photoWrap.appendChild(el("p", { class: "field-note", text: "Tanpa foto. Barang tanpa foto tetap tayang, tapi lebih sulit dipercaya pembeli." }));
+        return;
+      }
+      photos.forEach(function (url, i) {
+        var cell = el("div", { class: "edit-photo" }, [
+          el("img", { src: url, alt: "Foto " + (i + 1) + " " + item.title, width: "96", height: "96", loading: "lazy" })
+        ]);
+        var rm = el("button", { class: "btn btn-sm btn-danger", type: "button", text: "Hapus", "aria-label": "Hapus foto " + (i + 1) });
+        rm.addEventListener("click", function () {
+          photos.splice(i, 1);
+          paintPhotos();
+        });
+        cell.appendChild(rm);
+        photoWrap.appendChild(cell);
+      });
+    }
+    paintPhotos();
+
+    var fileInput = el("input", { id: "e-file", type: "file", accept: "image/jpeg,image/png,image/webp,image/gif", multiple: null });
+    fileInput.addEventListener("change", function () {
+      var picked = Array.prototype.slice.call(fileInput.files || []).slice(0, 10 - photos.length);
+      if (!picked.length) return;
+      toast("Mengunggah " + picked.length + " foto...");
+      Promise.all(picked.map(function (f) {
+        return downscale(f, 1600).then(function (blob) {
+          var fd = new FormData();
+          fd.append("files", blob, f.name.replace(/\.\w+$/, "") + ".jpg");
+          return fetch("/api/upload", { method: "POST", body: fd, credentials: "same-origin",
+            headers: { "X-CSRF-Token": cookieValue("bk_csrf") } })
+            .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || "unggah gagal"); return d; }); });
+        });
+      })).then(function (res) {
+        res.forEach(function (r) { (r.files || []).forEach(function (f) { photos.push(f.url); }); });
+        paintPhotos();
+        fileInput.value = "";
+        toast("Foto ditambahkan. Tekan Simpan.");
+      }).catch(function (err) { toast(err.message); });
+    });
+
+    var err = el("p", { class: "form-error", hidden: null, role: "alert" });
+    var save = el("button", { class: "btn btn-primary", type: "submit", text: "Simpan perubahan" });
+    var cancel = el("button", { class: "btn btn-outline", type: "button", text: "Batal" });
+    cancel.addEventListener("click", function () { closeModals(); });
+    var form = el("form", { id: "edit-form" }, [fields, el("div", { class: "field", style: "margin-top:14px;" },
+      [el("label", { for: "e-file", text: "Tambah foto" }), fileInput]), photoWrap, err,
+      el("div", { style: "display:flex;gap:8px;margin-top:14px;" }, [save, cancel])]);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      var payload = {
+        title: title.value.trim(), price: parseInt(price.value, 10),
+        category: kat.value, condition: cond.value, city: city.value.trim(),
+        description: desc.value.trim(), photos: photos
+      };
+      if (!payload.title || payload.title.length < 5) { err.textContent = "Judul 5-90 karakter."; err.hidden = false; title.focus(); return; }
+      if (!payload.price || payload.price <= 0) { err.textContent = "Harga harus angka lebih dari nol."; err.hidden = false; price.focus(); return; }
+      if (!payload.city) { err.textContent = "Lokasi wajib diisi."; err.hidden = false; city.focus(); return; }
+      save.disabled = true;
+      api("/api/listings/" + item.id, { method: "PATCH", body: payload })
+        .then(function () {
+          toast(payload.price < item.price ? "Tersimpan. Harga turun, penyimpan diberi tahu." : "Perubahan tersimpan.");
+          setTimeout(function () { location.reload(); }, 700);
+        })
+        .catch(function (e2) { save.disabled = false; err.textContent = e2.message; err.hidden = false; });
+    });
+
+    modalShell("modal-edit", "Sunting barang", form);
+    openModal("modal-edit");
+  }
+
   function initListing() {
     var id = new URLSearchParams(location.search).get("id") || document.body.dataset.listingId || "";
     var root = qs("#detail-root");
@@ -706,6 +1111,7 @@
 
     api("/api/listings/" + encodeURIComponent(id)).then(function (item) {
       document.body.classList.remove("is-loading");
+      rememberViewed(item.id);
       render(item);
     }).catch(function (err) {
       document.body.classList.remove("is-loading");
@@ -728,13 +1134,19 @@
       if (item.old_price) old.textContent = rp(item.old_price);
       qs("#d-kondisi").textContent = item.condition;
       qs("#d-lokasi").textContent = item.city;
-      qs("#d-waktu").textContent = "Dipasang " + timeAgo(item.created_at);
+      qs("#d-waktu").textContent = "Dipasang " + timeAgo(item.created_at) +
+        " · dilihat " + (item.views || 0) + " kali";
       qs("#d-kategori").textContent = kategoriName(item.category);
       qs("#d-kategori-link").href = "jelajah.html?kat=" + encodeURIComponent(item.category);
       qs("#d-kat-copy").textContent = kategoriName(item.category);
       qs("#d-kondisi-copy").textContent = item.condition;
       qs("#d-lokasi-copy").textContent = item.city;
       qs("#d-deskripsi").textContent = item.description || "Penjual belum menulis deskripsi.";
+      var socialSlot = qs("#social-slot");
+      if (socialSlot) {
+        socialSlot.innerHTML = "";
+        socialSlot.appendChild(socialBar("listing", item.id, item));
+      }
       qs("#d-crumb").textContent = item.title;
 
       // kembali ke hasil dengan filter terakhir
@@ -952,7 +1364,10 @@
           });
         }
         if (item.status !== "sold") {
-          var soldBtn = el("button", { class: "btn btn-outline", type: "button", text: "Tandai terjual", style: "margin-top:12px;" });
+          var editBtn = el("button", { class: "btn btn-outline", type: "button", text: "Sunting barang", style: "margin-top:12px;" });
+          editBtn.addEventListener("click", function () { editModal(item); });
+          extra.appendChild(editBtn);
+          var soldBtn = el("button", { class: "btn btn-outline", type: "button", text: "Tandai terjual", style: "margin-top:12px;margin-left:8px;" });
           soldBtn.addEventListener("click", function () {
             soldBtn.disabled = true;
             api("/api/listings/" + item.id + "/sold", { method: "POST" }).then(function () {
@@ -971,6 +1386,47 @@
           }).catch(function (err) { toast(err.message); });
         });
         extra.appendChild(del);
+      }
+
+      /* siklus hidup: kedaluwarsa, diturunkan moderator, dan transaksi */
+      if (item.is_owner && (item.expired || item.status === "removed")) {
+        var life = el("div", { class: "form-card", style: "margin-top:16px;" });
+        if (item.status === "removed") {
+          life.appendChild(el("p", { class: "form-error", text: "Barang ini diturunkan moderator dan tidak tampil ke publik. Kamu masih bisa melihatnya di sini." }));
+        } else {
+          life.appendChild(el("p", { class: "field-note", text: "Barang ini sudah kedaluwarsa dan tidak muncul di pencarian." }));
+          var renew = el("button", { class: "btn btn-primary", type: "button", text: "Perpanjang 30 hari" });
+          renew.addEventListener("click", function () {
+            renew.disabled = true;
+            api("/api/listings/" + item.id + "/renew", { method: "POST", body: {} })
+              .then(function () { toast("Diperpanjang 30 hari."); setTimeout(function () { location.reload(); }, 600); })
+              .catch(function (err) { renew.disabled = false; toast(err.message); });
+          });
+          life.appendChild(renew);
+        }
+        qs("#owner-panel").parentNode.insertBefore(life, qs("#owner-panel").nextSibling);
+      }
+
+      if (item.deal && item.deal.is_party) {
+        var dealBox = el("div", { class: "form-card", style: "margin-top:16px;" });
+        dealBox.appendChild(el("h2", { text: "Transaksi", style: "font-size:18px;" }));
+        dealBox.appendChild(el("p", { class: "card-meta",
+          text: "Sepakat " + rp(item.deal.amount) + " dengan " + item.deal.buyer.name + " (pembeli) dan " +
+            item.deal.seller.name + " (penjual)." }));
+        if (item.deal.handover_at) {
+          dealBox.appendChild(el("p", { class: "field-note", text: "Serah terima ditandai selesai " + timeAgo(item.deal.handover_at) + "." }));
+        } else {
+          dealBox.appendChild(el("p", { class: "field-note", text: "Belum ada tanda serah terima. Tandai setelah barang berpindah tangan." }));
+          var hand = el("button", { class: "btn btn-outline", type: "button", text: "Tandai serah terima" });
+          hand.addEventListener("click", function () {
+            hand.disabled = true;
+            api("/api/offers/" + item.deal.offer_id + "/handover", { method: "POST", body: {} })
+              .then(function () { toast("Serah terima ditandai."); setTimeout(function () { location.reload(); }, 600); })
+              .catch(function (err) { hand.disabled = false; toast(err.message); });
+          });
+          dealBox.appendChild(hand);
+        }
+        qs("#owner-panel").parentNode.insertBefore(dealBox, qs("#owner-panel"));
       }
 
       /* ulasan form */
@@ -1160,7 +1616,8 @@
           var form = new FormData();
           form.append("photo", prepared, prepared.name || "foto.jpg");
           if (onProgress) onProgress(i + 1, files.length);
-          return fetch("/api/upload", { method: "POST", body: form, credentials: "same-origin" })
+          return fetch("/api/upload", { method: "POST", body: form, credentials: "same-origin",
+            headers: { "X-CSRF-Token": cookieValue("bk_csrf") } })
             .then(function (res) {
               return res.json().catch(function () { return {}; }).then(function (data) {
                 if (!res.ok) throw new Error((data && data.error) || "unggahan ditolak server");
@@ -1278,11 +1735,20 @@
         return;
       }
       rows.forEach(function (w) {
+        var mine = !!(S.me && w.owner && w.owner.name === S.me.name);
         var actions = el("div", { class: "wanted-side" }, [
-          el("span", { class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max) }),
-          el("a", { class: "btn btn-outline btn-sm", href: "jelajah.html?kat=" + encodeURIComponent(w.category), text: "Lihat barang sejenis" })
+          el("span", { class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max) })
         ]);
-        if (S.me && w.owner && w.owner.name === S.me.name) {
+        if (!mine) {
+          var replyBtn = el("button", { class: "btn btn-primary btn-sm", type: "button", text: "Saya punya barangnya" });
+          replyBtn.addEventListener("click", function () {
+            requireAuth(function () { replyWantedModal(w); });
+          });
+          actions.appendChild(replyBtn);
+        }
+        actions.appendChild(el("a", { class: "btn btn-outline btn-sm",
+          href: "jelajah.html?kat=" + encodeURIComponent(w.category), text: "Lihat barang sejenis" }));
+        if (mine) {
           var del = el("button", { class: "btn btn-sm btn-danger", type: "button", text: "Hapus" });
           del.addEventListener("click", function () {
             api("/api/wanted/" + w.id, { method: "DELETE" }).then(function () { load(); refreshMe(); })
@@ -1290,11 +1756,45 @@
           });
           actions.appendChild(del);
         }
+
+        var replies = el("div", { class: "wanted-replies" });
+        var replyToggle = el("button", { class: "btn btn-quiet btn-sm", type: "button",
+          "aria-expanded": "false", text: (w.replies || 0) + " tanggapan" });
+        replyToggle.addEventListener("click", function () {
+          var open = replyToggle.getAttribute("aria-expanded") === "true";
+          replyToggle.setAttribute("aria-expanded", open ? "false" : "true");
+          replies.hidden = open;
+          if (!open) {
+            replies.innerHTML = "";
+            api("/api/wanted/" + w.id + "/replies").then(function (data) {
+              if (!data.items.length) {
+                replies.appendChild(el("p", { class: "card-meta", text: "Belum ada yang menanggapi." }));
+                return;
+              }
+              data.items.forEach(function (r) {
+                replies.appendChild(el("div", { class: "comment" }, [
+                  el("div", { class: "comment-head" }, [
+                    el("strong", { text: r.author }),
+                    el("span", { class: "card-meta", text: " · " + timeAgo(r.created_at) })
+                  ]),
+                  el("p", { text: r.body }),
+                  r.listing_id ? el("a", { class: "card-meta", href: "listing.html?id=" + encodeURIComponent(r.listing_id),
+                    text: "Lihat barang: " + (r.listing_title || r.listing_id) }) : null
+                ]));
+              });
+            }).catch(function (err) { replies.textContent = err.message; });
+          }
+        });
+        replies.hidden = true;
+
         list.appendChild(el("article", { class: "wanted-item" }, [
           el("div", {}, [
             el("h3", { text: w.title }),
             el("span", { class: "card-meta", text: kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at) + " · " + w.owner.name }),
-            el("p", { class: "wanted-note", text: w.note })
+            el("p", { class: "wanted-note", text: w.note }),
+            socialBar("wanted", w.id, w),
+            replyToggle,
+            replies
           ]),
           actions
         ]));
@@ -1346,7 +1846,10 @@
       return;
     }
     skeletons(3, qs("#profil-listings"));
-    api("/api/users/" + encodeURIComponent(name)).then(function (data) {
+    var sortSel = qs("#p-sort");
+    function load() {
+      var sort = sortSel.value;
+      api("/api/users/" + encodeURIComponent(name) + (sort && sort !== "baru" ? "?rsort=" + encodeURIComponent(sort) : "")).then(function (data) {
       document.title = data.user.name + " · Bukatoko";
       qs("#p-nama").textContent = data.user.name;
       qs("#p-avatar").textContent = data.user.name.slice(0, 1).toUpperCase();
@@ -1354,6 +1857,28 @@
       qs("#p-rating").textContent = data.rating.count
         ? String(data.rating.average).replace(".", ",") + " dari " + data.rating.count + " ulasan"
         : "Belum ada ulasan";
+      qs("#p-stats").textContent = data.stats
+        ? data.stats.sold + " barang terjual · " + data.stats.active + " masih aktif"
+        : "";
+
+      var bars = qs("#p-bars");
+      bars.innerHTML = "";
+      var dist = data.rating && data.rating.distribution;
+      if (data.rating.count && dist) {
+        var wrapBars = el("div", { class: "rating-bars", role: "img",
+          "aria-label": "Sebaran " + data.rating.count + " ulasan: " +
+            [5, 4, 3, 2, 1].map(function (s) { return (dist[String(s)] || 0) + " bintang " + s; }).join(", ") });
+        [5, 4, 3, 2, 1].forEach(function (star) {
+          var n = dist[String(star)] || 0;
+          var pct = Math.round((n / data.rating.count) * 100);
+          wrapBars.appendChild(el("div", { class: "rating-bar" }, [
+            el("span", { text: star + " bintang" }),
+            el("span", { class: "track" }, [el("span", { class: "fill", style: "width:" + pct + "%" })]),
+            el("span", { class: "n", text: String(n) })
+          ]));
+        });
+        bars.appendChild(wrapBars);
+      }
       var list = qs("#profil-listings");
       list.innerHTML = "";
       if (!data.listings.length) {
@@ -1367,7 +1892,7 @@
         reviews.appendChild(el("p", { class: "card-meta", text: "Belum ada ulasan." }));
       } else {
         data.reviews.forEach(function (r) {
-          reviews.appendChild(el("div", { class: "review" }, [
+          var block = el("div", { class: "review" }, [
             el("div", { class: "review-head" }, [
               el("strong", { text: r.author }),
               el("span", { text: "· " + r.role }),
@@ -1375,21 +1900,50 @@
               el("span", { text: "· " + timeAgo(r.created_at) })
             ]),
             el("p", { class: "card-meta", text: r.body })
-          ]));
+          ]);
+          if (r.reply) {
+            block.appendChild(el("p", { class: "card-meta", text: "Balasan: " + r.reply }));
+          } else if (data.is_self) {
+            var replyBox = el("div", { style: "display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;" });
+            var replyInput = el("input", { type: "text", placeholder: "Balas ulasan ini", maxlength: "600", style: "flex:1; min-width:200px;" });
+            var replyBtn = el("button", { class: "btn btn-outline btn-sm", type: "button", text: "Balas" });
+            replyBtn.addEventListener("click", function () {
+              replyBtn.disabled = true;
+              api("/api/reviews/" + r.id + "/reply", { method: "POST", body: { body: replyInput.value.trim() } })
+                .then(function () { toast("Balasan terkirim."); load(); })
+                .catch(function (err) { replyBtn.disabled = false; toast(err.message); });
+            });
+            replyBox.appendChild(replyInput);
+            replyBox.appendChild(replyBtn);
+            block.appendChild(replyBox);
+          }
+          reviews.appendChild(block);
         });
       }
       if (data.is_self) qs("#p-block").hidden = true;
-      qs("#p-block").addEventListener("click", function () {
+      qs("#p-block").onclick = function () {
         requireAuth(function () {
           if (!window.confirm("Blokir " + data.user.name + "?")) return;
           api("/api/blocks", { method: "POST", body: { user_id: data.user.id } })
             .then(function () { toast("Diblokir."); setTimeout(function () { location.href = "jelajah.html"; }, 600); })
             .catch(function (err) { toast(err.message); });
         });
-      });
+      };
     }).catch(function (err) {
-      fail(root, err, function () { location.reload(); });
-    });
+        var code = err.status || 0;
+        root.innerHTML = "";
+        stateBox(root, {
+          error: code !== 404,
+          title: code === 404 ? "Pengguna tidak ditemukan" : "Gagal memuat profil",
+          body: code === 404 ? "Nama pengguna mungkin salah ketik, atau akunnya sudah dihapus." : err.message,
+          action: code === 404
+            ? { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } }
+            : { label: "Coba lagi", onClick: function () { location.reload(); } }
+        });
+      });
+    }
+    sortSel.addEventListener("change", function () { load(); });
+    load();
   }
 
   /* ---------- akun ---------- */
@@ -1442,7 +1996,9 @@
       permintaan: qs("#panel-permintaan"),
       tawaran: qs("#panel-tawaran"),
       pesan: qs("#panel-pesan"),
-      pencarian: qs("#panel-pencarian")
+      pencarian: qs("#panel-pencarian"),
+      notifikasi: qs("#panel-notifikasi"),
+      transaksi: qs("#panel-transaksi")
     };
     var needLogin = qs("#akun-need-login");
     var content = qs("#akun-content");
@@ -1486,17 +2042,26 @@
       qs("#c-tawar").textContent = me.counts.offers;
       qs("#c-pesan").textContent = me.counts.unread;
       qs("#c-cari").textContent = me.counts.matches;
+      var notif = qs("#c-notif");
+      if (notif) {
+        notif.textContent = me.counts.notif > 9 ? "9+" : String(me.counts.notif);
+        notif.hidden = !me.counts.notif;
+      }
     }
 
-    function loadSaved() {
+    var savedOffset = 0;
+
+    function loadSaved(append) {
       var p = panels.disimpan;
-      skeletons(2, p);
-      return api("/api/saved").then(function (data) {
-        p.innerHTML = "";
+      if (!append) { savedOffset = 0; skeletons(2, p); }
+      return api("/api/saved?limit=30&offset=" + savedOffset).then(function (data) {
+        if (!append) p.innerHTML = "";
         if (!data.items.length) {
+          if (append) { toast("Tidak ada simpanan lain."); return; }
           panelState(p, "Belum ada barang yang disimpan.", { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
           return;
         }
+        savedOffset += data.items.length;
         data.items.forEach(function (i) {
           p.appendChild(row({
             id: i.id, label: kategoriName(i.category), src: i.photo_urls[0], alt: "Foto " + i.title,
@@ -1511,18 +2076,27 @@
             }]
           }));
         });
-      }).catch(function (err) { fail(p, err, loadSaved); });
+        if (data.has_more) {
+          var moreSaved = el("button", { class: "btn btn-outline", type: "button", text: "Muat lagi", style: "margin-top:12px;" });
+          moreSaved.addEventListener("click", function () { moreSaved.disabled = true; loadSaved(true); });
+          p.appendChild(moreSaved);
+        }
+      }).catch(function (err) { fail(p, err, function () { loadSaved(false); }); });
     }
 
-    function loadMyListings() {
+    var myOffset = 0;
+
+    function loadMyListings(append) {
       var p = panels.barang;
-      skeletons(2, p);
-      return api("/api/listings?owner=" + S.me.id + "&status=all&limit=100").then(function (data) {
-        p.innerHTML = "";
+      if (!append) { myOffset = 0; skeletons(2, p); }
+      return api("/api/listings?owner=" + S.me.id + "&status=all&limit=30&offset=" + myOffset).then(function (data) {
+        if (!append) p.innerHTML = "";
         if (!data.items.length) {
+          if (append) { toast("Tidak ada barang lain."); return; }
           panelState(p, "Belum ada barang yang kamu pasang.", { label: "Pasang barang", onClick: function () { location.href = "jual.html"; } });
           return;
         }
+        myOffset += data.items.length;
         data.items.forEach(function (i) {
           var acts = [];
           if (i.status !== "sold") {
@@ -1550,33 +2124,85 @@
             actions: acts
           }));
         });
-      }).catch(function (err) { fail(p, err, loadMyListings); });
+        if (data.has_more) {
+          var more = el("button", { class: "btn btn-outline", type: "button", text: "Muat lagi", style: "margin-top:12px;" });
+          more.addEventListener("click", function () { more.disabled = true; loadMyListings(true); });
+          p.appendChild(more);
+        }
+      }).catch(function (err) { fail(p, err, function () { loadMyListings(false); }); });
     }
 
     function loadMyWanted() {
       var p = panels.permintaan;
       skeletons(2, p);
-      return api("/api/wanted").then(function (data) {
-        var mine = data.items.filter(function (w) { return w.owner.name === S.me.name; });
+      return api("/api/wanted?mine=1").then(function (data) {
+        var mine = data.items || [];
         p.innerHTML = "";
         if (!mine.length) {
           panelState(p, "Belum ada permintaan yang kamu tulis.", { label: "Tulis permintaan", onClick: function () { location.href = "cari.html"; } });
           return;
         }
         mine.forEach(function (w) {
-          p.appendChild(row({
-            noThumb: true, title: w.title,
-            meta: rp(w.price_min) + " sampai " + rp(w.price_max) + " · " + w.city + " · " + timeAgo(w.created_at),
-            actions: [{
-              label: "Hapus", variant: "btn-danger", onClick: function (btn) {
+          var acts = [];
+          if (w.status === "open") {
+            acts.push({
+              label: "Tandai sudah dapat", onClick: function (btn) {
                 btn.disabled = true;
-                api("/api/wanted/" + w.id, { method: "DELETE" }).then(function () { loadMyWanted(); refreshMe(); })
+                api("/api/wanted/" + w.id + "/close", { method: "POST", body: {} })
+                  .then(function () { loadMyWanted(); refreshMe(); })
                   .catch(function (err) { btn.disabled = false; toast(err.message); });
               }
-            }]
+            });
+          }
+          acts.push({
+            label: "Hapus", variant: "btn-danger", onClick: function (btn) {
+              btn.disabled = true;
+              api("/api/wanted/" + w.id, { method: "DELETE" }).then(function () { loadMyWanted(); refreshMe(); })
+                .catch(function (err) { btn.disabled = false; toast(err.message); });
+            }
+          });
+          p.appendChild(row({
+            noThumb: true, title: w.title + (w.status === "closed" ? " · selesai" : ""),
+            meta: rp(w.price_min) + " sampai " + rp(w.price_max) + " · " + w.city + " · " + timeAgo(w.created_at),
+            actions: acts
           }));
         });
       }).catch(function (err) { fail(p, err, loadMyWanted); });
+    }
+
+    function loadDeals() {
+      var p = panels.transaksi;
+      skeletons(2, p);
+      return api("/api/deals").then(function (data) {
+        p.innerHTML = "";
+        if (!data.items.length) {
+          panelState(p, "Belum ada transaksi. Transaksi muncul setelah penjual menerima tawaran.",
+            { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+          return;
+        }
+        data.items.forEach(function (d) {
+          var acts = [{
+            label: "Buka barang", onClick: function () { location.href = "listing.html?id=" + encodeURIComponent(d.listing_id); }
+          }];
+          if (!d.handover_at) {
+            acts.push({
+              label: "Tandai serah terima", onClick: function (btn) {
+                btn.disabled = true;
+                api("/api/offers/" + d.offer_id + "/handover", { method: "POST", body: {} })
+                  .then(function () { loadDeals(); })
+                  .catch(function (err) { btn.disabled = false; toast(err.message); });
+              }
+            });
+          }
+          p.appendChild(row({
+            noThumb: true, title: d.title,
+            meta: rp(d.amount) + " · kamu " + d.side + " · dengan " + d.with.name,
+            extra: (d.handover_at ? "Serah terima ditandai " + timeAgo(d.handover_at) : "Menunggu serah terima") +
+              " · deal " + timeAgo(d.accepted_at),
+            actions: acts
+          }));
+        });
+      }).catch(function (err) { fail(p, err, loadDeals); });
     }
 
     function loadOffers() {
@@ -1697,6 +2323,61 @@
       }).catch(function (err) { fail(p, err, loadSearches); });
     }
 
+    function loadNotifs() {
+      var p = panels.notifikasi;
+      skeletons(2, p);
+      return api("/api/notifications").then(function (data) {
+        p.innerHTML = "";
+        if (!data.items.length) {
+          panelState(p, "Belum ada notifikasi.", { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+          return;
+        }
+        var head = el("div", { class: "notif-head" });
+        head.appendChild(el("p", { class: "field-note", text: data.unread_events + " belum dibaca dari " + data.items.length + " notifikasi terakhir." }));
+        var markAll = el("button", { class: "btn btn-sm btn-outline", type: "button", text: "Tandai semua dibaca" });
+        markAll.disabled = !data.unread_events;
+        markAll.addEventListener("click", function () {
+          markAll.disabled = true;
+          api("/api/notifications/read", { method: "POST", body: {} })
+            .then(function () { return refreshMe(); }).then(loadNotifs)
+            .catch(function (err) { markAll.disabled = false; toast(err.message); });
+        });
+        head.appendChild(markAll);
+        p.appendChild(head);
+
+        var labels = {
+          offer: "Tawaran masuk", accepted: "Tawaran diterima", declined: "Tawaran ditolak",
+          withdrawn: "Tawaran ditarik", message: "Pesan baru", review: "Ulasan baru",
+          wanted: "Cocok dengan permintaanmu", price_drop: "Harga turun", sold: "Sudah terjual"
+        };
+        data.items.forEach(function (n) {
+          var acts = [{
+            label: "Buka", onClick: function () {
+              location.href = n.listing_id ? "listing.html?id=" + n.listing_id : "akun.html#pesan";
+            }
+          }];
+          if (!n.read) {
+            acts.push({
+              label: "Tandai", onClick: function (btn) {
+                btn.disabled = true;
+                api("/api/notifications/read", { method: "POST", body: { ids: [n.id] } })
+                  .then(function () { return refreshMe(); }).then(loadNotifs)
+                  .catch(function (err) { btn.disabled = false; toast(err.message); });
+              }
+            });
+          }
+          p.appendChild(row({
+            noThumb: true,
+            title: (labels[n.kind] || "Notifikasi") + (n.read ? "" : " · baru"),
+            meta: n.body,
+            extra: (n.listing_title ? n.listing_title + " · " : "") + timeAgo(n.created_at),
+            actions: acts
+          }));
+        });
+        refreshMe();
+      }).catch(function (err) { fail(p, err, loadNotifs); });
+    }
+
     function describeParams(p) {
       var bits = [];
       if (p.q) bits.push('"' + p.q + '"');
@@ -1709,7 +2390,8 @@
 
     var loaders = {
       disimpan: loadSaved, barang: loadMyListings, permintaan: loadMyWanted,
-      tawaran: loadOffers, pesan: loadInbox, pencarian: loadSearches
+      tawaran: loadOffers, pesan: loadInbox, pencarian: loadSearches, notifikasi: loadNotifs,
+      transaksi: loadDeals
     };
 
     function select(tab) {
@@ -1747,12 +2429,47 @@
       qs("#akun-nama").textContent = S.me.name;
       qs("#akun-email").textContent = S.me.email;
       paintCounts(S.me);
+
+      var vb = qs("#verify-banner");
+      if (vb) {
+        vb.hidden = !!S.me.email_verified;
+        if (!vb.hidden && !vb.dataset.wired) {
+          vb.dataset.wired = "1";
+          qs("#verify-send").addEventListener("click", function () {
+            api("/api/verify/resend", { method: "POST", body: {} }).then(function (data) {
+              if (data.demo_verify_code) {
+                qs("#verify-note").textContent = "Mode demo: kodenya " + data.demo_verify_code;
+                qs("#verify-code").value = data.demo_verify_code;
+              } else {
+                qs("#verify-note").textContent = "Kode dikirim ke email.";
+              }
+            }).catch(function (err) { toast(err.message); });
+          });
+          qs("#verify-submit").addEventListener("click", function () {
+            api("/api/verify", { method: "POST", body: { code: qs("#verify-code").value.trim() } })
+              .then(function () { return refreshMe(); })
+              .then(function () { gate(); toast("Email terverifikasi."); })
+              .catch(function (err) { toast(err.message); });
+          });
+        }
+      }
+      if (S.me.role === "moderator" && !qs("#mod-link")) {
+        var ml = el("a", { class: "btn btn-outline btn-sm", id: "mod-link", href: "moderasi.html",
+          text: "Panel moderator", style: "margin-top:10px;display:inline-block;" });
+        qs("#akun-nama").parentNode.appendChild(ml);
+      }
       return true;
     }
 
     qs("#akun-login").addEventListener("click", function () {
       authModal("login");
-      window.__afterAuth = function () { refreshMe().then(function () { if (gate()) select(current); }); };
+      window.__afterAuth = function () {
+        refreshMe().then(function () {
+          if (!gate()) return;
+          var h = (location.hash || "").replace("#", "");
+          select(panels[h] ? h : current);
+        });
+      };
     });
 
     // tautan #pesan / #tawaran dari halaman lain
@@ -1762,6 +2479,69 @@
     });
 
     if (gate()) select(current);
+  }
+
+  /* ---------- panel moderator ---------- */
+  function initModerasi() {
+    var list = qs("#mod-list");
+    var state = qs("#mod-state");
+    if (!S.me) {
+      stateBox(state, {
+        title: "Masuk sebagai moderator",
+        body: "Panel ini hanya terbuka untuk akun dengan peran moderator.",
+        action: { label: "Masuk", onClick: function () { authModal("login"); } }
+      });
+      return;
+    }
+    if (S.me.role !== "moderator") {
+      stateBox(state, {
+        title: "Akun ini bukan moderator",
+        body: "Peran akun " + S.me.name + " adalah pengguna biasa.",
+        action: { label: "Ke akun saya", onClick: function () { location.href = "akun.html"; } }
+      });
+      return;
+    }
+    state.innerHTML = "";
+
+    function load() {
+      skeletons(3, list);
+      return api("/api/reports").then(function (data) {
+        list.innerHTML = "";
+        if (!data.items.length) {
+          stateBox(list, { title: "Tidak ada laporan terbuka", body: "Antrean bersih. Laporan baru muncul di sini." });
+          return;
+        }
+        data.items.forEach(function (r) {
+          var rowEl = el("div", { class: "row-item" }, [
+            el("div", { class: "row-body" }, [
+              el("h3", { text: r.listing_title || "(barang sudah dihapus)" }),
+              el("div", { class: "card-meta", text: r.reason + " · dilaporkan " + r.reporter + " · " + timeAgo(r.created_at) }),
+              el("div", { class: "card-meta", text: r.detail || "tanpa keterangan tambahan" })
+            ])
+          ]);
+          var actions = el("div", { class: "row-actions" });
+          function act(label, action, variant, confirmText) {
+            var b = el("button", { class: "btn btn-sm " + (variant || "btn-outline"), type: "button", text: label });
+            b.addEventListener("click", function () {
+              if (confirmText && !window.confirm(confirmText)) return;
+              b.disabled = true;
+              api("/api/reports/" + r.id + "/resolve", { method: "POST", body: { action: action } })
+                .then(function () { toast("Laporan ditindak: " + action + "."); load(); })
+                .catch(function (err) { b.disabled = false; toast(err.message); });
+            });
+            actions.appendChild(b);
+          }
+          act("Abaikan", "dismiss");
+          if (r.listing_id) act("Turunkan barang", "remove_listing", "btn-danger",
+            "Turunkan barang ini dari daftar publik?");
+          if (r.listing_id) act("Bekukan penjual", "suspend_user", "btn-danger",
+            "Bekukan akun penjual dan turunkan semua barang aktifnya?");
+          rowEl.appendChild(actions);
+          list.appendChild(rowEl);
+        });
+      }).catch(function (err) { fail(list, err, load); });
+    }
+    load();
   }
 
   /* ---------- boot ---------- */
@@ -1774,6 +2554,7 @@
     else if (page === "cari") initCari();
     else if (page === "akun") initAkun();
     else if (page === "profil") initProfil();
+    else if (page === "moderasi") initModerasi();
   }
 
   function boot() {

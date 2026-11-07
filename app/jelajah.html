@@ -27,7 +27,7 @@
     <div class="hdr-actions">
       <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
       <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
-      <span class="notif" id="notif-badge" hidden></span>
+      <a class="notif" id="notif-badge" href="akun.html#notifikasi" aria-label="Notifikasi belum dibaca" hidden></a>
       <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
       <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
     </div>
@@ -47,7 +47,8 @@
     <form class="filters" id="filter-form" method="get" action="jelajah.html">
       <div class="field field-grow">
         <label for="f-q">Kata kunci</label>
-        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off">
+        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off" list="saran-q">
+        <datalist id="saran-q"></datalist>
       </div>
       <div class="field">
         <label for="f-kat">Kategori</label>
@@ -112,6 +113,13 @@
           <option value="active">Masih dijual</option>
           <option value="sold">Sudah terjual</option>
           <option value="all">Semua</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-foto">Foto</label>
+        <select id="f-foto" name="foto">
+          <option value="">Semua barang</option>
+          <option value="1">Hanya yang berfoto</option>
         </select>
       </div>
       <button class="btn btn-primary" type="submit">Terapkan</button>

@@ -38,18 +38,41 @@ def call(op, method, path, payload=None, raw=None, headers=None):
         hdrs["Content-Type"] = "application/json"
     if raw is not None:
         data = raw
+    if method in ("POST", "PATCH", "DELETE"):
+        token = getattr(op, "csrf", "")
+        if token:
+            hdrs["X-CSRF-Token"] = token
     req = urllib.request.Request(url, data=data, method=method, headers=hdrs)
     try:
         with op.open(req) as res:
             body = res.read()
             ctype = res.headers.get("Content-Type", "")
-            return res.status, (json.loads(body) if "json" in ctype else body)
+            payload_out = json.loads(body) if "json" in ctype else body
+            if isinstance(payload_out, dict) and payload_out.get("csrf"):
+                op.csrf = payload_out["csrf"]
+            return res.status, payload_out
     except urllib.error.HTTPError as exc:
         body = exc.read()
         try:
             return exc.code, json.loads(body)
         except json.JSONDecodeError:
             return exc.code, body
+
+
+def make_png(width: int = 240, height: int = 240) -> bytes:
+    """PNG warna polos untuk uji unggah, tanpa pustaka gambar."""
+    import struct
+    import zlib
+
+    raw = b"".join(b"\x00" + bytes([30, 107, 78]) * width for _ in range(height))
+
+    def chunk(tag: bytes, data: bytes) -> bytes:
+        return (struct.pack(">I", len(data)) + tag + data +
+                struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF))
+
+    ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+    return (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) +
+            chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b""))
 
 
 def multipart(field_name, filename, content, ctype):
@@ -85,9 +108,7 @@ def main():
     check("kata sandi salah ditolak", code == 401, str(data))
 
     print("unggah + pasang barang")
-    png = bytes.fromhex(
-        "89504e470d0a1a0a0000000d4948445200000001000000010802000000907753"
-        "de0000000c4944415408d763f8cfc0000003010100" "18dd8db10000000049454e44ae426082")
+    png = make_png()
     code, data = call(anon, "POST", "/api/upload", raw=multipart("photo", "x.png", png, "image/png")[0],
                       headers={"Content-Type": multipart("photo", "x.png", png, "image/png")[1]})
     check("unggah tanpa login ditolak", code == 401, str(data))
@@ -197,6 +218,45 @@ def main():
     code, body = call(anon, "GET", "/p/l1001")
     text = body.decode() if isinstance(body, bytes) else str(body)
     check("halaman /p/<id> punya og:title", code == 200 and 'property="og:title"' in text, str(code))
+
+    print("notifikasi")
+    code, data = call(seller, "GET", "/api/notifications")
+    kinds = [n["kind"] for n in data.get("items", [])]
+    check("penjual punya notifikasi tawaran", code == 200 and "offer" in kinds, str(kinds[:6]))
+    code, data = call(anon, "GET", "/api/notifications")
+    check("tamu tidak melihat notifikasi siapa pun", code == 200 and data.get("items") == [], str(data)[:80])
+    code, data = call(seller, "POST", "/api/notifications/read", {})
+    check("tandai semua dibaca", code == 200 and data.get("unread_events") == 0, str(data))
+    code, data = call(seller, "GET", "/api/notifications")
+    check("tidak ada sisa belum dibaca", data.get("unread_events") == 0,
+          str(data.get("unread_events")))
+
+    print("sunting barang")
+    code, data = call(seller, "PATCH", "/api/listings/l1001", {"price": 6100000, "description": "Turun harga."})
+    check("pemilik bisa mengubah barang", code == 200 and data["price"] == 6100000, str(data)[:80])
+    code, data = call(buyer, "PATCH", "/api/listings/l1001", {"price": 1000})
+    check("bukan pemilik tidak bisa mengubah", code == 403, str(data))
+    code, data = call(seller, "PATCH", "/api/listings/l1001", {})
+    check("ubah tanpa isi ditolak", code == 400, str(data))
+    code, data = call(seller, "PATCH", "/api/listings/l1001", {"title": "ab"})
+    check("judul terlalu pendek ditolak", code == 400, str(data))
+
+    print("hitungan dilihat")
+    code, before = call(seller, "GET", "/api/listings/l1002")
+    code, after = call(buyer, "GET", "/api/listings/l1002")
+    check("pengunjung menambah hitungan dilihat", after["views"] == before["views"] + 1,
+          f'{before["views"]} -> {after["views"]}')
+    own_a = call(seller, "GET", "/api/listings/l1001")[1]["views"]
+    own_b = call(seller, "GET", "/api/listings/l1001")[1]["views"]
+    check("pemilik tidak menambah hitungan", own_a == own_b, f"{own_a} -> {own_b}")
+
+    print("urutan ulasan dan filter id")
+    code, data = call(anon, "GET", "/api/users/dimas.wibowo?rsort=rendah")
+    stars = [r["stars"] for r in data["reviews"]]
+    check("ulasan urut bintang terendah", code == 200 and stars == sorted(stars), str(stars))
+    code, data = call(anon, "GET", "/api/listings?ids=l1002,l1003&status=all")
+    check("filter ids hanya mengembalikan yang diminta", code == 200 and
+          {i["id"] for i in data["items"]} == {"l1002", "l1003"}, str(data["total"]))
 
     print(f"\n{ok} ok, {fail} gagal")
     return 1 if fail else 0

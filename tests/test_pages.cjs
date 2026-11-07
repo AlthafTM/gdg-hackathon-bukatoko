@@ -15,8 +15,8 @@ test('export contains only frontend and public fixtures', () => {
   assert.equal(data.listings.length, 14);
   assert.equal(data.wanted.length, 5);
   assert.doesNotMatch(JSON.stringify(data), /example\.com|pass_hash|demo1234/);
-  assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html'].sort());
-  for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
+  assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', '404.html', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'moderasi.html', 'profil.html'].sort());
+  for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html') && f !== '404.html')) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.match(html, /Pratinjau GitHub Pages/);
     assert.ok(html.indexOf('assets/preview.js') < html.indexOf('assets/app.js'));
