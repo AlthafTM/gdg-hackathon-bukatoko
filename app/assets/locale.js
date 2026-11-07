@@ -30,6 +30,7 @@
     "Demo terhubung ke server. Foto stok hanya referensi. Jangan gunakan kata sandi pribadi atau data sensitif.":"Server-connected demo. Stock photos are references only. Do not use personal passwords or sensitive data.",
     "Buka aplikasi langsung":"Open the app directly",
     "Origin permintaan tidak diizinkan.":"This request origin is not allowed.",
+    "Origin atau preflight tidak diizinkan.":"This origin or preflight request is not allowed.",
     "Demo: permintaan bawaan adalah data contoh. Permintaan yang kamu tulis tersimpan di server demo ini.":"Demo: built-in requests are sample data. Your requests are saved on the demo server.",
     "Demo: detail barang dan foto tersimpan di server demo ini. Tidak ada transaksi uang di sini.":"Demo: item details and photos are stored on the demo server. No money is transferred here.",
     "Demo: akun, barang, tawaran, dan pesan tersimpan di basis data server demo ini. Jangan pakai kata sandi yang kamu pakai di tempat lain.":"Demo: accounts, items, offers and messages are stored on this demo server. Use a password you do not use elsewhere.",

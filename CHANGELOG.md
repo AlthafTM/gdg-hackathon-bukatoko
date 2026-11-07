@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.5.1] - 2026-11-07
+
+- Correct translation scanning of inline theme code and add the missing CORS preflight error translation to unblock Pages deployment. See [release notes](releases/0.5.1.md).
+
 ## [0.5.0] - 2026-11-07
 
 - Refresh search/navigation, responsive panel widths, charcoal/violet/lime colors, real reference photography and theme/scroll motion.

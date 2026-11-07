@@ -53,7 +53,8 @@ test('static UI copy in all seven pages has an English translation',()=>{
   const decode=s=>s.replace(/&amp;/g,'&').replace(/&larr;/g,'←').replace(/&#(?:x([\da-f]+)|(\d+));/gi,(_,h,d)=>String.fromCodePoint(parseInt(h||d,h?16:10)));
   const missing=[];
   for(const filename of fs.readdirSync(path.resolve(__dirname,'../app')).filter(name=>name.endsWith('.html'))) {
-    const html=fs.readFileSync(path.resolve(__dirname,'../app',filename),'utf8');
+    const html=fs.readFileSync(path.resolve(__dirname,'../app',filename),'utf8')
+      .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi,'');
     const values=[...html.matchAll(/>([^<>]+)</g)].map(m=>m[1]);
     for(const match of html.matchAll(/(?:placeholder|aria-label|alt)="([^"]+)"/g)) values.push(match[1]);
     for(const raw of values) {
