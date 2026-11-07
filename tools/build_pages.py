@@ -12,13 +12,17 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / '_site'
 
 
-def build(api_origin=''):
-    if api_origin:
-        origin = urlsplit(api_origin)
-        if (origin.scheme != 'https' or not origin.hostname or origin.username or origin.password
-                or origin.path not in ('', '/') or origin.query or origin.fragment):
-            raise SystemExit('API origin must be an HTTPS origin without credentials, path, query or fragment.')
-        api_origin = f'https://{origin.netloc}'
+def https_origin(value):
+    origin = urlsplit(value)
+    if (origin.scheme != 'https' or not origin.hostname or origin.username or origin.password
+            or origin.path not in ('', '/') or origin.query or origin.fragment):
+        raise SystemExit('Use an HTTPS origin without credentials, path, query or fragment.')
+    return f'https://{origin.netloc}'
+
+
+def build(api_origin='', app_url=''):
+    api_origin = https_origin(api_origin) if api_origin else ''
+    app_url = https_origin(app_url) if app_url else api_origin
     if OUTPUT.exists() and any(OUTPUT.iterdir()):
         raise SystemExit('Use an empty _site directory; refusing to overwrite existing output.')
     (OUTPUT / 'assets').mkdir(parents=True, exist_ok=True)
@@ -52,8 +56,8 @@ def build(api_origin=''):
         html = source.read_text(encoding='utf8')
         html = re.sub(r'(<div class="strip">\s*<div class="wrap"><p>).*?(</p>)',
                       lambda m: m[1] + notice + m[2], html, count=1, flags=re.S)
-        if api_origin:
-            direct = '"' + escape(api_origin + '/index.html', quote=True) + '"'
+        if app_url:
+            direct = '"' + escape(app_url + '/index.html', quote=True) + '"'
             html = html.replace(notice + '</p>', notice + ' <a href=' + direct + '>Buka aplikasi langsung</a></p>', 1)
         html = re.sub(r'(<p class="foot-note">).*?(</p>)',
                       lambda m: m[1] + notice + m[2], html, flags=re.S)
@@ -72,7 +76,8 @@ def build(api_origin=''):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--api-origin', default='')
+    parser.add_argument('--app-url', default='', help='Link to the live app without changing the preview data source.')
     parser.add_argument('--output', choices=('_site', '_site-live'), default='_site')
     args = parser.parse_args()
     OUTPUT = ROOT / args.output
-    build(args.api_origin)
+    build(args.api_origin, args.app_url)

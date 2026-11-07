@@ -22,6 +22,7 @@ test('export contains only frontend and public fixtures', () => {
   for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.match(html, /Pratinjau GitHub Pages/);
+    assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
     assert.match(html, /src="assets\/logo.svg"/);
     assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
     assert.match(html, /assets\/favicon\.svg\?v=2/);
@@ -32,6 +33,13 @@ test('export contains only frontend and public fixtures', () => {
       assert.ok(fs.existsSync(path.join(root,'assets',module)));
     }
   }
+});
+
+test('Pages publishes the self-contained preview rather than the cross-origin build', () => {
+  const workflow=fs.readFileSync(path.resolve(__dirname,'../.github/workflows/pages.yml'),'utf8');
+  assert.match(workflow,/path: _site\s*\n/);
+  assert.doesNotMatch(workflow,/path: _site-live/);
+  assert.match(workflow,/build_pages\.py --app-url https:\/\/8123-agq3khlycogygkr5hikwu5oeiq\.instabox\.tech/);
 });
 test('export includes the credited reference photos without missing or altered assets', () => {
   const stock=path.join(root,'assets/stock');

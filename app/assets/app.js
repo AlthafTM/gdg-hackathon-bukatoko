@@ -193,10 +193,19 @@
     if (!path || !API_ORIGIN || !/^\/(api|uploads)\//.test(path)) return path;
     return API_ORIGIN + path;
   }
+  function csrfHeaders(method) {
+    if (/^(GET|HEAD)$/i.test(method)) return {};
+    if (API_ORIGIN && (!window.location || API_ORIGIN !== window.location.origin)) return {};
+    var match = (document.cookie || "").match(/(?:^|;\s*)bk_csrf=([^;]*)/);
+    if (!match) return {};
+    try { return {"X-CSRF-Token": decodeURIComponent(match[1])}; }
+    catch (error) { return {}; }
+  }
   function api(path, opts) {
     if (window.BukatokoPreview) return window.BukatokoPreview.request(path, opts);
     opts = opts || {};
     var init = { method: opts.method || "GET", credentials: API_ORIGIN ? "include" : "same-origin", headers: {} };
+    init.headers = csrfHeaders(init.method);
     if (opts.body !== undefined) {
       init.headers["Content-Type"] = "application/json";
       init.body = JSON.stringify(opts.body);
@@ -1305,7 +1314,7 @@
           var form = new FormData();
           form.append("photo", prepared, prepared.name || "foto.jpg");
           if (onProgress) onProgress(i + 1, files.length);
-          return fetch(backendURL("/api/upload"), { method: "POST", body: form, credentials: API_ORIGIN ? "include" : "same-origin" })
+          return fetch(backendURL("/api/upload"), { method: "POST", body: form, headers: csrfHeaders("POST"), credentials: API_ORIGIN ? "include" : "same-origin" })
             .then(function (res) {
               return res.json().catch(function () { return {}; }).then(function (data) {
                 if (!res.ok) throw new Error((data && data.error) || "unggahan ditolak server");

@@ -1,55 +1,44 @@
-# Connecting Pages to the Instabox backend
+# Existing Instabox backend: frontend connection
 
 Configured backend origin:
 https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
 
-This is a prepared configuration, not a verified live connection. The running Instabox service must receive the updated server code and configuration below. Its availability, tunnel authentication, CORS and cookie behavior have not been tested against the deployed endpoint.
+Correction: the earlier instructions assumed that the deployed backend matched main's older server. That assumption was not verified. The moderator panel supplied by the user corresponds to functionality documented on `feat/bukatoko-0.2`; do not overwrite the existing server, database or uploads to connect the frontend.
 
-## Start the updated backend
+## Read the existing contract first
 
-On the machine hosting the existing Python service, preserve its database and uploads, update the application files, and restart the service with these environment variables. The exact Pages origin has no repository path and no trailing slash.
+Sources inspected at immutable commit `09394bf8100a348fc153834e90aa5926277a0953`:
 
-```bash
-export BUKATOKO_CORS_ORIGINS=https://althaftm.github.io,https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
-export BUKATOKO_CROSS_SITE_COOKIES=1
-cd app
-python3 server.py 8123
-```
+- [Existing app guide](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/README.md): one Python service serves HTML, assets, API and uploaded photos; port 8123 is exposed through `instabox-port`.
+- [Existing frontend](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/assets/app.js): relative API paths, same-origin credentials and the `bk_csrf` cookie forwarded as `X-CSRF-Token` on writes, including uploads.
+- [Existing server](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/server.py): session/CSRF cookies use SameSite=Lax; authenticated writes validate the session's CSRF value. This inspected version does not implement credentialed cross-origin CORS.
 
-For PowerShell:
+These are source observations, not proof of the exact revision currently running at Instabox. The public URL could not be read by the web tool. Moderator credentials from the user's screenshot are not copied into repository files and were not used to sign in.
 
-```powershell
-$env:BUKATOKO_CORS_ORIGINS = 'https://althaftm.github.io,https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech'
-$env:BUKATOKO_CROSS_SITE_COOKIES = '1'
-Set-Location app
-python server.py 8123
-```
+## Connect without changing backend code
 
-Configure these variables in the actual service definition if a process manager starts Python. Restart that service instead of launching a second process on port 8123. Keep the existing tunnel forwarding HTTPS to localhost:8123; the Python listener remains loopback-only. Do not replace the database or uploads with sample files.
+Serve the frontend on the same public origin as the existing backend. Use relative `/api/...` and `/uploads/...` paths, same-origin credentials, and the existing CSRF contract. The local frontend has been updated to send the cookie token on JSON writes and multipart uploads. Tokens are not stored in browser storage or forwarded from an unrelated Pages origin.
 
-Cross-site mode sets HttpOnly, Secure and SameSite=None cookies. It permits credentialed CORS only for exact configured HTTPS origins, rejects untrusted write origins, and handles JSON preflight. Without these variables local development retains same-origin requests and SameSite=Lax cookies. Requests without Origin are rejected for writes when cross-site mode is enabled; API clients in that mode must send a trusted Origin. Origins sharing the same GitHub account are one browser trust boundary, regardless of repository path.
+Publishing UI assets to the existing frontend directory requires access to that hosting environment. It does not require replacing server.py or restarting/reseeding its database. Preserve the existing moderator page, feature-specific frontend code, uploads and user data; merging the UI with those newer features requires a separate compatibility review. The current main frontend does not yet provide all feature-branch screens.
 
-## Build the frontend
+Alternatively, a same-origin reverse proxy can serve the UI and forward API/uploads to the unchanged backend. GitHub Pages alone cannot provide such a proxy. This is an alternative hosting setup, not something configured by this document.
 
-```text
-python tools/build_pages.py --output _site-live --api-origin https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
-```
+## Current Pages limitation
 
-Use an absent or empty output directory. The generated pages load `runtime-config.js` before `app.js` and omit the read-only adapter. API requests and uploads use the configured origin with credentials included. Uploaded photos resolve against the backend; bundled photos and other assets stay on Pages. Share links retain the Pages repository path. API failure is shown as an error rather than silently switching to sample data.
+The published v0.5.1 workflow selected a cross-origin build using the Instabox URL. This does not match the inspected existing backend's same-origin contract and has not been shown to work. Version 0.5.2 restores `_site`, retaining the bundled-data adapter and linking to Instabox for live operations. A successful Pages deployment and mocked connection tests do not verify a working deployed API connection.
 
-The Pages workflow first builds and tests the read-only artifact, then builds the connected artifact and runs connection tests. It publishes `_site-live` only after an explicitly authorized push. The unconfigured `python tools/build_pages.py` command still builds the read-only preview. No commit, deployment or remote service restart is performed by editing this configuration.
+The default `python tools/build_pages.py` produces a read-only preview. Adding `--app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech` adds a link to the existing app without changing where preview data is fetched. No frontend assets are published to Instabox by this command. Do not use `mode: no-cors`, disable CSRF, or copy moderator credentials into frontend code.
 
-Some browsers block third-party cookies even with SameSite=None. The connected-page notice includes **Buka aplikasi langsung**, opening the backend-hosted application in a first-party context. Another lasting option is a shared site/domain with a same-origin reverse proxy. Do not store session tokens in browser storage to bypass this restriction.
+The optional CORS/cookie changes previously added to main are not a required migration for the user's existing backend. Do not deploy them over the working service merely to accommodate the Pages configuration.
 
-## Validation still required
+## Validation status
 
-Run the builds and tests only in a sandbox meeting the installed security-audit skill's execution requirements. Current validation is source/syntax inspection only; the host lacks the required sandbox. No deployed endpoint was probed.
+Version 0.5.2 includes the same-origin CSRF adjustment and its regression cases. Syntax checks inspect source without executing it; configured runtime checks run through GitHub Actions after the authorized publication. Local runtime tests require the execution sandbox specified by the installed security-audit skill, which is unavailable on this host. No authenticated live requests or backend modifications were performed.
 
-- Run existing API smoke checks in default local mode, and both Pages builds plus Node tests.
-- In an isolated fixture, allowlist a dummy HTTPS origin and enable cross-site cookies. Verify accepted/rejected OPTIONS requests, credentialed response headers, HttpOnly/Secure/SameSite=None cookie attributes, and rejection of untrusted or missing write Origins.
-- Verify sign-in, session persistence, uploads, uploaded images, posting, offers and messages from the Pages origin in an authorized browser session. Repeat with third-party cookies blocked and verify the direct-app link.
-- The previously reported logout revocation and cross-owner photo deletion findings are separate unresolved issues. This connection work does not remediate them or certify the public demo for sensitive data.
+- In an isolated fixture matching the existing backend revision, verify login, CSRF headers on writes/uploads, normal reads and negative cases for missing/wrong tokens.
+- Confirm the existing moderator/transaction/notification pages retain their original behavior before replacing any hosted frontend asset.
+- Verify the exact deployed revision and a same-origin browser session before reporting a working live connection.
 
-If the tunnel URL changes, update the connected-build argument in `.github/workflows/pages.yml`, the backend's public-origin entry in the allowlist, and rebuild after publication authorization. Keep the Pages-origin entry. Including the backend's own public origin allows the direct-app fallback to submit forms even when the tunnel rewrites the Host header to localhost.
+The two earlier security findings concerned main's older server source. They must not be attributed to the different deployed backend without reviewing its own code and revision.
 
 Protocol references: [MDN CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and [Set-Cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie).
