@@ -42,6 +42,56 @@
   function qs(sel, root) { return (root || document).querySelector(sel); }
   function qsa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
+  var iconPaths = {
+    search: '<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',
+    explore: '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>',
+    wanted: '<path d="M4 4h16v12H10l-6 5V4Z"/><path d="M8 8h8M8 12h5"/>',
+    sell: '<path d="m3 12 9-9h8v8l-9 10-8-9Z"/><circle cx="16.5" cy="6.5" r="1"/>',
+    account: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
+    elektronik: '<path d="M3 6h18v12H3zM8 21h8M12 18v3"/><path d="m7 10 3 2-3 2M13 14h4"/>',
+    ponsel: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M11 19h2"/>',
+    fesyen: '<path d="m8 3-6 4 3 6 3-2v10h8V11l3 2 3-6-6-4a4 4 0 0 1-8 0Z"/>',
+    rumah: '<path d="m2 11 10-9 10 9M5 9v12h14V9M10 21v-7h4v7"/>',
+    hobi: '<path d="M5 12V9a7 7 0 0 1 14 0v3M3 11h4v9H3zM17 11h4v9h-4zM17 20c0 2-2 2-5 2"/>',
+    buku: '<path d="M12 5C9 2 5 2 2 3v16c3-1 7-1 10 2 3-3 7-3 10-2V3c-3-1-7-1-10 2v16Z"/>',
+    otomotif: '<path d="m4 10 2-6h12l2 6M3 10h18v9H3zM6 19v3M18 19v3M6 14h2M16 14h2"/>',
+    olahraga: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5 5c9 2 12 5 14 14M19 5C10 7 7 10 5 19"/>'
+  };
+
+  function icon(name) {
+    var node = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    node.setAttribute("viewBox", "0 0 24 24");
+    node.setAttribute("class", "ui-icon");
+    node.setAttribute("aria-hidden", "true");
+    node.setAttribute("fill", "none");
+    node.setAttribute("stroke", "currentColor");
+    node.setAttribute("stroke-width", "1.7");
+    node.setAttribute("stroke-linejoin", "round");
+    node.setAttribute("stroke-linecap", "round");
+    node.innerHTML = iconPaths[name] || iconPaths.explore;
+    return node;
+  }
+
+  function initShell() {
+    qsa(".nav a").forEach(function (link) {
+      var key = link.getAttribute("data-i18n");
+      var label = el("span", {class: "nav-label", text: link.textContent});
+      link.textContent = "";
+      link.appendChild(icon(key));
+      link.appendChild(label);
+    });
+    qsa("[data-icon]").forEach(function (holder) { holder.appendChild(icon(holder.dataset.icon)); });
+    var categories = qs("#rail-kategori");
+    if (categories) {
+      [["elektronik", "Elektronik"], ["ponsel", "Ponsel & tablet"], ["fesyen", "Fesyen"],
+        ["rumah", "Rumah tangga"], ["hobi", "Hobi & koleksi"], ["buku", "Buku"],
+        ["otomotif", "Otomotif"], ["olahraga", "Olahraga"]].forEach(function (category) {
+        categories.appendChild(el("a", {class: "btn", href: "jelajah.html?kat=" + category[0]},
+          [icon(category[0]), el("span", {text: category[1]})]));
+      });
+    }
+  }
+
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -79,7 +129,7 @@
     qsa("[data-i18n]").forEach(function (node) {
       var key = node.getAttribute("data-i18n");
       var value = t(key);
-      if (value) node.textContent = value;
+      if (value) (qs(".nav-label", node) || node).textContent = value;
     });
     qsa("[data-i18n-ph]").forEach(function (node) {
       var key = node.getAttribute("data-i18n-ph");
@@ -1777,6 +1827,7 @@
   }
 
   function boot() {
+    initShell();
     applyLang();
     initTheme();
     initAuth();

@@ -69,6 +69,10 @@ def main():
     code, data = call(anon, "GET", "/api/me")
     check("tamu /api/me tanpa user", code == 200 and data.get("user") is None, str(data))
 
+    code, data = call(anon, "GET", "/api/listings?kondisi=mulus")
+    check("filter kondisi diteruskan ke backend", code == 200 and data["total"] > 0 and
+          all("mulus" in item["condition"].lower() for item in data["items"]), str(data))
+
     code, data = call(seller, "POST", "/api/login", {"email": "rangga.putra", "password": "demo1234"})
     check("login penjual seed", code == 200 and data["user"]["name"] == "rangga.putra", str(data))
 

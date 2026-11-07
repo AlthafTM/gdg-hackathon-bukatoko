@@ -466,7 +466,7 @@ def api_get(path: str, query: dict, uid: int | None, conn: sqlite3.Connection):
 
     if path == "/api/listings":
         return 200, query_listings(conn, {k: q(k) for k in
-                                          ("q", "kat", "city", "min", "max", "sort", "status", "owner", "limit", "offset")}, uid)
+                                          ("q", "kat", "city", "kondisi", "min", "max", "sort", "status", "owner", "limit", "offset")}, uid)
 
     m = re.fullmatch(r"/api/listings/([A-Za-z0-9_-]+)", path)
     if m:
