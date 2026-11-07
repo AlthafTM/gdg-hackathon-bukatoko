@@ -1,0 +1,984 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Electronics
+  - link "Mobile Phones & Tablets":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Mobile Phones & Tablets
+  - link "Computers":
+    - /url: /categories/electronics-cameras-and-gadgets-7/computers-and-tablets-333/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Computers
+  - link "Video Gaming":
+    - /url: /categories/video-gaming-12/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Video Gaming
+  - link "TVs & Entertainment Systems":
+    - /url: /categories/electronics-cameras-and-gadgets-7/tvs-and-entertainment-systems-342/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: TVs & Entertainment Systems
+  - link "Audio":
+    - /url: /categories/electronics-cameras-and-gadgets-7/audio-323/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Audio
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+  - textbox "Search":
+    - /placeholder: Search for an item
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Category_ATF_1"] [name="google_ads_iframe_/325540922/Desktop_Category_ATF_1"]:
+    - iframe [id="te-clr1-38923f47-193b-4b2a-bcef-9d3ac03fd1ea-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=9dda6b1b-200f-4178-bc69-0b0cc7734a1a&ag=vpzgtcb&sfe=1d2664dd&sig=Ucaqu1LvJFVzMmuW4V5c63ueeMwPYURWcANamFodOGg.&crid=iezqdyue&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=2&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7k3QADegMAhOutADw7Q-QCiwKug-RfgIy6oA&rgz=40559&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=26.32000000000005&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoSwL1DQBkERtr2p0PIHhBEbxpCwzHc0oaQgd2cHpndGNiSKf01g1Qwe-LBVoIaWV6cWR5dWVg3LS2G2RPR3h4cjVhUkdjbnpoXzkwNVFfTXMCwAGfAQpQYXJvbmdwMDU1wODvo9_eRml1M2VqN2zQAqyPigMb5VotQ1JNNi3o1-bRqq3ePwo1ORIIurn554eqqZYDELDp8qYWMGtUX3VnN0c2Q3g0SUEycWUtVFNlMTYtMDgzZjdhMzUtMwybiceRB0TNBQpF-gSMjJV1VfW6SRGOA_A5BybX0rzNtpKD0joGCL2qvaqPpPHInhkCmBMAqBM8yBM80BMA_RNYOZQ_gBQBoBQAsBQAuBQAyBQA6hTwFJEBshUA2BUAgBYAMvw0AuPelTjg6K3Uy_wGvXtCC9PVk3VdlVS0DN_s3JctdEvTibgt0oHBU-0HYwrUOEwjpoUcYAJbEZ75i6d_54QpL1G7pZEZhEfX9N3rBdl6HCZhfCv9QGiev0q3JFEQpDOM482fNesy9wY-TWO1iQo2bTqwSqprzS6Zh2lZ_taZY8dNJ4GtjkA_pM9pNun5Fmpq5MFPhw9WSzGDIdYRo8EiRUvDAg..&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=13&testid=-CRM6-&fpa=646&pcm=3&ict=Unknown&said=0kT_ug7G6Cx4IA2qe-TSZg&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCfFl-3eTuaoP0Da3Xk7QPw_bw6Qy-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSfAk_Q3JU4O9GHZ7pM50mZXd_o2kpFD5J0ozYokn13srECqT35qeXWaGr7RY30GSrv49xYZlACfvoEChOACden1mSrVDWk0wNx74_NTBtlDMBE5odD_P_A74ma2zTxHuuOtxkfqqxLVGNwzo-tryW2AWHluhfxjw0T57Xl1ryxw8Ymoyussnv2wBqlwQBH7ygTcrYdu03w_iSMLU8LQPOzvn9lQH9-LY_yOKZNhT6uMlZSKlQOjXX6txg85CeKOHUA1nMmBuiqRhj0__3qyDMjHk1oR9dTk6ZeVtiOlnyk1rYrX6tG3g1uhB2BofPzGsu-tcjcojQ1XknXMDkQTduuiXW5NH_9JCXvzNT4F8CrNGTydsWzvxqzZfO_66MDQRVZ4AQBgAbJ9tGoqYWgw58BoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOlia1L_du_WXA2AA-gsCCAGADAGqDQJJROINEwjrjMDdu_WXAxWt64QAHUM7PM3qDRMI8r7B3bv1lwMVreuEAB1DOzzNiA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwnjehSuB0DPQBIKODI3MjY3MzcxNRgB%26num%3D1%26sig%3DAOD64_2YXOSjGRzAY2mahDJPuW4L-xji7w%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=iezqdyue&af_click_lookback=7d&clickid=9dda6b1b-200f-4178-bc69-0b0cc7734a1a&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQxMDUzLCJleHAiOjE3OTQwNDQ2NTMsImp0aSI6IjlkZGE2YjFiLTIwMGYtNDE3OC1iYzY5LTBiMGNjNzczNGExYSIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.dS1YqC1038QZuUUm_wjcMkaOE17s6vGjAOj8qG7J_EY
+  - list:
+    - link "Home":
+      - /url: /
+      - paragraph: Home
+    - link "Mobile Phones & Tablets":
+      - /url: /categories/mobile-phones-338/
+      - paragraph: Mobile Phones & Tablets
+  - group "Carousel":
+    - button "iPhone iPhone":
+      - img "iPhone"
+      - paragraph: iPhone
+    - button "Android Phones Android Phones":
+      - img "Android Phones"
+      - paragraph: Android Phones
+    - button "Tablets Tablets":
+      - img "Tablets"
+      - paragraph: Tablets
+    - button "Mobile & Tablet Accessories Mobile & Tablet Accessories":
+      - img "Mobile & Tablet Accessories"
+      - paragraph: Mobile & Tablet Accessories
+    - button "Others Others":
+      - img "Others"
+      - paragraph: Others
+  - button "Mobile Phones & Tablets Icon chevron down":
+    - generic: Mobile Phones & Tablets
+    - img "Icon chevron down"
+  - button "Sort:Best Match":
+    - generic: Sort:Best Match
+  - button "Model":
+    - generic: Model
+  - button "Storage":
+    - generic: Storage
+  - button "Condition":
+    - generic: Condition
+  - button "Price":
+    - generic: Price
+  - button "Deal Option":
+    - generic: Deal Option
+  - button "More filters":
+    - generic: More filters
+  - heading "100,000+ listings in Mobile Phones & Tablets" [level=1]
+  - paragraph: Save this search
+  - button:
+  - paragraph
+  - link "Avatar sanzstore_ 2 minutes ago":
+    - /url: /u/sanzstore_/?t-id=dzeZZbvrUB_1794040760425
+    - img "Avatar"
+    - paragraph: sanzstore_
+    - paragraph: 2 minutes ago
+  - link "Samsung Galaxy A14 5G 6/128 GB Samsung Galaxy A14 5G 6/128 GB Rp 1,900,000 Lightly used":
+    - /url: /p/samsung-galaxy-a14-5g-6-128-gb-1472707602/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=0
+    - img "Samsung Galaxy A14 5G 6/128 GB"
+    - paragraph: Samsung Galaxy A14 5G 6/128 GB
+    - paragraph: Rp 1,900,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "Avatar JSK_28GadgetStore 9 days ago":
+    - /url: /u/JSK_28GadgetStore/?t-id=dzeZZbvrUB_1794040760425
+    - img "Avatar"
+    - paragraph: JSK_28GadgetStore
+    - paragraph: 9 days ago
+  - link "Samsung Z Fold 5 12/512GB Resmi Sein Grey Samsung Z Fold 5 12/512GB Resmi Sein Grey Rp 7,950,000 Lightly used":
+    - /url: /p/samsung-z-fold-5-12-512gb-resmi-sein-grey-1470954479/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=1
+    - img "Samsung Z Fold 5 12/512GB Resmi Sein Grey"
+    - paragraph: Samsung Z Fold 5 12/512GB Resmi Sein Grey
+    - paragraph: Rp 7,950,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - button "More options":
+  - link "Avatar meilan1198 27 days ago":
+    - /url: /u/meilan1198/?t-id=dzeZZbvrUB_1794040760425
+    - img "Avatar"
+    - paragraph: meilan1198
+    - paragraph: 27 days ago
+  - link "IPHONE 17 Basic 512gb Batt Health 94% ! MULUZZZ IPHONE 17 Basic 512gb Batt Health 94% ! MULUZZZ Rp 20,378,060 Like new":
+    - /url: /p/iphone-17-basic-512gb-batt-health-94-muluzzz-1467340286/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=2
+    - img "IPHONE 17 Basic 512gb Batt Health 94% ! MULUZZZ"
+    - paragraph: IPHONE 17 Basic 512gb Batt Health 94% ! MULUZZZ
+    - paragraph: Rp 20,378,060
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "6"
+  - button "More options":
+  - link "Avatar yoursaturfaves 4 minutes ago":
+    - /url: /u/yoursaturfaves/?t-id=dzeZZbvrUB_1794040760425
+    - img "Avatar"
+    - paragraph: yoursaturfaves
+    - paragraph: 4 minutes ago
+  - link "Iphone 16 Plus 128GB ex Digimap Iphone 16 Plus 128GB ex Digimap Rp 13,800,000 Well used":
+    - /url: /p/iphone-16-plus-128gb-ex-digimap-1472707297/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=3
+    - img "Iphone 16 Plus 128GB ex Digimap"
+    - paragraph: Iphone 16 Plus 128GB ex Digimap
+    - paragraph: Rp 13,800,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - iframe [id="google_ads_iframe_/325540922/Desktop_CategorySearch_Native_1_0"]:
+    - link:
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - link "XM Indonesia":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - link:
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - link "Gabung Copy Trading XM":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - link "Salin trader terbaik untuk profit.":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - link "Lihat":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=CiaCu3eTuavmtN8eSmNMPhZHZ2Qe91O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSZAk_Q6O9uXMY9TYWfwNnyihA6v562pcs42RjTzqrZmR6_2lCgvNCGukc9gXuA4G9eVOrG_DGFa8UN1amQJw4p1nbk6tAX9xsenPMHWoFr0qnhc_8JE4YALQjO0bv1g2ftJsMeFl97ZGsVqgJwUpFi8yROH0Nju8mHXMokYD_bg2tcrj77beJ9b2BKfhT5euH8QhkvfJIiB0gnsNyhIHJ57SDbttXeKdAHKVIesgtUZYH9ItViqNgUB8ZduyPQuu-1XftqXclygsI3Oe47T7Ovz6tjkZ9WzSURfdAWTCh3PMQQ9Q5RU94hII21zsAfeB-8dnDZIISpf0A7K2Xb3tqDLigAMIjVgIsKUuA3X1DBsD0b7Wzp372qL1MK4AQBgAbLmM7m7_vYg6MBoAYhqAeT2LECqAeU2LECqAeV2LECqAep67ECqAemvhuoB5bYG6gHqpuxAqgH_56xAqgH35-xAqgH_uixAqgHrb6xAqgHv9OxAtgHANIINQiAIRABMgiKgICAgICACDoUj9CAgICABIDAgICAoIiAAqiBgBhIvf3BOliEvOrdu_WXA2AA-gsCCAGADAGqDQJJROINEwjI9-rdu_WXAxVHCWYEHYVINnvqDRMI6M3r3bv1lwMVRwlmBB2FSDZ7iA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_0nbBjtugUopxGEmpX3NPxh-3PG1w&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=tVHvn_rhMttLIvFMce19zk8oeEyb-3X9VfwET-2CJz2WDkZUih4Uf8rs_ZxktzV6J5kr8hHMWmgp-gxm85hXniXg3UBBF5ZFmdEVvkDIcxOswyt9tTETgYzLs_OY9XnEPXGkF_yPlsS90b2Yy8j_bv3115CHPwcByKtuu9i_NbcfYLc_kCjTbAPX-7v8pKtDps7qvwJ8OW98LzcV7ToT_qyap6HKf1k7SzHf84K_O1G59BpCaHVRNsKBlNSIYduFPGhlalptgGpAePPWWslvzNk8HzcZoRldZhedZq0jKFkI-DXL--8L6ZI52nCcJe6TH6kEbu09C1PwG6Ge7eZGaC_CDdJUvOdfq50uTJnuh0ofkYF_Qu4ZmZokpuuDwgSi_M9vdSk-w_lUZPyOa6xF6lMZ8nPp_OfehGm1JmB_K2Q0ayP9M5KFEOG-Bdzoq04R_vLWHvLHDB63xwoa9sc98LflqhSy0QhRB9BbuLdV3TDxIBoFquQeOTApeDyoO-8_5Nz0fGSEJHcMsNTlkMgsKXrGqb-sIJ5fc3CHbWWUVQMTkxzy3OoOmDWDQnPOe5-1ZW2N6ibjxkWtOvHxOBwjMsft0IOB2-JgOSk1xA9g1x4PvfTEnLs6RyNrljkXGRNd9JEKUQ&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267875%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3Drru_AXWVAQBMlZsIRbWkMw&z=au7k3QAN1vkEZglHADZIhVD2NAH6nqhmia3qmA
+    - generic: Iklan
+  - link "hanindita12 4 minutes ago":
+    - /url: /u/hanindita12/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: hanindita12
+    - paragraph: 4 minutes ago
+  - link "Hiibah iphone 16+ eks pemakaian suami saya full set Hiibah iphone 16+ eks pemakaian suami saya full set FREE Like new":
+    - /url: /p/hiibah-iphone-16-eks-pemakaian-suami-saya-full-set-1472707207/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=5
+    - img "Hiibah iphone 16+ eks pemakaian suami saya full set"
+    - paragraph: Hiibah iphone 16+ eks pemakaian suami saya full set
+    - paragraph: FREE
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "dzikrimuhammad13 4 minutes ago":
+    - /url: /u/dzikrimuhammad13/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: dzikrimuhammad13
+    - paragraph: 4 minutes ago
+  - link "iPhone 17 Air 256GB Garansi Resmi iBox Battery Health 100% 27 Januari 2027 iPhone 17 Air 256GB Garansi Resmi iBox Battery Health 100% 27 Januari 2027 Rp 15,300,000 Like new":
+    - /url: /p/iphone-17-air-256gb-garansi-resmi-ibox-battery-health-100-27-januari-2027-1472707178/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=6
+    - img "iPhone 17 Air 256GB Garansi Resmi iBox Battery Health 100% 27 Januari 2027"
+    - paragraph: iPhone 17 Air 256GB Garansi Resmi iBox Battery Health 100% 27 Januari 2027
+    - paragraph: Rp 15,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "cilgirl 5 minutes ago":
+    - /url: /u/cilgirl/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: cilgirl
+    - paragraph: 5 minutes ago
+  - link "Redmi pad 2 4/128gb wifi only Redmi pad 2 4/128gb wifi only Rp 2,350,000 Like new":
+    - /url: /p/redmi-pad-2-4-128gb-wifi-only-1472707084/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=7
+    - img "Redmi pad 2 4/128gb wifi only"
+    - paragraph: Redmi pad 2 4/128gb wifi only
+    - paragraph: Rp 2,350,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "davidpram 5 minutes ago":
+    - /url: /u/davidpram/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: davidpram
+    - paragraph: 5 minutes ago
+  - link "iPhone 15 Pro Max 256GB Inter | WIFI ONLY | Bukan Bypas & Bukan simlock iPhone 15 Pro Max 256GB Inter | WIFI ONLY | Bukan Bypas & Bukan simlock Rp 11,800,000 Like new":
+    - /url: /p/iphone-15-pro-max-256gb-inter-wifi-only-bukan-bypas-bukan-simlock-1472706950/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=8
+    - img "iPhone 15 Pro Max 256GB Inter | WIFI ONLY | Bukan Bypas & Bukan simlock"
+    - paragraph: iPhone 15 Pro Max 256GB Inter | WIFI ONLY | Bukan Bypas & Bukan simlock
+    - paragraph: Rp 11,800,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "akeitharo 1 month ago":
+    - /url: /u/akeitharo/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: akeitharo
+    - paragraph: 1 month ago
+  - link "iPhone 15 Promax 256 GB iBox Second Mulus Like New iPhone 15 Promax 256 GB iBox Second Mulus Like New Rp 13,500,000 Like new":
+    - /url: /p/iphone-15-promax-256-gb-ibox-second-mulus-like-new-1465652002/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=9
+    - img "iPhone 15 Promax 256 GB iBox Second Mulus Like New"
+    - paragraph: iPhone 15 Promax 256 GB iBox Second Mulus Like New
+    - paragraph: Rp 13,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "14"
+  - button "More options":
+  - link "toko77gadgets 11 minutes ago":
+    - /url: /u/toko77gadgets/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: toko77gadgets
+    - paragraph: 11 minutes ago
+  - link "Oppo N3 Fold 512gb Minus LCD Oppo N3 Fold 512gb Minus LCD Rp 6,900,000 Heavily used":
+    - /url: /p/oppo-n3-fold-512gb-minus-lcd-1472705866/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=10
+    - img "Oppo N3 Fold 512gb Minus LCD"
+    - paragraph: Oppo N3 Fold 512gb Minus LCD
+    - paragraph: Rp 6,900,000
+    - paragraph: Heavily used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "putra3157 11 minutes ago":
+    - /url: /u/putra3157/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: putra3157
+    - paragraph: 11 minutes ago
+  - link "Smartwatch Anker no minus, fungsi normal original Smartwatch Anker no minus, fungsi normal original Rp 235,000 Brand new":
+    - /url: /p/smartwatch-anker-no-minus-fungsi-normal-original-1472705786/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=11
+    - img "Smartwatch Anker no minus, fungsi normal original"
+    - paragraph: Smartwatch Anker no minus, fungsi normal original
+    - paragraph: Rp 235,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Category_Bottom_Listing_1_0"] [name="google_ads_iframe_/325540922/Desktop_Category_Bottom_Listing_1_0"]:
+    - iframe [id="te-clr1-99313eb1-482b-48ca-bba3-c360e636d571-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=9916d631-ff02-4983-a9ca-67523e72dc79&ag=vpzgtcb&sfe=1d2664de&sig=mYsuz9yMslVzN3L0wkkEOhU9RtQ6YNa1IAjp9frODhw.&crid=k9ulusf4&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=3&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7k3gAE6qEBc_obAA5S-dLm63JA2YNM1J_Zbw&rgz=40552&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=29.5&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoSQKtDQCkEDHWFpkC_4NJEanKZ1I-ctx5Qgd2cHpndGNiSKf01g1Qwe-LBVoIazl1bHVzZjRg5KXCG2RPR3h4cjVhUkdjbnpoXzkwNVFfTXOfAQhOZ2FtcHI1NTL1ke7HuZB5aXUzZWo3bNACrI-KAxviWi1DUk02Lczfxtqqrd4_CTkyg5rIgre93ewNEOLE0xZfV1lIUzczUUFCUWF4cjl0b2dXT18xNi0wODNmN2EzNS0zDJuJx5EHRM0FCkX6fcGkk1kBSRGFkm0l6FyRa7zNtpKD0jrx19fepPHInhkDmBMAqBM8yBM80BMA_RNYOZQ_gBQBoBQAsBQAuBQAyBQA6hTwFJEBshUA2BUAgBYAM_w0AuPe5SNldK3UpxlR1E-mMDtcsq6EQZLaB2OSuS9cJUnTKwqkjyjvgb06OyKCxgE9YVpQ5xLYLs7KqRzIOidMcYnakRKZQTO5pk-fF2QHyHqgjH2jTQT7ALKo3jQIaVvmw76bB3IwylwG79pAKTyDKKpS4HSYrlW7JBrGo_ytnTjy6U440akuz7f4LX1Onf9uifvULw5-OsZgtZTzDbGOGBUsmrI0LA..&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=13&testid=-CRM6-&fpa=455&pcm=3&ict=Unknown&said=_WYHS73QABQaxr9togWO_A&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCExhE3uTuaqHVE5v0z7sP-aW50AS-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSVAk_QdsZCyWcYAMVEwDOT2DNZlnvNYbN452ATREfK8G8oaG5kTI2c8LxE2TI3oPx0yPa7x9pCRNMVlE7XjqGFBNT832mi0dSV_5rZX5itWa0xhFc0Q8aig9RagE9j0aSGrcUoZJ9E41OKs4gvbl2iuw1RT6y_PBccGHklTppp8rvWTsVVW79OzLzO79JSeFy-oreEwivX23UqK7ugqt8kBGRpo0RpzuYB7I2FX6UoCDfmX_Bl86J49vzler65dPUkEUF5ER0fuQeXyEgrcNzt9avmuKRQ9aA2imcQPef_1_8ugz2xxJs9L493o7rbBMxV5mArcWwaAmrYJfbEg7cNf6J5FBR9qBXiqyBpfZuxEGGi79EK2UjgBAGABv-8i4-h2vrSPaAGIagHk9ixAqgHlNixAqgHldixAqgHqeuxAqgHpr4bqAeW2BuoB6qbsQKoB_-esQKoB9-fsQKoB_7osQKoB62-sQKoB7_TsQLYBwDSCDUIgCEQATIIioCAgICAgAg6FI_QgICAgASAwICAgKCIgAKogYAYSL39wTpY68mB3rv1lwNgAPoLAggBgAwBqg0CSUTiDRMIsqWC3rv1lwMVG_pzAR35Ug5K6g0TCKmxg9679ZcDFRv6cwEd-VIOSogO____________AdAVAYAXAbIXEBgMKgo4MjcyNjczNzE1UAGqGBcJVeOlmwTA0kASCjgyNzI2NzM3MTUYAQ%26num%3D1%26sig%3DAOD64_3Ap8ZV_WT9cj_sNPofXmahqsB0jQ%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=k9ulusf4&af_click_lookback=7d&clickid=9916d631-ff02-4983-a9ca-67523e72dc79&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQxMDU0LCJleHAiOjE3OTQwNDQ2NTQsImp0aSI6Ijk5MTZkNjMxLWZmMDItNDk4My1hOWNhLTY3NTIzZTcyZGM3OSIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.if0SeIJO40fDhkkgZUPK0YLznoSUaLGFSev9A86TnEE
+  - link "adinata98 3 months ago":
+    - /url: /u/adinata98/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: adinata98
+    - paragraph: 3 months ago
+  - link "Infinix smart 20 4/128 GB like new Infinix smart 20 4/128 GB like new Rp 1,650,000 Like new":
+    - /url: /p/infinix-smart-20-4-128-gb-like-new-1452949598/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=13
+    - img "Infinix smart 20 4/128 GB like new"
+    - paragraph: Infinix smart 20 4/128 GB like new
+    - paragraph: Rp 1,650,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "8"
+  - button "More options":
+  - link "hellogeis 3 days ago":
+    - /url: /u/hellogeis/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: hellogeis
+    - paragraph: 3 days ago
+  - link "iPad Air m2 2024 11 inch iPad Air m2 2024 11 inch Rp 8,300,000 Like new":
+    - /url: /p/ipad-air-m2-2024-11-inch-1472248960/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=14
+    - img "iPad Air m2 2024 11 inch"
+    - paragraph: iPad Air m2 2024 11 inch
+    - paragraph: Rp 8,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "9"
+  - button "More options":
+  - link "hone.mac 7 days ago":
+    - /url: /u/hone.mac/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: hone.mac
+    - paragraph: 7 days ago
+  - link "iPad Pro 11 Gen 1 64GB Face ID 120hz MURAH LANGKA WORTH IT iPad Pro 11 Gen 1 64GB Face ID 120hz MURAH LANGKA WORTH IT Rp 4,880,000 Like new":
+    - /url: /p/ipad-pro-11-gen-1-64gb-face-id-120hz-murah-langka-worth-it-1471455395/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=15
+    - img "iPad Pro 11 Gen 1 64GB Face ID 120hz MURAH LANGKA WORTH IT"
+    - paragraph: iPad Pro 11 Gen 1 64GB Face ID 120hz MURAH LANGKA WORTH IT
+    - paragraph: Rp 4,880,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "5"
+  - button "More options":
+  - link "mynameazam 6 days ago":
+    - /url: /u/mynameazam/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: mynameazam
+    - paragraph: 6 days ago
+  - link "iPad gen 11 (A16) 128gb Pink ex iBox iPad gen 11 (A16) 128gb Pink ex iBox Rp 6,000,000 Well used":
+    - /url: /p/ipad-gen-11-a16-128gb-pink-ex-ibox-1471480964/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=16
+    - img "iPad gen 11 (A16) 128gb Pink ex iBox"
+    - paragraph: iPad gen 11 (A16) 128gb Pink ex iBox
+    - paragraph: Rp 6,000,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "27"
+  - button "More options":
+  - link "jualsantaisans 15 minutes ago":
+    - /url: /u/jualsantaisans/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: jualsantaisans
+    - paragraph: 15 minutes ago
+  - link "VIVAN Powerbank VPB-W11 10000 mAh Power bank Wireless 3 Output Fast Charging 18W QC3.0 PD Support iPhone 13 Gatransi Original VIVAN Powerbank VPB-W11 10000 mAh Power bank Wireless 3 Output Fast Charging 18W QC3.0 PD Support iPhone 13 Gatransi Original Rp 150,000 Lightly used":
+    - /url: /p/vivan-powerbank-vpb-w11-10000-mah-power-bank-wireless-3-output-fast-charging-18w-qc3-0-pd-support-iphone-13-gatransi-original-1472705233/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=17
+    - img "VIVAN Powerbank VPB-W11 10000 mAh Power bank Wireless 3 Output Fast Charging 18W QC3.0 PD Support iPhone 13 Gatransi Original"
+    - paragraph: VIVAN Powerbank VPB-W11 10000 mAh Power bank Wireless 3 Output Fast Charging 18W QC3.0 PD Support iPhone 13 Gatransi Original
+    - paragraph: Rp 150,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "agussonny 15 minutes ago":
+    - /url: /u/agussonny/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: agussonny
+    - paragraph: 15 minutes ago
+  - link "Iphone 17 Promax 512Gb ibox Iphone 17 Promax 512Gb ibox Rp 24,500,000 Well used":
+    - /url: /p/iphone-17-promax-512gb-ibox-1472705218/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=18
+    - img "Iphone 17 Promax 512Gb ibox"
+    - paragraph: Iphone 17 Promax 512Gb ibox
+    - paragraph: Rp 24,500,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "prelovedbybeli 29 days ago":
+    - /url: /u/prelovedbybeli/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: prelovedbybeli
+    - paragraph: 29 days ago
+  - link "IPHONE 17 BASIC LAVENDER IPHONE 17 BASIC LAVENDER Rp 17,500,000 Like new":
+    - /url: /p/iphone-17-basic-lavender-1466853669/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=19
+    - img "IPHONE 17 BASIC LAVENDER"
+    - paragraph: IPHONE 17 BASIC LAVENDER
+    - paragraph: Rp 17,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - button "More options":
+  - link "dbg.thrift 8 days ago":
+    - /url: /u/dbg.thrift/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: dbg.thrift
+    - paragraph: 8 days ago
+  - link "Case iPhone 17 pro max Case iPhone 17 pro max Rp 25,000 Like new":
+    - /url: /p/case-iphone-17-pro-max-1471147904/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=20
+    - img "Case iPhone 17 pro max"
+    - paragraph: Case iPhone 17 pro max
+    - paragraph: Rp 25,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - button "More options":
+  - link "fridiandwi 17 minutes ago":
+    - /url: /u/fridiandwi/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: fridiandwi
+    - paragraph: 17 minutes ago
+  - link "Iphone 12 mini 128Gb Iphone 12 mini 128Gb Rp 3,550,000 Well used":
+    - /url: /p/iphone-12-mini-128gb-1472704818/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=21
+    - img "Iphone 12 mini 128Gb"
+    - paragraph: Iphone 12 mini 128Gb
+    - paragraph: Rp 3,550,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "a.reyyyyy4237 5 days ago":
+    - /url: /u/a.reyyyyy4237/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: a.reyyyyy4237
+    - paragraph: 5 days ago
+  - link "iPhone 17 Basic 256 GB , Resmi iBox Fullset JUAL CEPAT! iPhone 17 Basic 256 GB , Resmi iBox Fullset JUAL CEPAT! Rp 13,500,000 Like new":
+    - /url: /p/iphone-17-basic-256-gb-resmi-ibox-fullset-jual-cepat-1471691969/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=22
+    - img "iPhone 17 Basic 256 GB , Resmi iBox Fullset JUAL CEPAT!"
+    - paragraph: iPhone 17 Basic 256 GB , Resmi iBox Fullset JUAL CEPAT!
+    - paragraph: Rp 13,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "9"
+  - button "More options":
+  - link "skuylivinggg 1 day ago":
+    - /url: /u/skuylivinggg/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: skuylivinggg
+    - paragraph: 1 day ago
+  - link "Dijual iPhone 17 Basic 256GB iBox Dijual iPhone 17 Basic 256GB iBox Rp 15,500,000 Like new":
+    - /url: /p/dijual-iphone-17-basic-256gb-ibox-1472492378/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=23
+    - img "Dijual iPhone 17 Basic 256GB iBox"
+    - paragraph: Dijual iPhone 17 Basic 256GB iBox
+    - paragraph: Rp 15,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "5"
+  - button "More options":
+  - link "younghomz__ 19 minutes ago":
+    - /url: /u/younghomz__/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: younghomz__
+    - paragraph: 19 minutes ago
+  - link "iPhone 16 Pro 128Gb iBox BH 91% iPhone 16 Pro 128Gb iBox BH 91% Rp 16,000,000 Well used":
+    - /url: /p/iphone-16-pro-128gb-ibox-bh-91-1472704497/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=25
+    - img "iPhone 16 Pro 128Gb iBox BH 91%"
+    - paragraph: iPhone 16 Pro 128Gb iBox BH 91%
+    - paragraph: Rp 16,000,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "viagun 9 days ago":
+    - /url: /u/viagun/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: viagun
+    - paragraph: 9 days ago
+  - link "Samsung Galaxy Z Flip 7 Garansi ON 12/256 GB Samsung Galaxy Z Flip 7 Garansi ON 12/256 GB Rp 10,000,000 Like new":
+    - /url: /p/samsung-galaxy-z-flip-7-garansi-on-12-256-gb-1471048452/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=27
+    - img "Samsung Galaxy Z Flip 7 Garansi ON 12/256 GB"
+    - paragraph: Samsung Galaxy Z Flip 7 Garansi ON 12/256 GB
+    - paragraph: Rp 10,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "5"
+  - button "More options":
+  - link "zenfalcon_4d36fd 19 minutes ago":
+    - /url: /u/zenfalcon_4d36fd/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: zenfalcon_4d36fd
+    - paragraph: 19 minutes ago
+  - link "Samsung Fold 12/256 Samsung Fold 12/256 Rp 12,600,000 Like new":
+    - /url: /p/samsung-fold-12-256-1472704368/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=28
+    - img "Samsung Fold 12/256"
+    - paragraph: Samsung Fold 12/256
+    - paragraph: Rp 12,600,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "annabellecl 21 days ago":
+    - /url: /u/annabellecl/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: annabellecl
+    - paragraph: 21 days ago
+  - link "Ipad pro 12.9 Ipad pro 12.9 Rp 2,000,000 Like new":
+    - /url: /p/ipad-pro-12-9-1468691284/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=29
+    - img "Ipad pro 12.9"
+    - paragraph: Ipad pro 12.9
+    - paragraph: Rp 2,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "6"
+  - button "More options":
+  - link "avamart 12 days ago":
+    - /url: /u/avamart/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: avamart
+    - paragraph: 12 days ago
+  - link "Ipad mini 6 WIFI ONLY Ipad mini 6 WIFI ONLY Rp 1,500,000 Heavily used":
+    - /url: /p/ipad-mini-6-wifi-only-1470511965/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=30
+    - img "Ipad mini 6 WIFI ONLY"
+    - paragraph: Ipad mini 6 WIFI ONLY
+    - paragraph: Rp 1,500,000
+    - paragraph: Heavily used
+    - paragraph
+  - button "Like":
+    - generic: "14"
+  - button "More options":
+  - link "garage_salecasual 15 days ago":
+    - /url: /u/garage_salecasual/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: garage_salecasual
+    - paragraph: 15 days ago
+  - link "iPhone Xs Max 512 Super Mulus iPhone Xs Max 512 Super Mulus Rp 4,300,000 Like new":
+    - /url: /p/iphone-xs-max-512-super-mulus-1469904549/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=31
+    - img "iPhone Xs Max 512 Super Mulus"
+    - paragraph: iPhone Xs Max 512 Super Mulus
+    - paragraph: Rp 4,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - button "More options":
+  - link "tiradisathrift 4 months ago":
+    - /url: /u/tiradisathrift/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: tiradisathrift
+    - paragraph: 4 months ago
+  - link "Jual BU Samsung A34 5G 8/256 GB fullset Jual BU Samsung A34 5G 8/256 GB fullset Rp 3,000,000 Lightly used":
+    - /url: /p/jual-bu-samsung-a34-5g-8-256-gb-fullset-1448707335/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=32
+    - img "Jual BU Samsung A34 5G 8/256 GB fullset"
+    - paragraph: Jual BU Samsung A34 5G 8/256 GB fullset
+    - paragraph: Rp 3,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "9"
+  - button "More options":
+  - link "luxeauth 4 days ago":
+    - /url: /u/luxeauth/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: luxeauth
+    - paragraph: 4 days ago
+  - link "Casetify magsafe wallet - pink Casetify magsafe wallet - pink Rp 350,000 Like new":
+    - /url: /p/casetify-magsafe-wallet-pink-1471996836/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=33
+    - img "Casetify magsafe wallet - pink"
+    - paragraph: Casetify magsafe wallet - pink
+    - paragraph: Rp 350,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "6"
+  - button "More options":
+  - link "ardidu 5 days ago":
+    - /url: /u/ardidu/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: ardidu
+    - paragraph: 5 days ago
+  - link "Iphone 17 256GB Ex Resmi IBOX Mullus Iphone 17 256GB Ex Resmi IBOX Mullus Rp 15,900,000 Like new":
+    - /url: /p/iphone-17-256gb-ex-resmi-ibox-mullus-1471782167/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=34
+    - img "Iphone 17 256GB Ex Resmi IBOX Mullus"
+    - paragraph: Iphone 17 256GB Ex Resmi IBOX Mullus
+    - paragraph: Rp 15,900,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - button "More options":
+  - link "fauziah128 6 days ago":
+    - /url: /u/fauziah128/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: fauziah128
+    - paragraph: 6 days ago
+  - link "iPad GEN 11 A16 256GB INTER Wi-Fi only iPad GEN 11 A16 256GB INTER Wi-Fi only Rp 4,500,000 Well used":
+    - /url: /p/ipad-gen-11-a16-256gb-inter-wi-fi-only-1471619650/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=35
+    - img "iPad GEN 11 A16 256GB INTER Wi-Fi only"
+    - paragraph: iPad GEN 11 A16 256GB INTER Wi-Fi only
+    - paragraph: Rp 4,500,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "33"
+  - button "More options":
+  - link "keenearth. 12 days ago":
+    - /url: /u/keenearth./?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: keenearth.
+    - paragraph: 12 days ago
+  - link "iPad Gen 11 Blue 128GB iPad Gen 11 Blue 128GB Rp 4,600,000 Like new":
+    - /url: /p/ipad-gen-11-blue-128gb-1470537796/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=36
+    - img "iPad Gen 11 Blue 128GB"
+    - paragraph: iPad Gen 11 Blue 128GB
+    - paragraph: Rp 4,600,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "31"
+  - button "More options":
+  - link "preloved.bylyyy 23 days ago":
+    - /url: /u/preloved.bylyyy/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: preloved.bylyyy
+    - paragraph: 23 days ago
+  - link "iPad gen 11 128 gb pemakaian pribadi💓🌟 iPad gen 11 128 gb pemakaian pribadi💓🌟 Rp 3,500,000 Lightly used":
+    - /url: /p/ipad-gen-11-128-gb-pemakaian-pribadi💓🌟-1468055422/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=37
+    - img "iPad gen 11 128 gb pemakaian pribadi💓🌟"
+    - paragraph: iPad gen 11 128 gb pemakaian pribadi💓🌟
+    - paragraph: Rp 3,500,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "26"
+  - button "More options":
+  - link "trueriver_270396 24 minutes ago":
+    - /url: /u/trueriver_270396/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: trueriver_270396
+    - paragraph: 24 minutes ago
+  - link "iPhone 15 plus 128gb all op iPhone 15 plus 128gb all op Rp 9,614,510 Like new":
+    - /url: /p/iphone-15-plus-128gb-all-op-1472703510/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=38
+    - img "iPhone 15 plus 128gb all op"
+    - paragraph: iPhone 15 plus 128gb all op
+    - paragraph: Rp 9,614,510
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "andy_p_t 24 minutes ago":
+    - /url: /u/andy_p_t/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: andy_p_t
+    - paragraph: 24 minutes ago
+  - link "Sold 📲 iPhone 12 Mini Sold 📲 iPhone 12 Mini Rp 2,250,000 Lightly used":
+    - /url: /p/sold-📲-iphone-12-mini-1472703487/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=39
+    - img "Sold 📲 iPhone 12 Mini"
+    - paragraph: Sold 📲 iPhone 12 Mini
+    - paragraph: Rp 2,250,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "ronaldmuly99608 24 minutes ago":
+    - /url: /u/ronaldmuly99608/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: ronaldmuly99608
+    - paragraph: 24 minutes ago
+  - link "Iphone 11 Ibox 64GB LOK JKT BARAT Iphone 11 Ibox 64GB LOK JKT BARAT Rp 3,550,000 Lightly used":
+    - /url: /p/iphone-11-ibox-64gb-lok-jkt-barat-1472703457/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=40
+    - img "Iphone 11 Ibox 64GB LOK JKT BARAT"
+    - paragraph: Iphone 11 Ibox 64GB LOK JKT BARAT
+    - paragraph: Rp 3,550,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "vita7378 28 days ago":
+    - /url: /u/vita7378/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: vita7378
+    - paragraph: 28 days ago
+  - link "Advan Vandroid VX TAB Lite Advan Vandroid VX TAB Lite Rp 1,200,000 Well used":
+    - /url: /p/advan-vandroid-vx-tab-lite-1466973333/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=41
+    - img "Advan Vandroid VX TAB Lite"
+    - paragraph: Advan Vandroid VX TAB Lite
+    - paragraph: Rp 1,200,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "7"
+  - button "More options":
+  - link "mstk.nr 26 minutes ago":
+    - /url: /u/mstk.nr/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: mstk.nr
+    - paragraph: 26 minutes ago
+  - link "iPhone 15 Pro 128gb iBox White Titanium iPhone 15 Pro 128gb iBox White Titanium Rp 13,500,000 Like new":
+    - /url: /p/iphone-15-pro-128gb-ibox-white-titanium-1472703176/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=42
+    - img "iPhone 15 Pro 128gb iBox White Titanium"
+    - paragraph: iPhone 15 Pro 128gb iBox White Titanium
+    - paragraph: Rp 13,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "alvino12 3 months ago":
+    - /url: /u/alvino12/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: alvino12
+    - paragraph: 3 months ago
+  - link "Iphone 17 256 Gb Black Ibox Masih garansi panjang Iphone 17 256 Gb Black Ibox Masih garansi panjang Rp 16,400,000 Like new":
+    - /url: /p/iphone-17-256-gb-black-ibox-masih-garansi-panjang-1455477595/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=43
+    - img "Iphone 17 256 Gb Black Ibox Masih garansi panjang"
+    - paragraph: Iphone 17 256 Gb Black Ibox Masih garansi panjang
+    - paragraph: Rp 16,400,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - button "More options":
+  - link "JSK_28GadgetStore 4 days ago":
+    - /url: /u/JSK_28GadgetStore/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: JSK_28GadgetStore
+    - paragraph: 4 days ago
+  - link "Samsung Z Fold 4 12/512GB Resmi Sein Grey Samsung Z Fold 4 12/512GB Resmi Sein Grey Rp 4,950,000 Well used":
+    - /url: /p/samsung-z-fold-4-12-512gb-resmi-sein-grey-1472047477/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=44
+    - img "Samsung Z Fold 4 12/512GB Resmi Sein Grey"
+    - paragraph: Samsung Z Fold 4 12/512GB Resmi Sein Grey
+    - paragraph: Rp 4,950,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - button "More options":
+  - link "davidpram 7 minutes ago":
+    - /url: /u/davidpram/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: davidpram
+    - paragraph: 7 minutes ago
+  - link "iPhone 17 256GB Inter 5G ALL OP | Sage BH 100% | Garansi ON April 2027 iPhone 17 256GB Inter 5G ALL OP | Sage BH 100% | Garansi ON April 2027 Rp 13,500,000 Like new":
+    - /url: /p/iphone-17-256gb-inter-5g-all-op-sage-bh-100-garansi-on-april-2027-1472706695/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=45
+    - img "iPhone 17 256GB Inter 5G ALL OP | Sage BH 100% | Garansi ON April 2027"
+    - paragraph: iPhone 17 256GB Inter 5G ALL OP | Sage BH 100% | Garansi ON April 2027
+    - paragraph: Rp 13,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "sanzstore_ 7 minutes ago":
+    - /url: /u/sanzstore_/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: sanzstore_
+    - paragraph: 7 minutes ago
+  - link "Samsung Galaxy A07 4/64 GB Samsung Galaxy A07 4/64 GB Rp 2,154,470 Brand new":
+    - /url: /p/samsung-galaxy-a07-4-64-gb-1472706544/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=46
+    - img "Samsung Galaxy A07 4/64 GB"
+    - paragraph: Samsung Galaxy A07 4/64 GB
+    - paragraph: Rp 2,154,470
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "dzikrimuhammad13 12 minutes ago":
+    - /url: /u/dzikrimuhammad13/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: dzikrimuhammad13
+    - paragraph: 12 minutes ago
+  - link "iPhone 15 Pro 128GB Garansi Ex iBox Battery Health 86% iPhone 15 Pro 128GB Garansi Ex iBox Battery Health 86% Rp 12,500,000 Like new":
+    - /url: /p/iphone-15-pro-128gb-garansi-ex-ibox-battery-health-86-1472705618/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=47
+    - img "iPhone 15 Pro 128GB Garansi Ex iBox Battery Health 86%"
+    - paragraph: iPhone 15 Pro 128GB Garansi Ex iBox Battery Health 86%
+    - paragraph: Rp 12,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - button "More options":
+  - link "abisinaja 26 days ago":
+    - /url: /u/abisinaja/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: abisinaja
+    - paragraph: 26 days ago
+  - link "Xiaomi 11T 5G mantaap Xiaomi 11T 5G mantaap Rp 1,600,000 Heavily used":
+    - /url: /p/xiaomi-11t-5g-mantaap-1467375920/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=48
+    - img "Xiaomi 11T 5G mantaap"
+    - paragraph: Xiaomi 11T 5G mantaap
+    - paragraph: Rp 1,600,000
+    - paragraph: Heavily used
+    - paragraph
+  - button "Like":
+    - generic: "4"
+  - button "More options":
+  - link "wildwhale.201eea 11 days ago":
+    - /url: /u/wildwhale.201eea/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: wildwhale.201eea
+    - paragraph: 11 days ago
+  - link "Iphone 8 256gb inter Iphone 8 256gb inter Rp 1,050,000 Heavily used":
+    - /url: /p/iphone-8-256gb-inter-1470722471/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=49
+    - img "Iphone 8 256gb inter"
+    - paragraph: Iphone 8 256gb inter
+    - paragraph: Rp 1,050,000
+    - paragraph: Heavily used
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - button "More options":
+  - link "vanr_public 1 day ago":
+    - /url: /u/vanr_public/?t-id=dzeZZbvrUB_1794040760425
+    - paragraph: vanr_public
+    - paragraph: 1 day ago
+  - link "iPhone 16 128GB iBox iPhone 16 128GB iBox Rp 12,350,000 Like new":
+    - /url: /p/iphone-16-128gb-ibox-1472504039/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=categories&t-referrer_category_id=338&t-referrer_context_ccid=497&t-referrer_page_type=category_browse&t-referrer_request_id=gUjEf8gBAeBefqar&t-referrer_sort_by=popular&t-tap_index=50
+    - img "iPhone 16 128GB iBox"
+    - paragraph: iPhone 16 128GB iBox
+    - paragraph: Rp 12,350,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - button "More options":
+  - button "Show more results"
+- contentinfo:
+  - heading "Top searches" [level=6]
+  - list:
+    - link "airpods pro 2":
+      - /url: /airpods-pro-2/q/
+    - text: "|"
+    - link "17e":
+      - /url: /17e/q/
+    - text: "|"
+    - link "12/512":
+      - /url: /12%2F512/q/
+    - text: "|"
+    - link "samsung buds 4 pro":
+      - /url: /samsung-buds-4-pro/q/
+    - text: "|"
+    - link "poco x8 pro":
+      - /url: /poco-x8-pro/q/
+    - text: "|"
+    - link "apple watch 10":
+      - /url: /apple-watch-10/q/
+    - text: "|"
+    - link "18 pro":
+      - /url: /18-pro/q/
+    - text: "|"
+    - link "samsung a6":
+      - /url: /samsung-a6/q/
+    - text: "|"
+    - link "xiaomi band 10":
+      - /url: /xiaomi-band-10/q/
+    - text: "|"
+    - link "casan samsung":
+      - /url: /casan-samsung/q/
+    - text: "|"
+    - link "strap whoop":
+      - /url: /strap-whoop/q/
+    - text: "|"
+    - link "penipu iphone":
+      - /url: /penipu-iphone/q/
+    - text: "|"
+    - link "anker zolo":
+      - /url: /anker-zolo/q/
+    - text: "|"
+    - link "iphone 18 pro":
+      - /url: /iphone-18-pro/q/
+    - text: "|"
+    - link "amazfit trex":
+      - /url: /amazfit-trex/q/
+    - text: "|"
+    - link "apple watch series 11":
+      - /url: /apple-watch-series-11/q/
+    - text: "|"
+    - link "pixel 7a":
+      - /url: /pixel-7a/q/
+    - text: "|"
+    - link "apple watch 44mm":
+      - /url: /apple-watch-44mm/q/
+    - text: "|"
+    - link "casetify 16":
+      - /url: /casetify-16/q/
+    - text: "|"
+    - link "samsung s25":
+      - /url: /samsung-s25/q/
+    - text: "|"
+    - link "iphone 16e":
+      - /url: /iphone-16e/q/
+    - text: "|"
+    - link "zte":
+      - /url: /zte/q/
+    - text: "|"
+    - link "akg":
+      - /url: /akg/q/
+    - text: "|"
+    - link "11 pro max":
+      - /url: /11-pro-max/q/
+    - text: "|"
+    - link "case iphone 17":
+      - /url: /case-iphone-17/q/
+    - text: "|"
+    - link "hp 5g":
+      - /url: /hp-5g/q/
+    - text: "|"
+    - link "iphone 17 basic":
+      - /url: /iphone-17-basic/q/
+    - text: "|"
+    - link "redmi note 10s":
+      - /url: /redmi-note-10s/q/
+    - text: "|"
+    - link "512":
+      - /url: /512/q/
+    - text: "|"
+    - link "iphone 13 case":
+      - /url: /iphone-13-case/q/
+    - text: "|"
+    - link "airpods 4 anc":
+      - /url: /airpods-4-anc/q/
+    - text: "|"
+    - link "samsung note 9":
+      - /url: /samsung-note-9/q/
+    - text: "|"
+    - link "keyboard":
+      - /url: /keyboard/q/
+    - text: "|"
+    - link "infinix note":
+      - /url: /infinix-note/q/
+    - text: "|"
+    - link "earbuds":
+      - /url: /earbuds/q/
+    - text: "|"
+    - link "samsung tab ultra":
+      - /url: /samsung-tab-ultra/q/
+    - text: "|"
+    - link "iphone 16e case":
+      - /url: /iphone-16e-case/q/
+    - text: "|"
+    - link "infinix hot 50 pro plus":
+      - /url: /infinix-hot-50-pro-plus/q/
+    - text: "|"
+    - link "z fold 7":
+      - /url: /z-fold-7/q/
+    - text: "|"
+    - link "earpods lightning":
+      - /url: /earpods-lightning/q/
+    - text: "|"
+    - link "samsung tab s6":
+      - /url: /samsung-tab-s6/q/
+    - text: "|"
+    - link "uag":
+      - /url: /uag/q/
+    - text: "|"
+    - link "5g":
+      - /url: /5g/q/
+    - text: "|"
+    - link "tecno pova":
+      - /url: /tecno-pova/q/
+    - text: "|"
+    - link "fan cooler":
+      - /url: /fan-cooler/q/
+    - text: "|"
+    - link "smartwatch gps":
+      - /url: /smartwatch-gps/q/
+    - text: "|"
+    - link "pen samsung":
+      - /url: /pen-samsung/q/
+    - text: "|"
+    - link "earphone apple":
+      - /url: /earphone-apple/q/
+    - text: "|"
+    - link "redmi note 13 pro 5g":
+      - /url: /redmi-note-13-pro-5g/q/
+    - text: "|"
+    - link "hp motorola":
+      - /url: /hp-motorola/q/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

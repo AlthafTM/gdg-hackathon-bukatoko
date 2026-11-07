@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-07T08:52:09.882Z",
+  "reportWords": 7811,
+  "reportBytes": 59162,
+  "localLinks": 5,
+  "missingLocalLinks": [],
+  "assetCount": 43,
+  "assetBytes": 2149267,
+  "assetDigestMismatches": [],
+  "missingRequiredEvidence": [],
+  "screenshotCount": 9,
+  "canonicalExportBytes": 233639453,
+  "scope": "Local deliverable integrity only; not application behavior or complete REA graph verification",
+  "pass": true
+}

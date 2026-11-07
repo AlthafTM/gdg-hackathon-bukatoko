@@ -1,0 +1,343 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar&t-source_cc_id=1469607528
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar&t-source_cc_id=1469607528
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar&t-source_cc_id=1469607528
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar&t-source_cc_id=1469607528
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar&t-source_cc_id=1469607528
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+  - textbox "Search":
+    - /placeholder: Search for an item
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Product_ATF_0"] [name="google_ads_iframe_/325540922/Desktop_Product_ATF_0"]:
+    - iframe [id="te-clr1-38923f47-193b-4b2a-bcef-9d3ac03fd1ea-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=a53cb121-0a9a-46fe-a0cd-c04ba1f8b6bf&ag=vpzgtcb&sfe=1d2663d8&sig=tiTBWRSbUc26jHjYIdO8oqWTcwqDjajF7vaGKdKSBoI.&crid=iezqdyue&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=2&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7j1wANIvcF2K6fABGMmZ8rsMLKE9gCzsPBFw&rgz=40559&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=26.32000000000005&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoiwJNDwAUEiGxPKWaCv5GEaDNwEuh-La_Qgd2cHpndGNiSKf01g1Qwe-LBVoIaWV6cWR5dWVg3LS2G2RPR3h4cjVhUkdjbnpoXzkwNVFfTXMCwAGfAQpQYXJvbmdwMDU1juaL5q_CV2l1M2VqN2zQAqyPigMb5VotQ1JNNi3Q15qTl63ePwozNdiOy_KhwMWw3QEQi7qjgRYtQmhYNzEwY0QzTXZaSzUyQ1l5MTE2LTA4M2Y3YTNyL3ItcGFuYy1laC1rNzF3ZGRpNjA3DJuJx5EHRM0FCkX6SfNMd8BdThGkU2Vqo2A-BZGo94Xu3Tqq1bKPpPHInhmYEwCoEzzIEzzQEwD9E1g5lD-AFAGgFACwFAC4FADIFADqFPAUkQGyFQDYFQCAFgA6_DPEzCp7D_K91Bv4CL1qlZU56bN1ebmKDklfvr0vsgZq08RlRVa9k0KDNVGGB9bB4m5c-Nqehg3Q37NM9qWGZdhCVIp8u-JPKBiPPxI32QOaYgujimTOQ5GqOcetwXPCRC9RO8KRGfSna_oU9oLsQCcnIhOq8weCC3Uiwrzl8L1nQsabj6NZl30_8AmaahNJ37QJwdZW1y4LgR4ybPnbWA87bkoz2eqI3St9Tn-751sg7iwHP50ksFrGQEOso2-ERUdRhwU.&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=13&testid=-CRM6-&fpa=500&pcm=3&ict=Unknown&said=-BhX710cD3MvZK52CYy1Zw&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCW6Pv1-PuavfFNJ_d4t4PmZnG6AS-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgSIBE_Qo-Vo4E3jGf-muIl4icDErtgMUuAX1oXxbT55P_pAp5Di3mET6y3pSdT3WhIArUWp_O3hhytjnGAD7JmXPYlR3Reaww3QblqDx3dF5jWF3fTFAwr1NKnOOMbMH1zZgWZOHZVA7Pz9Hn1ZVQqkZtVosnPHex1F03Lp0TysG6OaPrrpjxXkqTgXOOWDwgX13mgz2Clt818T1lp-fq022su3IiWJWgRb7-5IuR_ind-5aZatiBMKdAj8AAHvDWs9Gj-t2QgT1NIjsl3ZVQGMrs0WqAxYZg_h382MmLFpYMXZZaQrj9AP5WcW7pEtuWfHDnzYSB7CgmqcieebWNKi4if_2wX2iGmToRDC-aGqkMTqS8YJSp0Gv9rvxFOwIP2C07AV1JCQwqsXz_kxdIpEUk4MO06RsJdQw62ltkuuQWJesLO3fAb1y497Tn3ACVpp09uHvPq4iswawdoOFlTYA3LhbtxdwTOfnDSmE4PzJ6SCdmroiz7o61CBoYQDAHzaBZVR9l5bkrFfjbnCFBWNdodl92GNBJu1WQW2BCdHYXJKApjl0lOglGLyZCmuxCSMqc497Ft1KyFezWfqjxR-FvreZbTusxiNOBINT5pxkJZcH8A3LRHOYrYsIhhT1BiU82-sth-iFvvbAzpFeMVb5Ot1kOik_-SW3gH1H4sEcUJLXUNLh41JkejgBAGABsn20aiphaDDnwGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOljfnfDguvWXA2AA-gsCCAGADAGqDQJJROINEwjfzPDguvWXAxWfrtgFHZmMEU3qDRMI-Lfx4Lr1lwMVn67YBR2ZjBFNiA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwnxp8ZLB7DNQBIKODI3MjY3MzcxNRgB%26num%3D1%26sig%3DAOD64_3Lijdx4zaNWav7zrhQcmYZFsvqPw%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=iezqdyue&af_click_lookback=7d&clickid=a53cb121-0a9a-46fe-a0cd-c04ba1f8b6bf&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQwNzkyLCJleHAiOjE3OTQwNDQzOTIsImp0aSI6ImE1M2NiMTIxLTBhOWEtNDZmZS1hMGNkLWMwNGJhMWY4YjZiZiIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.eECfiMIezMUG6NW6ZI1xOQ-bkAcMx_93KAYsHAoR7qg
+  - list:
+    - link "Home":
+      - /url: /
+      - paragraph: Home
+    - link "Health & Beauty":
+      - /url: /categories/health-and-beauty-11/
+      - paragraph: Health & Beauty
+    - link "Hair Care":
+      - /url: /categories/health-and-beauty-11/hair-care-307/
+      - paragraph: Hair Care
+  - group "Carousel":
+    - button "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand photo button 1":
+      - 'img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand (Category: Hair Care) located in Jakarta Timur. Submitted by realand (Listing ID 1469607528, Image 1). Description: Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun kep"'
+    - button "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand photo button 2":
+      - 'img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand (Category: Hair Care) located in Jakarta Timur. Submitted by realand (Listing ID 1469607528, Image 2). Description: Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun kep"'
+    - button "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand photo button 3":
+      - 'img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand (Category: Hair Care) located in Jakarta Timur. Submitted by realand (Listing ID 1469607528, Image 3). Description: Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun kep"'
+    - button "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand photo button 4":
+      - 'img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand (Category: Hair Care) located in Jakarta Timur. Submitted by realand (Listing ID 1469607528, Image 4). Description: Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun kep"'
+    - button "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand photo button 5":
+      - 'img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand (Category: Hair Care) located in Jakarta Timur. Submitted by realand (Listing ID 1469607528, Image 5). Description: Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun kep"'
+    - button
+    - button
+    - button
+  - button "Like button":
+    - img "Like icon"
+    - paragraph: Like
+  - button "More actions":
+  - heading "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand" [level=1]
+  - paragraph:
+    - text: Rp 150,000
+    - 'generic "Stricken Price: Rp 300,000"':
+      - generic: Rp 300,000
+  - paragraph:
+    - generic: Like new
+  - button "Condition":
+  - paragraph:
+    - generic: Mailing
+  - paragraph:
+    - generic: Jakarta Timur
+  - paragraph: Description
+  - paragraph: Posted
+  - paragraph:
+    - generic: 2 weeks ago
+  - paragraph: Type
+  - paragraph:
+    - generic: Hair Tools
+  - paragraph: "Panasonic EH-KA71-W adalah alat penata rambut multifungsi 7-in-1 yang dirancang untuk membantu Anda menciptakan berbagai gaya rambut dengan mudah dan praktis. Dilengkapi dengan berbagai aksesori, alat ini sangat cocok untuk penggunaan sehari-hari maupun keperluan styling khusus. Fitur Utama: Kinerja Bertenaga: Ditenagai oleh motor 650W, cukup kuat untuk menata rambut secara efisien. Operasi Hening: Tingkat kebisingan rendah sekitar 59 dB, memberikan kenyamanan saat digunakan. 7 Aksesori Penata Rambut, termasuk: (-) Blow brush (sisir blow) (-) Roller brush (sisir gulung) (-) Air iron (-) Volume lifter (-) Nozzle (corong angin) (-) 2 Jepit rambut Pengaturan Suhu dan Kecepatan: Terdapat 3 pengaturan suhu/kecepatan yang dapat disesuaikan dengan jenis rambut dan kebutuhan styling Anda. Fitur Keamanan: Dilengkapi sistem perlindungan otomatis dari panas berlebih (overheating)."
+  - button "read more":
+    - generic: read more
+  - paragraph: Shipping
+  - paragraph: Mailing & Delivery
+  - generic: oren
+  - paragraph: Meet the seller
+  - link "@realand":
+    - /url: /u/realand/
+    - img "Avatar"
+  - link "realand":
+    - /url: /u/realand/
+    - paragraph: realand
+  - link "@realand":
+    - /url: /u/realand/
+    - generic: "@realand"
+  - generic: Joined 3 years ago
+  - generic: Very Responsive
+  - generic: Verified
+  - generic: Reviews for @realand
+  - paragraph: "5.0"
+  - img "5 stars":
+  - generic: (14)
+  - link "livewhale-d386":
+    - /url: /u/livewhale-d386/
+    - img "Avatar"
+  - link "livewhale-d386":
+    - /url: /u/livewhale-d386/
+  - generic: ∙
+  - generic: 1 month ago
+  - img "5 stars":
+  - paragraph: seller fast respon barang pun masih good condi
+  - paragraph: Kaos Kemeja Uniqlo Size M
+  - paragraph: Rp 60,000
+  - link "kayrena.far":
+    - /url: /u/kayrena.far/
+    - img "Avatar"
+  - link "kayrena.far":
+    - /url: /u/kayrena.far/
+  - generic: ∙
+  - generic: 2 months ago
+  - img "5 stars":
+  - paragraph: Cardigannya like new, wangi, ngemasnya juga cepet💕 makasih kakakk
+  - link "orgnlonlystore":
+    - /url: /u/orgnlonlystore/
+    - img "Avatar"
+  - link "orgnlonlystore":
+    - /url: /u/orgnlonlystore/
+  - generic: ∙
+  - generic: 3 months ago
+  - img "5 stars":
+  - paragraph: 👍🙏
+  - paragraph: Kemeja Laki Laki Uniqlo Size L
+  - paragraph: Rp 65,000
+  - link "Read all reviews":
+    - /url: /u/realand/?tab=reviews
+    - text: Read all reviews
+  - link "Avatar":
+    - /url: /u/realand/
+    - img "Avatar"
+  - link "realand @realand":
+    - /url: /u/realand/
+    - generic: realand
+    - generic: "@realand"
+  - text: "5.0"
+  - img "5 stars":
+  - generic: (14 reviews)
+  - button "Chat":
+    - generic: Chat
+  - textbox [disabled]
+  - button "Sign in to make offer":
+    - generic: Sign in to make offer
+  - generic: Rp
+  - spinbutton: "150000"
+  - button "Make Offer" [disabled]:
+    - generic: Make Offer
+  - paragraph: What others also search for
+  - link "baju warna merah":
+    - /url: /baju-warna-merah/q/?referrer_source=interlink&source_product_id=1469607528
+    - paragraph: baju warna merah
+  - link "shilla":
+    - /url: /shilla/q/?referrer_source=interlink&source_product_id=1469607528
+    - paragraph: shilla
+  - link "gmat":
+    - /url: /gmat/q/?referrer_source=interlink&source_product_id=1469607528
+    - paragraph: gmat
+  - link "kindle oasis":
+    - /url: /kindle-oasis/q/?referrer_source=interlink&source_product_id=1469607528
+    - paragraph: kindle oasis
+  - link "boots stradivarius":
+    - /url: /boots-stradivarius/q/?referrer_source=interlink&source_product_id=1469607528
+    - paragraph: boots stradivarius
+- contentinfo:
+  - checkbox "Follow us"
+  - paragraph: Follow us
+  - link "Facebook":
+    - /url: https://www.facebook.com//carousell.id
+  - link "Twitter":
+    - /url: https://x.com/carousell
+  - link "Blog":
+    - /url: https://blog.carousell.com/id/
+  - link "Carousell College":
+    - /url: https://college.carousell.com
+  - checkbox "Others"
+  - paragraph: Others
+  - link "Everything Else":
+    - /url: /categories/everything-else-16/
+  - link "Community":
+    - /url: /categories/toys-and-board-games-26/
+  - link "Looking For":
+    - /url: /categories/looking-for-21/
+  - checkbox "Fashion"
+  - paragraph: Fashion
+  - link "Health & Beauty":
+    - /url: /categories/health-and-beauty-11/
+  - link "Luxury":
+    - /url: /categories/luxury-20/
+  - link "Olshop Fashion":
+    - /url: /categories/fashion-olshop-1222/
+  - link "Men's Fashion":
+    - /url: /categories/mens-fashion-3/
+  - link "Women's Fashion":
+    - /url: /categories/womens-fashion-4/
+  - checkbox "Home & Living"
+  - paragraph: Home & Living
+  - link "Books & Stationery":
+    - /url: /categories/books-and-stationery-5/
+  - link "Babies & Kids":
+    - /url: /categories/parents-babies-and-kids-19/
+  - link "Home & Furniture":
+    - /url: /categories/home-and-gardening-13/
+  - link "Gardening":
+    - /url: /categories/gardening-684/
+  - link "Kitchen & Appliances":
+    - /url: /categories/kitchen-appliances-30/
+  - checkbox "Mobiles & Electronics"
+  - paragraph: Mobiles & Electronics
+  - link "Electronics":
+    - /url: /categories/electronics-cameras-and-gadgets-7/
+  - link "Mobile Phones & Tablets":
+    - /url: /categories/mobile-phones-338/
+  - checkbox "Jobs & Services"
+  - paragraph: Jobs & Services
+  - link "Jobs":
+    - /url: /categories/jobs-1477/
+  - link "Services":
+    - /url: /categories/services-1464/
+  - checkbox "Hobbies & Games"
+  - paragraph: Hobbies & Games
+  - link "Photography":
+    - /url: /categories/photography-6/
+  - link "Design & Craft":
+    - /url: /categories/design-and-craft-8/
+  - link "Food & Drinks":
+    - /url: /categories/food-drinks-27/
+  - link "Music & Media":
+    - /url: /categories/music-14/
+  - link "Sports":
+    - /url: /categories/sports-10/
+  - link "Video Gaming":
+    - /url: /categories/video-gaming-12/
+  - link "Toys & Collectibles":
+    - /url: /categories/toys-and-board-games-1188/
+  - link "Memorabilia & Antiques":
+    - /url: /categories/memorabilia-antiques-9/
+  - link "Pet Supplies":
+    - /url: /categories/pet-supplies-29/
+  - link "J-Wave Merchandise":
+    - /url: /categories/j-wave-merchandise-31/
+  - link "K-Wave Merchandise":
+    - /url: /categories/k-wave-merchandise-25/
+  - link "Tickets & Vouchers":
+    - /url: /categories/tickets-and-voucher-18/
+  - checkbox "Cars & Property"
+  - paragraph: Cars & Property
+  - link "Cars":
+    - /url: /categories/cars-and-motors-32/
+  - link "Auto Accessories":
+    - /url: /categories/auto-accessories-109/
+  - link "Property":
+    - /url: /categories/property-102/
+  - link "Motorbikes":
+    - /url: /categories/motorbikes-108/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

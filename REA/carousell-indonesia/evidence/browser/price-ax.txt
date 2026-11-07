@@ -1,0 +1,942 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+  - textbox "Search":
+    - /placeholder: Search for an item
+    - text: iphone 13
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Search_ATF_0"] [name="google_ads_iframe_/325540922/Desktop_Search_ATF_0"]:
+    - iframe:
+      - link:
+        - /url: https://app.adroll.com/optout/
+      - link:
+        - /url: http://d.adroll.com/click/?adroll_insertion_id=8d569c41b4375d3b861489ec32b76984&adroll_height=250&adroll_width=970&site_url=http%3A//id.carousell.com&adroll_ad_payload=__HIA9IBkwHFA7_IA7sAAY1TS4gcRRie7o1RWAlmhQE9iegiuNPT1e8ODkvPznt7ZmcfMzuzBNt-1M50dnq6d7ons7uCrAcPgnoyEuJBkSDoPSdvSYVo7Bo96EHQ5BKQQMhBb9EFqzfkEhUtqK-o4quq7___77-VWqRRWqs1hRovbG61y8VOs9LVZV5vdWZQutbIi3pLXtdL5Wa71JLaK2Jd1k-gtFCraFW5tcrXlgrtSrnBd9c1QXjuOjXqR1EQnslmJ5MJ49qM7XvZQZCFw6wXZYRF2_SCnCLwrDo_jjwj9McjG-ZMZ3S89aDjjr2c44bBwNw_PkoumG5vmNMKa8Z6UQtdkzOKDaNaMJojPzQKD7mGrunH_AiOvNzAHDy87A8jOIxyXiTME5YNvWTnOoxtjvxxCAeDRN88-d4euA7RJXMAEBR4oCg8L0uA5QUBqIosKioLFI4FLGHbUa6nJSO_K49XvQNpY3O5JmkrO9WyVehINbClwKK7PzHOlx0uf67sy5PmlpAvsJy-UjHW8nV1V-0p4sQLl8yNSlgdNPrlqF4N652aIzT39e22uDbIb4l75a7Ube21dDuCy6Do7E1qnX4T-m6x0y43hpOVA3PjwCo_j9KdeqvVqemNjZLWzReWK5VqfknOKygtlUrCanNTqJdKzWajXGzV2-186Qy-efk1dNoiKdkxLH_PCEau7Q57pRtz9IP7n6Pp9MMrv310eOPo4r0fbz-9fPVsavyJGWRItaI-NMMoA6z4XfTM44mMLyF6RYs_np67f2c-_vQfCJ-l4stz8TeXgpHvjO3I9YfxTfSKI1iQ2952bIWslm3xKnRk24GWCgBQRZGVHWKZbSH-9t8cGcdE-fd3vzj66s69nz64-Eh5jFEq_pXMBz_MHMZ_JPBnAkcXWEaURUzNIMrC1Bw6RWrLAJYBvMwAIGDqJZTClPr3CDC1iF78bytiSpum6LtXMHU2eeiNBMwEHDQTBTamXESRt3aSoyF6AZBYHZsTocKJQBAtxxIdWRV5XjQtlZMhpnYJMSTzvauYeh-9-qjJHpeXDaE5svtZN-j7Q_gy8SuPqd8R5WC6QwS9cwHTXXQq3A3GPeO8bHCiIfCY3rqG6deJJTDtTVNP3X4T07t49jSm30LZnul5puF6pGABHJFuDALoLGQAz4iCJC8AhmNlWV3ISAwvSYqE6UM0qzJJ36gwwyqY_vp_REdPf04962ZYWTRNCFTb5oEo8omy79CM6Ub4hH4NP_ElmiUqwgAS3wx7-OQ-Sd7Jtwk8-UsCt1DqL8QMSzN5KEO4pksSsgeT&adroll_subnetwork=r&cpm=au7kJgAAAAAy4VvU2nt5I-KTM_2pANiYWeJFgQ&adroll_network=index&s=091726F265FEFCA5&desturl=https%3A//www.ic.com/lp/en/mt-4%3Fcamp%3D84309%26utm_source%3Dadr%26utm_medium%3Ddisplay%26utm_campaign%3DADR_SEAsia2_EN_ID_Pros_Display_LAL%26utm_term%3Dlal%26utm_content%3Dmt4%26placement%3Did.carousell.com%26adrclid%3D8472118474318833761034419875890182010%26adct%3DgAAAAABq7uQmDC3Qis2pIM_ZzIH-H1ZUqYTP8oy_qaG-125jYEwzTnJ-hruI5hNoB1o0ODz4fyJ09qryB0PyQ-z4GKS6lHtQPCdXxakJVPF7cOVj_b02BHIYWrJ3eOrHGkuTOksYFGks
+  - list:
+    - link "Home":
+      - /url: /
+      - paragraph: Home
+    - paragraph: Search results for "iphone 13"
+  - button "Category Icon chevron down":
+    - generic: Category
+    - img "Icon chevron down"
+  - button "Sort:Best Match":
+    - generic: Sort:Best Match
+  - button "Model":
+    - generic: Model
+  - button "Storage":
+    - generic: Storage
+  - button "Color":
+    - generic: Color
+  - button "Condition":
+    - generic: Condition
+  - button "Price" [active]:
+    - generic: Price
+  - generic: Rp
+  - generic: Minimum
+  - spinbutton "Minimum"
+  - paragraph: "-"
+  - generic: Rp
+  - generic: Maximum
+  - spinbutton "Maximum"
+  - button "Apply"
+  - button "Clear"
+  - button "Deal Option":
+    - generic: Deal Option
+  - button "More filters":
+    - generic: More filters
+  - heading "10,000+ search results for 'Iphone 13' in Indonesia" [level=1]
+  - paragraph: Save this search
+  - button:
+  - link "Avatar tokogladget 1 hour ago":
+    - /url: /u/tokogladget/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: tokogladget
+    - paragraph: 1 hour ago
+  - link "iPhone 13 Mini 256 Gb ex IBOX iPhone 13 Mini 256 Gb ex IBOX Rp 8,000,000 Like new":
+    - /url: /p/iphone-13-mini-256-gb-ex-ibox-1472694191/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=0
+    - img "iPhone 13 Mini 256 Gb ex IBOX"
+    - paragraph: iPhone 13 Mini 256 Gb ex IBOX
+    - paragraph: Rp 8,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "Avatar chromezhalll 2 hours ago":
+    - /url: /u/chromezhalll/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: chromezhalll
+    - paragraph: 2 hours ago
+  - link "iPhone 13 128GB Midnight ex Garansi Resmi iBox iPhone 13 128GB Midnight ex Garansi Resmi iBox Rp 7,450,000 Like new":
+    - /url: /p/iphone-13-128gb-midnight-ex-garansi-resmi-ibox-1472685875/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=1
+    - img "iPhone 13 128GB Midnight ex Garansi Resmi iBox"
+    - paragraph: iPhone 13 128GB Midnight ex Garansi Resmi iBox
+    - paragraph: Rp 7,450,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "Avatar hokiponsel 3 hours ago":
+    - /url: /u/hokiponsel/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: hokiponsel
+    - paragraph: 3 hours ago
+  - link "Iphone 13 128 Inter Nominus Iphone 13 128 Inter Nominus Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-128-inter-nominus-1472678435/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=2
+    - img "Iphone 13 128 Inter Nominus"
+    - paragraph: Iphone 13 128 Inter Nominus
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "Avatar hd.3sna 2 hours ago":
+    - /url: /u/hd.3sna/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: hd.3sna
+    - paragraph: 2 hours ago
+  - link "Dijual•Iphone 13 Blue 128GB Terdaftar Fullset Dijual•Iphone 13 Blue 128GB Terdaftar Fullset Rp 5,200,000 Lightly used":
+    - /url: /p/dijual•iphone-13-blue-128gb-terdaftar-fullset-1472683996/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=3
+    - img "Dijual•Iphone 13 Blue 128GB Terdaftar Fullset"
+    - paragraph: Dijual•Iphone 13 Blue 128GB Terdaftar Fullset
+    - paragraph: Rp 5,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - iframe [id="google_ads_iframe_/325540922/Desktop_CategorySearch_Native_1_1"]:
+    - link:
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - link "XM Indonesia":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - link:
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - link "Trading Gold dengan Bonus":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - link "Bonus Deposit Lebih dari $5,000":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - link "Lihat":
+      - /url: https://adclick.g.doubleclick.net/aclk?sa=L&ai=Ct774J-TuauvhFqbvk7QPq6HnuQ691O6wXPCvxL59wI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTsAk_QaKp4lJCqkybVG4tBjnjR5y3acIa4nepvD1MfZpZGGN8Sap8Fv6lsl9v0B_nzU_U5msYaBPAXWyWyfMV4AeJiEm3wIbHsvrkkpbCXSOf3IhrVEZFHIqN6NYeRCd8zcUboeqiCzEg1k_yKqk9E7yoWC79FHi4G0QSwzuwCtTFtbQCQ3ereV2k0DdbgKqAWmjPwsCvu_Lj23A6PA3vpB8GXBM_JIIX9aUgh2sJm6-2ZsS8CihkR2pEi5vFfQ-mchEgWg8pssGFkNhzwHIg5UOoBMMg8oAAGgwku3jyGSkk_9668Ms58odWpKyOBjGoBvGYSNxiHWWmQwwIRKbWNCeasrgbxnB1gsgv2IrMINAxrbvlQUS5dCPlaxiQ7mERC3a3nqHbgRZdNWsIxh9hwOwuxNkGtlcMxNQ7domqiaFmcPtbxO_NJLIqdr5QQWdzD4pC-nfod2mDu7tza1TafHnQdkg3v-YW-3ILiBLHgBAGABsuYzubv-9iDowGgBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0ggwCIBhEAEyCIqCgICAgIAIOg-AQIDAgICAgIiAAqiDgBhIvf3BOlj1luSGu_WXA2AA-gsCCAGADAGqDQJJROINEwjk_eSGu_WXAxWm94QAHavQOefqDRMI8cLmhrv1lwMVpveEAB2r0DnniA7___________8B0BUBgBcBshcQGAwqCjgyNzI2NzM3MTVQAaoYFwk4iUFgBeC1QBIKODI3MjY3MzcxNRgB&num=1&sig=AOD64_3rGvPzH5oIlO9hopxkD9FlxbJJzw&adurl=https://cat.sg1.as.criteo.com/delivery/ckn.php?cppv=3&cpp=5QqDt_rhMttLIvFMce19zk8oeExUW7K8b7nXNHc37rpHhY_hS5K4AWSjI_Pb5JEopM5ESNuFB7zGOVJF_GJ4We_rnYDAkedbSnJ0D6hJyhWdcusg7k3Qlk107MWs5syq8z-HwZ_IuANqSy4_Hh42om7fskFQ1CXCt6bepivb1_Qcg8PDpLNE75M4Id7Sx5IFmP6hEqA9qzpNHy7iIjEw3p9y2WZhb9f11vW8sJFc-xvQTv4Mbm_YzNfjxVTUCdv7L0lwYZpBCJ1f0vQllFUGyw9NDOILXjHYbERRBrMoRxl6u8wCJp_l65A1yS7l-pSXNdzXASAUeQCy6W1pGnH-zSjpYaQ3HOg0JhPEp2_UYpkrsgLPW6uLUL2_oUscTAnj49eIu98kEilh8Tq5YtGVTKGZDjcvpGVLbNM2IsKuWn--iYQRMpnR0IFgCQT4ov7OMo3yQq8YaezcdO2_Po5QoNhKYdiulg7RnYZqYgH5ZsTcm2RTuSyRWfGBYPxTht7qBMVOjMF7RZf8WuAO_9uxe7D7077nqjgPUMKh52_mzAW0NilsPGJir9NuoWPhU5xDpviw-9yieNO_EsYnq7uxWLYn_7wTaoLtmrv6hg8CEr5L22DVs2jFWZZQek2ljtJhZ3ezNg&maxdest=https%3A%2F%2Fwww.xmidtrade.com%2Fgw.php%3Fgid%3D267877%26utm_source%3Dcriteo%26utm_medium%3Ddisplay%26utm_campaign%3DAcquisition-2026%252F09%252F15-1-Adset%26utm_id%3D729959%26cto_pld%3D4hVZ23WVAQDuL4b9nwulwg&z=au7kJwAFsOsAhPemADnQqx1NgN15rbVnTL5Xtw
+    - generic: Iklan
+  - link "deanrajsi 4 hours ago":
+    - /url: /u/deanrajsi/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: deanrajsi
+    - paragraph: 4 hours ago
+  - link "Iphone 13 128gb IBOX Iphone 13 128gb IBOX Rp 6,800,000 Well used":
+    - /url: /p/iphone-13-128gb-ibox-1472660337/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=5
+    - img "Iphone 13 128gb IBOX"
+    - paragraph: Iphone 13 128gb IBOX
+    - paragraph: Rp 6,800,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "iyodestore 5 hours ago":
+    - /url: /u/iyodestore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: iyodestore
+    - paragraph: 5 hours ago
+  - link "Iphone 13 128gb ibox Iphone 13 128gb ibox Rp 7,800,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472655327/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=6
+    - img "Iphone 13 128gb ibox"
+    - paragraph: Iphone 13 128gb ibox
+    - paragraph: Rp 7,800,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "mfrfikri1263258 1 hour ago":
+    - /url: /u/mfrfikri1263258/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: mfrfikri1263258
+    - paragraph: 1 hour ago
+  - link "Iphone 13 promax 256gb Ibox Iphone 13 promax 256gb Ibox Rp 10,650,000 Like new":
+    - /url: /p/iphone-13-promax-256gb-ibox-1472694201/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=7
+    - img "Iphone 13 promax 256gb Ibox"
+    - paragraph: Iphone 13 promax 256gb Ibox
+    - paragraph: Rp 10,650,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "rvstoresolo 2 hours ago":
+    - /url: /u/rvstoresolo/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rvstoresolo
+    - paragraph: 2 hours ago
+  - link "iPhone 13 128gb inter allop iPhone 13 128gb inter allop Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-128gb-inter-allop-1472683583/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=8
+    - img "iPhone 13 128gb inter allop"
+    - paragraph: iPhone 13 128gb inter allop
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "nopano 3 hours ago":
+    - /url: /u/nopano/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: nopano
+    - paragraph: 3 hours ago
+  - link "Iphone 13 basic 128gb ibox Iphone 13 basic 128gb ibox Rp 6,900,000 Lightly used":
+    - /url: /p/iphone-13-basic-128gb-ibox-1472674628/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=9
+    - img "Iphone 13 basic 128gb ibox"
+    - paragraph: Iphone 13 basic 128gb ibox
+    - paragraph: Rp 6,900,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "khnfn 15 hours ago":
+    - /url: /u/khnfn/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: khnfn
+    - paragraph: 15 hours ago
+  - link "Iphone 13 mini 128gb Bea Cukai Iphone 13 mini 128gb Bea Cukai Rp 6,000,000 Lightly used":
+    - /url: /p/iphone-13-mini-128gb-bea-cukai-1472614375/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=10
+    - img "Iphone 13 mini 128gb Bea Cukai"
+    - paragraph: Iphone 13 mini 128gb Bea Cukai
+    - paragraph: Rp 6,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "ahmadaryan45528 9 hours ago":
+    - /url: /u/ahmadaryan45528/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: ahmadaryan45528
+    - paragraph: 9 hours ago
+  - link "Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved Rp 5,500,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-inter-alloperator-mulus-nominus-preloved-1472629068/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=11
+    - img "Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved"
+    - paragraph: Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved
+    - paragraph: Rp 5,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Search_Bottom_Listing_1_1"] [name="google_ads_iframe_/325540922/Desktop_Search_Bottom_Listing_1_1"]:
+    - iframe [id="te-clr1-99313eb1-482b-48ca-bba3-c360e636d571-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=fa71d8fa-dca3-45fa-80d3-5bf9f10a0a8c&ag=vpzgtcb&sfe=1d266427&sig=znyFqXiQvsNR1jRMHtoMA3K4JH4YBVVAGTF-vhVgvTQ.&crid=dbnmx9ir&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=3&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7kJwAK4hsAhM3IACQ89PTpeW6lyeT0nfHrVw&rgz=40552&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=29.5&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoOwLlDQAEEfrYcfqj3PpFEYDTW_nxCgqMQgd2cHpndGNiSKf01g1Qwe-LBVoIZGJubXg5aXJgirS2G2RPR3h4cjVhUkdjbnpoXzkwNVFfTXOfAQhOZ2FtcHI1NTK01vjhlWoYIGl1M2VqN2zQAqyPigMb4lotQ1JNNi2I9K6Mna3ePwk5m_fH_riilrL2ARDX-6gWVjFRWmpQdGVKSTJpZ0ZiUF90bUdlMTYtMDgzZjdhMyslMgybiceRB0TNBQpF-j3bKmuSPyZKEY1hA1bgMFsuqPeF7t06BgiS55LnyisGCPPKAwsDmBMAqBM8yBM80BMA_RNYOZQ_gBQBoBQAsBQAuBQAyBQA6hTwFJEBshUA2BUAgBYAMvzEwTEueo3zPXXnQXZYzuYJ5no11mXClnVAAwvkvkibiaZxRSbk_8SsiOdVGkIMXjngOaLE45LCURuWCzJIdk6YySVqRyoyg2y5pq8BvSB7OTsWqZC6Wr1OzEJX2X2SrzdTg3k3n-tglPIO3t_iifAMClblKVMKTdd6AyAsy1L-FrgJ-bTAOdGpL8-3WCZ9Tp38bokLN04AfhqHYLUUhgyxjhgzFjVfGhY.&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=13&testid=-CRM6-&fpa=399&pcm=3&ict=Unknown&said=V1QZjPteJI2igFbP_tmGVw&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCQHkEJ-TuapvEK8ibk7QP9PmQ-Q2-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgTmAk_Qa8cPdYYGdR6a9P81LSladxFHIN9x5VgHCIr99RSXulysWXbeoKeMjxdDjWLNubVe0UZ_jOyf6oVCfY6TXLThvou572AUvk1Wly0caT7PaCkB7zLyrSFRXF-WtDlDcqv7D_rE5OCL_JEuWQoBcKKE_qlojpE-rGDLiswgMCQR8EGKW1IY27eR2U5xbJ7yTwOItAmNLdsIUzO5GtjUglxpkpXJaDhcEcuO1KcTh3pNAWQJPaXwoQ-B6bEBOsK-mfYKTrJpQcfHY59_CMcVebI9_tQrZ3ULw6ASia9ltyPxBi1YXgJ-b-wBqeXatPctumvEMwHht-YlMq_vxki_1bRmLDhpnlVFhwUp5fXUoIiXBMX577S-jpWidf2SA6GffAGiGYi90I_e6PZqTjpegTvyfU4bvxYWAataStqtYHnihSQC4PAeN-carFg_Fi68iZZvIY42Tn8P6zyDwzpdOUgx_rIOCUjgBAGABuPt-qrji7eZXqAGIagHk9ixAqgHlNixAqgHldixAqgHqeuxAqgHpr4bqAeW2BuoB6qbsQKoB_-esQKoB9-fsQKoB_7osQKoB62-sQKoB7_TsQLYBwDSCDAIgGEQATIIioKAgICAgAg6D4BAgMCAgICAiIACqIOAGEi9_cE6WKGb-oa79ZcDYAD6CwIIAYAMAaoNAklE4g0TCN7O-oa79ZcDFcjNhAAd9Dwk3-oNEwi9qvuGu_WXAxXIzYQAHfQ8JN-IDv___________wHQFQGAFwGyFxAYDCoKODI3MjY3MzcxNVABqhgXCf_UeOkGIMxAEgo4MjcyNjczNzE1GAE%26num%3D1%26sig%3DAOD64_020cbScMZMyeJXwidW5G76sAORwQ%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=dbnmx9ir&af_click_lookback=7d&clickid=fa71d8fa-dca3-45fa-80d3-5bf9f10a0a8c&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQwODcxLCJleHAiOjE3OTQwNDQ0NzEsImp0aSI6ImZhNzFkOGZhLWRjYTMtNDVmYS04MGQzLTViZjlmMTBhMGE4YyIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.UxaiihVP38gnqr51nQdaqAYz8GsD3aunsYfAnf8rIfI
+  - link "gadget_scnd 8 hours ago":
+    - /url: /u/gadget_scnd/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: gadget_scnd
+    - paragraph: 8 hours ago
+  - link "Iphone 13 128 ibox Iphone 13 128 ibox Rp 7,500,000 Well used":
+    - /url: /p/iphone-13-128-ibox-1472632842/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=13
+    - img "Iphone 13 128 ibox"
+    - paragraph: Iphone 13 128 ibox
+    - paragraph: Rp 7,500,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - link "gentlemountain_66f798 5 hours ago":
+    - /url: /u/gentlemountain_66f798/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: gentlemountain_66f798
+    - paragraph: 5 hours ago
+  - link "Iphone 13 Basic 128Gb Midnight Iphone 13 Basic 128Gb Midnight Rp 7,600,000 Like new":
+    - /url: /p/iphone-13-basic-128gb-midnight-1472658811/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=14
+    - img "Iphone 13 Basic 128Gb Midnight"
+    - paragraph: Iphone 13 Basic 128Gb Midnight
+    - paragraph: Rp 7,600,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "alfiqari 18 hours ago":
+    - /url: /u/alfiqari/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: alfiqari
+    - paragraph: 18 hours ago
+  - link "iPhone 13 128Gb Garansi ON BH 94% iPhone 13 128Gb Garansi ON BH 94% Rp 7,900,000 Like new":
+    - /url: /p/iphone-13-128gb-garansi-on-bh-94-1472589957/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=15
+    - img "iPhone 13 128Gb Garansi ON BH 94%"
+    - paragraph: iPhone 13 128Gb Garansi ON BH 94%
+    - paragraph: Rp 7,900,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "zealcat-82e9 17 hours ago":
+    - /url: /u/zealcat-82e9/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: zealcat-82e9
+    - paragraph: 17 hours ago
+  - link "Iphone 13 second Iphone 13 second Rp 5,000,000 Like new":
+    - /url: /p/iphone-13-second-1472600348/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=16
+    - img "Iphone 13 second"
+    - paragraph: Iphone 13 second
+    - paragraph: Rp 5,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "gibranv 18 hours ago":
+    - /url: /u/gibranv/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: gibranv
+    - paragraph: 18 hours ago
+  - link "iPhone 13 128 iBox iPhone 13 128 iBox Rp 7,350,000 Well used":
+    - /url: /p/iphone-13-128-ibox-1472595278/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=17
+    - img "iPhone 13 128 iBox"
+    - paragraph: iPhone 13 128 iBox
+    - paragraph: Rp 7,350,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "cynnthiagrace 1 day ago":
+    - /url: /u/cynnthiagrace/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: cynnthiagrace
+    - paragraph: 1 day ago
+  - link "Iphone 13 pink 128 GB inter Iphone 13 pink 128 GB inter Rp 4,500,000 Lightly used":
+    - /url: /p/iphone-13-pink-128-gb-inter-1472462712/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=18
+    - img "Iphone 13 pink 128 GB inter"
+    - paragraph: Iphone 13 pink 128 GB inter
+    - paragraph: Rp 4,500,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "syahroniah17701 18 hours ago":
+    - /url: /u/syahroniah17701/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: syahroniah17701
+    - paragraph: 18 hours ago
+  - link "iphone 13 128 resmi ibox iphone 13 128 resmi ibox Rp 7,500,000 Like new":
+    - /url: /p/iphone-13-128-resmi-ibox-1472591389/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=19
+    - img "iphone 13 128 resmi ibox"
+    - paragraph: iphone 13 128 resmi ibox
+    - paragraph: Rp 7,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "gilanggadgetstore 19 hours ago":
+    - /url: /u/gilanggadgetstore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: gilanggadgetstore
+    - paragraph: 19 hours ago
+  - link "iPhone 13 128 iBox iPhone 13 128 iBox Rp 7,350,000 Well used":
+    - /url: /p/iphone-13-128-ibox-1472582391/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=20
+    - img "iPhone 13 128 iBox"
+    - paragraph: iPhone 13 128 iBox
+    - paragraph: Rp 7,350,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "pokkeee 13 hours ago":
+    - /url: /u/pokkeee/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: pokkeee
+    - paragraph: 13 hours ago
+  - link "Iphone 13 256gb Ibox Iphone 13 256gb Ibox Rp 7,600,000 Like new":
+    - /url: /p/iphone-13-256gb-ibox-1472621349/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=21
+    - img "Iphone 13 256gb Ibox"
+    - paragraph: Iphone 13 256gb Ibox
+    - paragraph: Rp 7,600,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "kvn28 20 hours ago":
+    - /url: /u/kvn28/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: kvn28
+    - paragraph: 20 hours ago
+  - link "iPhone 13 Pro 256GB iPhone 13 Pro 256GB Rp 6,500,000 Like new":
+    - /url: /p/iphone-13-pro-256gb-1472576492/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=22
+    - img "iPhone 13 Pro 256GB"
+    - paragraph: iPhone 13 Pro 256GB
+    - paragraph: Rp 6,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "5"
+  - link "rizkihasann 4 hours ago":
+    - /url: /u/rizkihasann/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rizkihasann
+    - paragraph: 4 hours ago
+  - 'link "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap Forsale : Iphone 13 Blue 128GB terdaftar Lengkap Rp 5,200,000 Lightly used"':
+    - /url: /p/forsale-iphone-13-blue-128gb-terdaftar-lengkap-1472666425/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=23
+    - 'img "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap"'
+    - paragraph: "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap"
+    - paragraph: Rp 5,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "rhcell 17 hours ago":
+    - /url: /u/rhcell/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rhcell
+    - paragraph: 17 hours ago
+  - link "iPhone 13 128gb ibox iPhone 13 128gb ibox Rp 5,800,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472599808/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=25
+    - img "iPhone 13 128gb ibox"
+    - paragraph: iPhone 13 128gb ibox
+    - paragraph: Rp 5,800,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "bymith 2 days ago":
+    - /url: /u/bymith/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: bymith
+    - paragraph: 2 days ago
+  - link "iphone 13 128gb iphone 13 128gb Rp 7,000,000 Well used":
+    - /url: /p/iphone-13-128gb-1472455699/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=27
+    - img "iphone 13 128gb"
+    - paragraph: iphone 13 128gb
+    - paragraph: Rp 7,000,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "dan_cowx 4 hours ago":
+    - /url: /u/dan_cowx/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: dan_cowx
+    - paragraph: 4 hours ago
+  - link "iPhone 13 256gb inter iPhone 13 256gb inter Rp 4,700,000 Lightly used":
+    - /url: /p/iphone-13-256gb-inter-1472667953/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=28
+    - img "iPhone 13 256gb inter"
+    - paragraph: iPhone 13 256gb inter
+    - paragraph: Rp 4,700,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "chastorey 15 hours ago":
+    - /url: /u/chastorey/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: chastorey
+    - paragraph: 15 hours ago
+  - link "IPHONE 13 SEC IBOX IPHONE 13 SEC IBOX Rp 3,000,000 Lightly used":
+    - /url: /p/iphone-13-sec-ibox-1472613189/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=29
+    - img "IPHONE 13 SEC IBOX"
+    - paragraph: IPHONE 13 SEC IBOX
+    - paragraph: Rp 3,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - link "metro.cellular 22 hours ago":
+    - /url: /u/metro.cellular/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: metro.cellular
+    - paragraph: 22 hours ago
+  - link "iPhone 13 128GB ex iBox iPhone 13 128GB ex iBox Rp 8,500,000 Like new":
+    - /url: /p/iphone-13-128gb-ex-ibox-1472557878/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=30
+    - img "iPhone 13 128GB ex iBox"
+    - paragraph: iPhone 13 128GB ex iBox
+    - paragraph: Rp 8,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "sixpath_id 2 days ago":
+    - /url: /u/sixpath_id/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: sixpath_id
+    - paragraph: 2 days ago
+  - link "Iphone 13 128GB Inter Iphone 13 128GB Inter Rp 5,800,000 Lightly used":
+    - /url: /p/iphone-13-128gb-inter-1472388790/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=31
+    - img "Iphone 13 128GB Inter"
+    - paragraph: Iphone 13 128GB Inter
+    - paragraph: Rp 5,800,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "nawastore 2 days ago":
+    - /url: /u/nawastore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: nawastore
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK IPHONE 13 128GB PINK Rp 5,200,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-1472398231/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=32
+    - img "IPHONE 13 128GB PINK"
+    - paragraph: IPHONE 13 128GB PINK
+    - paragraph: Rp 5,200,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "iseestore 2 days ago":
+    - /url: /u/iseestore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: iseestore
+    - paragraph: 2 days ago
+  - link "iphone 13 128gb ibox iphone 13 128gb ibox Rp 8,200,000 Lightly used":
+    - /url: /p/iphone-13-128gb-ibox-1472374291/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=33
+    - img "iphone 13 128gb ibox"
+    - paragraph: iphone 13 128gb ibox
+    - paragraph: Rp 8,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "melyha.co 1 day ago":
+    - /url: /u/melyha.co/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: melyha.co
+    - paragraph: 1 day ago
+  - link "Iphone 13 white 128gb Digimap Iphone 13 white 128gb Digimap Rp 7,600,000 Lightly used":
+    - /url: /p/iphone-13-white-128gb-digimap-1472515243/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=34
+    - img "Iphone 13 white 128gb Digimap"
+    - paragraph: Iphone 13 white 128gb Digimap
+    - paragraph: Rp 7,600,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "ikoiko44 17 hours ago":
+    - /url: /u/ikoiko44/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: ikoiko44
+    - paragraph: 17 hours ago
+  - link "Iphone 13 Pro 256 Iphone 13 Pro 256 Rp 9,200,000 Lightly used":
+    - /url: /p/iphone-13-pro-256-1472243486/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=35
+    - img "Iphone 13 Pro 256"
+    - paragraph: Iphone 13 Pro 256
+    - paragraph: Rp 9,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "epicbear.db58f5 2 days ago":
+    - /url: /u/epicbear.db58f5/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: epicbear.db58f5
+    - paragraph: 2 days ago
+  - link "Iphone 13 Inter Iphone 13 Inter Rp 5,000,000 Brand new":
+    - /url: /p/iphone-13-inter-1472444490/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=36
+    - img "Iphone 13 Inter"
+    - paragraph: Iphone 13 Inter
+    - paragraph: Rp 5,000,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "undercheaps 1 day ago":
+    - /url: /u/undercheaps/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: undercheaps
+    - paragraph: 1 day ago
+  - link "iphone 13 128gb ibox iphone 13 128gb ibox Rp 7,300,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472491501/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=37
+    - img "iphone 13 128gb ibox"
+    - paragraph: iphone 13 128gb ibox
+    - paragraph: Rp 7,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "wellytri0113197 12 hours ago":
+    - /url: /u/wellytri0113197/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: wellytri0113197
+    - paragraph: 12 hours ago
+  - link "Iphone 13 Inter 256 GB warna Pink Iphone 13 Inter 256 GB warna Pink Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-inter-256-gb-warna-pink-1472622446/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=38
+    - img "Iphone 13 Inter 256 GB warna Pink"
+    - paragraph: Iphone 13 Inter 256 GB warna Pink
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - paragraph: How satisfied are you with these search results?
+  - button "Very dissatisfied":
+    - paragraph: Very dissatisfied
+  - button "Dissatisfied":
+  - button "Neutral":
+  - button "Satisfied":
+  - button "Very satisfied":
+    - paragraph: Very satisfied
+  - link "andrian666 3 hours ago":
+    - /url: /u/andrian666/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: andrian666
+    - paragraph: 3 hours ago
+  - link "iphone 13 pro 256 gold beacukai iphone 13 pro 256 gold beacukai Rp 9,300,000 Like new":
+    - /url: /p/iphone-13-pro-256-gold-beacukai-1472678007/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=39
+    - img "iphone 13 pro 256 gold beacukai"
+    - paragraph: iphone 13 pro 256 gold beacukai
+    - paragraph: Rp 9,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "itsskyra 1 day ago":
+    - /url: /u/itsskyra/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: itsskyra
+    - paragraph: 1 day ago
+  - link "IPhone 13 128GB Beacukai RESMI Setara IBox IPhone 13 128GB Beacukai RESMI Setara IBox Rp 6,300,000 Lightly used":
+    - /url: /p/iphone-13-128gb-beacukai-resmi-setara-ibox-1472486941/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=40
+    - img "IPhone 13 128GB Beacukai RESMI Setara IBox"
+    - paragraph: IPhone 13 128GB Beacukai RESMI Setara IBox
+    - paragraph: Rp 6,300,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "axell.433 1 day ago":
+    - /url: /u/axell.433/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: axell.433
+    - paragraph: 1 day ago
+  - link "IPHONE 13 128GB IBOX IPHONE 13 128GB IBOX Rp 7,850,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472530882/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=41
+    - img "IPHONE 13 128GB IBOX"
+    - paragraph: IPHONE 13 128GB IBOX
+    - paragraph: Rp 7,850,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "bfriin 8 hours ago":
+    - /url: /u/bfriin/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: bfriin
+    - paragraph: 8 hours ago
+  - link "IPHONE 13 PROAX 128GB KEMENPERIN IPHONE 13 PROAX 128GB KEMENPERIN Rp 8,500,000 Lightly used":
+    - /url: /p/iphone-13-proax-128gb-kemenperin-1472633616/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=42
+    - img "IPHONE 13 PROAX 128GB KEMENPERIN"
+    - paragraph: IPHONE 13 PROAX 128GB KEMENPERIN
+    - paragraph: Rp 8,500,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "zdimension 1 day ago":
+    - /url: /u/zdimension/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: zdimension
+    - paragraph: 1 day ago
+  - link "iPhone 13 128gb iBox iPhone 13 128gb iBox Rp 7,650,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472530277/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=43
+    - img "iPhone 13 128gb iBox"
+    - paragraph: iPhone 13 128gb iBox
+    - paragraph: Rp 7,650,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "reselleriphone. 24 hours ago":
+    - /url: /u/reselleriphone./?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: reselleriphone.
+    - paragraph: 24 hours ago
+  - link "iPhone 13 basic 128gb iBox iPhone 13 basic 128gb iBox Rp 8,800,000 Well used":
+    - /url: /p/iphone-13-basic-128gb-ibox-1472542047/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=44
+    - img "iPhone 13 basic 128gb iBox"
+    - paragraph: iPhone 13 basic 128gb iBox
+    - paragraph: Rp 8,800,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+  - link "iyodestore 5 hours ago":
+    - /url: /u/iyodestore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: iyodestore
+    - paragraph: 5 hours ago
+  - link "Iphone 13 256gb ibox Iphone 13 256gb ibox Rp 8,500,000 Like new":
+    - /url: /p/iphone-13-256gb-ibox-1472656053/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=45
+    - img "Iphone 13 256gb ibox"
+    - paragraph: Iphone 13 256gb ibox
+    - paragraph: Rp 8,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "tokogladget 1 hour ago":
+    - /url: /u/tokogladget/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: tokogladget
+    - paragraph: 1 hour ago
+  - link "iPhone 13 Pro 512 Gb ex IBOX/DIGIMAP iPhone 13 Pro 512 Gb ex IBOX/DIGIMAP Rp 10,000,000 Like new":
+    - /url: /p/iphone-13-pro-512-gb-ex-ibox-digimap-1472692602/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=46
+    - img "iPhone 13 Pro 512 Gb ex IBOX/DIGIMAP"
+    - paragraph: iPhone 13 Pro 512 Gb ex IBOX/DIGIMAP
+    - paragraph: Rp 10,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "gibranv 2 days ago":
+    - /url: /u/gibranv/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: gibranv
+    - paragraph: 2 days ago
+  - link "iPhone 13 128 iBox iPhone 13 128 iBox Rp 6,650,000 Well used":
+    - /url: /p/iphone-13-128-ibox-1472349328/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=47
+    - img "iPhone 13 128 iBox"
+    - paragraph: iPhone 13 128 iBox
+    - paragraph: Rp 6,650,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "syahroniah17701 1 day ago":
+    - /url: /u/syahroniah17701/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: syahroniah17701
+    - paragraph: 1 day ago
+  - link "iphone 13 128 resmi ibox iphone 13 128 resmi ibox Rp 7,700,000 Lightly used":
+    - /url: /p/iphone-13-128-resmi-ibox-1472483679/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=48
+    - img "iphone 13 128 resmi ibox"
+    - paragraph: iphone 13 128 resmi ibox
+    - paragraph: Rp 7,700,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "epicbear.db58f5 2 days ago":
+    - /url: /u/epicbear.db58f5/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: epicbear.db58f5
+    - paragraph: 2 days ago
+  - link "Iphone 13 Inter (Good condition!) Iphone 13 Inter (Good condition!) Rp 5,000,000 Brand new":
+    - /url: /p/iphone-13-inter-good-condition-1472445489/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=49
+    - img "Iphone 13 Inter (Good condition!)"
+    - paragraph: Iphone 13 Inter (Good condition!)
+    - paragraph: Rp 5,000,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "dzikrimuhammad13 1 day ago":
+    - /url: /u/dzikrimuhammad13/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: dzikrimuhammad13
+    - paragraph: 1 day ago
+  - link "Iphone 13 128gb pink Ex iBox BH 81% Mulus Iphone 13 128gb pink Ex iBox BH 81% Mulus Rp 7,950,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-ex-ibox-bh-81-mulus-1472493908/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_page_type=search&t-referrer_request_id=ga4FsvQ91Mp5rPiy&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-referrer_sort_by=popular&t-tap_index=50
+    - img "Iphone 13 128gb pink Ex iBox BH 81% Mulus"
+    - paragraph: Iphone 13 128gb pink Ex iBox BH 81% Mulus
+    - paragraph: Rp 7,950,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - button "Show more results"
+- contentinfo:
+  - heading "Top searches" [level=6]
+  - list:
+    - link "pants":
+      - /url: /pants/q/
+    - text: "|"
+    - link "hoodie":
+      - /url: /hoodie/q/
+    - text: "|"
+    - link "dior":
+      - /url: /dior/q/
+    - text: "|"
+    - link "clarks":
+      - /url: /clarks/q/
+    - text: "|"
+    - link "outer":
+      - /url: /outer/q/
+    - text: "|"
+    - link "bucket hat":
+      - /url: /bucket-hat/q/
+    - text: "|"
+    - link "raket padel":
+      - /url: /raket-padel/q/
+    - text: "|"
+    - link "shopatvelvet":
+      - /url: /shopatvelvet/q/
+    - text: "|"
+    - link "herschel":
+      - /url: /herschel/q/
+    - text: "|"
+    - link "lululemon":
+      - /url: /lululemon/q/
+    - text: "|"
+    - link "mango":
+      - /url: /mango/q/
+    - text: "|"
+    - link "balenciaga":
+      - /url: /balenciaga/q/
+    - text: "|"
+    - link "knit":
+      - /url: /knit/q/
+    - text: "|"
+    - link "sendal":
+      - /url: /sendal/q/
+    - text: "|"
+    - link "rok jeans":
+      - /url: /rok-jeans/q/
+    - text: "|"
+    - link "maison margiela":
+      - /url: /maison-margiela/q/
+    - text: "|"
+    - link "iphone 11 ibox":
+      - /url: /iphone-11-ibox/q/
+    - text: "|"
+    - link "claude":
+      - /url: /claude/q/
+    - text: "|"
+    - link "lebaran":
+      - /url: /lebaran/q/
+    - text: "|"
+    - link "fred perry":
+      - /url: /fred-perry/q/
+    - text: "|"
+    - link "hair dryer":
+      - /url: /hair-dryer/q/
+    - text: "|"
+    - link "labubu":
+      - /url: /labubu/q/
+    - text: "|"
+    - link "patagonia":
+      - /url: /patagonia/q/
+    - text: "|"
+    - link "morningsol":
+      - /url: /morningsol/q/
+    - text: "|"
+    - link "popmart":
+      - /url: /popmart/q/
+    - text: "|"
+    - link "thanksinsomnia":
+      - /url: /thanksinsomnia/q/
+    - text: "|"
+    - link "mothercare":
+      - /url: /mothercare/q/
+    - text: "|"
+    - link "tas":
+      - /url: /tas/q/
+    - text: "|"
+    - link "tas wanita":
+      - /url: /tas-wanita/q/
+    - text: "|"
+    - link "mukena":
+      - /url: /mukena/q/
+    - text: "|"
+    - link "batik":
+      - /url: /batik/q/
+    - text: "|"
+    - link "colorbox":
+      - /url: /colorbox/q/
+    - text: "|"
+    - link "cheongsam":
+      - /url: /cheongsam/q/
+    - text: "|"
+    - link "iphone 12":
+      - /url: /iphone-12/q/
+    - text: "|"
+    - link "adidas samba":
+      - /url: /adidas-samba/q/
+    - text: "|"
+    - link "charles and keith":
+      - /url: /charles-and-keith/q/
+    - text: "|"
+    - link "off shoulder":
+      - /url: /off-shoulder/q/
+    - text: "|"
+    - link "hp":
+      - /url: /hp/q/
+    - text: "|"
+    - link "kucing":
+      - /url: /kucing/q/
+    - text: "|"
+    - link "koper":
+      - /url: /koper/q/
+    - text: "|"
+    - link "sepatu running":
+      - /url: /sepatu-running/q/
+    - text: "|"
+    - link "iwatch":
+      - /url: /iwatch/q/
+    - text: "|"
+    - link "kemeja putih":
+      - /url: /kemeja-putih/q/
+    - text: "|"
+    - link "boots":
+      - /url: /boots/q/
+    - text: "|"
+    - link "flatshoes":
+      - /url: /flatshoes/q/
+    - text: "|"
+    - link "tumblr":
+      - /url: /tumblr/q/
+    - text: "|"
+    - link "ipad pro":
+      - /url: /ipad-pro/q/
+    - text: "|"
+    - link "jorts":
+      - /url: /jorts/q/
+    - text: "|"
+    - link "topi":
+      - /url: /topi/q/
+    - text: "|"
+    - link "nintendo switch":
+      - /url: /nintendo-switch/q/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

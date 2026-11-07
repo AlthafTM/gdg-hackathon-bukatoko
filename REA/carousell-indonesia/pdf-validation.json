@@ -1,0 +1,18 @@
+{
+  "pageCount": 46,
+  "pdfBytes": 1144641,
+  "plainTextBytes": 186513,
+  "manifestFiles": 93,
+  "assetCount": 43,
+  "endpointOccurrences": 326,
+  "screenshotCount": 9,
+  "expandedReaBytes": 233639453,
+  "expandedReaSha256": "ac37fe85afacef5ac15ae3c4e878ed490a055363de1976bd99b359f16fd9ca4a",
+  "integrityErrors": [],
+  "unlistedFiles": [],
+  "missingPdfContent": [],
+  "missingPlainTextContent": [],
+  "emptyPages": [],
+  "automatedPass": true,
+  "visualReview": "See visual-review.md for the authored PDF review. Render and review again after rebuilding; automated parsing does not establish visual quality."
+}

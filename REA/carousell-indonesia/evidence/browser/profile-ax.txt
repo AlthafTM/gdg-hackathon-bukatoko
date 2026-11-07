@@ -1,0 +1,398 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+  - textbox "Search":
+    - /placeholder: Search for an item
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - img "Avatar"
+  - heading "@realand" [level=1]
+  - button "Profile details":
+    - paragraph: Profile details
+  - button "5.0 14 reviews":
+    - paragraph:
+      - text: "5.0"
+    - paragraph: 14 reviews
+  - paragraph: 3y 23d
+  - paragraph: Joined
+  - button "Follow":
+    - generic: Follow
+  - button "share profile":
+  - button "More options":
+  - link "Listings":
+    - /url: /u/realand/
+    - paragraph: Listings
+  - link "Reviews":
+    - /url: /u/realand/?tab=reviews
+    - paragraph: Reviews
+  - heading "Listings" [level=3]
+  - textbox "Search listings..."
+  - button "Filters":
+    - text: Filters
+  - 'link "Preloved Philips Hair Tools Preloved Philips Hair Tools Rp 100,000 Stricken Price: Rp 190,000 Like new"':
+    - /url: /p/preloved-philips-hair-tools-1469608522/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=0
+    - img "Preloved Philips Hair Tools"
+    - paragraph: Preloved Philips Hair Tools
+    - paragraph: Rp 100,000
+    - 'generic "Stricken Price: Rp 190,000"': Rp 190,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - 'link "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand Rp 150,000 Stricken Price: Rp 300,000 Like new"':
+    - /url: /p/preloved-hair-styler-panasonic-eh-k71w-silent-dry-mode-59db-made-in-thailand-1469607528/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=1
+    - img "Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand"
+    - paragraph: Preloved Hair Styler Panasonic EH-K71w Silent Dry Mode 59dB Made in Thailand
+    - paragraph: Rp 150,000
+    - 'generic "Stricken Price: Rp 300,000"': Rp 300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - 'link "Celana Jeans Kulot Panjang M&S Celana Jeans Kulot Panjang M&S Rp 60,000 Size: S / EU 36 / UK 8 / US 25"':
+    - /url: /p/celana-jeans-kulot-panjang-m-s-1456070972/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=2
+    - img "Celana Jeans Kulot Panjang M&S"
+    - paragraph: Celana Jeans Kulot Panjang M&S
+    - paragraph: Rp 60,000
+    - paragraph: "Size: S / EU 36 / UK 8 / US 25"
+  - button "Like":
+    - generic: "12"
+  - 'link "Celana Pendek Jeans Perempuan Celana Pendek Jeans Perempuan Rp 40,000 Size: Free Size"':
+    - /url: /p/celana-pendek-jeans-perempuan-1456068883/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=3
+    - img "Celana Pendek Jeans Perempuan"
+    - paragraph: Celana Pendek Jeans Perempuan
+    - paragraph: Rp 40,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+    - generic: "5"
+  - 'link "Zara Cardigan Gold Button Size M Zara Cardigan Gold Button Size M Rp 100,000 Size: M / EU 38 / UK 10 / US 6"':
+    - /url: /p/zara-cardigan-gold-button-size-m-1453899125/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=4
+    - img "Zara Cardigan Gold Button Size M"
+    - paragraph: Zara Cardigan Gold Button Size M
+    - paragraph: Rp 100,000
+    - paragraph: "Size: M / EU 38 / UK 10 / US 6"
+  - button "Like":
+    - generic: "10"
+  - link "H&M Mens Button Up Shirt Size M Long Sleeve Comfort Casual Soft Easy Iron H&M Mens Button Up Shirt Size M Long Sleeve Comfort Casual Soft Easy Iron Rp 118,680 Like new":
+    - /url: /p/h-m-mens-button-up-shirt-size-m-long-sleeve-comfort-casual-soft-easy-iron-1449157820/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=5
+    - img "H&M Mens Button Up Shirt Size M Long Sleeve Comfort Casual Soft Easy Iron"
+    - paragraph: H&M Mens Button Up Shirt Size M Long Sleeve Comfort Casual Soft Easy Iron
+    - paragraph: Rp 118,680
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "Kaos Laki Laki Marvel Bagus No Min Kaos Laki Laki Marvel Bagus No Min Rp 50,000 Like new":
+    - /url: /p/kaos-laki-laki-marvel-bagus-no-min-1449151848/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=6
+    - img "Kaos Laki Laki Marvel Bagus No Min"
+    - paragraph: Kaos Laki Laki Marvel Bagus No Min
+    - paragraph: Rp 50,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "7"
+  - 'link "Uni Airism Seamless Boat Neck XL hitam Uni Airism Seamless Boat Neck XL hitam Rp 45,000 Size: L / EU 40 / UK 12 / US 8"':
+    - /url: /p/uni-airism-seamless-boat-neck-xl-hitam-1449150845/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=7
+    - img "Uni Airism Seamless Boat Neck XL hitam"
+    - paragraph: Uni Airism Seamless Boat Neck XL hitam
+    - paragraph: Rp 45,000
+    - paragraph: "Size: L / EU 40 / UK 12 / US 8"
+  - button "Like":
+    - generic: "3"
+  - link "Celana Pendek Santai Uniqlo Celana Pendek Santai Uniqlo Rp 40,000 Lightly used":
+    - /url: /p/celana-pendek-santai-uniqlo-1448656037/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=8
+    - img "Celana Pendek Santai Uniqlo"
+    - paragraph: Celana Pendek Santai Uniqlo
+    - paragraph: Rp 40,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "10"
+  - 'link "Mini Basic Sleveless Dress Mini Basic Sleveless Dress Rp 25,000 Size: M / EU 38 / UK 10 / US 6"':
+    - /url: /p/mini-basic-sleveless-dress-1442870088/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=9
+    - img "Mini Basic Sleveless Dress"
+    - paragraph: Mini Basic Sleveless Dress
+    - paragraph: Rp 25,000
+    - paragraph: "Size: M / EU 38 / UK 10 / US 6"
+  - button "Like":
+    - generic: "2"
+  - 'link "Kimono Perempuan Batik Kimono Perempuan Batik Rp 20,000 Size: Free Size"':
+    - /url: /p/kimono-perempuan-batik-1442869775/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=10
+    - img "Kimono Perempuan Batik"
+    - paragraph: Kimono Perempuan Batik
+    - paragraph: Rp 20,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+    - generic: "1"
+  - link "Kemeja Koko Putih Laki Laki Kemeja Koko Putih Laki Laki Rp 20,000 Lightly used":
+    - /url: /p/kemeja-koko-putih-laki-laki-1442869539/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=11
+    - img "Kemeja Koko Putih Laki Laki"
+    - paragraph: Kemeja Koko Putih Laki Laki
+    - paragraph: Rp 20,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "9"
+  - 'link "PRELOVED BAJU BAGUS UNI M&S PRELOVED BAJU BAGUS UNI M&S Rp 40,000 Size: Free Size"':
+    - /url: /p/preloved-baju-bagus-uni-m-s-1442752582/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=12
+    - img "PRELOVED BAJU BAGUS UNI M&S"
+    - paragraph: PRELOVED BAJU BAGUS UNI M&S
+    - paragraph: Rp 40,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+    - generic: "1"
+  - 'link "Bra Top Tank Top Bra Top Tank Top Rp 85,000 Size: M / EU 38 / UK 10 / US 6"':
+    - /url: /p/bra-top-tank-top-1442674637/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=13
+    - img "Bra Top Tank Top"
+    - paragraph: Bra Top Tank Top
+    - paragraph: Rp 85,000
+    - paragraph: "Size: M / EU 38 / UK 10 / US 6"
+  - button "Like":
+  - 'link "Outer Bunga Pantai Outer Bunga Pantai Rp 45,000 Size: Free Size"':
+    - /url: /p/outer-bunga-pantai-1442631074/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=14
+    - img "Outer Bunga Pantai"
+    - paragraph: Outer Bunga Pantai
+    - paragraph: Rp 45,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+  - link "SOLD Walking Running Pad Treadmill Walking Running Pad Treadmill Rp 900,000 Lightly used":
+    - /url: /p/walking-running-pad-treadmill-1466363657/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=15
+    - paragraph: SOLD
+    - img "Walking Running Pad Treadmill"
+    - paragraph: Walking Running Pad Treadmill
+    - paragraph: Rp 900,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "10"
+  - 'link "SOLD Cardigan Uniqlo Coksu M Cardigan Uniqlo Coksu M Rp 96,000 Size: M / EU 38 / UK 10 / US 6"':
+    - /url: /p/cardigan-uniqlo-coksu-m-1459033167/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=16
+    - paragraph: SOLD
+    - img "Cardigan Uniqlo Coksu M"
+    - paragraph: Cardigan Uniqlo Coksu M
+    - paragraph: Rp 96,000
+    - paragraph: "Size: M / EU 38 / UK 10 / US 6"
+  - button "Like":
+  - 'link "SOLD Cardigan Uniqlo Mulus Cardigan Uniqlo Mulus Rp 90,000 Size: M / EU 38 / UK 10 / US 6"':
+    - /url: /p/cardigan-uniqlo-mulus-1453898522/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=17
+    - paragraph: SOLD
+    - img "Cardigan Uniqlo Mulus"
+    - paragraph: Cardigan Uniqlo Mulus
+    - paragraph: Rp 90,000
+    - paragraph: "Size: M / EU 38 / UK 10 / US 6"
+  - button "Like":
+    - generic: "1"
+  - 'link "SOLD Celana gajah hitam Celana gajah hitam Rp 20,000 Size: Free Size"':
+    - /url: /p/celana-gajah-hitam-1452970135/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=18
+    - paragraph: SOLD
+    - img "Celana gajah hitam"
+    - paragraph: Celana gajah hitam
+    - paragraph: Rp 20,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+  - 'link "SOLD Celana Gajah Navy Celana Gajah Navy Rp 20,000 Size: Free Size"':
+    - /url: /p/celana-gajah-navy-1452903707/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=seller&t-referrer_page_type=profile&t-referrer_request_id=u-YLMHeDcnG8EhZR&t-tap_index=19
+    - paragraph: SOLD
+    - img "Celana Gajah Navy"
+    - paragraph: Celana Gajah Navy
+    - paragraph: Rp 20,000
+    - paragraph: "Size: Free Size"
+  - button "Like":
+    - generic: "2"
+  - button "View more"
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Profile_Rectangle_0"] [name="google_ads_iframe_/325540922/Desktop_Profile_Rectangle_0"]
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Profile_RSB_0"] [name="google_ads_iframe_/325540922/Desktop_Profile_RSB_0"]:
+    - iframe [id="te-clr1-60fd1cf7-433c-4423-a04d-856c474d3cf9-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=44ad0e1b-c363-48f0-ba1a-7314c782f8da&ag=vpzgtcb&sfe=1d266493&sig=ZoaL00b9NFF2Yt_fwRsbyxFOjmwSu5QAlW2vsPC6-3w.&crid=4rno3nt5&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=2&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7kkwADxQAAtxqOABkOztGYtfSY-XZgnGBv4w&rgz=40559&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=26.32000000000005&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoTAIdDgCkERsOrURjw_BIEboacxTHgvjaQgd2cHpndGNiSKf01g1Qwe-LBVoINHJubzNudDVgk7S2G2RPR3h4cjVhUkdjbnpoXzkwNVFfTXMCwAGfAQpQYXJvbmdwMDU1aWSy9IWy8YPOARggaXUzZWo3bNACrI-KAxvlWi1DUk02LYzfkI-lrd4_HVJTQruSt9Txy7R6EKPsiBY2bkFmb0RfYUNKRUYwU0NSY1dIc3IxNi0wODNmN2EzIi91DJuJx5EHRM0FCkX6BGKAJHhsGrRLEamHEUR30aO8zbaSg9I6BgidiZ2JDo8B3qTxyJ4ZApgTAKgTPMgTPNATAP0TWDmUP4AUAaAUALAUALgUAMgUAOoU8BSRAbIVANgVAIAWADL8NEJh4DNZEPSt1A99M78OOy_d2JN1OeJR0X8zde5LBNrSdF-wj_dBTEW1P55symROsOMYarOa1sAFOiHjmag9CcoM__Y13a5_QUZoxffUcL6Rgb63ankUlWo5gH-Et6iq5QGjDcub5-Ksy-Uj-HRAaxOZ4LQ5YGZI69qwYablb_E17LjpHmGrI8io9Dk1yJ5vQQUUHfw0pMBqKQcaYh0xJiyCuDQs&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=14&testid=-CRM6-&fpa=337&pcm=3&ict=Unknown&said=6nAfoD_aCJEF0SCRcWHsrw&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCWb3Vk-TuaoCKD4613LUPzp3kmA2-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgShAk_QyAWxhK_8OIU1sFVfDxlnuWCempjCULzAYzFK3eWXCBdAOwh1Ocef1FxD7uQrwiHgriWo2gj8g36fA10PXgwXpVRAz7qxwi7PuAl2VGpgNesx5V8bn6CqJyhGY_KB7nR07ZnNqU22XB_9cQGDWsl7KkIMNNqFiVP6kJbjc94zWiTPwvUyYLAz1laXVxkt74wJG-jjV3Im1ivONOJFLHyjAGKhccfhccabJKoMiyTq8BhepFU16m30GM9k-9iKeRu75ZWNV3R3Jt2eB6F-zzVm9Z4EZUGoSxFgs2Sl5QSi_imKMls6R1MGuzoKufc1SRdnBK1Iqujs3w2QR-b1hqRtLSEVgplHGU6CxYmt7fKRi9ag0pWyLJXSSPZlub_iiKLgBAGABvvyz_7j99eoVaAGIagHk9ixAqgHlNixAqgHldixAqgHqeuxAqgHpr4bqAeW2BuoB6qbsQKoB_-esQKoB9-fsQKoB_7osQKoB62-sQKoB7_TsQLYBwDSCDUIgCEQATIIioCAgICAgAg6FI_QgICAgASAwICAgKCIgAKogYAYSL39wTpY2p2durv1lwNgAPoLAggBgAwBqg0CSUTiDRMI0umdurv1lwMVjhq3AB3ODhnT6g0TCPLdnrq79ZcDFY4atwAdzg4Z04gO____________AdAVAYAXAbIXEBgMKgo4MjcyNjczNzE1UAGqGBcJKlyPwgVw10ASCjgyNzI2NzM3MTUYAQ%26num%3D1%26sig%3DAOD64_3QZ9pXb1yLexXMQDlEzQG1uhRb5Q%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=4rno3nt5&af_click_lookback=7d&clickid=44ad0e1b-c363-48f0-ba1a-7314c782f8da&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQwOTc5LCJleHAiOjE3OTQwNDQ1NzksImp0aSI6IjQ0YWQwZTFiLWMzNjMtNDhmMC1iYTFhLTczMTRjNzgyZjhkYSIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.FoMPxP47Mt63uzBSuzX5NViH_sbfIWZijh9UzsFmGvw
+- contentinfo:
+  - checkbox "Follow us"
+  - paragraph: Follow us
+  - link "Facebook":
+    - /url: https://www.facebook.com//carousell.id
+  - link "Twitter":
+    - /url: https://x.com/carousell
+  - link "Blog":
+    - /url: https://blog.carousell.com/id/
+  - link "Carousell College":
+    - /url: https://college.carousell.com
+  - checkbox "Others"
+  - paragraph: Others
+  - link "Everything Else":
+    - /url: /categories/everything-else-16/
+  - link "Community":
+    - /url: /categories/toys-and-board-games-26/
+  - link "Looking For":
+    - /url: /categories/looking-for-21/
+  - checkbox "Fashion"
+  - paragraph: Fashion
+  - link "Health & Beauty":
+    - /url: /categories/health-and-beauty-11/
+  - link "Luxury":
+    - /url: /categories/luxury-20/
+  - link "Olshop Fashion":
+    - /url: /categories/fashion-olshop-1222/
+  - link "Men's Fashion":
+    - /url: /categories/mens-fashion-3/
+  - link "Women's Fashion":
+    - /url: /categories/womens-fashion-4/
+  - checkbox "Home & Living"
+  - paragraph: Home & Living
+  - link "Books & Stationery":
+    - /url: /categories/books-and-stationery-5/
+  - link "Babies & Kids":
+    - /url: /categories/parents-babies-and-kids-19/
+  - link "Home & Furniture":
+    - /url: /categories/home-and-gardening-13/
+  - link "Gardening":
+    - /url: /categories/gardening-684/
+  - link "Kitchen & Appliances":
+    - /url: /categories/kitchen-appliances-30/
+  - checkbox "Mobiles & Electronics"
+  - paragraph: Mobiles & Electronics
+  - link "Electronics":
+    - /url: /categories/electronics-cameras-and-gadgets-7/
+  - link "Mobile Phones & Tablets":
+    - /url: /categories/mobile-phones-338/
+  - checkbox "Jobs & Services"
+  - paragraph: Jobs & Services
+  - link "Jobs":
+    - /url: /categories/jobs-1477/
+  - link "Services":
+    - /url: /categories/services-1464/
+  - checkbox "Hobbies & Games"
+  - paragraph: Hobbies & Games
+  - link "Photography":
+    - /url: /categories/photography-6/
+  - link "Design & Craft":
+    - /url: /categories/design-and-craft-8/
+  - link "Food & Drinks":
+    - /url: /categories/food-drinks-27/
+  - link "Music & Media":
+    - /url: /categories/music-14/
+  - link "Sports":
+    - /url: /categories/sports-10/
+  - link "Video Gaming":
+    - /url: /categories/video-gaming-12/
+  - link "Toys & Collectibles":
+    - /url: /categories/toys-and-board-games-1188/
+  - link "Memorabilia & Antiques":
+    - /url: /categories/memorabilia-antiques-9/
+  - link "Pet Supplies":
+    - /url: /categories/pet-supplies-29/
+  - link "J-Wave Merchandise":
+    - /url: /categories/j-wave-merchandise-31/
+  - link "K-Wave Merchandise":
+    - /url: /categories/k-wave-merchandise-25/
+  - link "Tickets & Vouchers":
+    - /url: /categories/tickets-and-voucher-18/
+  - checkbox "Cars & Property"
+  - paragraph: Cars & Property
+  - link "Cars":
+    - /url: /categories/cars-and-motors-32/
+  - link "Auto Accessories":
+    - /url: /categories/auto-accessories-109/
+  - link "Property":
+    - /url: /categories/property-102/
+  - link "Motorbikes":
+    - /url: /categories/motorbikes-108/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

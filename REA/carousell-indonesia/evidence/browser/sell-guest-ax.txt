@@ -1,0 +1,37 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+- main:
+  - button "Select photos or drag photos here (Up to 10 photos)":
+    - button "Select photos":
+      - generic: Select photos
+    - paragraph: or drag photos here
+    - paragraph: (Up to 10 photos)

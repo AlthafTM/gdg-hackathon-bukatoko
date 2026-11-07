@@ -1,0 +1,3157 @@
+CAROUSELL INDONESIA - COMPLETE PLAIN-TEXT COLLABORATOR REFERENCE
+Research date: 7 November 2026, Asia/Jakarta.
+This text contains the complete human-readable report, official source ledger,
+collaborator procedures, screenshot index and every extracted endpoint candidate.
+Screenshots remain image files; the PDF embeds them. Raw machine analysis is
+preserved in evidence/rea-evidence-bundle.json.gz, rather than expanded here.
+Observed facts, static candidates, documentation, proposals and unknowns must
+retain their distinct evidence labels when used by a person or an AI.
+
+
+==========================================================================================
+REPOSITORY CONTEXT
+==========================================================================================
+
+GDGoC ITB Stack Hackathon - Bukatoko
+====================================
+
+
+This repository is our shared workspace for the GDGoC ITB Stack Hackathon. Collaborators use it to develop Bukatoko, an online local-shop marketplace.
+
+The app concept supports both sides of a local transaction:
+
+- Sell an item: users can list items they own for other people to buy.
+- Request an item: users can post what they want to buy and specify a price range, so other users can respond with suitable items.
+
+The same user can sell their own items and request items they want to buy.
+
+
+Repository contents
+===================
+
+
+
+Location: REA/ (REA/README.md)
+Purpose: Reference material from the reverse-engineering skill's investigation of Carousell Indonesia.
+
+Location: REA/carousell-indonesia/ (REA/carousell-indonesia/README.md)
+Purpose: PDF, full plain text, editable report, screenshots, evidence and reproduction tools.
+
+Location: LICENSE (LICENSE)
+Purpose: Repository license. Third-party reference material retains its original ownership.
+
+
+
+Start here
+==========
+
+
+1. Read the plain-text reference (REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.txt) for AI-assisted work, or the PDF (REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.pdf) for a formatted version with screenshots.
+2. Read the collaborator handoff (REA/carousell-indonesia/HANDOFF.md) for investigation steps, PDF/text generation, verification and a suggested implementation sequence.
+3. Use the editable Markdown report (REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.md) and its evidence to discuss product decisions before implementing them.
+
+
+What the REA folder means
+=========================
+
+
+REA contains what the reverse-engineering skill found during its Carousell investigation. It is a reference for designing our hackathon app, including browsing, listings, search, seller profiles, chat, offers and trust flows.
+
+The research distinguishes directly observed behavior, static code candidates, official documentation, proposed implementation choices and unresolved questions. Native app internals and authenticated transactions were not inspected. Proposed architectures and API paths are design suggestions, not recovered production contracts.
+
+Our wanted-item requests with a listed price range are part of Bukatoko's intended concept. Their exact behavior is a team design decision; the Carousell investigation did not establish a complete equivalent request workflow.
+
+
+Working together
+================
+
+
+- Keep app implementation and research references distinguishable.
+- Use focused branches and pull requests to make changes reviewable.
+- Preserve dated research evidence; record new observations separately.
+- Update the editable report, generated PDF/text and integrity manifest together when changing the research package.
+- Do not commit credentials, private account exports or temporary build/review files.
+
+The current handoff provides research and design references. The implementation stack and detailed hackathon feature scope are for the team to choose.
+
+==========================================================================================
+COMPLETE DESIGN DOCUMENT
+==========================================================================================
+
+Carousell Indonesia: reverse-engineering and reconstruction design
+==================================================================
+
+
+Target: https://id.carousell.com/  
+Research date: 7 November 2026, Asia/Jakarta  
+Status: Final report of the accessible public surface, with explicit residual unknowns  
+Method: Local reverse-engineer-anything skill, REA runtime/static tools, direct browser observation, and official app-store/help sources
+
+
+1. What this investigation establishes
+======================================
+
+
+Carousell Indonesia is a discovery and negotiation marketplace. The central journey is finding a listing, assessing the item and seller, starting a listing-specific conversation, agreeing on payment and delivery, making an offer, and obtaining seller acceptance. Accepted offers support mutual reviews. A conventional cart and integrated checkout are not established for Indonesia by this investigation.
+
+The live website supports public browsing, category discovery, search, category-specific filters, product galleries, seller profiles, reviews, and a photo-first selling entry. Chat opens authentication for a guest. The observed offer panel requires sign-in. Both Android and iOS apps exist, and the Indonesian website links to their official stores. Native application screens, binaries, permissions and traffic were not inspected.
+
+This is a reconstruction design grounded in observable behavior. It is not a recovery of Carousell's private source, backend schema, infrastructure, or complete native application. Sections marked Proposed are engineering designs for reproducing the evidenced experience; they are not claims about Carousell's implementation. Official help is marked Documented because it can lag production. Direct observations apply to the named session and sample, not every account, category or experiment.
+
+
+Evidence labels
+===============
+
+
+
+Label: O
+Meaning: Direct browser observation
+Appropriate use: Visible layout, control, URL or tested transition in this investigation
+
+Label: S
+Meaning: Static shipped-asset observation
+Appropriate use: Literal code, route, dependency marker, or conservative relationship in acquired public bundles
+
+Label: D
+Meaning: Official documentation/store declaration
+Appropriate use: Described product behavior, regional availability or store identity
+
+Label: I
+Meaning: Inference
+Appropriate use: Interpretation supported by evidence, with alternatives still possible
+
+Label: P
+Meaning: Proposed reconstruction
+Appropriate use: A deliberate implementation choice rather than a recovered fact
+
+Label: U
+Meaning: Unknown
+Appropriate use: Requires unavailable access, a device, credentials, or further evidence
+
+
+
+Scope and operating constraints
+===============================
+
+
+The observed browser session was a guest on the Indonesia domain, displaying English text and a dark system theme. The web research service separately returned Indonesian page text. Country, language and theme must therefore be modeled independently. Desktop observation used a 1440 × 1000 CSS viewport; mobile observations used the initial 324 × 607 viewport and a 390 × 844 listing viewport. The temporary viewport override was reset.
+
+No account was created, credentials entered, seller contacted, offer submitted, item published, file uploaded, app installed, or purchase made. Public reads and reversible search interactions were performed. A REA-launched isolated Chrome session encountered a Cloudflare challenge; the in-app browser loaded the actual marketplace normally. No challenge was solved or bypassed.
+
+
+2. Investigation questions and coverage
+=======================================
+
+
+
+Question: What is the target and does an app exist?
+Result: Answered
+Evidence / remaining boundary: O01; A01–A02; Android and Indonesian iOS store pages
+
+Question: What can a guest discover and inspect?
+Result: Answered for sampled surfaces
+Evidence / remaining boundary: O01–O08; home, category, search, listing, seller, review tabs
+
+Question: How does filtering change state?
+Result: Answered for price
+Evidence / remaining boundary: O04; applied range changes URL, result heading and cards
+
+Question: What are the buying and trust loops?
+Result: Partly answered
+Evidence / remaining boundary: O02–O03 plus A03, A06–A07; accepted-offer execution not tested
+
+Question: How does selling work?
+Result: Partly answered
+Evidence / remaining boundary: O07 photo entry; A04–A05; post-upload form and publishing unobserved
+
+Question: How do mobile and desktop differ?
+Result: Partly answered
+Evidence / remaining boundary: O01, O02, O09; two mobile sizes, one desktop size, dark theme only
+
+Question: Which client technologies and API candidates ship?
+Result: Partly answered
+Evidence / remaining boundary: S01–S04; 43 bundles, 2,149,267 bytes; semantic limits retained
+
+Question: Which features actually apply to Indonesia?
+Result: Documented boundary established
+Evidence / remaining boundary: A01–A17; do not import other-market checkout, AI or promotion assumptions
+
+Question: What are native app internals?
+Result: Unresolved
+Evidence / remaining boundary: No official APK/IPA or running device session available
+
+Question: What is the backend implementation?
+Result: Unresolved
+Evidence / remaining boundary: Proposed design only; no server code, database or privileged access
+
+
+
+3. Product model, actors and goals
+==================================
+
+
+O/D: A person can browse as a guest and use one account as both buyer and seller. Public inventory includes ordinary goods, fashion, electronics, collectibles, services, jobs, property and vehicles. A hard-coded universal goods form would not reproduce this breadth.
+
+
+Actor: Guest
+Goal: Assess supply and trust before joining
+Important product support: Public cards, search, detail, seller reputation; contextual sign-in
+
+Actor: Buyer
+Goal: Find a suitable item and agree a deal
+Important product support: Filters, likes, saved searches, chat, offers, reviews
+
+Actor: Casual seller
+Goal: Turn an item into an effective listing
+Important product support: Photos first, category-specific fields, delivery preferences, buyer conversations
+
+Actor: Professional seller
+Goal: Gain exposure and manage supply
+Important product support: Indonesia CarouBiz service; other seller tools require market verification
+
+Actor: Moderator/support operator
+Goal: Handle scams, prohibited material and disputes
+Important product support: Reports, reason/details collection, evidence access and support escalation; internal UI unknown
+
+
+I: The marketplace's conversion object is a qualified conversation and accepted offer, rather than a cart. Seller trust is part of item evaluation, not a separate destination. The homepage also combines editorial promotion, price reductions, recommendations, and SEO discovery.
+
+
+4. Information architecture and routes
+======================================
+
+
+
+4.1 Observed route families
+===========================
+
+
+
+Surface: Home
+Observed URL pattern: /
+Notes: Promotional banners, illustrated category rail, reduced-price rail, recommended feed
+
+Surface: Category
+Observed URL pattern: /categories/mobile-phones-338/
+Notes: Numeric category identity with readable slug; subcategory navigation
+
+Surface: Nested category
+Observed URL pattern: /categories/health-and-beauty-11/hair-care-307/
+Notes: Appeared in listing breadcrumb
+
+Surface: Global search
+Observed URL pattern: /search/iphone%2013
+Notes: Actual typed-search destination
+
+Surface: Search within category
+Observed URL pattern: /categories/mobile-phones-338/?search=...
+Notes: Search from category preserved category scope
+
+Surface: SEO query landing
+Observed URL pattern: /iphone-12/q/ and other /<query>/q/ links
+Notes: Linked from footer and item interlinks; not all followed
+
+Surface: Listing
+Observed URL pattern: /p/<readable-slug>-1469607528/
+Notes: Numeric listing identity; navigation adds attribution query fields
+
+Surface: Seller
+Observed URL pattern: /u/realand/
+Notes: Listings and Reviews tabs
+
+Surface: Seller review deep link
+Observed URL pattern: /u/realand/?tab=reviews
+Notes: Linked from item detail
+
+Surface: Sell
+Observed URL pattern: /sell?source=nav_bar
+Notes: Public photo-selection entry
+
+Surface: Login / register
+Observed URL pattern: /login/, /signup/
+Notes: Also accessible as a contextual login dialog
+
+Surface: Recovery
+Observed URL pattern: /forgot-password
+Notes: Link observed, recovery flow not exercised
+
+Surface: Price-drop collection
+Observed URL pattern: /see-all/?endpoint=...
+Notes: Encoded endpoint parameter observed; not treated as an API contract
+
+Surface: Business campaign
+Observed URL pattern: /caroubiz-indonesia-2025/l/
+Notes: Homepage banner destination; year in slug does not prove policy date
+
+
+O: Attribution parameters include t-source, t-id, t-referrer_page_type, t-referrer_browse_type, t-referrer_request_id, search query/source, sort and tap index. These are navigation metadata. Their presence does not establish a particular analytics event delivery or backend attribution pipeline.
+
+P: Separate canonical navigation state from attribution. Canonical item links should remain usable without tracking values. Use explicit country/language configuration, preserve search filters during navigation, and keep query parsing tolerant of unknown attribution parameters.
+
+
+4.2 Category taxonomy
+=====================
+
+
+O: The category drawer has a search field, category links and separate expansion controls. Top-level inventory in this session: Following; Toys & Collectibles; Women's Fashion; Men's Fashion; Health & Beauty; Electronics; Mobile Phones & Tablets; Books & Stationery; Babies & Kids; Olshop Fashion; Luxury; Photography; Video Gaming; Food & Drinks; Design & Craft; Sports; Music & Media; Motorbikes; Cars; Auto Accessories; Property; Services; Jobs; Home & Furniture; Gardening; Kitchen & Appliances; Pet Supplies; Tickets & Vouchers; Community; Looking For; Everything Else.
+
+Some readable slugs are historical. Community links to toys-and-board-games-26, while Toys & Collectibles uses ID 1188. P: Use category IDs as identity and labels as localized presentation. Never derive category semantics solely from the slug. Following is a personalized discovery entry, not necessarily a sellable leaf category.
+
+The sampled mobile-phone category exposes iPhone, Android Phones, Tablets, Mobile & Tablet Accessories, and Others. The typed iPhone search additionally exposes Model, Storage and Color. I: Filter presentation depends on the active query/category interpretation; the precise category-inference algorithm is unknown.
+
+
+5. Screen-by-screen experience
+==============================
+
+
+
+5.1 Shared shell
+================
+
+
+O: Desktop has a logo, five broad shortcuts, All Categories, Register, Login and a red Sell action. The second row combines item search, Indonesia location field, distance selector and a green search button. The shortcut labeled Electronics links to Mobile Phones & Tablets, rather than the broader Electronics category.
+
+On narrow screens, the shell collapses to the compact logo, category icon, register/login links and a full-width search field. The homepage shows a floating Sell action. Long category and item rails remain horizontal collections within a vertically scrolling page.
+
+Footer content includes category/SEO links, support/contact, corporate resources, legal links, country links, six language options, and Light/Dark/System theme options. Only System was selected in the observed session; theme switching and persistence were not tested.
+
+
+5.2 Homepage
+============
+
+
+O: The hierarchy is two promotional banner destinations (Indonesia CarouBiz and Maujual), Explore Carousell, Slashed Prices, Recommended For you, an app-download section with store links and QR code, then search and footer links. Category illustrations provide stronger visual identity than generic icons. Inventory photographs dominate the lower page.
+
+Cards expose seller/avatar and relative posting time, item image, title, price, condition or category attribute, and a heart action. The price-drop rail shows an earlier struck price. Some seller-entered prices look abbreviated, such as a current Rp 400 next to an earlier Rp 400,000. These are observed data values, not proof of a currency formatter bug. A reconstruction must not silently reinterpret seller prices.
+
+O: A View more control is present on recommendations. Its loading behavior was not exercised. P: Reserve space for images and delayed recommendations, retain scroll position when returning from details, and keep item and seller links as separate targets.
+
+[Screenshot: Observed desktop homepage; file: screenshots/home-desktop-dark.jpg]
+
+
+5.3 Category and search results
+===============================
+
+
+O: Results have breadcrumbs, category/sort/filter controls, a result heading, Save this search, product cards, and advertisements. The sampled broad phone category shows Model, Storage, Condition, Price, Deal Option and More filters. The iPhone query also shows Color. Count headings are bucketed, such as 10,000+ and 1,000+; they are not exact inventory counts.
+
+Sort choices observed: Best Match, Recent, Price - High to Low, Price - Low to High, Nearby. The menu was opened, but alternate sort choices were not applied. Official conceptual Best Match factors include relevance, recency, popularity and quality; weights and ranking model are undisclosed. Official ranking explanation (https://support.carousell.com/hc/en-us/articles/360053182734-Best-Match-Get-better-and-relevant-search-results-with-our-new-search-algorithm).
+
+The Price popover has numeric Minimum/Maximum inputs with rupiah prefixes, Apply and Clear. Applying 3,000,000 to 6,000,000 produced a range label, one active filter, Clear all, updated result cards, and these URL fields:
+
+price_start=3000000
+price_end=6000000
+sort_by=1
+
+The displayed sort remained Best Match. This establishes sort_by=1 for this tested transition, not a complete enum mapping. No claim is made about untested minimum-greater-than-maximum or malformed URL validation.
+
+O: Searching an intentionally unmatched token from the phone category retained category scope and produced an explicit no-match message, suggestions to check spelling/use general keywords, and a link to browse more in the same category. This differs from a failed network request or loading state.
+
+[Screenshot: Observed search results; file: screenshots/search-desktop-dark.jpg]
+
+
+5.4 Listing detail
+==================
+
+
+O: Sample: listing 1469607528, a Panasonic hair styler, seller realand. The visible page contains a labeled advertisement area, category breadcrumb, multi-image carousel, Like and overflow actions, title, current/previous price, condition help, transaction method, locality, posted age, category-specific Type, expandable description, delivery notes, seller panel, review preview and related query links.
+
+The desktop gallery spans the content width and shows multiple images. Below it, item information occupies the main left column, with a seller/contact card on the right. The selected listing had five images; this does not imply every gallery has five. User descriptions are content supplied by sellers, not verified specifications or Carousell guarantees.
+
+The seller information shows username, joined age, responsiveness, a Verified label, aggregate rating and review count. U: The Verified label's specific basis was not established. It must not be equated with Indonesian phone verification or a government identity check.
+
+The guest panel includes Chat, Sign in to make offer, a numeric offer amount initially matching the listing price, and disabled Make Offer. Clicking Chat opens the login dialog while retaining the listing URL. No message was sent.
+
+O: At 390 × 844, the gallery and item information stack vertically. A visible Chat action sits near the lower viewport edge in the captured state; another desktop instance is hidden. The offer-related content remains in the document. This observation does not establish all scroll/sticky conditions or every mobile gallery gesture.
+
+[Screenshot: Observed desktop listing; file: screenshots/listing-desktop-dark.jpg]
+
+[Screenshot: Observed mobile listing; file: screenshots/listing-mobile-dark.jpg]
+
+
+5.5 Authentication boundary
+===========================
+
+
+O: The contextual login dialog presents a QR login prompt, Google, Facebook, email/username/mobile entry option, and account creation link. Selecting the email option exposes Username or email, Password, Forgot password, a password-related icon button, disabled Log in while empty, and Other Log in options. The field label after choosing this option is narrower than the preceding button's label; preserve the observed distinction when documenting it.
+
+A reCAPTCHA frame displayed a free-quota notice in this session. This is an observation of a third-party state, not a demonstrated authentication outage. No authentication submission was attempted.
+
+P: Authentication should return to the user's intended action and listing. Handle provider cancellation, expired QR codes, invalid credentials, throttling, recovery, server errors and expired sessions. These are required reconstruction states, not states verified here. Never put passwords, provider tokens or QR secrets in client analytics or shareable URLs.
+
+[Screenshot: Observed login choices; file: screenshots/login-modal.jpg]
+
+
+5.6 Seller profile and reviews
+==============================
+
+
+O: Profile /u/realand/ shows avatar, handle, Profile details, rating/count, joined duration, Follow, share and overflow controls. Listings and Reviews are separate tab links. The listing tab includes seller-inventory search, Filters, cards, sold overlays and View more. Sold items remain discoverable in this profile sample.
+
+The review tab exposes Sort by / Newest and All / From Buyers / From Sellers. Reviews on the item page include reviewer identity, relative age, stars, text and sometimes the transacted item's title/price. Actual review submission, sort application and follow behavior were not tested.
+
+P: Do not allow arbitrary public review creation. Link eligibility to the accepted-offer relationship, distinguish buyer/seller roles, and calculate aggregates from published eligible reviews. Handle no reviews, suspended users, deleted listings, hidden personal details and inaccessible profiles explicitly.
+
+
+5.7 Selling entry
+=================
+
+
+O: Visiting Sell as a guest opens a photo-selection surface, rather than immediately opening login. It offers Select photos or drag photos here, with a maximum of 10 photos explicitly stated on the web. This corroborates the app's documented limit; the web limit is independently observed.
+
+D: Official selling instructions describe camera/gallery on app, photos plus listing form, mandatory-field prompts, and publishing. Indonesia selling instructions (https://support.carousell.com/hc/id/articles/115006246207-Bagaimana-cara-berjualan-di-Carousell).
+
+U: Actual upload MIME/size rules, image ordering controls, draft persistence, category prediction, form schema, login timing, moderation review and publication response remain unobserved. No test image was uploaded. Do not infer the full form from the first screen.
+
+
+6. Core workflows and state transitions
+=======================================
+
+
+
+6.1 Discovery to negotiation
+============================
+
+
+flowchart TD
+  Home[Home or category] --> Search[Search and filters]
+  Search --> Listing[Inspect item and seller]
+  Listing --> Chat[Choose Chat]
+  Chat --> Auth[Guest login dialog: observed]
+  Auth -. authenticated behavior documented .-> Conversation[Listing-specific conversation]
+  Conversation --> Agreement[Agree item, price, payment and delivery]
+  Agreement --> Offer[Buyer makes offer]
+  Offer --> Acceptance[Seller accepts]
+  Acceptance --> Reviews[Mutual review eligibility]
+
+The solid diagram transitions after Conversation summarize official documented behavior, not executed transactions. Indonesia buying guide (https://support.carousell.com/hc/id/articles/115006305247-Bagaimana-saya-membeli-barang-di-Carousell), listing-specific chat (https://support.carousell.com/hc/id/articles/115006560428-Bagaimana-chat-dengan-Carouseller-lain).
+
+D: Payment and delivery are mutually agreed. The local buying guide describes cash on delivery or bank transfer with parcel shipping. Seller acceptance of an offer enables reviews. An accepted offer is therefore an in-product agreement milestone; it is not evidence of settled funds, parcel receipt, refund rights or platform escrow.
+
+
+6.2 Offer state design (P)
+==========================
+
+
+Use proposed → accepted / declined / withdrawn / expired for a reconstruction, with terminal-state guards and an explicit superseding offer relationship if negotiation changes the amount. Only proposed and accepted concepts are documented here; declined, withdrawn and expired are proposed engineering states requiring product decisions.
+
+The server must authenticate the actor, verify buyer/seller roles, reject self-offers, validate the listing's availability and currency, enforce positive amount rules, and perform atomic state transitions. An offer amount is separate from the listing asking price. A concurrent price change or second buyer must not produce contradictory acceptance states. Whether production reserves a listing on acceptance is unknown.
+
+
+6.3 Listing lifecycle (P with observed sold state)
+==================================================
+
+
+Recommended model: local/server draft → uploading → valid draft → submitted → active → reserved/sold/archived; moderation can move a submission to pending/rejected/removed. O: Sold overlays exist. U: Production reserved/draft/moderation enums and transitions were not recovered. Keep these proposed states configurable rather than documenting them as a recovered API.
+
+
+6.4 Reviews (D)
+===============
+
+
+Official local instructions provide a 30-day submission window after accepted offers. Reviews remain hidden until both participants submit or 14 days pass; prepublication edits are allowed and one follow-up edit is described after publication. Review criteria differ by buyer/seller role. Implement timers against authoritative timestamps, with publication idempotence and role-aware eligibility. The exact timing anchor and enforcement should be verified against current authenticated behavior before shipping strict parity. Official review rules (https://support.carousell.com/hc/id/articles/360018880254-Bagaimana-saya-meninggalkan-ulasan-untuk-pembeli-atau-penjual).
+
+
+6.5 Retention and saved discovery (D)
+=====================================
+
+
+Likes use the heart control and a My Likes destination. Saved-search documentation describes storing query plus filters, a limit of three, and no more than one daily matching-listing push. Web exposes Save this search, but its authenticated limit and notification behavior were not tested. Likes (https://support.carousell.com/hc/id/articles/115006382467-Bagaimana-saya-melacak-barang-yang-saya-sukai), saved searches (https://support.carousell.com/hc/id/articles/360000088208-Apa-itu-Pencarian-Tersimpan).
+
+
+7. Visual and responsive design specification
+=============================================
+
+
+
+7.1 Measured observations
+=========================
+
+
+The reference visual language is inventory-led and compact: system typography, photo-heavy cards, illustrated categories, restrained borders, a red selling/contact action and green search/discovery accents. This describes the observed product; it is not a newly invented brand system.
+
+
+Element: Font stack
+Observed measurement: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Droid Sans", "Helvetica Neue", sans-serif
+Boundary: Computed CSS in observed browser
+
+Element: Main desktop left alignment
+Observed measurement: 64 CSS px at 1440 viewport
+Boundary: Sampled home/category shell; not universal fixed margin
+
+Element: Navigation row
+Observed measurement: Approximately 48 CSS px high
+Boundary: Sampled category shell
+
+Element: Home section headings
+Observed measurement: 24 px, weight 600
+Boundary: Explore, Slashed Prices, Recommendations
+
+Element: App-download heading
+Observed measurement: 38 px, weight 600
+Boundary: Homepage desktop sample
+
+Element: Common control text
+Observed measurement: 14–16 px
+Boundary: Sampled navigation/search controls
+
+Element: Body dark canvas
+Observed measurement: rgb(0,0,0)
+Boundary: Current System theme rendering only
+
+Element: Body secondary text
+Observed measurement: rgb(197,197,198)
+Boundary: Computed body color
+
+Element: Primary text sample
+Observed measurement: rgb(240,241,241)
+Boundary: Sampled headings/controls
+
+Element: Input background
+Observed measurement: rgb(65,66,68)
+Boundary: Sampled search input
+
+Element: Red action
+Observed measurement: rgb(204,30,43)
+Boundary: Sell button
+
+Element: Green action
+Observed measurement: rgb(0,168,142)
+Boundary: Search button
+
+Element: Green link sample
+Observed measurement: rgb(0,191,162)
+Boundary: Sampled category controls
+
+Element: Active green chip
+Observed measurement: text rgb(0,239,202), surface rgb(0,57,48)
+Boundary: Sampled category selection
+
+Element: Button radius
+Observed measurement: 4 px for Sell/Search
+Boundary: Other components vary
+
+Element: Filter radius
+Observed measurement: 20 px in sampled chips
+Boundary: Do not apply to all components
+
+
+Exact sampled rectangles, colors, typography and media queries are retained in style-observations.json. Inline CSS contains media boundaries around 374, 410, 510, 576, 768, 846 and 1024 px, among others. These are static CSS observations, not a verified global breakpoint system. Only the stated viewport sizes were inspected.
+
+
+7.2 Reconstruction layout rules (P)
+===================================
+
+
+Use a centered desktop content region that aligns shell, breadcrumbs, rails and grids. Preserve the wide gallery above the desktop two-column detail layout. Reflow item detail into a single column on mobile and reserve bottom space for persistent contact actions. Keep product images bounded with a consistent aspect policy while allowing gallery contain behavior where cropping would hide item condition.
+
+Maintain separate card zones for seller/time, photograph, title, price, condition/attribute and heart. Do not render entire cards as buttons containing additional interactive links. Truncate long titles only in feed cards; allow detail titles to wrap. Keep old price visually subordinate and semantically struck through.
+
+Treat horizontal rails as intentionally scrollable regions, not page-wide overflow. The measured 390 px listing had document scroll width 388 px in that snapshot; this is a bounded successful check, not an accessibility certification. The initial 324 px homepage screenshot includes a horizontal scrollbar; its exact cause was not isolated. Verify that narrow layout separately before reproducing it.
+
+Implement light and dark from semantic tokens, with System tracking OS preference. U: Exact light-theme colors, keyboard theme operation, preference storage and cross-session persistence remain unverified.
+
+
+7.3 Accessibility requirements (P, with observed foundations)
+=============================================================
+
+
+The live surface provides a skip link, landmarks, heading levels, named search inputs, named image buttons, descriptive item images and disabled offer/login controls. Some carousel and icon buttons appear unnamed in snapshots. This suggests specific audit targets; it does not prove all screen-reader experiences fail.
+
+Reconstruction acceptance requires visible keyboard focus, logical dialog focus trapping/restoration, Escape dismissal, touch targets of at least 44 px where practical, accessible names for every icon control, numeric field labels, live feedback for search/filter changes, and non-color status cues. Use reduced-motion support, maintain contrast in both themes, and avoid verbose repeated seller descriptions on every thumbnail. No full keyboard, contrast or assistive-technology audit was performed on production.
+
+
+8. Shipped web implementation evidence
+======================================
+
+
+
+8.1 Artifact identity and acquisition
+=====================================
+
+
+S: The captured homepage DOM references hashed JavaScript files on mweb-cdn.karousell.com/build/. Forty-three such bundles were downloaded from those exact public URLs. Their combined size is 2,149,267 uncompressed file bytes. This is not measured transfer size, a complete site size or a performance metric. asset-manifest.json retains URL, filename, byte count and SHA-256 per file.
+
+REA root identity for the 43-file directory:
+
+0d32f6d8ab4ab8ed4160fb33630991a3c3727213769e6231d7c2604141e89d9c
+
+REA parsed all 43 files without parse failures and visited 624,594 AST nodes. The broad application graph is partial: vendor bundle 2044418de8de1ae7.min.js exhausted its semantic worker heap, and graph node ceilings limited relationship recovery. There were 82,028 retained semantic unknowns, not 82,028 confirmed product defects. These are analyzer-resolution records. The report does not claim complete decompilation.
+
+
+8.2 Client stack
+================
+
+
+
+Finding: React-related runtime
+Evidence: hydrateRoot, createRoot, React devtools hook and version strings 19.3.1 in vendor bytes
+Interpretation boundary: Strong shipped React evidence; version is a bundle string, not a queried installed runtime
+
+Finding: Redux family
+Evidence: Redux error text, react-redux context marker, Redux Toolkit and redux-saga strings
+Interpretation boundary: Libraries/code ship; not every route's state flow is recovered
+
+Finding: Chunk loading
+Evidence: __LOADABLE_REQUIRED_CHUNKS__, __LOADABLE_LOADED_CHUNKS__ and hashed assets
+Interpretation boundary: Supports a split-bundle client; exact build pipeline not fully reconstructed
+
+Finding: Search state actions
+Evidence: searchListingRequest, searchListingFilterRequest in 0dac448f4366e202.min.js
+Interpretation boundary: Static candidate feature boundary
+
+Finding: API registration layer
+Evidence: registerEndpoint, method/path and protoServiceMethodDefinition records
+Interpretation boundary: Typed/service binding candidates; not proof of gRPC wire transport
+
+Finding: Structured search metadata
+Evidence: application/ld+json in captured DOM
+Interpretation boundary: SEO-oriented structured data present; server-side rendering not proved by post-render DOM
+
+Finding: Source map annotations
+Evidence: All 43 bundles contain source-map URL annotations
+Interpretation boundary: Map availability/accessibility not tested; originals not recovered
+
+Finding: Error instrumentation
+Evidence: Sentry markers in vendor bundle
+Interpretation boundary: Shipped integration candidate; error upload not observed
+
+
+React hydration support is present in bytes, but the saved HTML is a post-render DOM. It cannot establish which content arrived in the first HTTP response. Do not state that SSR or a particular framework such as Next.js is proven. No backend language, search engine, database vendor, hosting region or microservice deployment topology was recovered.
+
+
+8.3 Observed integrations and asset domains
+===========================================
+
+
+O: Script elements in the loaded homepage reference Google Analytics/Tag Manager, Facebook events, CleverTap, Google identity, Google advertising, Tercept and Index-related advertising resources. Item images use media.karousell.com; web bundles use mweb-cdn.karousell.com. Advertisements are labeled and isolated in frames in sampled search/detail pages.
+
+These observations establish loaded DOM references and rendered ad surfaces. They do not establish the contents of transmitted events, consent enforcement, all third-party execution, native SDK usage, or successful attribution. Avoid copying production analytics identifiers into a reconstruction.
+
+The REA-launched browser's 307/403 responses and Cloudflare challenge activity belong to that blocked attempt. They are not marketplace API traces and cannot substantiate listing/search data contracts.
+
+
+8.4 Search feature reconstruction from code (S/I)
+=================================================
+
+
+The search-related bundle contains a state slice named SearchListing with pending, error, listingCards, numberOfResults, numberOfResultsFormatted, pageNumber, pageResponseCounts, requestID, searchCache, appliedContext, filterBubbles and shouldLoadMore. Pending/error reducers and a cache update that appends new results are literal code observations. This is stronger evidence than inferring a search architecture from the page layout alone.
+
+The generator-based flow reads contextual state, prepares filters and location, checks named feature flags, creates a request ID, consults a search cache, calls an imported API helper, stores the returned data, updates filter-field definitions, extracts listing cards, then updates navigation/tracking context. This is a conservative reading of minified code, not an execution trace. The exact imported helper implementation and every branch were not resolved.
+
+The request construction includes bestMatchEnabled, canChangeKeyword, ccid, count, countryCode, countryId, defaultSortBy, filters, includeListingDescription, includeSuggestions, locale, prefill, query, session and sortParam, plus an x-request-id header. Optional nearby sorting constructs latitude/longitude and a distance range. These are static helper arguments; they are not verified HTTP wire bytes.
+
+Response handling reads appliedContext, filterBubbles, formattedTotal, results, searchApiParam, session, sfContext, total, hasMore, and flags for keyword-correction/category-clearing prompts. It can replace filter definitions from returned metadata and uses hasMore when boolean, otherwise a card-count comparison, to derive continuation. This supports a data-driven filter/result model and explains why query interpretation can change controls. It does not reveal the ranking weights, backend query language, or exact pagination contract.
+
+Named flags include experiments around Best Match, misspelling handling, search presentation and Buyer Protection. Their presence establishes branch candidates; observed Indonesian feature availability must still follow regional evidence. search-code-observations.json retains bounded source contexts, and the original bundle retains the complete function bytes.
+
+
+9. API surface: recovered candidates versus designed contracts
+==============================================================
+
+
+
+9.1 Literal candidates (S)
+==========================
+
+
+endpoint-candidates.json contains 326 matched endpoint-registration occurrences, not necessarily 326 unique deployed or reachable APIs. Extraction is a reproducible syntactic search and can miss dynamic registrations. No candidate endpoint was probed merely because its path appeared in code.
+
+
+Candidate: /cf/4.0/search/
+Source: 0dac448f4366e202.min.js, offset 15388 in search candidate ledger
+What is established: Literal search-related path; method/body/live use unknown
+
+Candidate: /search/3.4/products/following/
+Source: Same bundle
+What is established: Following-feed candidate
+
+Candidate: /chat/1.0/header
+Source: cc4919ae5cd0f2a7.min.js, registration offset 402416
+What is established: GET method expression, typed handler name GetChatHeader10
+
+Candidate: /chat/1.0/:offerId/translate
+Source: Same, offset 402550
+What is established: POST method expression; cross-market availability unknown
+
+Candidate: /sell/1.0/userfeature
+Source: Same, offset 399398
+What is established: GET method expression, GetUserFeature binding
+
+Candidate: /user/1.0/check-phishing-warning
+Source: Same, offset 398630
+What is established: POST method expression, PhishingWarningChecker binding
+
+Candidate: /chat-moderation/1.0/moderate
+Source: Same, offset 401624
+What is established: POST method expression; enforcement not tested
+
+Candidate: /service/api/2.0/product-flagging/reasons/
+Source: bc306d4ab4d56ff8.min.js, candidate context
+What is established: GET request candidate for reporting reasons
+
+Candidate: /service/api/2.1/report-flow/collections
+Source: Same
+What is established: GET request candidate for report-flow metadata
+
+
+Offsets are zero-based JavaScript string offsets in the saved UTF-8-decoded text used by inspect-assets.cjs, not claimed raw byte offsets. The files are minified; context records allow verification. The search-path offset in static-candidates.json refers to the path token; registration offsets refer to registerEndpoint.
+
+The shared registration bundle also contains certified search, identity verification, gen-AI, payment, dispute and delivery-related code. Presence in a shared bundle does not demonstrate Indonesian eligibility. Local help explicitly excludes some of these capabilities.
+
+
+9.2 Reconstruction API design (P)
+=================================
+
+
+Use an explicit versioned API with authenticated mutations and structured errors. The following names are proposed; they are not recovered Carousell endpoints.
+
+
+Proposed operation: GET /v1/categories
+Important input: market, language
+Required output / behavior: Tree, leaf schema IDs, filter configuration
+
+Proposed operation: GET /v1/search
+Important input: query, category, location, range, sort, cursor
+Required output / behavior: Cards, count bucket, facets, next cursor, request ID
+
+Proposed operation: GET /v1/listings/{id}
+Important input: viewer/market context
+Required output / behavior: Listing, gallery, attributes, seller summary, allowed actions
+
+Proposed operation: POST /v1/media/uploads
+Important input: MIME, size, draft ID
+Required output / behavior: Scoped upload authorization and media ID
+
+Proposed operation: POST /v1/listings
+Important input: draft, media IDs, attributes
+Required output / behavior: Created listing or field-level validation errors
+
+Proposed operation: PUT /v1/likes/{listingId}
+Important input: desired boolean, idempotency key
+Required output / behavior: Authoritative like state/count
+
+Proposed operation: POST /v1/conversations
+Important input: listing ID, buyer identity from session
+Required output / behavior: Authorized conversation ID
+
+Proposed operation: POST /v1/conversations/{id}/messages
+Important input: client message ID, text/media
+Required output / behavior: Durable message ID/status; deduplicate retries
+
+Proposed operation: POST /v1/offers
+Important input: conversation, amount, currency
+Required output / behavior: Offer/version and permitted transitions
+
+Proposed operation: POST /v1/offers/{id}/accept
+Important input: expected version
+Required output / behavior: Atomic acceptance and review eligibility
+
+Proposed operation: POST /v1/reviews
+Important input: eligible trade, role, ratings/text
+Required output / behavior: Hidden/published state and policy deadlines
+
+Proposed operation: POST /v1/reports
+Important input: subject, reason, details
+Required output / behavior: Report reference without exposing moderation internals
+
+
+Use a consistent error envelope: stable code, user-facing localized message, field errors, retryability and request ID. Return forbidden action reasons where safe. Never let disabling a UI button substitute for server authorization. Search pagination must be stable under inventory changes; choose cursor semantics explicitly rather than assuming production's implementation.
+
+
+10. Domain and storage model (P)
+================================
+
+
+This is an implementation-ready conceptual model, not the production database schema.
+
+
+Entity: User
+Key fields / relationships: ID, handle, display name, avatar, market, joined time, status
+Invariants: Unique normalized handle; public and private fields separated
+
+Entity: Public reputation
+Key fields / relationships: User ID, published rating aggregates, responsiveness, verification labels
+Invariants: Labels describe their specific basis; recomputable aggregates
+
+Entity: Category
+Key fields / relationships: ID, parent, localized labels, slug, attribute schema, filters
+Invariants: Stable ID despite renamed slug; distinguish non-sellable feeds
+
+Entity: Listing
+Key fields / relationships: ID, seller, category, title, description, asking amount/currency, condition, locality, deal options, status
+Invariants: Seller owns mutation; public text sanitized; availability authoritative
+
+Entity: Listing attribute
+Key fields / relationships: Listing, schema key, typed value
+Invariants: Validate against category schema rather than free-form universal columns
+
+Entity: Media
+Key fields / relationships: ID, owner, draft/listing, order, dimensions, derivative references, processing state
+Invariants: Ownership checked at attachment; failed processing visible
+
+Entity: Price history
+Key fields / relationships: Listing, prior/current amount, changed time
+Invariants: Do not fabricate original price or discount
+
+Entity: Like
+Key fields / relationships: User, listing, created time
+Invariants: Unique pair and idempotent mutation
+
+Entity: Follow
+Key fields / relationships: Follower, seller
+Invariants: Unique pair; no self-follow if that is the selected product rule
+
+Entity: Saved search
+Key fields / relationships: Owner, canonical query/filter snapshot, market, notification settings
+Invariants: Market-specific cap; avoid duplicate notifications
+
+Entity: Conversation
+Key fields / relationships: ID, listing, buyer, seller, created/last-message time
+Invariants: Listing-scoped access; enforce participant authorization
+
+Entity: Message
+Key fields / relationships: Conversation, sender, client ID, body/media, sent/read timestamps, retention state
+Invariants: Durable ID and retry deduplication; deletion policy explicit
+
+Entity: Offer
+Key fields / relationships: Conversation, buyer, seller, amount, currency, status, version, timestamps
+Invariants: Atomic transition; immutable historical amount
+
+Entity: Review
+Key fields / relationships: Trade/offer, author/subject/role, component ratings, text, publication deadlines
+Invariants: One eligible role review; hidden until policy permits publication
+
+Entity: Report / Block
+Key fields / relationships: Reporter, subject, reason/details; blocker/blocked pair
+Invariants: Restricted visibility; clear narrow blocking semantics
+
+Entity: Business inquiry
+Key fields / relationships: Market, username, selected listings, package reference, external checkout state
+Invariants: Indonesia service separated from other-market entitlements
+
+
+Store money with an exact representation and currency. Do not rely on floating-point arithmetic or derive amounts by parsing rendered Rp strings. Preserve seller-entered values faithfully while validating input. Use server timestamps for offer/review deadlines, UTC internally and localized relative display. The exact production precision and minor-unit convention remain unknown.
+
+Suggested indexes: listing market/category/status/recency; search-document identity; seller inventory; unique likes/follows; conversation participants and last activity; message conversation/time; offer conversation/status; review subject/publication state; saved-search owner. A relational store plus search index and object storage is a reasonable reconstruction, but no vendor choice is established by the evidence.
+
+
+11. Proposed architecture and operational behavior
+==================================================
+
+
+flowchart LR
+  Web[Responsive web client] --> Edge[Edge and application API]
+  Native[Native apps: future verified parity] --> Edge
+  Edge --> Identity[Identity and authorization]
+  Edge --> Catalog[Categories, listings, media]
+  Edge --> Discovery[Search and discovery]
+  Edge --> Trade[Conversations, offers, reviews]
+  Edge --> Trust[Reports, blocking, moderation]
+  Catalog --> Objects[Media object storage and image processing]
+  Catalog --> Index[Search index]
+  Discovery --> Index
+  Trade --> Database[Transactional persistence]
+  Trust --> Database
+  Trade --> Jobs[Notifications and policy jobs]
+
+Every box is a proposed logical responsibility, not evidence of an independently deployed service. A modular monolith can implement these boundaries for a first release.
+
+Use transactions for offer acceptance, review eligibility and ownership changes. Use an outbox or equivalent durable event mechanism for search indexing and notifications. Treat search lag as an explicit condition: a result can become sold/removed before detail opens. Refresh authoritative availability on detail and mutation.
+
+For chat, choose WebSocket or a managed transport after requirements are set; production transport was not observed. Support reconnect, deduplication, ordering, pending/failed messages and read markers without equating delivery to transaction completion. Apply notification preferences and blocking policy before fan-out.
+
+Handle image upload as a separate stateful pipeline with bounded count/size, MIME validation, safe decoding, ownership checks, derivative generation and retry. Avoid orphan media and exposing unapproved drafts. Image-byte limits and format support are proposed configuration until measured.
+
+Do not claim production latency, throughput, availability, caching strategy, recommendation quality, or infrastructure capacity. No benchmark or load test was performed. Measure your implementation before setting or claiming performance targets.
+
+
+12. Android and iOS findings
+============================
+
+
+
+12.1 Identity and existence (D)
+===============================
+
+
+
+Platform: Android
+Official identity: com.thecarousell.Carousell, Carousell / CAROUSELL PTE. LTD.
+Declared availability / metadata: Public Google Play listing includes Indonesia, ads and in-app purchases
+
+Platform: iOS
+Official identity: App Store ID 548607187, Carousell Pte. Ltd.
+Declared availability / metadata: Indonesian storefront; snapshot version 2.483.0, iOS 13.1+, Indonesian among supported languages
+
+
+Google Play (https://play.google.com/store/apps/details?id=com.thecarousell.Carousell), Indonesian App Store (https://apps.apple.com/id/app/carousell-snap-sell-chat-buy/id548607187). Store metadata can change and cached relative release ages are not reliable absolute release dates. No installed build was fingerprinted.
+
+The website's shipped app-download component independently embeds both store destinations. This corroborates that these are the product's intended app links, not merely similarly named third-party apps.
+
+
+12.2 Native behavior supported by official help (D)
+===================================================
+
+
+Official local help describes iOS + / Android Sell entry, camera/gallery selection, up to 10 photos, listing form and publishing. It documents listing-specific chats, offers, reviews, hearts and saved-search push notifications. These provide functional requirements for native parity. They do not establish current bottom-tab labels, exact screen composition, permission prompts, gestures or platform frameworks.
+
+
+12.3 Indonesia feature boundary
+===============================
+
+
+
+Capability: Discovery, listing, chat, offers and reviews
+Indonesia conclusion: Supported by local help and sampled web
+Reconstruction decision: Core parity scope
+
+Capability: Integrated Buyer Protection
+Indonesia conclusion: Store description limits to Singapore/Malaysia/Hong Kong
+Reconstruction decision: Do not add as observed Indonesia functionality
+
+Capability: Official Delivery
+Indonesia conclusion: Store description limits to Singapore/Hong Kong/Malaysia
+Reconstruction decision: Keep Indonesian negotiated delivery separate
+
+Capability: Certified programs
+Indonesia conclusion: Store description has other-market limits
+Reconstruction decision: Unknown/not established for Indonesia
+
+Capability: Photo AI listing tools
+Indonesia conclusion: Store description lists Singapore/Malaysia/Hong Kong/Philippines
+Reconstruction decision: Do not infer Indonesia entitlement from shared JS
+
+Capability: Video AI, auctions, Live
+Indonesia conclusion: Store marketing/release notes contain narrower regional launches
+Reconstruction decision: Do not infer Indonesia parity
+
+Capability: Phone verification
+Indonesia conclusion: Indonesian help explicitly says unavailable
+Reconstruction decision: Do not require Indonesian phone OTP as recovered behavior
+
+Capability: Indonesia CarouBiz
+Indonesia conclusion: Local article describes an external advertising-team package service
+Reconstruction decision: Separate service journey from general self-serve regional dashboards
+
+Capability: Coins/Bump/IAP entries
+Indonesia conclusion: Rupiah store catalog entries exist
+Reconstruction decision: Catalog presence does not establish active entitlement or package terms
+
+Capability: Spotlight
+Indonesia conclusion: General help has other-market thresholds; Indonesian entitlement unverified
+Reconstruction decision: Keep behind verified market capability
+
+
+Phone verification (https://support.carousell.com/hc/id/articles/360000702048-Verifikasi-Nomor-telepon), Indonesia CarouBiz (https://support.carousell.com/hc/id/articles/52569794531481--Indonesia-Apa-itu-CarouBiz-Carousell-for-Business). The local CarouBiz description covers choosing a package, providing account/products, external checkout and team follow-up within 48 hours, with a weekend response caveat. No package was purchased; current prices and checkout provider remain unknown.
+
+
+12.4 Native internals still unknown
+===================================
+
+
+No APK/IPA was supplied or acquired. There is no evidence here for Kotlin/Java/Swift/Flutter/React Native implementation, manifest permissions, SDK list, signing certificate, certificate pinning, local databases, offline cache, deep-link association files, push provider, binary protections or native API transport. The web's React code cannot establish the mobile app's framework.
+
+To complete native reverse engineering: obtain an official build on an authorized device; record package/build/OS/market identity; use guest then dedicated buyer/seller accounts; exercise drafts, accepted offers, reviews, likes and saved searches; capture permitted traffic and storage metadata; inspect a legitimately acquired APK using REA Android tools. iOS binary inspection requires a legitimately available compatible artifact. Keep static declarations distinct from permissions actually granted and features actually executed.
+
+
+13. Trust, safety, privacy and policy requirements
+==================================================
+
+
+D: Indonesian fraud help advises keeping conversation on-platform, reporting phishing through profile controls and preserving transaction context. It does not promise recovery of transferred money. Local selling guidance mentioning third-party escrow does not establish Carousell escrow. Indonesia fraud guidance (https://support.carousell.com/hc/id/articles/48949572630937--Indonesia-Tolong-Saya-tertipu-di-Carousell).
+
+Blocking documentation describes suppression of chats/notifications and says the blocked person is not notified. It does not establish hiding all listings or preventing every discovery/contact path. Preserve this narrow distinction. Blocking rules (https://support.carousell.com/hc/id/articles/115015822707-Bagaimana-caranya-memblokir-pengguna).
+
+The chat-retention announcement effective 23 April 2025 describes one-year retention with annual deletion batches, including an initial historical cutoff. Do not rewrite it as a proven exact rolling 365-day TTL. Chat retention policy (https://support.carousell.com/hc/id/articles/44375692421273--23-April-2025-Pembaruan-Kebijakan-Penyimpanan-Riwayat-Obrolan-Carousell).
+
+P: Required controls include authenticated object-level authorization, private-message isolation, output escaping, image validation, rate limits, report intake, participant-only offer transitions, server-enforced review policy, and restricted moderation access. Keep contact/payment details out of public search documents. Apply retention to replicas, exports and attachments according to an explicit policy, with clear user notices.
+
+These are reconstruction requirements, not validated vulnerabilities or a security audit of Carousell. Bundle strings for moderation and phishing suggest relevant client integrations but do not prove enforcement quality. No penetration testing, credential probing, private endpoint enumeration, rate-limit testing or access-control bypass was performed.
+
+
+14. Implementation requirements and acceptance plan
+===================================================
+
+
+
+14.1 Required functional slice
+==============================
+
+
+
+ID: FR01
+Requirement: Independent market, language and theme
+Acceptance evidence for a reconstruction: Indonesia inventory can display Bahasa Indonesia or English without changing market
+
+ID: FR02
+Requirement: Stable category IDs and schema-driven attributes
+Acceptance evidence for a reconstruction: Phone filters differ from clothing; renamed slugs preserve identity
+
+ID: FR03
+Requirement: Public discovery
+Acceptance evidence for a reconstruction: Home, category, search, detail and seller routes work without authentication
+
+ID: FR04
+Requirement: URL-backed search state
+Acceptance evidence for a reconstruction: Applying/clearing a price range updates controls, URL and results; reload/back restores state
+
+ID: FR05
+Requirement: Clear no-results state
+Acceptance evidence for a reconstruction: Unmatched query yields helpful recovery without implying server failure
+
+ID: FR06
+Requirement: Reusable card and gallery
+Acceptance evidence for a reconstruction: Separate seller/item targets, accurate prices/condition, accessible heart and images
+
+ID: FR07
+Requirement: Contextual authentication
+Acceptance evidence for a reconstruction: Chat from guest opens login; cancel restores listing context; successful login resumes intent
+
+ID: FR08
+Requirement: Photo-first selling
+Acceptance evidence for a reconstruction: Entry permits selection up to 10 images; no silent upload/publish; required fields explained
+
+ID: FR09
+Requirement: Listing-scoped conversation
+Acceptance evidence for a reconstruction: Buyer and seller see the same authorized thread; other users cannot access it
+
+ID: FR10
+Requirement: Offer agreement
+Acceptance evidence for a reconstruction: Valid participant can propose/accept once; retries cannot duplicate trades
+
+ID: FR11
+Requirement: Review eligibility and timing
+Acceptance evidence for a reconstruction: Ineligible review rejected; publication/edit rules enforced server-side
+
+ID: FR12
+Requirement: Public trust
+Acceptance evidence for a reconstruction: Rating/count/role shown from published reviews; sold inventory state visible
+
+ID: FR13
+Requirement: Saved discovery
+Acceptance evidence for a reconstruction: Likes are idempotent; saved-search limits and push scheduling use market policy
+
+ID: FR14
+Requirement: Reports and blocking
+Acceptance evidence for a reconstruction: Reason/details submitted; blocking follows documented narrow semantics
+
+ID: FR15
+Requirement: Regional capabilities
+Acceptance evidence for a reconstruction: Other-market checkout/AI features remain absent unless independently verified
+
+ID: FR16
+Requirement: Responsive contact
+Acceptance evidence for a reconstruction: Desktop contact card and mobile contact action remain reachable without covering content
+
+
+
+14.2 State and failure matrix (P)
+=================================
+
+
+
+Area: Search
+States to implement/test: loading, results, empty, stale results, timeout, pagination end
+Production evidence status: Results/empty observed; other states untested
+
+Area: Filters
+States to implement/test: draft, applied, clear, invalid range, unavailable facet
+Production evidence status: Price application observed; invalid cases untested
+
+Area: Auth
+States to implement/test: choices, email fields, disabled empty submit, error, cancellation, expiration
+Production evidence status: Choices/fields/disabled state observed; no credential submission
+
+Area: Gallery/media
+States to implement/test: placeholder, loaded, unavailable image, upload progress/failure/count limit
+Production evidence status: Loaded gallery/count statement observed; upload untested
+
+Area: Listing
+States to implement/test: active, sold, removed, owner view, changed price, unavailable
+Production evidence status: Active/sold cards observed; others unknown
+
+Area: Chat
+States to implement/test: guest gate, pending, sent, failed/retry, unread, blocked, retained/deleted
+Production evidence status: Guest gate observed; policy documented; delivery untested
+
+Area: Offer
+States to implement/test: no offer, proposed, accepted, stale version, invalid actor/amount
+Production evidence status: Guest controls observed; acceptance documented
+
+Area: Review
+States to implement/test: ineligible, eligible, hidden, published, edit limit, deadline
+Production evidence status: Display observed; policy documented; mutations untested
+
+Area: Profile
+States to implement/test: inventory, sold items, reviews, empty, restricted/deactivated
+Production evidence status: Inventory/review navigation observed; restricted states unknown
+
+
+
+14.3 Suggested delivery sequence (P)
+====================================
+
+
+1. Build the market-aware shell, category tree, cards, search URL state, detail and profiles against controlled seed data. Reproduce the observed hierarchy and responsive behavior before adding unrelated features.
+2. Add identity, photo drafts and publication, secure listing-scoped conversations, and accepted-offer/review eligibility. Use dedicated test users and deterministic policy clocks.
+3. Add likes, saved-search notifications, reports, blocking, moderation tools and retention jobs. Verify regional rules and recoverability.
+4. Verify light/dark, keyboard, narrow-width overflow, localization, retry/concurrency and search indexing behavior. Introduce native parity only after device-level evidence is collected.
+
+This sequence is not a schedule estimate. No engineering effort, traffic or commercial conversion numbers were invented.
+
+
+14.4 Validation actually performed
+==================================
+
+
+Production observation verified page loading in the in-app browser; homepage/category/search/listing/profile navigation; opening login from Chat; exposing email login fields; opening sort and price controls; applying a numeric price range; unmatched category search; guest selling entry; category drawer; and mobile detail reflow. Screenshots, DOM snapshots and CSS samples were retained.
+
+Static validation recorded source digests, parsed public bundles with REA, inspected retained module identities, and extracted literal endpoint/dependency candidates with a reproducible local script. No reconstructed application was built, no production mutation test was performed, and no performance/accessibility/security certification is claimed.
+
+
+15. Residual unknown register and completion boundary
+=====================================================
+
+
+
+ID: U01
+Unresolved question: Native screens, binary identity and implementation
+Why it matters: Prevents claiming complete app reverse engineering
+Evidence needed: Official device/build and legitimately acquired package
+
+ID: U02
+Unresolved question: Current authenticated offer/review behavior
+Why it matters: Policy may differ from docs; race/error behavior unknown
+Evidence needed: Dedicated buyer/seller replay with agreed test listings
+
+ID: U03
+Unresolved question: Post-photo selling form, upload rules and publication gate
+Why it matters: Core seller validation/schema not fully observed
+Evidence needed: Authorized draft/upload session and resulting metadata
+
+ID: U04
+Unresolved question: Live search/chat/listing request/response schemas
+Why it matters: Static routes do not establish wire contracts
+Evidence needed: Permitted runtime capture on actual marketplace pages
+
+ID: U05
+Unresolved question: Complete semantic graph
+Why it matters: Vendor heap and node ceilings leave dynamic links unresolved
+Evidence needed: Focused analysis with changed bounds on selected files/functions
+
+ID: U06
+Unresolved question: Source map availability and original module names
+Why it matters: Annotations alone do not recover source
+Evidence needed: Explicit retrieval of published maps where accessible
+
+ID: U07
+Unresolved question: Light-theme tokens and persistence
+Why it matters: Dark sample cannot define both themes
+Evidence needed: Theme-specific observation and reload checks
+
+ID: U08
+Unresolved question: Full keyboard/assistive technology and 324 px overflow cause
+Why it matters: Pixel fidelity alone does not ensure usable parity
+Evidence needed: Focused keyboard, screen-reader and responsive audit
+
+ID: U09
+Unresolved question: Indonesia promotion/package entitlements
+Why it matters: Shared JS and IAP catalogs mix markets
+Evidence needed: Current authenticated Indonesian seller entitlement screens
+
+ID: U10
+Unresolved question: Backend deployment, persistence, search/ranking internals
+Why it matters: Logical architecture must not be mistaken for private implementation
+Evidence needed: Authorized server/source/operational evidence
+
+ID: U11
+Unresolved question: Verification badge semantics
+Why it matters: Avoid false identity/security claims
+Evidence needed: Current badge explanation and qualifying user state
+
+ID: U12
+Unresolved question: Notifications, offline behavior and chat retention execution
+Why it matters: Policies do not prove delivery/storage mechanics
+Evidence needed: Device/reconnect tests and authorized retention evidence
+
+
+REA retained unknown unk_e89d0f5f8e90f3f87d66bca697a843eb28c92e5fdae1c12e75cb013a6d8e2851 tracks the authenticated/native gap with recommended browser and Android probes. It remains open. This report completes the accessible public-web investigation and reconstruction specification; it does not claim the unresolved questions have been answered.
+
+
+16. Evidence index and reproducibility
+======================================
+
+
+
+16.1 REA evidence
+=================
+
+
+
+Ref: R01
+Evidence ID: ev_077cd6e706e9c1a93bb2bd63c3eb0e5afd625aa496e15893eefe5d7af78de1ec
+Meaning: Controlled isolated Chrome homepage attempt; Cloudflare challenge, incomplete network window
+
+Ref: R02
+Evidence ID: ev_ff492bfd97d55f507ce4b3b875a0c636879e8dd5ec50d198db9a40c2250710dd
+Meaning: Initial one-bundle static analysis; narrower earlier artifact identity
+
+Ref: R03 / S01
+Evidence ID: ev_326e53657f543b8c27f0a6e4d149d4389f5805525fee21c5abcbb58ea9c963ee
+Meaning: Full acquired 43-bundle static parent; partial graph with stated limits
+
+Ref: R04
+Evidence ID: ev_f276a213dacaf075703670c4096ac1e70a9005be5db5fc2f72997d37079a814f
+Meaning: Summary projection of R03
+
+Ref: R05
+Evidence ID: ev_4ede78383c9bf6b1e3ca1f54a0a32a27b4e305255f18eeaffc56d92a6496e6b9
+Meaning: Selected search-related source module identity and source range
+
+
+Full canonical export: rea-evidence-bundle.json, 233,639,453 bytes at export, 9 evidence records and 1 residual unknown. The large file preserves analysis rather than requiring repeated computation. rea-static-summary.json is the small reading entry point. R01 is the blocked REA browser attempt; successful in-app browser evidence below is separately identified and must not be represented as R01 output.
+
+
+16.2 Direct observation ledger
+==============================
+
+
+
+Ref: O01
+Target/action: Homepage, initial mobile and desktop
+Retained local evidence: home-dom.html, screenshots/home-mobile-dark.jpg, screenshots/home-desktop-dark.jpg
+
+Ref: O02
+Target/action: Listing 1469607528
+Retained local evidence: listing-dom.html, listing-ax.txt, screenshots/listing-desktop-dark.jpg
+
+Ref: O03
+Target/action: Click Chat, choose email login
+Retained local evidence: login-ax.txt, login-email-ax.txt, screenshots/login-modal.jpg
+
+Ref: O04
+Target/action: Search iPhone 13, open sort/price, apply range
+Retained local evidence: search-dom.html, search-ax.txt, sort-ax.txt, price-ax.txt, filter-result-ax.txt
+
+Ref: O05
+Target/action: Seller and Reviews tab
+Retained local evidence: profile-ax.txt, reviews-ax.txt, screenshots/profile-desktop-dark.jpg
+
+Ref: O06
+Target/action: Category drawer and phone category
+Retained local evidence: categories-menu-ax.txt, category-ax.txt
+
+Ref: O07
+Target/action: Guest Sell entry
+Retained local evidence: sell-guest-ax.txt, screenshots/sell-guest-desktop-dark.jpg
+
+Ref: O08
+Target/action: Unmatched category search
+Retained local evidence: empty-search-ax.txt, screenshots/empty-search-desktop-dark.jpg
+
+Ref: O09
+Target/action: Mobile listing at 390 × 844
+Retained local evidence: listing-mobile-ax.txt, screenshots/listing-mobile-dark.jpg
+
+Ref: S02
+Target/action: Literal library/search/source-map candidates
+Retained local evidence: framework-markers.json, static-candidates.json
+
+Ref: S03
+Target/action: Registered method/path candidates
+Retained local evidence: endpoint-candidates.json; generated by inspect-assets.cjs
+
+Ref: S04
+Target/action: Asset identity/acquisition
+Retained local evidence: asset-manifest.json, web-assets/
+
+
+The three saved DOM HTML exports end with [Truncated] at approximately 200,000 characters due to the browser export limit. They are partial snapshots, not complete HTML documents. Accessibility snapshots, screenshots and acquired bundle bytes provide separate evidence; omitted DOM content must not be treated as absent. Snapshots can contain transient public ads and attribution identifiers. They were captured as evidence, not reusable configuration. Screenshots are references, not permission to republish seller content in a new product.
+
+
+16.3 Official source ledger
+===========================
+
+
+app-research.md contains A01–A17 with direct official URLs, regional qualifiers and evidence limitations. It covers stores, buying, selling, photo count, chat, review policy, saved searches, likes, blocking, retention, phone verification, fraud, Indonesia CarouBiz, Bumps, Spotlight and Best Match. Store and help facts are distinct from live browser observations and REA analysis.
+
+
+16.4 Reuse
+==========
+
+
+Read this document first, then the compact static summary and official source ledger. Use SHA-256 identities to confirm the same assets before comparing later releases. Re-run node inspect-assets.cjs only to regenerate local syntactic inventories; it does not execute Carousell code or fetch endpoints. For further REA work, reuse/exported evidence with its original limitations, select specific unanswered questions, and record any newly acquired build or runtime context as separate evidence.
+
+==========================================================================================
+OFFICIAL APP AND HELP SOURCE LEDGER
+==========================================================================================
+
+Carousell app and Indonesia behavior: source ledger
+===================================================
+
+
+Researched 7 November 2026, Asia/Jakarta. All entries below are official public documentation/store observations, not installed-app runtime or package analysis. Help articles may lag live releases. No account created, no messages sent, no purchase or app installation performed. No APK/IPA acquired. Parent REA runtime evidence is separate.
+
+
+App identity and regional boundary
+==================================
+
+
+A01 Android. Google Play (https://play.google.com/store/apps/details?id=com.thecarousell.Carousell) identifies com.thecarousell.Carousell, title “Carousell: Sell and Buy,” developer Carousell / CAROUSELL PTE. LTD., ads and in-app purchases. Page snapshot displayed update 11 September 2026. This establishes public store identity and declared feature availability, not a binary version or runtime test.
+
+The description explicitly lists Indonesia among served markets. It limits Official Delivery to Singapore/Hong Kong/Malaysia, Buyer Protection and Certified programs to Singapore/Malaysia/Hong Kong, and photo AI to Singapore/Malaysia/Hong Kong/Philippines. Video AI is Singapore. Consequently those features must not be assigned to the Indonesia reconstruction by default. Android SDKs, permissions, transport protocol, storage and signing certificate remain unknown.
+
+A02 iOS. Indonesia App Store (https://apps.apple.com/id/app/carousell-snap-sell-chat-buy/id548607187) resolves title “Carousell: Snap-Sell, Chat-Buy,” numeric identity 548607187, Carousell Pte. Ltd. Public snapshot lists version 2.483.0 with relative age “5 days ago,” 288.4 MB, iOS 13.1+, Indonesian among five languages, free with in-app purchases. Treat relative version age and metadata as store-snapshot facts, not a proved currently installed build. Do not back-calculate a release date from a cached relative age.
+
+Store purchase catalog includes Coins, a 3-Day Bump, and Starter/Growing CarouBiz entries priced in rupiah. These establish catalog entries, not live Indonesia entitlement or current package price. The description repeats the regional limitations above. Release notes reference auctions starting with Singapore trading cards, and Live in Singapore/Hong Kong, so their existence in this Indonesia storefront does not prove Indonesian availability. Bundle ID/native UI implementation/runtime internals remain unknown.
+
+
+Indonesia flows and policy
+==========================
+
+
+
+ID: A03
+Official source: Buying (https://support.carousell.com/hc/id/articles/115006305247-Bagaimana-saya-membeli-barang-di-Carousell)
+Documented behavior: Open listing, Chat, clarify details/photos/transaction, agree COD or bank transfer plus parcel delivery, Make Offer at agreed price, seller acceptance unlocks mutual reviews.
+Evidence boundary / reconstruction implication: Strong region-specific support for negotiation-led marketplace. No integrated Indonesian checkout demonstrated.
+
+ID: A04
+Official source: Selling (https://support.carousell.com/hc/id/articles/115006246207-Bagaimana-cara-berjualan-di-Carousell)
+Documented behavior: App entry + on iOS / Sell on Android; camera/gallery, up to 10 photos, fill form, publish. Web entry top-right Sell, photos and form, publish; missing required fields produce corrective prompts. Payment and delivery are mutually agreed; methods discussed include COD, bank transfer and independently trusted third-party escrow.
+Evidence boundary / reconstruction implication: Labels may be historical. A mention of third-party escrow is not Carousell Buyer Protection. Native form fields and exact validation not observed.
+
+ID: A05
+Official source: Photo count (https://support.carousell.com/hc/id/articles/115006305047-Berapa-banyak-foto-yang-dapat-saya-upload-per-iklan)
+Documented behavior: App upload maximum 10 photos.
+Evidence boundary / reconstruction implication: Does not establish web limit, actual byte limit, MIME rules or server image pipeline.
+
+ID: A06
+Official source: Chat (https://support.carousell.com/hc/id/articles/115006560428-Bagaimana-chat-dengan-Carouseller-lain)
+Documented behavior: Buyer initiates chat from a seller's particular listing; a seller needs a listing to receive that initial conversation.
+Evidence boundary / reconstruction implication: Listing-scoped conversation is documented. Conversation uniqueness/database schema inferred, not observed.
+
+ID: A07
+Official source: Reviews (https://support.carousell.com/hc/id/articles/360018880254-Bagaimana-saya-meninggalkan-ulasan-untuk-pembeli-atau-penjual)
+Documented behavior: Offer then acceptance exposes review action. Both sides have 30 days. Review hidden until other participant submits or 14 days pass; unlimited prepublication edits, one follow-up edit afterward, no deletion. 1–5-star buyer criteria: communication, meetup/delivery coordination, accuracy of item description; seller criteria substitute payment coordination for description accuracy.
+Evidence boundary / reconstruction implication: Indonesian translation contains awkward wording about the other participant; corroborated by English counterpart. Exact publication/edit enforcement not runtime tested.
+
+ID: A08
+Official source: Saved searches (https://support.carousell.com/hc/id/articles/360000088208-Apa-itu-Pencarian-Tersimpan)
+Documented behavior: App saves query plus filters; star action, filter checkbox and Apply; maximum three searches; manage from search and swipe to remove; at most one daily matching-listing push.
+Evidence boundary / reconstruction implication: Documented limits may lag app. No web parity proved.
+
+ID: A09
+Official source: Likes (https://support.carousell.com/hc/id/articles/115006382467-Bagaimana-saya-melacak-barang-yang-saya-sukai)
+Documented behavior: Heart on card or detail saves to My Likes; heart entry near page top.
+Evidence boundary / reconstruction implication: Auth/optimistic update behavior not established by documentation.
+
+ID: A10
+Official source: Blocking (https://support.carousell.com/hc/id/articles/115015822707-Bagaimana-caranya-memblokir-pengguna)
+Documented behavior: App: profile overflow menu. Web: conversation overflow. Blocked party receives no notification. Documentation narrowly describes suppression of inbox chats and notifications; unblock from profile/chat.
+Evidence boundary / reconstruction implication: Do not claim blocking hides listings or prevents all contact; documented semantics are narrower.
+
+ID: A11
+Official source: Chat retention announcement (https://support.carousell.com/hc/id/articles/44375692421273--23-April-2025-Pembaruan-Kebijakan-Penyimpanan-Riwayat-Obrolan-Carousell)
+Documented behavior: Effective 23 April 2025: one-year chat retention; initial deletion of logs dated 31 December 2023 or earlier, then annual deletion of logs older than one year; deleted messages unrecoverable.
+Evidence boundary / reconstruction implication: Policy wording gives annual batch retention, not exact rolling TTL implementation. No evidence of actual deletion job.
+
+ID: A12
+Official source: Phone verification (https://support.carousell.com/hc/id/articles/360000702048-Verifikasi-Nomor-telepon)
+Documented behavior: Explicitly unavailable for Indonesia.
+Evidence boundary / reconstruction implication: Do not build Indonesian mandatory phone OTP as observed behavior. Other sign-in security challenges can still exist.
+
+ID: A13
+Official source: Indonesia fraud response (https://support.carousell.com/hc/id/articles/48949572630937--Indonesia-Tolong-Saya-tertipu-di-Carousell)
+Documented behavior: Report suspected phishing through app profile overflow; choose phishing scammer and provide detail. Keep chats on platform; in-chat safety advice; sellers do not need buyer-provided links to complete a deal. Support may assist with next steps/police but may not recover money.
+Evidence boundary / reconstruction implication: Product requirements: report reason/details, safety notices, support escalation. Does not prove automatic fraud detector implementation or refund guarantee.
+
+ID: A14
+Official source: Indonesia CarouBiz (https://support.carousell.com/hc/id/articles/52569794531481--Indonesia-Apa-itu-CarouBiz-Carousell-for-Business)
+Documented behavior: Indonesia service explicitly differs from other countries: external professional advertising team promotes selected listings by package. Purchase at carousellforbusiness.com, choose package, provide username and products, checkout, team contacts within 48 hours; help response excludes weekends.
+Evidence boundary / reconstruction implication: Critical distinction from general regional self-serve CarouBiz dashboards. Package benefits embedded in image not decoded; price, entitlement and checkout provider unknown. No purchase attempted.
+
+
+
+Cross-market seller tools, not automatically Indonesia behavior
+===============================================================
+
+
+A15 Bumps (https://support.carousell.com/hc/en-us/articles/115012307248-What-is-Bump): documented promotion updates listing time, improving recency-based placement. General article describes Coins/postpaid and multiple schedules. It does not establish all options or price for Indonesia. Store Bump purchase entry corroborates a catalog artifact, not activation.
+
+A16 Spotlight (https://support.carousell.com/hc/en-us/articles/115014920268-What-is-Spotlight): general pay-per-click placement with budget and campaign controls; published market thresholds enumerate Singapore, Hong Kong, Taiwan, Malaysia and Philippines. Indonesia not enumerated. Treat Indonesia self-serve availability as unknown. The Indonesia help index labels a seller-tool section with Bumps/Spotlight but links are insufficient proof of active entitlement.
+
+A17 Best Match (https://support.carousell.com/hc/en-us/articles/360053182734-Best-Match-Get-better-and-relevant-search-results-with-our-new-search-algorithm): official conceptual ranking factors are relevance, recency, popularity, quality. No weights, model, engine, exact retrieval protocol, or Indonesia-specific configuration disclosed.
+
+
+Evidence quality and remaining questions
+========================================
+
+
+Observed here means public page text retrieved via web tools; it does not mean native app use. Official Indonesian help is preferable to old English buying guides that generalize payment behavior across countries. Store marketing combines markets, while per-feature footnotes and local help delimit availability. Store privacy declarations describe developer claims, not a security assessment. No cryptographic or traffic conclusions should be drawn from the Google Play data-safety label alone.
+
+Required future native verification: install from official store on user-selected device; record build/package identity and region; inspect guest and authenticated navigation; exercise listing draft, offer/review gates, saved-search limit and permissions using test accounts; capture permitted request metadata and decompile a legitimately acquired APK with REA Android tools. Current evidence cannot support native screen pixel measurements, exact tab order, SDK inventory, API identity, push-provider identity, local database schema, offline behavior, or binary protections.
+
+==========================================================================================
+COLLABORATOR HANDOFF AND REPRODUCTION
+==========================================================================================
+
+Collaborator handoff and reproduction steps
+===========================================
+
+
+
+What to use
+===========
+
+
+Read the PDF for the complete findings, source ledger, reconstruction design, screenshots and this procedure. Use CAROUSELL-DESIGN-DOCUMENT.txt as the complete plain-text reference for AI-assisted work. Use the Markdown design document as the editable source. Raw machine evidence is preserved separately in the repository.
+
+Observed behavior, static code candidates, official documentation, proposed designs and unknowns have distinct labels throughout. Do not implement the proposed API paths as if they were recovered production contracts. Do not enable other-market checkout or AI features for Indonesia from shared-bundle strings alone.
+
+
+Folder structure
+================
+
+
+REA/carousell-indonesia/
+  CAROUSELL-DESIGN-DOCUMENT.pdf
+  CAROUSELL-DESIGN-DOCUMENT.txt
+  CAROUSELL-DESIGN-DOCUMENT.md
+  HANDOFF.md
+  app-research.md
+  screenshots/
+  evidence/
+    rea-evidence-bundle.json.gz
+    asset-manifest.json
+    endpoint-candidates.json
+    framework-markers.json
+    rea-static-summary.json
+    rea-search-module.json
+    search-code-observations.json
+    static-candidates.json
+    style-observations.json
+    browser/                 # DOM and accessibility snapshots
+  web-assets/                # 43 exact downloaded public bundles
+  tools/
+    build_pdf.py
+    export_txt.py
+    inspect-assets.cjs
+    verify_package.py
+  requirements.txt
+  package-manifest.json
+  pdf-validation.json
+
+
+Rebuild this PDF
+================
+
+
+1. Clone the repository and enter REA/carousell-indonesia.
+2. Use Python 3.11 or later and create a local virtual environment: python -m venv .venv.
+3. Activate the environment. On Windows use .venv\Scripts\Activate.ps1; on macOS/Linux use source .venv/bin/activate.
+4. Install the pinned authoring dependencies: python -m pip install -r requirements.txt.
+5. Run python tools/build_pdf.py and python tools/export_txt.py. The scripts read the Markdown, app source ledger, this handoff, screenshot files and endpoint inventory. They write the PDF and complete plain-text reference. They do not visit Carousell or execute its bundles. The text exporter also includes the root repository README for project context.
+6. Run python tools/verify_package.py to validate the package hashes and parse the PDF. A deliberately edited source requires regenerating package-manifest.json before the integrity check can pass; the verifier explains which file changed. Use python tools/verify_package.py --write-manifest only after reviewing the intended changes.
+7. Install Poppler separately if needed. Render with pdftoppm -r 90 -png CAROUSELL-DESIGN-DOCUMENT.pdf review/page after creating the review directory. Inspect every page for clipped tables, missing text, unrendered diagrams and unreadable screenshots. Text extraction alone is insufficient.
+8. Commit the updated Markdown, PDF, manifest and validation results together. Keep temporary virtual environments and rendered review images out of Git.
+
+The builder uses Arial/Consolas on Windows and DejaVu or Liberation fonts on common Linux systems, falling back to PDF base fonts if unavailable. Font metrics can change pagination. Recheck all pages after rebuilding on a different machine.
+
+
+Recover the full REA export
+===========================
+
+
+The canonical export is compressed because its original JSON is 233,639,453 bytes. The gzip file preserves all nine retained evidence records and the open residual unknown. The small rea-static-summary.json is the normal first reading target.
+
+python -c "import gzip,shutil; a=gzip.open('evidence/rea-evidence-bundle.json.gz','rb'); b=open('rea-evidence-bundle.json','wb'); shutil.copyfileobj(a,b); b.close(); a.close()"
+
+Check the expanded file's SHA-256 against evidence/rea-export-identity.json. Do not commit the expanded JSON; it exceeds GitHub's ordinary per-file limit. The package verifier checks the compressed export and its expanded identity without loading the entire JSON into memory.
+
+
+Reproduce the investigation
+===========================
+
+
+1. Read the project's AGENTS.md and the installed reverse-engineer-anything skill. Its actual tool names and schemas may differ by version.
+2. Record the target country, date, browser build, account state, language, theme and viewport. Start with the Indonesia domain. Use a guest session before any authorized account session.
+3. Inspect the REA session once and reuse matching evidence. For a browser action, use a declared REA browser scenario; for an existing user-operated browser, start with target discovery and passive capture. Do not treat a blocked capture as the application's API traffic.
+4. The original isolated Chrome attempt reached Cloudflare. The successful public observations used the in-app browser. If protection blocks access, retain that result and use an ordinary supported browser session; do not bypass the protection.
+5. Inspect home, category drawer, phone category, global search, price filter, no-results state, a listing, Chat sign-in, seller profile, reviews and photo-first Sell entry. Search for equivalent current items when an old listing disappears. Record changes as new evidence rather than altering historical observations.
+6. Capture screenshots and DOM/accessibility snapshots after content settles. Observe desktop and mobile separately, and record whether a theme or language was actually tested. Restore temporary viewport settings.
+7. Inventory only public assets actually referenced by the target page. Save original bytes, URL, byte count and SHA-256. Do not execute downloaded bundles as local scripts.
+8. Use REA JavaScript analysis with summary delivery. Inspect retained module identities and only the feature boundaries needed. Preserve heap, graph and dynamic-resolution limits. The original 43-file analysis parsed all files but did not fully resolve their semantic graph.
+9. To regenerate the syntactic asset inventory, run node tools/inspect-assets.cjs. It reads local bundles, produces endpoint/library candidates, and does not contact any candidate API.
+10. Consult current official Indonesian help and official app stores. Keep help policy, store marketing, code presence and executed behavior separate. Country-specific restrictions take precedence over assumptions drawn from shared bundles.
+11. Native completion needs an official device/build and a legitimately acquired package. Record build identity and use dedicated authorized accounts. No native package was inspected in the original work. Do not infer its framework from the web stack.
+12. Export REA evidence and retain exact IDs. Update the coverage/unknown register. Write observed findings first and mark engineering proposals explicitly. Validate the PDF visually before sharing.
+
+
+Build the reconstruction from the result
+========================================
+
+
+1. Implement market/language/theme configuration, category IDs and attribute schemas, public browsing, cards, URL-backed filters, item details and seller reputation.
+2. Add contextual identity, photo drafts and validated publishing. Decide upload limits and authenticated transitions using new evidence where this report is unresolved.
+3. Add participant-authorized conversations, idempotent offers, atomic acceptance and server-enforced review eligibility. Use controlled buyer/seller accounts to test concurrency.
+4. Add likes, saved searches, notification policy, reporting, narrow blocking semantics and retention jobs.
+5. Validate both themes, keyboard use, empty/error/loading states, narrow-width overflow, image failure and stale listing state. Use the acceptance matrix in the design document.
+6. Keep native parity, current seller entitlements and live wire contracts as separate follow-up investigations. Do not claim these are complete from this public-web report.
+
+
+Change discipline
+=================
+
+
+Preserve the original evidence snapshots and date. Put new captures under a new dated evidence folder and record their identities. Never include passwords, cookies, private message bodies, authorization headers or personal account exports in commits. Historical guest snapshots contain public advertisements and attribution values; they are evidence rather than reusable application configuration.
+
+==========================================================================================
+COMPLETE SCREENSHOT INDEX
+==========================================================================================
+screenshots/empty-search-desktop-dark.jpg
+screenshots/home-desktop-dark.jpg
+screenshots/home-mobile-dark.jpg
+screenshots/listing-desktop-dark.jpg
+screenshots/listing-mobile-dark.jpg
+screenshots/login-modal.jpg
+screenshots/profile-desktop-dark.jpg
+screenshots/search-desktop-dark.jpg
+screenshots/sell-guest-desktop-dark.jpg
+
+==========================================================================================
+COMPLETE STATIC ENDPOINT-REGISTRATION INVENTORY
+==========================================================================================
+Static syntax candidates only. Not live API verification or Indonesia entitlement.
+Offsets are zero-based decoded JavaScript string offsets.
+
+1. g.y.POST /ads/1.0/ad-config/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 396277
+Registration: registerEndpoint({method:g.y.POST,pathname:"/ads/1.0/ad-config/",protoRootName:v,protoServiceMethodDefinition:n.vO.GetAdConfig}
+
+2. g.y.POST /vlq/1.0/auto-renewal/discovery/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 396414
+Registration: registerEndpoint({method:g.y.POST,pathname:"/vlq/1.0/auto-renewal/discovery/",protoRootName:v,protoServiceMethodDefinition:s.VL5.GetRenewalDiscovery}
+
+3. g.y.POST /vlq/1.0/auto-renewal/status/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 396569
+Registration: registerEndpoint({method:g.y.POST,pathname:"/vlq/1.0/auto-renewal/status/",protoRootName:v,protoServiceMethodDefinition:s.VL5.UpdateRenewalStatus}
+
+4. g.y.POST /property-leads/1.0/download
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 396721
+Registration: registerEndpoint({method:g.y.POST,pathname:"/property-leads/1.0/download",protoRootName:v,protoServiceMethodDefinition:s.dxr.DownloadLeadsForSeller}
+
+5. g.y.GET /property-leads/1.0/has-subscription
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 396875
+Registration: registerEndpoint({method:g.y.GET,pathname:"/property-leads/1.0/has-subscription",protoRootName:v,protoServiceMethodDefinition:s.dxr.HasSubscriptionToDownloadLead}
+
+6. g.y.GET /property-leads/1.0/term-agreement
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397043
+Registration: registerEndpoint({method:g.y.GET,pathname:"/property-leads/1.0/term-agreement",protoRootName:v,protoServiceMethodDefinition:s.dxr.GetDownloadLeadTermAgreement}
+
+7. g.y.POST /property-leads/1.0/agree-on-term
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397208
+Registration: registerEndpoint({method:g.y.POST,pathname:"/property-leads/1.0/agree-on-term",protoRootName:v,protoServiceMethodDefinition:s.dxr.AgreeOnDownloadLeadTerm}
+
+8. g.y.POST /pocket/createprofilecollection
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397368
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/createprofilecollection",protoRootName:v,protoServiceMethodDefinition:s.nOP.CreateProfileCollection}
+
+9. g.y.POST /pocket/getprofilecollection
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397526
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/getprofilecollection",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollection}
+
+10. g.y.POST /pocket/getprofilecollectionitems
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397678
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/getprofilecollectionitems",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollectionItems}
+
+11. g.y.POST /pocket/deleteprofilecollection
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397840
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/deleteprofilecollection",protoRootName:v,protoServiceMethodDefinition:s.nOP.DeleteProfileCollection}
+
+12. g.y.POST /pocket/getmylistings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 397998
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/getmylistings",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetMyListings}
+
+13. g.y.POST /pocket/createprofilecollectionitems
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398136
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/createprofilecollectionitems",protoRootName:v,protoServiceMethodDefinition:s.nOP.CreateProfileCollectionItems}
+
+14. g.y.POST /pocket/deleteprofilecollectionitems
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398304
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/deleteprofilecollectionitems",protoRootName:v,protoServiceMethodDefinition:s.nOP.DeleteProfileCollectionItems}
+
+15. g.y.POST /pocket/updateprofilecollection
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398472
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/updateprofilecollection",protoRootName:v,protoServiceMethodDefinition:s.nOP.UpdateProfileCollection}
+
+16. g.y.POST /user/1.0/check-phishing-warning
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398630
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/check-phishing-warning",protoRootName:v,protoServiceMethodDefinition:p.qR.PhishingWarningChecker}
+
+17. g.y.GET /sell/1.0/bp-onboarding-info
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398787
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/bp-onboarding-info",protoResponseType:"BPOnboardingInfoResponse",protoRootName:v}
+
+18. g.y.GET /sell/1.0/calculate-seller-earnings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 398927
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/calculate-seller-earnings",protoResponseType:"CalculateSellerEarningsResponse",protoRootName:v}
+
+19. g.y.POST /sell/1.0/cgproduct/picker
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399081
+Registration: registerEndpoint({method:g.y.POST,pathname:"/sell/1.0/cgproduct/picker",protoRootName:v,protoServiceMethodDefinition:d.qY.CGProductPicker}
+
+20. g.y.POST /sell/1.0/ap-mobile-overall-condition
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399225
+Registration: registerEndpoint({method:g.y.POST,pathname:"/sell/1.0/ap-mobile-overall-condition",protoRootName:v,protoServiceMethodDefinition:d.qY.CalculateAPMobileOverallCondition}
+
+21. g.y.GET /sell/1.0/userfeature
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399398
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/userfeature",protoRootName:v,protoServiceMethodDefinition:d.Px.GetUserFeature}
+
+22. g.y.GET /sell/1.0/onboarding/integrated-delivery
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399535
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/onboarding/integrated-delivery",protoRootName:v,protoServiceMethodDefinition:d.sF.GetIntegratedDeliveryOnboardingInfo}
+
+23. g.y.POST /sell/1.0/seller-promotions-preview
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399712
+Registration: registerEndpoint({method:g.y.POST,pathname:"/sell/1.0/seller-promotions-preview",protoRootName:v,protoServiceMethodDefinition:d.R8.PreviewSellerPromotion}
+
+24. g.y.GET /sell/1.0/seller-funded-promotions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 399872
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/seller-funded-promotions",protoRootName:v,protoServiceMethodDefinition:d.R8.SellerFundedPromotions}
+
+25. g.y.GET /sell/1.0/seller-preferences
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400030
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/seller-preferences",protoRootName:v,protoServiceMethodDefinition:d.sF.GetSellerPreferences}
+
+26. g.y.POST /sell/1.0/seller-preferences/buy-button-config
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400180
+Registration: registerEndpoint({method:g.y.POST,pathname:"/sell/1.0/seller-preferences/buy-button-config",protoRootName:v,protoServiceMethodDefinition:d.sF.SetBuyButtonConfig}
+
+27. g.y.GET /sell/1.0/seller/bp-eligible
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400347
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/seller/bp-eligible",protoRootName:v,protoServiceMethodDefinition:d.sF.GetSellerBPEligibility}
+
+28. g.y.GET /sell/1.0/mml-listing-creation-eligibility
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400499
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/mml-listing-creation-eligibility",protoRootName:v,protoServiceMethodDefinition:d.Px.GetUserEligibilityForMMLListingCreation}
+
+29. g.y.POST /sell/1.0/listing-attribute-suggestions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400682
+Registration: registerEndpoint({method:g.y.POST,pathname:"/sell/1.0/listing-attribute-suggestions",protoRootName:v,protoServiceMethodDefinition:d.Re.GetListingAttributeSuggestions}
+
+30. g.y.GET /sell/1.0/instant-sell/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400854
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/instant-sell/",protoRootName:v,protoServiceMethodDefinition:d.ib.InstantSellOptions}
+
+31. g.y.GET /sell/1.0/instant-sell/store-locations
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 400997
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/instant-sell/store-locations",protoResponseType:"InstantSellGetStoreLocationsResponse",protoRootName:v}
+
+32. g.y.GET /sell/1.0/post-listing-actions/:listing_id
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401159
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/post-listing-actions/:listing_id",protoRootName:v,protoServiceMethodDefinition:d.R8.GetPostListingActions}
+
+33. g.y.GET /sell/1.0/inspirations
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401324
+Registration: registerEndpoint({method:g.y.GET,pathname:"/sell/1.0/inspirations",protoRootName:v,protoServiceMethodDefinition:d.fh.GetSellInspirations}
+
+34. g.y.GET /listing/1.0/get-sell-form-image-tags
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401467
+Registration: registerEndpoint({method:g.y.GET,pathname:"/listing/1.0/get-sell-form-image-tags",protoRootName:v,protoServiceMethodDefinition:d.rp.GetSellFormImageTags}
+
+35. g.y.POST /chat-moderation/1.0/moderate
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401624
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-moderation/1.0/moderate",protoRootName:v,protoServiceMethodDefinition:p.qR.ModerateEntity}
+
+36. g.y.POST /chat-moderation/1.0/blocked-keywords-regex
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401774
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-moderation/1.0/blocked-keywords-regex",protoRootName:v,protoServiceMethodDefinition:p.qR.GetBlockedKeywordRegex}
+
+37. g.y.POST /chat-feedback/1.0/can-submit-feedback
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 401943
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-feedback/1.0/can-submit-feedback",protoRootName:v,protoServiceMethodDefinition:p.$V.CanSubmitChatFeedback}
+
+38. g.y.POST /chat-feedback/1.0/submit-feedback
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402106
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-feedback/1.0/submit-feedback",protoRootName:v,protoServiceMethodDefinition:p.$V.SubmitChatFeedback}
+
+39. g.y.POST /chat-feedback/1.0/metadata
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402262
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-feedback/1.0/metadata",protoRootName:v,protoServiceMethodDefinition:p.$V.GetChatFeedbackMetadata}
+
+40. g.y.GET /chat/1.0/header
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402416
+Registration: registerEndpoint({method:g.y.GET,pathname:"/chat/1.0/header",protoRootName:v,protoServiceMethodDefinition:d.Fn.GetChatHeader10}
+
+41. g.y.POST /chat/1.0/:offerId/translate
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402550
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat/1.0/:offerId/translate",protoRootName:v,protoServiceMethodDefinition:d.Fn.TranslateChat10}
+
+42. g.y.POST /user/2.0/id-verification/get-verification-form/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402697
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/2.0/id-verification/get-verification-form/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetSGIDVerificationForm}
+
+43. g.y.POST /user/2.0/noauth-id-verification/get-verification-form/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 402872
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/2.0/noauth-id-verification/get-verification-form/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetNoAuthSGIDVerificationForm}
+
+44. g.y.POST /user/2.0/id-verification/verify-identity/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403060
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/2.0/id-verification/verify-identity/",protoRootName:v,protoServiceMethodDefinition:p.nW.VerifyIdentityV2}
+
+45. g.y.GET /user/1.0/profile/flags/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403222
+Registration: registerEndpoint({method:g.y.GET,pathname:"/user/1.0/profile/flags/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserFlags}
+
+46. g.y.GET /user/1.0/profile/flags/:listing_id
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403361
+Registration: registerEndpoint({method:g.y.GET,pathname:"/user/1.0/profile/flags/:listing_id",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserFlagsV2}
+
+47. g.y.POST /user/1.0/profile/reveal-details
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403513
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/profile/reveal-details",protoRootName:v,protoServiceMethodDefinition:p.nW.RevealUserDetails}
+
+48. g.y.POST /user/add-mobile/request/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403666
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/add-mobile/request/",protoRootName:v,protoServiceMethodDefinition:p.vD.RequestCodeFromMessagingProvider}
+
+49. g.y.POST /user/add-mobile/verify/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403827
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/add-mobile/verify/",protoRootName:v,protoServiceMethodDefinition:p.vD.VerifyCodeFromMessagingProvider}
+
+50. g.y.POST /user/1.0/third-party-contacts/get/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 403986
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/third-party-contacts/get/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetThirdPartyMessagingContactsByUserId}
+
+51. g.y.PUT /user/1.0/third-party-contacts/delete/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 404163
+Registration: registerEndpoint({method:g.y.PUT,pathname:"/user/1.0/third-party-contacts/delete/",protoRootName:v,protoServiceMethodDefinition:p.nW.DeleteThirdPartyMessagingContact}
+
+52. g.y.POST /user/1.0/third-party-contacts/has-active-listings/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 404336
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/third-party-contacts/has-active-listings/",protoRootName:v,protoServiceMethodDefinition:p.nW.HasActiveListings}
+
+53. g.y.POST /listing-quota/1.0/get-purchase-lq-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 404508
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-purchase-lq-setup",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQSetupV1}
+
+54. g.y.POST /listing-quota/1.0/get-purchase-lq-pricing
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 404673
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-purchase-lq-pricing",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQPricingV1}
+
+55. g.y.POST /listing-quota/1.0/get-seller-whatsapp-contacts
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 404842
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-seller-whatsapp-contacts",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetSellerWhatsappContacts}
+
+56. g.y.POST /listing-quota/1.0/get-whatsapp-contacts-listing-eligibility
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405019
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-whatsapp-contacts-listing-eligibility",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetWhatsappContactsAndListingEligibility}
+
+57. g.y.POST /listing-quota/1.0/set-listings-whatsapp-contacts
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405224
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/set-listings-whatsapp-contacts",protoRootName:v,protoServiceMethodDefinition:s.Hr9.SetListingsWhatsappContacts}
+
+58. g.y.POST /listing-quota/2.0/get-purchase-lq-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405405
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/2.0/get-purchase-lq-setup",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQSetup}
+
+59. g.y.POST /listing-quota/2.0/get-purchase-lq-pricing
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405568
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/2.0/get-purchase-lq-pricing",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQPricing}
+
+60. g.y.POST /listing-quota/1.0/update-auto-purchase-lq
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405735
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/update-auto-purchase-lq",protoRootName:v,protoServiceMethodDefinition:s.Hr9.UpdateAutoPurchaseLQ}
+
+61. g.y.POST /listing-quota/1.0/enable-auto-purchase
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 405902
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/enable-auto-purchase",protoRootName:v,protoServiceMethodDefinition:s.Hr9.EnableAutoPurchaseLQ}
+
+62. g.y.POST /listing-quota/1.0/disable-auto-purchase
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406066
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/disable-auto-purchase",protoRootName:v,protoServiceMethodDefinition:s.Hr9.DisableAutoPurchaseLQ}
+
+63. g.y.POST /listing-quota/1.0/get-onboarding-categories
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406232
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-onboarding-categories",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetOnboardingCategories}
+
+64. g.y.POST /listing-quota/1.0/category-quota-summary
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406404
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/category-quota-summary",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetCategoryQuotaSummary}
+
+65. g.y.POST /listing/1.0/bulk-update
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406573
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing/1.0/bulk-update",protoRootName:v,protoServiceMethodDefinition:d.rp.BulkUpdateListing}
+
+66. g.y.POST /listing/1.0/:listing_id/translate
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406718
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing/1.0/:listing_id/translate",protoRootName:v,protoServiceMethodDefinition:d.rp.TranslateListing}
+
+67. g.y.GET /user/1.0/business-details/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 406872
+Registration: registerEndpoint({method:g.y.GET,pathname:"/user/1.0/business-details/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetProfessionalSellerBusinessDetails}
+
+68. g.y.POST /dogs/1.0/get_bulk_bump_setup/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407038
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get_bulk_bump_setup/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBulkBumpSetup}
+
+69. g.y.POST /dogs/1.2/checkout/bulk
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407189
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/checkout/bulk",protoRootName:v,protoServiceMethodDefinition:s.SXy.BulkCheckout,timeout:2e4}
+
+70. g.y.POST /dogs/1.0/is_bulk_bumps_running/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407338
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/is_bulk_bumps_running/",protoRootName:v,protoServiceMethodDefinition:s.YSq.IsBulkBumpsRunning}
+
+71. g.y.POST /listing-quota/1.0/get-all-chat-limit-quotas
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407497
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-all-chat-limit-quotas",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetAllChatLimitQuotas}
+
+72. g.y.POST /dogs/1.0/get_chat_limit_banner/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407667
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get_chat_limit_banner/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetChatLimitBanner}
+
+73. g.y.POST /dogs/1.0/get_bump_purchase_pages_setup/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407822
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get_bump_purchase_pages_setup/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBumpPurchasePagesSetup}
+
+74. g.y.POST /dogs/1.2/get-setup-page/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 407992
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/get-setup-page/",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSetupPage}
+
+75. g.y.POST /dogs/1.0/get_auto_purchase_coin_setup/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 408134
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get_auto_purchase_coin_setup/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoPurchaseCoinSetup}
+
+76. g.y.POST /dogs/1.0/enable_auto_purchase_coin/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 408302
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/enable_auto_purchase_coin/",protoRootName:v,protoServiceMethodDefinition:s.YSq.EnableAutoPurchaseCoin}
+
+77. g.y.POST /dogs/1.0/disable_auto_purchase_coin/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 408465
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/disable_auto_purchase_coin/",protoRootName:v,protoServiceMethodDefinition:s.YSq.DisableAutoPurchaseCoin}
+
+78. g.y.POST /merchant-payment/1.0/setup-stripe-recurring-card-payment
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 408630
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-payment/1.0/setup-stripe-recurring-card-payment",protoRootName:v,protoServiceMethodDefinition:s.eUU.SetupStripeRecurringCardPayment,timeout:2e4}
+
+79. g.y.POST /merchant-payment/1.0/complete-recurring-payment
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 408835
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-payment/1.0/complete-recurring-payment",protoRootName:v,protoServiceMethodDefinition:s.eUU.CompleteRecurringPayment,timeout:2e4}
+
+80. g.y.POST /dogs/1.0/is_auto_purchase_coin_running/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409024
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/is_auto_purchase_coin_running/",protoRootName:v,protoServiceMethodDefinition:s.YSq.IsAutoPurchaseCoinRunning}
+
+81. g.y.POST /dogs/1.0/get-auto-topup-free-coins-info
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409194
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-auto-topup-free-coins-info",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpFreeCoinsInfo}
+
+82. g.y.POST /merchant-automation/1.0/lead-collection
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409364
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-automation/1.0/lead-collection",protoRootName:v,protoServiceMethodDefinition:s.YRd.LeadCollection}
+
+83. g.y.POST /dogs/1.0/get-auto-topup-nudge-coins-page
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409523
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-auto-topup-nudge-coins-page",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgeCoinsPage}
+
+84. g.y.POST /dogs/1.0/get-auto-topup-nudge-page
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409695
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-auto-topup-nudge-page",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgePage}
+
+85. g.y.POST /dogs/1.0/get-auto-topup-nudge-purchase-page
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 409856
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-auto-topup-nudge-purchase-page",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgePurchasePage}
+
+86. g.y.POST /dogs/1.0/get-transactions-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410034
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-transactions-setup",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactionsSetup}
+
+87. g.y.POST /dogs/1.0/get-transactions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410191
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-transactions",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactions}
+
+88. g.y.POST /dogs/1.0/get-transaction-details
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410337
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-transaction-details",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactionDetails}
+
+89. g.y.POST /dogs/1.0/update-transaction-revenue
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410496
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/update-transaction-revenue",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateTransactionRevenue}
+
+90. g.y.POST /dogs/1.0/get-subscription-packages/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410661
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-subscription-packages/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSubscriptionPackagesV2}
+
+91. g.y.POST /dogs/1.0/get_chat_quota_bundles/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410827
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get_chat_quota_bundles/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetChatQuotaBundles}
+
+92. g.y.POST /dogs/1.0/get-bulk-spotlight-daily-budget-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 410984
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-bulk-spotlight-daily-budget-setup",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBulkSpotlightDailyBudgetSetup}
+
+93. g.y.POST /dogs/1.0/get-bulk-spotlight-add-ons
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411168
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-bulk-spotlight-add-ons",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetBulkSpotlightAddOns}
+
+94. g.y.POST /dogs/1.0/get-custom-keywords-cpc/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411331
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-custom-keywords-cpc/",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetCustomKeywordsCpc}
+
+95. g.y.POST /dogs/1.2/checkout/bulk-spotlight
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411490
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/checkout/bulk-spotlight",protoRootName:v,protoServiceMethodDefinition:s.SXy.BulkCheckoutSpotlight,timeout:2e4}
+
+96. g.y.POST /dogs/1.0/get-campaign-config
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411661
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-config",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignConfig}
+
+97. g.y.POST /dogs/1.0/get-campaign-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411812
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-setup",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignSetup}
+
+98. g.y.POST /dogs/1.0/get-campaign-add-ons
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 411961
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-add-ons",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetCampaignAddOns}
+
+99. g.y.POST /dogs/1.0/get-campaign-listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412113
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-listings",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignListings}
+
+100. g.y.POST /dogs/1.2/checkout/campaign
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412268
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/checkout/campaign",protoRootName:v,protoServiceMethodDefinition:s.SXy.CreateCampaignCheckout,timeout:2e4}
+
+101. g.y.POST /dogs/1.0/update-campaign
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412434
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/update-campaign",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateCampaign,timeout:2e4}
+
+102. g.y.POST /dogs/1.0/get-campaigns-list
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412590
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaigns-list",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignsList}
+
+103. g.y.POST /dogs/1.0/get-campaign-detail
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412739
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-detail",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignDetail}
+
+104. g.y.POST /dogs/1.0/get-campaign-performance
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 412890
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-performance",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignPerformance}
+
+105. g.y.POST /dogs/1.0/get-campaign-coins-usage
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413051
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-coins-usage",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignCoinsUsage}
+
+106. g.y.POST /dogs/1.0/get-campaign-all-listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413211
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-campaign-all-listings",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignAllListings}
+
+107. g.y.POST /dogs/1.0/stop-campaign/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413373
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/stop-campaign/",protoRootName:v,protoServiceMethodDefinition:s.YSq.StopCampaign}
+
+108. g.y.POST /dogs/1.0/perform-campaign-action
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413514
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/perform-campaign-action",protoRootName:v,protoServiceMethodDefinition:s.YSq.PerformCampaignAction}
+
+109. g.y.POST /merchant-payment/1.0/get-available-payment-methods
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413673
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-payment/1.0/get-available-payment-methods",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAvailablePaymentMethods}
+
+110. g.y.POST /merchant-payment/2.0/get-available-payment-methods
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 413855
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-payment/2.0/get-available-payment-methods",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAvailablePaymentMethodsV2}
+
+111. g.y.POST /cf/1.0/certified-search/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414039
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/1.0/certified-search/",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchCertifiedsV10}
+
+112. g.y.POST /cf/v1/price-insights/listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414187
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/price-insights/listings",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPriceInsightsListingsV10}
+
+113. g.y.POST /cf/v1/price-insights/comparables
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414348
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/price-insights/comparables",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPriceInsightsComparablesV10}
+
+114. g.y.POST /cgproduct/1.0/:cgproductId/detail/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414515
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cgproduct/1.0/:cgproductId/detail/",protoRootName:v,protoServiceMethodDefinition:y.hW.GetCGProductDetails10}
+
+115. g.y.POST /cf/assistant/1.0/search/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414675
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/assistant/1.0/search/",protoRootName:v,protoServiceMethodDefinition:y.hW.AssistantSearchV10,timeout:3e4}
+
+116. g.y.GET /cf/assistant/1.0/suggestions/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414834
+Registration: registerEndpoint({method:g.y.GET,pathname:"/cf/assistant/1.0/suggestions/",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPromptSuggestionsV10}
+
+117. g.y.POST /cf/v1/search-garage-sale/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 414990
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/search-garage-sale/",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchGarageSaleListingsV10}
+
+118. g.y.POST /dogs/1.0/certified-services-reviews
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415147
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/certified-services-reviews",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCertifiedServicesReviews}
+
+119. g.y.POST /cf/v1/hot-deals/browse
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415315
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/hot-deals/browse",protoRootName:v,protoServiceMethodDefinition:y.hW.GetHotDealsBrowseV10}
+
+120. g.y.POST /cf/v1/hot-deals
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415459
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/hot-deals",protoRootName:v,protoServiceMethodDefinition:y.hW.GetHotDealsV10}
+
+121. g.y.GET /drc/1.0/dispute/:disputeId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415597
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/1.0/dispute/:disputeId",protoResponseType:"GetDisputeByIDResponse",protoRootName:v}
+
+122. g.y.GET /drc/1.0/dispute/order/:orderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415735
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/1.0/dispute/order/:orderId",protoResponseType:"GetDisputeByOrderIDResponse",protoRootName:v}
+
+123. g.y.GET /drc/3.0/ddp/:fulfillmentOrderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 415882
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/ddp/:fulfillmentOrderId",protoResponseType:"GetDisputeDetailResponse",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeDetail}
+
+124. g.y.GET /drc/4.0/ddp/:fulfillmentOrderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416077
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/4.0/ddp/:fulfillmentOrderId",protoResponseType:"GetGroupDisputeDetailResponse",protoRootName:v,protoServiceMethodDefinition:c.C.GetGroupDisputeDetail}
+
+125. g.y.GET /drc/3.0/get-disputable-items/:fulfillmentOrderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416282
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/get-disputable-items/:fulfillmentOrderId",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputableItems}
+
+126. g.y.GET /drc/3.0/get-proposal-resolution/:lineItemId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416451
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/get-proposal-resolution/:lineItemId",protoRootName:v,protoServiceMethodDefinition:c.C.GetProposalResolution}
+
+127. g.y.GET /drc/3.0/dispute/get-proposed-resolution/:disputeId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416618
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/dispute/get-proposed-resolution/:disputeId",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeProposedResolution}
+
+128. g.y.GET /drc/4.0/dispute/get-proposed-resolution/:fulfillmentOrderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416799
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/4.0/dispute/get-proposed-resolution/:fulfillmentOrderId",protoRootName:v,protoServiceMethodDefinition:c.C.GetGroupProposedResolution}
+
+129. g.y.POST /drc/3.0/dispute/confirm-resolution/:disputeId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 416987
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/confirm-resolution/:disputeId",protoRootName:v,protoServiceMethodDefinition:c.C.ConfirmProposedResolution}
+
+130. g.y.POST /drc/3.0/dispute
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417161
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute",protoRootName:v,protoServiceMethodDefinition:c.C.RaiseDispute}
+
+131. g.y.GET /drc/3.0/rddp/:disputeItemId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417292
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/rddp/:disputeItemId",protoResponseType:"GetDisputeItemDetailResponse",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeItemDetail}
+
+132. g.y.PUT /drc/3.0/return-received/:fulfillmentOrderId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417491
+Registration: registerEndpoint({method:g.y.PUT,pathname:"/drc/3.0/return-received/:fulfillmentOrderId",protoRootName:v,protoServiceMethodDefinition:c.C.ReturnReceived}
+
+133. g.y.POST /drc/3.0/dispute-items
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417651
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute-items",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDisputeItems}
+
+134. g.y.PUT /drc/3.0/dispute-item/:disputeItemId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417794
+Registration: registerEndpoint({method:g.y.PUT,pathname:"/drc/3.0/dispute-item/:disputeItemId",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDisputeItem}
+
+135. g.y.POST /drc/2.1/disputes/cancel/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 417949
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/2.1/disputes/cancel/",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDispute}
+
+136. g.y.POST /drc/3.0/dispute/:disputeId/upload-return-proofs
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418090
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/:disputeId/upload-return-proofs",protoRootName:v,protoServiceMethodDefinition:c.C.UploadReturnProofs}
+
+137. g.y.GET /drc/3.0/dispute/:disputeId/return-options
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418259
+Registration: registerEndpoint({method:g.y.GET,pathname:"/drc/3.0/dispute/:disputeId/return-options",protoRootName:v,protoServiceMethodDefinition:c.C.GetReturnOptions}
+
+138. g.y.POST /drc/3.0/dispute/:disputeId/return-flow-metadatas
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418419
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/:disputeId/return-flow-metadatas",protoRootName:v,protoServiceMethodDefinition:c.C.GetReturnFlow}
+
+139. g.y.POST /drc/3.0/dispute/:disputeId/select-return-flow
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418584
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/:disputeId/select-return-flow",protoRootName:v,protoServiceMethodDefinition:c.C.ConfirmReturnFlow}
+
+140. g.y.POST /drc/3.0/dispute/:disputeId/start-return
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418750
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/:disputeId/start-return",protoRootName:v,protoServiceMethodDefinition:c.C.StartReturnDelivery}
+
+141. g.y.POST /drc/3.0/dispute/:disputeId/add-return-address
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 418912
+Registration: registerEndpoint({method:g.y.POST,pathname:"/drc/3.0/dispute/:disputeId/add-return-address",protoRootName:v,protoServiceMethodDefinition:c.C.AddReturnAddress}
+
+142. g.y.POST /cgproduct/1.0/:cgproductId/listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419077
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cgproduct/1.0/:cgproductId/listings",protoRootName:v,protoServiceMethodDefinition:y.hW.GetCGProductListings10}
+
+143. g.y.GET /els/bulkupload/template/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419239
+Registration: registerEndpoint({method:g.y.GET,pathname:"/els/bulkupload/template/",protoRootName:v,protoServiceMethodDefinition:d.bW.GetBulkUploadTemplate}
+
+144. g.y.POST /els/bulkupload/history/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419388
+Registration: registerEndpoint({method:g.y.POST,pathname:"/els/bulkupload/history/",protoRootName:v,protoServiceMethodDefinition:d.bW.GetBulkUploadHistory}
+
+145. g.y.POST /els/bulkupload/createjob/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419536
+Registration: registerEndpoint({method:g.y.POST,pathname:"/els/bulkupload/createjob/",protoRootName:v,protoServiceMethodDefinition:d.bW.CreateBulkUploadJob}
+
+146. g.y.POST /activity/2.0/activity-feed
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419685
+Registration: registerEndpoint({method:g.y.POST,pathname:"/activity/2.0/activity-feed",protoRootName:v,protoServiceMethodDefinition:a.Np.GetActivityFeedV2}
+
+147. g.y.POST /activity/2.0/activity-mark-as-read
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419833
+Registration: registerEndpoint({method:g.y.POST,pathname:"/activity/2.0/activity-mark-as-read",protoRootName:v,protoServiceMethodDefinition:a.Np.ActivityMarkAsReadV2}
+
+148. g.y.POST /activity/2.0/do-action
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 419992
+Registration: registerEndpoint({method:g.y.POST,pathname:"/activity/2.0/do-action",protoRootName:v,protoServiceMethodDefinition:a.Np.DoActivityActionV2}
+
+149. g.y.GET /me/2.0/unread-counts
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420137
+Registration: registerEndpoint({method:g.y.GET,pathname:"/me/2.0/unread-counts",protoRootName:v,protoServiceMethodDefinition:a.Np.GetUnreadCountV2}
+
+150. g.y.GET /activity/2.0/has-new-activity
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420277
+Registration: registerEndpoint({method:g.y.GET,pathname:"/activity/2.0/has-new-activity",protoRootName:v,protoServiceMethodDefinition:a.Np.HasNewActivityV2}
+
+151. g.y.GET /fg/1.0/cart/counts
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420426
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/cart/counts",protoRootName:v,protoServiceMethodDefinition:m.ul.GetCartCounts}
+
+152. g.y.GET /fg/1.0/cart
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420561
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/cart",protoRootName:v,protoServiceMethodDefinition:m.ul.GetCartDetailsPage}
+
+153. g.y.POST /fg/1.0/cart
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420694
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/cart",protoRootName:v,protoServiceMethodDefinition:m.ul.AddCartItems}
+
+154. g.y.POST /fg/1.0/cart/delete
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420822
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/cart/delete",protoRootName:v,protoServiceMethodDefinition:m.ul.DeleteCartItems}
+
+155. g.y.GET /cf/1.0/related-cart-listings/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 420960
+Registration: registerEndpoint({method:g.y.GET,pathname:"/cf/1.0/related-cart-listings/",protoRootName:v,protoServiceMethodDefinition:y.hW.GetRelatedCartListingsV10}
+
+156. g.y.GET /fg/2.0/orders/:orderId/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421118
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/2.0/orders/:orderId/",protoRootName:v,protoServiceMethodDefinition:m.Me.GetOrderDetailsPageV2}
+
+157. g.y.POST /fg/2.0/orders/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421266
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/2.0/orders/",protoRootName:v,protoServiceMethodDefinition:m.Me.GetUserOrderHistoryV2}
+
+158. g.y.GET /fg/1.0/orders/:orderId/chat-offer/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421406
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/orders/:orderId/chat-offer/",protoRootName:v,protoServiceMethodDefinition:m.Me.GetOrderChatOffer,timeout:2e4}
+
+159. g.y.GET /fg/1.0/order/arrange-delivery-progress/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421573
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/order/arrange-delivery-progress/",protoRootName:v,protoServiceMethodDefinition:m.Me.GetArrangeDeliveryProgress}
+
+160. g.y.GET /fg/2.0/order/:orderId/delivery-fulfillment-options
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421742
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/2.0/order/:orderId/delivery-fulfillment-options",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryFulfillmentOptionsV2}
+
+161. g.y.POST /fg/v1/bulk/delivery-fulfillment-options
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 421927
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/v1/bulk/delivery-fulfillment-options",protoRootName:v,protoServiceMethodDefinition:m.c$.GetBulkDeliveryFulfillmentOptions}
+
+162. g.y.POST /fg/1.0/promotion/validate/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422104
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotion/validate/",protoRootName:v,protoServiceMethodDefinition:m.Nc.ValidatePromotion}
+
+163. g.y.POST /fg/1.0/promotions/list
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422252
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotions/list",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionsList}
+
+164. g.y.POST /fg/1.0/promotions/categories
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422396
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotions/categories",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionCategories}
+
+165. g.y.POST /fg/1.0/export/orders/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422551
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/export/orders/",protoRootName:v,protoServiceMethodDefinition:m.Me.ExportOrders}
+
+166. g.y.POST /fg/1.0/promotion/get-promotion-setup-config
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422689
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotion/get-promotion-setup-config",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionSetupConfig}
+
+167. g.y.POST /fg/1.0/promotion/create-promotion
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 422860
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotion/create-promotion",protoRootName:v,protoServiceMethodDefinition:m.Nc.CreatePromotion}
+
+168. g.y.POST /fg/1.0/promotion/decline-create-promotion
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 423013
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/promotion/decline-create-promotion",protoRootName:v,protoServiceMethodDefinition:m.Nc.DeclineCreatePromotion}
+
+169. g.y.POST /fg/1.0/checkouts/prepare
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 423181
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/1.0/checkouts/prepare",protoRootName:v,protoServiceMethodDefinition:m.sr.PrepareCheckoutV1,timeout:2e4}
+
+170. g.y.GET /fg/1.0/checkouts/:checkoutId/make_payment_info
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 423521
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/checkouts/:checkoutId/make_payment_info",protoRootName:v,protoServiceMethodDefinition:m.sr.GetMakePaymentInfoV1}
+
+171. g.y.POST /feedback/2.0/get-review-eligibility/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 423691
+Registration: registerEndpoint({method:g.y.POST,pathname:"/feedback/2.0/get-review-eligibility/",protoRootName:v,protoServiceMethodDefinition:p.ib.GetReviewEligibilityV2}
+
+172. g.y.POST /user/1.0/experience/advisory/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 423854
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/experience/advisory/",protoRootName:v,protoServiceMethodDefinition:p.nW.ShouldUserExperienceAdvisory}
+
+173. g.y.POST /user/1.0/update/experience/advisory/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424016
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/update/experience/advisory/",protoRootName:v,protoServiceMethodDefinition:p.nW.UpdateUserAdvisoryDecision}
+
+174. g.y.POST /user/3.0/email/get-otp/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424183
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/3.0/email/get-otp/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetRegistrationEmailVerificationCode}
+
+175. g.y.POST /user/3.0/email/verify/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424347
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/3.0/email/verify/",protoRootName:v,protoServiceMethodDefinition:p.nW.VerifyRegistrationEmailVerificationCode}
+
+176. g.y.POST /dogs/1.0/get-profile-insight-banner
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424513
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-profile-insight-banner",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileInsightBanner}
+
+177. g.y.POST /dogs/1.0/get-competitor-insight
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424674
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-competitor-insight",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCompetitorInsight}
+
+178. g.y.POST /dogs/2.0/get-competitor-insight
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424835
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/2.0/get-competitor-insight",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCompetitorInsightV2}
+
+179. g.y.GET /dogs/1.0/search-insight
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 424994
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/search-insight",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSearchInsight}
+
+180. g.y.POST /dogs/1.0/search-insight/category-detail
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425138
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/search-insight/category-detail",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSearchInsightCategoryDetail}
+
+181. g.y.POST /dogs/1.0/get-account-stats
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425313
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-account-stats",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAccountStats}
+
+182. g.y.POST /dogs/1.0/get-revenue-vs-spend
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425460
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-revenue-vs-spend",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetRevenueVsSpend}
+
+183. g.y.POST /self-moderation/1.0/get-my-moderation
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425612
+Registration: registerEndpoint({method:g.y.POST,pathname:"/self-moderation/1.0/get-my-moderation",protoRootName:v,protoServiceMethodDefinition:p.Ut.GetMyModeration}
+
+184. g.y.GET /self-moderation/1.0/moderation/:id
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425769
+Registration: registerEndpoint({method:g.y.GET,pathname:"/self-moderation/1.0/moderation/:id",protoRootName:v,protoServiceMethodDefinition:p.Ut.GetModerationDetail}
+
+185. g.y.PUT /self-moderation/1.0/moderation/:id/close
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 425926
+Registration: registerEndpoint({method:g.y.PUT,pathname:"/self-moderation/1.0/moderation/:id/close",protoRootName:v,protoServiceMethodDefinition:p.Ut.CloseModeration}
+
+186. g.y.POST /self-moderation/1.0/moderation/:id/appeal
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426085
+Registration: registerEndpoint({method:g.y.POST,pathname:"/self-moderation/1.0/moderation/:id/appeal",protoRootName:v,protoServiceMethodDefinition:p.Ut.RaiseAppeal}
+
+187. g.y.PUT /self-moderation/1.0/appeal/:id/close
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426242
+Registration: registerEndpoint({method:g.y.PUT,pathname:"/self-moderation/1.0/appeal/:id/close",protoRootName:v,protoServiceMethodDefinition:p.Ut.CloseAppeal}
+
+188. g.y.POST /user/1.0/profile/signals/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426393
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/profile/signals/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserTrustSignals}
+
+189. g.y.POST /chat-moderation/1.0/get-char-set
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426542
+Registration: registerEndpoint({method:g.y.POST,pathname:"/chat-moderation/1.0/get-char-set",protoRootName:v,protoServiceMethodDefinition:p.qR.GetCharSet}
+
+190. g.y.POST /interlinks/1.0/list
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426689
+Registration: registerEndpoint({method:g.y.POST,pathname:"/interlinks/1.0/list",protoRootName:v,protoServiceMethodDefinition:a.LL.GetInterlinks}
+
+191. g.y.POST /dogs/1.0/listing_keyword_insight/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426826
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/listing_keyword_insight/",protoRootName:v,protoServiceMethodDefinition:s.YSq.ListingKeywordInsight}
+
+192. g.y.POST /dogs/1.0/get-outreach-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 426986
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-setup",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachSetup}
+
+193. g.y.POST /dogs/1.0/get-category-browse
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427135
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-category-browse",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCategoryBrowseSections}
+
+194. g.y.POST /dogs/1.0/get-outreach-checkout-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427294
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-checkout-setup",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachCheckoutSetup}
+
+195. g.y.POST /dogs/1.0/get-outreach-pricing
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427460
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-pricing",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachPricing}
+
+196. g.y.POST /dogs/1.0/get-outreach-insight
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427613
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-insight",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachInsight}
+
+197. g.y.POST /dogs/1.0/stop-outreach
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427766
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/stop-outreach",protoRootName:v,protoServiceMethodDefinition:s.wDv.StopOutreach}
+
+198. g.y.POST /dogs/1.0/hide-outreach
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 427906
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/hide-outreach",protoRootName:v,protoServiceMethodDefinition:s.wDv.HideOutreach}
+
+199. g.y.POST /dogs/1.0/get-user-active-outreach-campaigns
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428046
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-user-active-outreach-campaigns",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetUserActiveOutreachCampaigns}
+
+200. g.y.GET /dogs/1.0/get-outreach-promo-templates
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428225
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/get-outreach-promo-templates",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachPromoTemplates}
+
+201. g.y.POST /dogs/1.0/get-outreach-campaigns-for-listing
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428392
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-campaigns-for-listing",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachCampaignsForListing}
+
+202. g.y.POST /dogs/1.0/get-all-user-shoutouts
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428571
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-all-user-shoutouts",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetAllUserShoutouts}
+
+203. g.y.POST /dogs/1.0/get-shoutout-checkout-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428724
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-shoutout-checkout-setup",protoRootName:v,protoServiceMethodDefinition:s.fYQ.GetShoutoutCheckoutSetup}
+
+204. g.y.POST /dogs/1.0/get-postpaid-shoutout-checkout-setup/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 428894
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-postpaid-shoutout-checkout-setup/",protoRootName:v,protoServiceMethodDefinition:s.fYQ.GetPostpaidShoutoutCheckoutSetup}
+
+205. g.y.POST /dogs/1.0/stop-shoutout/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429078
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/stop-shoutout/",protoRootName:v,protoServiceMethodDefinition:s.fYQ.StopShoutout}
+
+206. g.y.POST /dogs/1.2/checkout/init
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429219
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/checkout/init",protoRootName:v,protoServiceMethodDefinition:s.SXy.InitCheckout,timeout:2e4}
+
+207. g.y.POST /dogs/1.2/checkout/complete
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429371
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.2/checkout/complete",protoRootName:v,protoServiceMethodDefinition:s.SXy.CompleteCheckout,timeout:2e4}
+
+208. g.y.POST /merchant-payment/1.0/update-payment-mode-and-get-one-time-payment-data
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429531
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-payment/1.0/update-payment-mode-and-get-one-time-payment-data",protoRootName:v,protoServiceMethodDefinition:s.eUU.UpdatePaymentModeAndGetOneTimePaymentData,timeout:2e4}
+
+209. g.y.POST /dogs/1.0/buyer-magnet/get-setup-page
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429760
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/buyer-magnet/get-setup-page",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBuyerMagnetSetupPage}
+
+210. g.y.POST /dogs/1.0/buyer-magnet/activate
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 429925
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/buyer-magnet/activate",protoRootName:v,protoServiceMethodDefinition:s.YSq.EnableBuyerMagnet,timeout:2e4}
+
+211. g.y.POST /dogs/1.0/buyer-magnet/check-availability
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430090
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/buyer-magnet/check-availability",protoRootName:v,protoServiceMethodDefinition:s.YRd.CheckBuyerMagnetAvailability}
+
+212. g.y.POST /dogs/1.0/certified-services-enquiries
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430264
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/certified-services-enquiries",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCertifiedServicesEnquiries}
+
+213. g.y.POST /dogs/1.0/merchant-certified-services-enquiries
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430436
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/merchant-certified-services-enquiries",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetMerchantCertifiedServicesEnquiries}
+
+214. g.y.POST /dogs/1.0/get-merchant-service-enquiry-details
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430625
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-merchant-service-enquiry-details",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetMerchantCertifiedServicesEnquiryDetails}
+
+215. g.y.POST /dogs/1.0/update-merchant-service-enquiries
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430818
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/update-merchant-service-enquiries",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateServiceEnquiriesForMerchant}
+
+216. g.y.POST /dogs/1.0/get-merchant-certified-services-quotes
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 430999
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-merchant-certified-services-quotes",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetMerchantCertifiedServicesQuotes}
+
+217. g.y.POST /dogs/1.0/get-merchant-certified-services-quote-details
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 431186
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-merchant-certified-services-quote-details",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetCertifiedServicesQuoteDetails}
+
+218. g.y.POST /dogs/1.0/update-enquiry-quotes
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 431378
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/update-enquiry-quotes",protoRootName:v,protoServiceMethodDefinition:s.HeU.UpdateEnquiryQuotes}
+
+219. g.y.POST /dogs/1.0/get-enquiry-detail-on-entrypoint
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 431533
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-enquiry-detail-on-entrypoint",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetEnquiryDetailOnEntrypoint}
+
+220. g.y.POST /dogs/1.0/lta/import-lta-vehicles-data
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 431708
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/lta/import-lta-vehicles-data",protoRootName:v,protoServiceMethodDefinition:s.YRd.ImportLTAVehiclesData}
+
+221. g.y.POST /dogs/1.0/get-service-fees
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 431872
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-service-fees",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetServiceFees}
+
+222. g.y.POST /dogs/1.0/get-invoice-pdf
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432017
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-invoice-pdf",protoRootName:v,protoServiceMethodDefinition:s.U7d.GetInvoicePdf}
+
+223. g.y.POST /dogs/1.0/get-service-fee-breakdown-report
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432160
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-service-fee-breakdown-report",protoRootName:v,protoServiceMethodDefinition:s.U7d.GetServiceFeeBreakdownReport}
+
+224. g.y.POST /dogs/1.0/get-active-outreach-by-ccid
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432335
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-active-outreach-by-ccid",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetActiveOutreachByCcid}
+
+225. g.y.POST /dogs/1.0/get-outreach-voucher-details
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432500
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-outreach-voucher-details",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetOutreachVoucherDetails}
+
+226. g.y.GET /dogs/1.0/get-enquiry-form
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432668
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/get-enquiry-form",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetEnquiryForm}
+
+227. g.y.POST /dogs/1.0/validate-verticals-promo
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432812
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/validate-verticals-promo",protoRootName:v,protoServiceMethodDefinition:s.HeU.ValidateVerticalsPromo}
+
+228. g.y.POST /dogs/1.0/submit-enquiry-form
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 432973
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/submit-enquiry-form",protoRootName:v,protoServiceMethodDefinition:s.HeU.SubmitEnquiryForm}
+
+229. g.y.POST /api/1.0/gen-ai/init-session/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433124
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/gen-ai/init-session/",protoRootName:v,protoServiceMethodDefinition:i.qS.InitSession}
+
+230. g.y.POST /api/1.0/gen-ai/batch-get-upload-url/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433265
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/gen-ai/batch-get-upload-url/",protoRootName:v,protoServiceMethodDefinition:i.qS.BatchGetMediaUploadURL}
+
+231. g.y.POST /api/1.0/gen-ai/get-upload-url/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433425
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/gen-ai/get-upload-url/",protoRootName:v,protoServiceMethodDefinition:i.qS.GetMediaUploadURL}
+
+232. g.y.POST /api/1.0/gen-ai/response-create/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433581
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/gen-ai/response-create/",protoRootName:v,protoServiceMethodDefinition:i.qS.ResponseCreate}
+
+233. g.y.POST /api/1.0/gen-ai/generate-listing-description/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433731
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/gen-ai/generate-listing-description/",protoRootName:v,protoServiceMethodDefinition:i.qS.GenerateListingDescription,timeout:3e4}
+
+234. g.y.POST /dogs/1.0/profile-me-header
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 433918
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/profile-me-header",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileMeHeader}
+
+235. g.y.POST /dogs/1.0/profile-tab
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434068
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/profile-tab",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileMeTabData}
+
+236. g.y.POST /pocket/getprofilecollections
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434213
+Registration: registerEndpoint({method:g.y.POST,pathname:"/pocket/getprofilecollections",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollections}
+
+237. g.y.POST /gamification/v1/available-rewards-data
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434368
+Registration: registerEndpoint({method:g.y.POST,pathname:"/gamification/v1/available-rewards-data",protoRootName:v,protoServiceMethodDefinition:a.Hr.GetAvailableRewardsData}
+
+238. g.y.POST /gamification/v1/calculate-rewards
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434534
+Registration: registerEndpoint({method:g.y.POST,pathname:"/gamification/v1/calculate-rewards",protoRootName:v,protoServiceMethodDefinition:a.Hr.CalculateRewards}
+
+239. g.y.POST /gamification/v1/apply-rewards
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434688
+Registration: registerEndpoint({method:g.y.POST,pathname:"/gamification/v1/apply-rewards",protoRootName:v,protoServiceMethodDefinition:a.Hr.ApplyRewards}
+
+240. g.y.GET /gamification/v1/lifetime-earnings/:sellerId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 434834
+Registration: registerEndpoint({method:g.y.GET,pathname:"/gamification/v1/lifetime-earnings/:sellerId",protoRootName:v,protoServiceMethodDefinition:a.Hr.GetLifetimeEarnings}
+
+241. g.y.POST /merchant-automation/1.0/declare-job
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435000
+Registration: registerEndpoint({method:g.y.POST,pathname:"/merchant-automation/1.0/declare-job",protoRootName:v,protoServiceMethodDefinition:s.YRd.DeclareJob}
+
+242. g.y.POST /dogs/1.0/get-cplus-subscription-packages/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435151
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-cplus-subscription-packages/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCarouPlusSubscriptionPackages}
+
+243. g.y.POST /cf/v1/saved-search-listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435330
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/saved-search-listings",protoRootName:v,protoServiceMethodDefinition:y.hW.GetSavedSearchedListingsV1}
+
+244. g.y.POST /user/1.0/suggest-usernames/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435488
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/suggest-usernames/",protoRootName:v,protoServiceMethodDefinition:p.nW.SuggestUsernames}
+
+245. g.y.GET /fg/1.0/order/:orderId/delivery-form/pickup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435636
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/1.0/order/:orderId/delivery-form/pickup",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryFormPickup}
+
+246. g.y.POST /fg/3.0/orders/:orderId/schedule_pickup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 435803
+Registration: registerEndpoint({method:g.y.POST,pathname:"/fg/3.0/orders/:orderId/schedule_pickup",protoRootName:v,protoServiceMethodDefinition:m.c$.SchedulePickupDelivery,timeout:1e4}
+
+247. g.y.GET /fg/v1/invoice-info
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 436346
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/v1/invoice-info",protoRootName:v,protoServiceMethodDefinition:m.Me.GetInvoiceInfo}
+
+248. g.y.GET /fg/v1/listings/:listingId/delivery-banner
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 436482
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/v1/listings/:listingId/delivery-banner",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryBannerConfig}
+
+249. g.y.POST /dogs/1.0/get-leads-suggestions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 436650
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-leads-suggestions",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetLeadsSuggestions}
+
+250. g.y.POST /dogs/1.0/leads-recycle-sendmessages
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 436805
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/leads-recycle-sendmessages",protoRootName:v,protoServiceMethodDefinition:s.HeU.SendBulkMessage}
+
+251. g.y.GET /fg/v1/delivery/enable-delivery-options
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 437342
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/v1/delivery/enable-delivery-options",protoRootName:v,protoServiceMethodDefinition:m.c$.GetEnableDeliveryOptions}
+
+252. g.y.POST /dogs/v1/banner-action
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 437508
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/v1/banner-action",protoRootName:v,protoServiceMethodDefinition:s.YSq.RecordMePageBannerAction}
+
+253. g.y.GET /fg/v1/seller-preference/banner
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 437659
+Registration: registerEndpoint({method:g.y.GET,pathname:"/fg/v1/seller-preference/banner",protoRootName:v,protoServiceMethodDefinition:m.c$.GetSellerPreferenceBanner}
+
+254. g.y.POST /cf/v1/thematic-browse/browse/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 437818
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/thematic-browse/browse/",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseFeedV10}
+
+255. g.y.POST /cf/v1/thematic-browse/similar
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 437976
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/thematic-browse/similar",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseSimilarListingFeedV10}
+
+256. g.y.GET /cf/v1/thematic-browse/homefeed
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438148
+Registration: registerEndpoint({method:g.y.GET,pathname:"/cf/v1/thematic-browse/homefeed",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseHomeFeedV10}
+
+257. g.y.POST /user/1.0/cross-device-auth-status/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438310
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/cross-device-auth-status/",protoRootName:v,protoServiceMethodDefinition:p.nW.GetCrossDeviceAuthStatus}
+
+258. g.y.POST /user/1.0/cross-device-auth/init/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438473
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/cross-device-auth/init/",protoRootName:v,protoServiceMethodDefinition:p.nW.CrossDeviceAuthInit}
+
+259. g.y.POST /api/1.0/agentic-chat/1.0/create-chat-session
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438626
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/agentic-chat/1.0/create-chat-session",protoRootName:v,protoServiceMethodDefinition:l.eC.CreateChatSession}
+
+260. g.y.POST /api/1.0/agentic-chat/1.0/send-chat-message
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438796
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/agentic-chat/1.0/send-chat-message",protoRootName:v,protoServiceMethodDefinition:l.eC.SendChatMessage}
+
+261. g.y.POST /api/1.0/agentic-chat/1.0/get-chat-messages
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 438958
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/agentic-chat/1.0/get-chat-messages",protoRootName:v,protoServiceMethodDefinition:l.eC.GetChatMessages}
+
+262. g.y.POST /api/1.0/agentic-chat/1.0/init-send-image
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439120
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/agentic-chat/1.0/init-send-image",protoRootName:v,protoServiceMethodDefinition:l.eC.InitSendImage}
+
+263. g.y.POST /api/1.0/agentic-chat/1.0/retry-chat-message
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439278
+Registration: registerEndpoint({method:g.y.POST,pathname:"/api/1.0/agentic-chat/1.0/retry-chat-message",protoRootName:v,protoServiceMethodDefinition:l.eC.RetryChatMessage}
+
+264. g.y.POST /dogs/1.0/manage-listings-banners
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439442
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/manage-listings-banners",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetManageListingsBanners}
+
+265. g.y.POST /user/1.0/otp-channel-config/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439604
+Registration: registerEndpoint({method:g.y.POST,pathname:"/user/1.0/otp-channel-config/",protoRootName:v,protoServiceMethodDefinition:p.vD.GetOtpChannelConfig}
+
+266. g.y.POST /feedback/1.0/get-offers-by-nudge/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439756
+Registration: registerEndpoint({method:g.y.POST,pathname:"/feedback/1.0/get-offers-by-nudge/",protoRootName:v,protoServiceMethodDefinition:p.ib.GetOffersByFeedbackNudge}
+
+267. g.y.GET /auction/v1/timed-auction/state
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 439918
+Registration: registerEndpoint({method:g.y.GET,pathname:"/auction/v1/timed-auction/state",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionState}
+
+268. g.y.POST /auction/v1/timed-auction/place-bid
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440072
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/place-bid",protoRootName:v,protoServiceMethodDefinition:u.O$.TimedAuctionPlaceBid,timeout:2e4}
+
+269. g.y.POST /auction/v1/timed-auction/set-max-bid
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440243
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/set-max-bid",protoRootName:v,protoServiceMethodDefinition:u.O$.TimedAuctionSetMaxBid,timeout:2e4}
+
+270. g.y.GET /auction/v1/timed-auction/bids
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440417
+Registration: registerEndpoint({method:g.y.GET,pathname:"/auction/v1/timed-auction/bids",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionBidHistory}
+
+271. g.y.GET /auction/v1/timed-auction/buyer-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440575
+Registration: registerEndpoint({method:g.y.GET,pathname:"/auction/v1/timed-auction/buyer-setup",protoRootName:v,protoServiceMethodDefinition:u.O$.GetBuyerTimedAuctionSetup}
+
+272. g.y.POST /auction/v1/timed-auction/buyer-setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440740
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/buyer-setup",protoRootName:v,protoServiceMethodDefinition:u.O$.SetBuyerTimedAuctionSetup}
+
+273. g.y.GET /auction/v1/timed-auction/deal-methods
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 440906
+Registration: registerEndpoint({method:g.y.GET,pathname:"/auction/v1/timed-auction/deal-methods",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionDealMethods}
+
+274. g.y.POST /auction/v1/timed-auction/deal-methods
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441073
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/deal-methods",protoRootName:v,protoServiceMethodDefinition:u.O$.SetTimedAuctionDealMethod}
+
+275. g.y.POST /auction/v1/timed-auction/reserve-price
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441240
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/reserve-price",protoRootName:v,protoServiceMethodDefinition:u.O$.SetTimedAuctionReservePrice}
+
+276. g.y.POST /auction/v1/timed-auction/second-offer
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441410
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/timed-auction/second-offer",protoRootName:v,protoServiceMethodDefinition:u.O$.DecideTimedAuctionSecondOffer}
+
+277. g.y.POST /auction/v1/buyer/create-setup-intent
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441581
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/buyer/create-setup-intent",protoRootName:v,protoServiceMethodDefinition:o._n.CreateBuyerSetupIntent,timeout:2e4}
+
+278. g.y.POST /auction/v1/buyer/register-payment-method
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441756
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/buyer/register-payment-method",protoRootName:v,protoServiceMethodDefinition:o._n.RegisterBuyerAuctionPaymentMethod,timeout:2e4}
+
+279. g.y.POST /cf/v1/timed-auction/listings
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 441946
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/v1/timed-auction/listings",protoRootName:v,protoServiceMethodDefinition:y.hW.GetDropListings}
+
+280. g.y.GET /show/v1/shows/discover
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442091
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/discover",protoRootName:v,protoServiceMethodDefinition:o.w_.DiscoverShows}
+
+281. g.y.GET /show/v1/shows/moderator
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442234
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/moderator",protoRootName:v,protoServiceMethodDefinition:o.w_.GetModeratorShows}
+
+282. g.y.GET /show/v1/shows/my-shows
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442378
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/my-shows",protoRootName:v,protoServiceMethodDefinition:o.w_.GetMyShows}
+
+283. g.y.POST /show/v1/shows/:showId/join-show
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442514
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/join-show",protoRootName:v,protoServiceMethodDefinition:o.w_.JoinShow}
+
+284. g.y.GET /show/v1/shows/setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442658
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/setup",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShowSetup}
+
+285. g.y.GET /show/v1/shows/:showId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442793
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShow}
+
+286. g.y.POST /show/v1/shows/:showId/update
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 442925
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/update",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateShow}
+
+287. g.y.POST /show/v1/shows/create
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 443367
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/create",protoRootName:v,protoServiceMethodDefinition:o.w_.CreateShow}
+
+288. g.y.POST /show/v1/shows/:sourceShowId/clone
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 443502
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:sourceShowId/clone",protoRootName:v,protoServiceMethodDefinition:o.w_.CloneShow,timeout:15e3}
+
+289. g.y.GET /show/v1/shows/:showId/summary
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 443662
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId/summary",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShowSummary}
+
+290. g.y.GET /show/v1/shows/:showId/items
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 443809
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId/items",protoRootName:v,protoServiceMethodDefinition:o.w_.GetItems}
+
+291. g.y.POST /show/v1/shows/:showId/items/add
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 443948
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/add",protoRootName:v,protoServiceMethodDefinition:o.w_.AddItems}
+
+292. g.y.POST /show/v1/shows/:showId/items/update
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444092
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/update",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateItem}
+
+293. g.y.POST /show/v1/shows/:showId/items/delete
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444241
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/delete",protoRootName:v,protoServiceMethodDefinition:o.w_.DeleteItem}
+
+294. g.y.POST /show/v1/shows/:showId/items/reorder
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444387
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/reorder",protoRootName:v,protoServiceMethodDefinition:o.w_.ReorderItems}
+
+295. g.y.POST /show/v1/shows/:showId/items/move-to-front
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444536
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/move-to-front",protoRootName:v,protoServiceMethodDefinition:o.w_.MoveItemToFront}
+
+296. g.y.POST /show/v1/shows/:showId/items/move-to-position
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444701
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/move-to-position",protoRootName:v,protoServiceMethodDefinition:o.w_.MoveItemToPosition}
+
+297. g.y.GET /show/v1/shows/:showId/current-item
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 444868
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId/current-item",protoRootName:v,protoServiceMethodDefinition:o.w_.GetCurrentItem}
+
+298. g.y.POST /show/v1/images/generate-upload-url
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445020
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/images/generate-upload-url",protoRootName:v,protoServiceMethodDefinition:o.w_.GenerateShowImageUploadUrl}
+
+299. g.y.POST /auction/v1/shows/:showId/mint-ws-token
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445185
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/shows/:showId/mint-ws-token",protoRootName:v,protoServiceMethodDefinition:o._n.MintWsToken}
+
+300. g.y.POST /auction/v1/shows/:showId/start-auction
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445336
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/shows/:showId/start-auction",protoRootName:v,protoServiceMethodDefinition:o._n.StartAuction}
+
+301. g.y.POST /auction/v1/shows/:showId/start-item
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445495
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/shows/:showId/start-item",protoRootName:v,protoServiceMethodDefinition:o._n.StartItem}
+
+302. g.y.POST /auction/v1/shows/:showId/close-item
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445644
+Registration: registerEndpoint({method:g.y.POST,pathname:"/auction/v1/shows/:showId/close-item",protoRootName:v,protoServiceMethodDefinition:o._n.CloseItem}
+
+303. g.y.POST /show/v1/shows/:showId/giveaways/:itemId/activate
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445793
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/giveaways/:itemId/activate",protoRootName:v,protoServiceMethodDefinition:o.w_.ActivateGiveaway}
+
+304. g.y.POST /show/v1/shows/:showId/giveaways/:itemId/draw
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 445962
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/giveaways/:itemId/draw",protoRootName:v,protoServiceMethodDefinition:o.w_.StartGiveawayDraw}
+
+305. g.y.POST /show/v1/shows/:showId/giveaways/:itemId/close
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446128
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/giveaways/:itemId/close",protoRootName:v,protoServiceMethodDefinition:o.w_.CloseGiveaway}
+
+306. g.y.POST /show/v1/shows/:showId/items/:itemId/flash-sale/start
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446291
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/:itemId/flash-sale/start",protoRootName:v,protoServiceMethodDefinition:o.w_.StartFlashSale}
+
+307. g.y.POST /show/v1/shows/:showId/items/:itemId/flash-sale/end
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446462
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/:itemId/flash-sale/end",protoRootName:v,protoServiceMethodDefinition:o.w_.EndFlashSale}
+
+308. g.y.POST /show/v1/shows/:showId/items/:itemId/flash-sale/update
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446626
+Registration: registerEndpoint({method:g.y.POST,pathname:"/show/v1/shows/:showId/items/:itemId/flash-sale/update",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateFlashSale}
+
+309. g.y.GET /show/v1/shows/:showId/giveaways/:itemId/entrants
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446796
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId/giveaways/:itemId/entrants",protoRootName:v,protoServiceMethodDefinition:o.w_.ListGiveawayEntrants}
+
+310. g.y.GET /show/v1/shows/:showId/giveaways/:itemId
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 446965
+Registration: registerEndpoint({method:g.y.GET,pathname:"/show/v1/shows/:showId/giveaways/:itemId",protoRootName:v,protoServiceMethodDefinition:o.w_.GetGiveawayState}
+
+311. g.y.POST /dogs/1.0/get-bump-early-stop-info/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447128
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/get-bump-early-stop-info/",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBumpEarlyStopInfo}
+
+312. g.y.POST /dogs/1.0/smart-refinement/setup
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447288
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/smart-refinement/setup",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementSetup}
+
+313. g.y.POST /dogs/1.0/smart-refinement/edit
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447448
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/smart-refinement/edit",protoRootName:v,protoServiceMethodDefinition:s.aoz.EditSmartRefinement}
+
+314. g.y.POST /dogs/1.0/smart-refinement/tag-suggestions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447603
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/smart-refinement/tag-suggestions",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementTagSuggestions}
+
+315. g.y.POST /cf/1.0/smart-refinement-search/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447782
+Registration: registerEndpoint({method:g.y.POST,pathname:"/cf/1.0/smart-refinement-search/",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchSmartRefinementV10}
+
+316. g.y.POST /dogs/1.0/smart-refinement/search-suggestions
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 447942
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/smart-refinement/search-suggestions",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementSearchSuggestions}
+
+317. g.y.POST /dogs/1.0/autos-homepage-hot-keywords
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 448127
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/autos-homepage-hot-keywords",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetAutosHomepageHotKeywords}
+
+318. g.y.POST /listing-quota/1.0/get-user-whatsapp-status
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 448296
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/get-user-whatsapp-status",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetUserWhatsappStatusByUserId}
+
+319. g.y.POST /listing-quota/1.0/upsert-user-whatsapp-status
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 448473
+Registration: registerEndpoint({method:g.y.POST,pathname:"/listing-quota/1.0/upsert-user-whatsapp-status",protoRootName:v,protoServiceMethodDefinition:s.Hr9.UpsertUserWhatsappStatusByUserId}
+
+320. g.y.POST /smart-nudge/v1/action
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 448656
+Registration: registerEndpoint({method:g.y.POST,pathname:"/smart-nudge/v1/action",protoRootName:v,protoServiceMethodDefinition:{name:"DoSmartAction",requestTypeName:".api_gw_recommerce.DoSmartActionRequest",responseTypeName:".api_gw_recommerce.DoSmartActionResponse"}
+
+321. g.y.POST /dogs/1.0/listing-tier/get-setup-page
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 448917
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/listing-tier/get-setup-page",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetListingTierSetupPage}
+
+322. g.y.GET /cf/1.0/more_from_this_seller/:productId/
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 449082
+Registration: registerEndpoint({method:g.y.GET,pathname:"/cf/1.0/more_from_this_seller/:productId/",protoRootName:v,protoServiceMethodDefinition:y.hW.GetMoreFromThisSeller10}
+
+323. g.y.GET /dogs/1.0/get-home-services-spike-campaign-all-deals
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 449249
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/get-home-services-spike-campaign-all-deals",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetHomeServicesSpikeCampaignAllDeals}
+
+324. g.y.GET /dogs/1.0/get-home-services-spike-campaign-flash-deals
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 449441
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/get-home-services-spike-campaign-flash-deals",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetHomeServicesSpikeCampaignFlashDeals}
+
+325. g.y.GET /dogs/1.0/get-spike-campaign-deal
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 449637
+Registration: registerEndpoint({method:g.y.GET,pathname:"/dogs/1.0/get-spike-campaign-deal",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetSpikeCampaignDeal}
+
+326. g.y.POST /dogs/1.0/schedule-spike-campaign-deal-reminder
+Source file: web-assets/cc4919ae5cd0f2a7.min.js
+Offset: 449794
+Registration: registerEndpoint({method:g.y.POST,pathname:"/dogs/1.0/schedule-spike-campaign-deal-reminder",protoRootName:v,protoServiceMethodDefinition:s.HeU.ScheduleSpikeCampaignDealReminder}

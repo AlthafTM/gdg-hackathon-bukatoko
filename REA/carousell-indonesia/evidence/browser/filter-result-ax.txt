@@ -1,0 +1,887 @@
+- banner:
+  - button "Skip to content"
+  - button "Carousell logo":
+    - img "Carousell logo"
+  - textbox "Search":
+    - /placeholder: Search for an item
+    - text: iphone 13
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Search_ATF_0"] [name="google_ads_iframe_/325540922/Desktop_Search_ATF_0"]:
+    - iframe:
+      - link:
+        - /url: https://app.adroll.com/optout/
+      - link:
+        - /url: http://d.adroll.com/click/?adroll_insertion_id=8d569c41b4375d3b861489ec32b76984&adroll_height=250&adroll_width=970&site_url=http%3A//id.carousell.com&adroll_ad_payload=__HIA9IBkwHFA7_IA7sAAY1TS4gcRRie7o1RWAlmhQE9iegiuNPT1e8ODkvPznt7ZmcfMzuzBNt-1M50dnq6d7ons7uCrAcPgnoyEuJBkSDoPSdvSYVo7Bo96EHQ5BKQQMhBb9EFqzfkEhUtqK-o4quq7___77-VWqRRWqs1hRovbG61y8VOs9LVZV5vdWZQutbIi3pLXtdL5Wa71JLaK2Jd1k-gtFCraFW5tcrXlgrtSrnBd9c1QXjuOjXqR1EQnslmJ5MJ49qM7XvZQZCFw6wXZYRF2_SCnCLwrDo_jjwj9McjG-ZMZ3S89aDjjr2c44bBwNw_PkoumG5vmNMKa8Z6UQtdkzOKDaNaMJojPzQKD7mGrunH_AiOvNzAHDy87A8jOIxyXiTME5YNvWTnOoxtjvxxCAeDRN88-d4euA7RJXMAEBR4oCg8L0uA5QUBqIosKioLFI4FLGHbUa6nJSO_K49XvQNpY3O5JmkrO9WyVehINbClwKK7PzHOlx0uf67sy5PmlpAvsJy-UjHW8nV1V-0p4sQLl8yNSlgdNPrlqF4N652aIzT39e22uDbIb4l75a7Ube21dDuCy6Do7E1qnX4T-m6x0y43hpOVA3PjwCo_j9KdeqvVqemNjZLWzReWK5VqfknOKygtlUrCanNTqJdKzWajXGzV2-186Qy-efk1dNoiKdkxLH_PCEau7Q57pRtz9IP7n6Pp9MMrv310eOPo4r0fbz-9fPVsavyJGWRItaI-NMMoA6z4XfTM44mMLyF6RYs_np67f2c-_vQfCJ-l4stz8TeXgpHvjO3I9YfxTfSKI1iQ2952bIWslm3xKnRk24GWCgBQRZGVHWKZbSH-9t8cGcdE-fd3vzj66s69nz64-Eh5jFEq_pXMBz_MHMZ_JPBnAkcXWEaURUzNIMrC1Bw6RWrLAJYBvMwAIGDqJZTClPr3CDC1iF78bytiSpum6LtXMHU2eeiNBMwEHDQTBTamXESRt3aSoyF6AZBYHZsTocKJQBAtxxIdWRV5XjQtlZMhpnYJMSTzvauYeh-9-qjJHpeXDaE5svtZN-j7Q_gy8SuPqd8R5WC6QwS9cwHTXXQq3A3GPeO8bHCiIfCY3rqG6deJJTDtTVNP3X4T07t49jSm30LZnul5puF6pGABHJFuDALoLGQAz4iCJC8AhmNlWV3ISAwvSYqE6UM0qzJJ36gwwyqY_vp_REdPf04962ZYWTRNCFTb5oEo8omy79CM6Ub4hH4NP_ElmiUqwgAS3wx7-OQ-Sd7Jtwk8-UsCt1DqL8QMSzN5KEO4pksSsgeT&adroll_subnetwork=r&cpm=au7kJgAAAAAy4VvU2nt5I-KTM_2pANiYWeJFgQ&adroll_network=index&s=091726F265FEFCA5&desturl=https%3A//www.ic.com/lp/en/mt-4%3Fcamp%3D84309%26utm_source%3Dadr%26utm_medium%3Ddisplay%26utm_campaign%3DADR_SEAsia2_EN_ID_Pros_Display_LAL%26utm_term%3Dlal%26utm_content%3Dmt4%26placement%3Did.carousell.com%26adrclid%3D8472118474318833761034419875890182010%26adct%3DgAAAAABq7uQmDC3Qis2pIM_ZzIH-H1ZUqYTP8oy_qaG-125jYEwzTnJ-hruI5hNoB1o0ODz4fyJ09qryB0PyQ-z4GKS6lHtQPCdXxakJVPF7cOVj_b02BHIYWrJ3eOrHGkuTOksYFGks
+  - list:
+    - link "Home":
+      - /url: /
+      - paragraph: Home
+    - paragraph: Search results for "iphone 13"
+  - button "Category Icon chevron down":
+    - generic: Category
+    - img "Icon chevron down"
+  - button "Sort:Best Match":
+    - generic: Sort:Best Match
+  - button "Model":
+    - generic: Model
+  - button "Storage":
+    - generic: Storage
+  - button "Color":
+    - generic: Color
+  - button "Condition":
+    - generic: Condition
+  - button "Rp 3000000-Rp 6000000":
+    - generic: Rp 3000000-Rp 6000000
+  - button "More filters 1":
+    - generic: More filters
+    - paragraph: "1"
+  - button "Clear all"
+  - heading "1,000+ search results for 'Iphone 13' in Indonesia" [level=1]
+  - paragraph: Save this search
+  - button:
+  - link "Avatar hokiponsel 3 hours ago":
+    - /url: /u/hokiponsel/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: hokiponsel
+    - paragraph: 3 hours ago
+  - link "Iphone 13 128 Inter Nominus Iphone 13 128 Inter Nominus Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-128-inter-nominus-1472678435/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=0
+    - img "Iphone 13 128 Inter Nominus"
+    - paragraph: Iphone 13 128 Inter Nominus
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "Avatar hd.3sna 2 hours ago":
+    - /url: /u/hd.3sna/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - img "Avatar"
+    - paragraph: hd.3sna
+    - paragraph: 2 hours ago
+  - link "Dijual•Iphone 13 Blue 128GB Terdaftar Fullset Dijual•Iphone 13 Blue 128GB Terdaftar Fullset Rp 5,200,000 Lightly used":
+    - /url: /p/dijual•iphone-13-blue-128gb-terdaftar-fullset-1472683996/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=1
+    - img "Dijual•Iphone 13 Blue 128GB Terdaftar Fullset"
+    - paragraph: Dijual•Iphone 13 Blue 128GB Terdaftar Fullset
+    - paragraph: Rp 5,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "rvstoresolo 2 hours ago":
+    - /url: /u/rvstoresolo/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rvstoresolo
+    - paragraph: 2 hours ago
+  - link "iPhone 13 128gb inter allop iPhone 13 128gb inter allop Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-128gb-inter-allop-1472683583/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=2
+    - img "iPhone 13 128gb inter allop"
+    - paragraph: iPhone 13 128gb inter allop
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "khnfn 15 hours ago":
+    - /url: /u/khnfn/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: khnfn
+    - paragraph: 15 hours ago
+  - link "Iphone 13 mini 128gb Bea Cukai Iphone 13 mini 128gb Bea Cukai Rp 6,000,000 Lightly used":
+    - /url: /p/iphone-13-mini-128gb-bea-cukai-1472614375/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=3
+    - img "Iphone 13 mini 128gb Bea Cukai"
+    - paragraph: Iphone 13 mini 128gb Bea Cukai
+    - paragraph: Rp 6,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "ahmadaryan45528 9 hours ago":
+    - /url: /u/ahmadaryan45528/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: ahmadaryan45528
+    - paragraph: 9 hours ago
+  - link "Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved Rp 5,500,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-inter-alloperator-mulus-nominus-preloved-1472629068/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=5
+    - img "Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved"
+    - paragraph: Iphone 13 128Gb Pink Inter AllOperator Mulus NoMinus preloved
+    - paragraph: Rp 5,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "cynnthiagrace 1 day ago":
+    - /url: /u/cynnthiagrace/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: cynnthiagrace
+    - paragraph: 1 day ago
+  - link "Iphone 13 pink 128 GB inter Iphone 13 pink 128 GB inter Rp 4,500,000 Lightly used":
+    - /url: /p/iphone-13-pink-128-gb-inter-1472462712/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=6
+    - img "Iphone 13 pink 128 GB inter"
+    - paragraph: Iphone 13 pink 128 GB inter
+    - paragraph: Rp 4,500,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "zealcat-82e9 17 hours ago":
+    - /url: /u/zealcat-82e9/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: zealcat-82e9
+    - paragraph: 17 hours ago
+  - link "Iphone 13 second Iphone 13 second Rp 5,000,000 Like new":
+    - /url: /p/iphone-13-second-1472600348/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=7
+    - img "Iphone 13 second"
+    - paragraph: Iphone 13 second
+    - paragraph: Rp 5,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "nawastore 2 days ago":
+    - /url: /u/nawastore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: nawastore
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK IPHONE 13 128GB PINK Rp 5,200,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-1472398231/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=8
+    - img "IPHONE 13 128GB PINK"
+    - paragraph: IPHONE 13 128GB PINK
+    - paragraph: Rp 5,200,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "sixpath_id 2 days ago":
+    - /url: /u/sixpath_id/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: sixpath_id
+    - paragraph: 2 days ago
+  - link "Iphone 13 128GB Inter Iphone 13 128GB Inter Rp 5,800,000 Lightly used":
+    - /url: /p/iphone-13-128gb-inter-1472388790/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=9
+    - img "Iphone 13 128GB Inter"
+    - paragraph: Iphone 13 128GB Inter
+    - paragraph: Rp 5,800,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "chastorey 15 hours ago":
+    - /url: /u/chastorey/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: chastorey
+    - paragraph: 15 hours ago
+  - link "IPHONE 13 SEC IBOX IPHONE 13 SEC IBOX Rp 3,000,000 Lightly used":
+    - /url: /p/iphone-13-sec-ibox-1472613189/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=10
+    - img "IPHONE 13 SEC IBOX"
+    - paragraph: IPHONE 13 SEC IBOX
+    - paragraph: Rp 3,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+  - link "epicbear.db58f5 2 days ago":
+    - /url: /u/epicbear.db58f5/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: epicbear.db58f5
+    - paragraph: 2 days ago
+  - link "Iphone 13 Inter Iphone 13 Inter Rp 5,000,000 Brand new":
+    - /url: /p/iphone-13-inter-1472444490/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=11
+    - img "Iphone 13 Inter"
+    - paragraph: Iphone 13 Inter
+    - paragraph: Rp 5,000,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - paragraph: Advertisement
+  - link "rhcell 17 hours ago":
+    - /url: /u/rhcell/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rhcell
+    - paragraph: 17 hours ago
+  - link "iPhone 13 128gb ibox iPhone 13 128gb ibox Rp 5,800,000 Like new":
+    - /url: /p/iphone-13-128gb-ibox-1472599808/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=13
+    - img "iPhone 13 128gb ibox"
+    - paragraph: iPhone 13 128gb ibox
+    - paragraph: Rp 5,800,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "radif.806 2 days ago":
+    - /url: /u/radif.806/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: radif.806
+    - paragraph: 2 days ago
+  - link "iPhone 13 128 GB Hijau Inter Wi-Fi Only iPhone 13 128 GB Hijau Inter Wi-Fi Only Rp 4,700,000 Well used":
+    - /url: /p/iphone-13-128-gb-hijau-inter-wi-fi-only-1472369163/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=14
+    - img "iPhone 13 128 GB Hijau Inter Wi-Fi Only"
+    - paragraph: iPhone 13 128 GB Hijau Inter Wi-Fi Only
+    - paragraph: Rp 4,700,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "zencomshop 2 days ago":
+    - /url: /u/zencomshop/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: zencomshop
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS Rp 4,950,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-no-minus-super-mulus-fullset-no-minus-1472323036/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=15
+    - img "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS"
+    - paragraph: IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS
+    - paragraph: Rp 4,950,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "masssss6666 4 days ago":
+    - /url: /u/masssss6666/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: masssss6666
+    - paragraph: 4 days ago
+  - link "iPhone 13 128gb fullset mulus iPhone 13 128gb fullset mulus Rp 4,700,000 Like new":
+    - /url: /p/iphone-13-128gb-fullset-mulus-1471998139/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=16
+    - img "iPhone 13 128gb fullset mulus"
+    - paragraph: iPhone 13 128gb fullset mulus
+    - paragraph: Rp 4,700,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "rizkihasann 4 hours ago":
+    - /url: /u/rizkihasann/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: rizkihasann
+    - paragraph: 4 hours ago
+  - 'link "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap Forsale : Iphone 13 Blue 128GB terdaftar Lengkap Rp 5,200,000 Lightly used"':
+    - /url: /p/forsale-iphone-13-blue-128gb-terdaftar-lengkap-1472666425/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=17
+    - 'img "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap"'
+    - paragraph: "Forsale : Iphone 13 Blue 128GB terdaftar Lengkap"
+    - paragraph: Rp 5,200,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "spillbyant 1 day ago":
+    - /url: /u/spillbyant/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: spillbyant
+    - paragraph: 1 day ago
+  - link "iPhone 13 Pro 128 gb inter all operator iPhone 13 Pro 128 gb inter all operator Rp 6,000,000 Well used":
+    - /url: /p/iphone-13-pro-128-gb-inter-all-operator-1472511180/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=18
+    - img "iPhone 13 Pro 128 gb inter all operator"
+    - paragraph: iPhone 13 Pro 128 gb inter all operator
+    - paragraph: Rp 6,000,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "pinokioooo 3 days ago":
+    - /url: /u/pinokioooo/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: pinokioooo
+    - paragraph: 3 days ago
+  - link "iPhone 13 second iPhone 13 second Rp 5,000,000 Lightly used":
+    - /url: /p/iphone-13-second-1472253369/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=19
+    - img "iPhone 13 second"
+    - paragraph: iPhone 13 second
+    - paragraph: Rp 5,000,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "younghomz__ 5 days ago":
+    - /url: /u/younghomz__/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: younghomz__
+    - paragraph: 5 days ago
+  - link "iPhone 13 128Gb Inter BH 87% iPhone 13 128Gb Inter BH 87% Rp 5,700,000 Well used":
+    - /url: /p/iphone-13-128gb-inter-bh-87-1471779391/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=20
+    - img "iPhone 13 128Gb Inter BH 87%"
+    - paragraph: iPhone 13 128Gb Inter BH 87%
+    - paragraph: Rp 5,700,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "wellytri0113197 12 hours ago":
+    - /url: /u/wellytri0113197/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: wellytri0113197
+    - paragraph: 12 hours ago
+  - link "Iphone 13 Inter 256 GB warna Pink Iphone 13 Inter 256 GB warna Pink Rp 5,300,000 Like new":
+    - /url: /p/iphone-13-inter-256-gb-warna-pink-1472622446/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=21
+    - img "Iphone 13 Inter 256 GB warna Pink"
+    - paragraph: Iphone 13 Inter 256 GB warna Pink
+    - paragraph: Rp 5,300,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "sangpemimp50940 5 days ago":
+    - /url: /u/sangpemimp50940/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: sangpemimp50940
+    - paragraph: 5 days ago
+  - link "Iphone 13 128gb mulus fullset Iphone 13 128gb mulus fullset Rp 4,700,000 Well used":
+    - /url: /p/iphone-13-128gb-mulus-fullset-1471702063/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=22
+    - img "Iphone 13 128gb mulus fullset"
+    - paragraph: Iphone 13 128gb mulus fullset
+    - paragraph: Rp 4,700,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "achmad245 5 days ago":
+    - /url: /u/achmad245/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: achmad245
+    - paragraph: 5 days ago
+  - link "iPhone 13 128gb mulus fulset iPhone 13 128gb mulus fulset Rp 4,700,000 Well used":
+    - /url: /p/iphone-13-128gb-mulus-fulset-1471701748/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=23
+    - img "iPhone 13 128gb mulus fulset"
+    - paragraph: iPhone 13 128gb mulus fulset
+    - paragraph: Rp 4,700,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "new_buluk 2 days ago":
+    - /url: /u/new_buluk/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: new_buluk
+    - paragraph: 2 days ago
+  - link "IPHONE 13 MINI 128 GB IPHONE 13 MINI 128 GB Rp 5,100,000 Like new":
+    - /url: /p/iphone-13-mini-128-gb-1472284325/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=25
+    - img "IPHONE 13 MINI 128 GB"
+    - paragraph: IPHONE 13 MINI 128 GB
+    - paragraph: Rp 5,100,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "dan_cowx 4 hours ago":
+    - /url: /u/dan_cowx/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: dan_cowx
+    - paragraph: 4 hours ago
+  - link "iPhone 13 256gb inter iPhone 13 256gb inter Rp 4,700,000 Lightly used":
+    - /url: /p/iphone-13-256gb-inter-1472667953/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=27
+    - img "iPhone 13 256gb inter"
+    - paragraph: iPhone 13 256gb inter
+    - paragraph: Rp 4,700,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "youngdeer.baad41 5 days ago":
+    - /url: /u/youngdeer.baad41/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: youngdeer.baad41
+    - paragraph: 5 days ago
+  - link "iPhone 13 128gb inter iPhone 13 128gb inter Rp 4,500,000 Like new":
+    - /url: /p/iphone-13-128gb-inter-1471771634/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=28
+    - img "iPhone 13 128gb inter"
+    - paragraph: iPhone 13 128gb inter
+    - paragraph: Rp 4,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "dlegacy022 7 days ago":
+    - /url: /u/dlegacy022/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: dlegacy022
+    - paragraph: 7 days ago
+  - link "iphone 13 128gb iphone 13 128gb Rp 5,500,000 Like new":
+    - /url: /p/iphone-13-128gb-1471311576/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=29
+    - img "iphone 13 128gb"
+    - paragraph: iphone 13 128gb
+    - paragraph: Rp 5,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "8"
+  - link "derr10 2 days ago":
+    - /url: /u/derr10/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: derr10
+    - paragraph: 2 days ago
+  - link "Iphone 13 basic 128 gb all operator Iphone 13 basic 128 gb all operator Rp 4,800,000 Like new":
+    - /url: /p/iphone-13-basic-128-gb-all-operator-1472372581/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=30
+    - img "Iphone 13 basic 128 gb all operator"
+    - paragraph: Iphone 13 basic 128 gb all operator
+    - paragraph: Rp 4,800,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "zidanmtf 2 days ago":
+    - /url: /u/zidanmtf/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: zidanmtf
+    - paragraph: 2 days ago
+  - link "IPHONE 13 STARLIGHT 256GB INTER ALL OPERATOR IPHONE 13 STARLIGHT 256GB INTER ALL OPERATOR Rp 5,999,999 Like new":
+    - /url: /p/iphone-13-starlight-256gb-inter-all-operator-1472394624/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=31
+    - img "IPHONE 13 STARLIGHT 256GB INTER ALL OPERATOR"
+    - paragraph: IPHONE 13 STARLIGHT 256GB INTER ALL OPERATOR
+    - paragraph: Rp 5,999,999
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "dzakyyy 3 days ago":
+    - /url: /u/dzakyyy/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: dzakyyy
+    - paragraph: 3 days ago
+  - link "iphone 13 mini 128 inter fulset iphone 13 mini 128 inter fulset Rp 4,550,000 Like new":
+    - /url: /p/iphone-13-mini-128-inter-fulset-1472157587/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=32
+    - img "iphone 13 mini 128 inter fulset"
+    - paragraph: iphone 13 mini 128 inter fulset
+    - paragraph: Rp 4,550,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "phonesec 6 days ago":
+    - /url: /u/phonesec/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: phonesec
+    - paragraph: 6 days ago
+  - link "IPHONE 13 MINI 128 GB IPHONE 13 MINI 128 GB Rp 4,900,000 Like new":
+    - /url: /p/iphone-13-mini-128-gb-1471659136/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=33
+    - img "IPHONE 13 MINI 128 GB"
+    - paragraph: IPHONE 13 MINI 128 GB
+    - paragraph: Rp 4,900,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "bils_phone 4 days ago":
+    - /url: /u/bils_phone/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: bils_phone
+    - paragraph: 4 days ago
+  - link "Jual Butuh iPhone 13 128Gb. Perfect Mulus Nominus. Jual Butuh iPhone 13 128Gb. Perfect Mulus Nominus. Rp 5,400,000 Lightly used":
+    - /url: /p/jual-butuh-iphone-13-128gb-perfect-mulus-nominus-1471937875/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=34
+    - img "Jual Butuh iPhone 13 128Gb. Perfect Mulus Nominus."
+    - paragraph: Jual Butuh iPhone 13 128Gb. Perfect Mulus Nominus.
+    - paragraph: Rp 5,400,000
+    - paragraph: Lightly used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "reselleriphone. 3 days ago":
+    - /url: /u/reselleriphone./?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: reselleriphone.
+    - paragraph: 3 days ago
+  - link "iPhone 13 basic 128gb inter iPhone 13 basic 128gb inter Rp 5,500,000 Well used":
+    - /url: /p/iphone-13-basic-128gb-inter-1472193881/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=35
+    - img "iPhone 13 basic 128gb inter"
+    - paragraph: iPhone 13 basic 128gb inter
+    - paragraph: Rp 5,500,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "tioanang77 7 days ago":
+    - /url: /u/tioanang77/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: tioanang77
+    - paragraph: 7 days ago
+  - link "iPhone 13 128GB iPhone 13 128GB Rp 3,000,000 Like new":
+    - /url: /p/iphone-13-128gb-1471303606/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=36
+    - img "iPhone 13 128GB"
+    - paragraph: iPhone 13 128GB
+    - paragraph: Rp 3,000,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "fadelfatih31867 1 day ago":
+    - /url: /u/fadelfatih31867/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: fadelfatih31867
+    - paragraph: 1 day ago
+  - link "iphone 13 inter all oprator iphone 13 inter all oprator Rp 4,750,000 Well used":
+    - /url: /p/iphone-13-inter-all-oprator-1472519315/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=37
+    - img "iphone 13 inter all oprator"
+    - paragraph: iphone 13 inter all oprator
+    - paragraph: Rp 4,750,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "quickwater-9a68 12 days ago":
+    - /url: /u/quickwater-9a68/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: quickwater-9a68
+    - paragraph: 12 days ago
+  - link "IPHONE 13 128 GB INTER IPHONE 13 128 GB INTER Rp 5,300,000 Brand new":
+    - /url: /p/iphone-13-128-gb-inter-1470545217/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=38
+    - img "IPHONE 13 128 GB INTER"
+    - paragraph: IPHONE 13 128 GB INTER
+    - paragraph: Rp 5,300,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - paragraph: How satisfied are you with these search results?
+  - button "Very dissatisfied":
+    - paragraph: Very dissatisfied
+  - button "Dissatisfied":
+  - button "Neutral":
+  - button "Satisfied":
+  - button "Very satisfied":
+    - paragraph: Very satisfied
+  - link "potato.shop888 2 days ago":
+    - /url: /u/potato.shop888/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: potato.shop888
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS Rp 4,950,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-no-minus-super-mulus-fullset-no-minus-1472323028/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=39
+    - img "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS"
+    - paragraph: IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS
+    - paragraph: Rp 4,950,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "iseestore 5 days ago":
+    - /url: /u/iseestore/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: iseestore
+    - paragraph: 5 days ago
+  - link "iphone 13 128gb inter all operator iphone 13 128gb inter all operator Rp 5,500,000 Like new":
+    - /url: /p/iphone-13-128gb-inter-all-operator-1471757008/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=40
+    - img "iphone 13 128gb inter all operator"
+    - paragraph: iphone 13 128gb inter all operator
+    - paragraph: Rp 5,500,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "ibrahimazr78986 4 days ago":
+    - /url: /u/ibrahimazr78986/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: ibrahimazr78986
+    - paragraph: 4 days ago
+  - link "iPhone 13 mini Digimap iPhone 13 mini Digimap Rp 5,000,000 Heavily used":
+    - /url: /p/iphone-13-mini-digimap-1471875884/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=41
+    - img "iPhone 13 mini Digimap"
+    - paragraph: iPhone 13 mini Digimap
+    - paragraph: Rp 5,000,000
+    - paragraph: Heavily used
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "jo.gadget 2 days ago":
+    - /url: /u/jo.gadget/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: jo.gadget
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS Rp 4,950,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-no-minus-super-mulus-fullset-no-minus-1472323031/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=42
+    - img "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS"
+    - paragraph: IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS
+    - paragraph: Rp 4,950,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "marsya_99 10 days ago":
+    - /url: /u/marsya_99/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: marsya_99
+    - paragraph: 10 days ago
+  - link "iPhone 13 MINI 128 (nego) iPhone 13 MINI 128 (nego) Rp 4,650,000 Like new":
+    - /url: /p/iphone-13-mini-128-nego-1470878934/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=43
+    - img "iPhone 13 MINI 128 (nego)"
+    - paragraph: iPhone 13 MINI 128 (nego)
+    - paragraph: Rp 4,650,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "epicbear.db58f5 2 days ago":
+    - /url: /u/epicbear.db58f5/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: epicbear.db58f5
+    - paragraph: 2 days ago
+  - link "Iphone 13 Inter (Good condition!) Iphone 13 Inter (Good condition!) Rp 5,000,000 Brand new":
+    - /url: /p/iphone-13-inter-good-condition-1472445489/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=44
+    - img "Iphone 13 Inter (Good condition!)"
+    - paragraph: Iphone 13 Inter (Good condition!)
+    - paragraph: Rp 5,000,000
+    - paragraph: Brand new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "achmad245 5 days ago":
+    - /url: /u/achmad245/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: achmad245
+    - paragraph: 5 days ago
+  - link "iPhone 13 mini 128gb mulus nominus iPhone 13 mini 128gb mulus nominus Rp 4,200,000 Well used":
+    - /url: /p/iphone-13-mini-128gb-mulus-nominus-1471705515/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=45
+    - img "iPhone 13 mini 128gb mulus nominus"
+    - paragraph: iPhone 13 mini 128gb mulus nominus
+    - paragraph: Rp 4,200,000
+    - paragraph: Well used
+    - paragraph
+  - button "Like":
+    - generic: "3"
+  - link "masssss6666 4 days ago":
+    - /url: /u/masssss6666/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: masssss6666
+    - paragraph: 4 days ago
+  - link "iPhone 13 mini 128gb fullset mulus no minus iPhone 13 mini 128gb fullset mulus no minus Rp 4,100,000 Like new":
+    - /url: /p/iphone-13-mini-128gb-fullset-mulus-no-minus-1471999246/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=46
+    - img "iPhone 13 mini 128gb fullset mulus no minus"
+    - paragraph: iPhone 13 mini 128gb fullset mulus no minus
+    - paragraph: Rp 4,100,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "2"
+  - link "phonesec 6 days ago":
+    - /url: /u/phonesec/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: phonesec
+    - paragraph: 6 days ago
+  - link "IPHONE 13 MINI 128 GB IPHONE 13 MINI 128 GB Rp 4,900,000 Like new":
+    - /url: /p/iphone-13-mini-128-gb-1471659124/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=47
+    - img "IPHONE 13 MINI 128 GB"
+    - paragraph: IPHONE 13 MINI 128 GB
+    - paragraph: Rp 4,900,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+  - link "ahmadaryan45528 4 days ago":
+    - /url: /u/ahmadaryan45528/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: ahmadaryan45528
+    - paragraph: 4 days ago
+  - link "Iphone 13 128gb red inter all operator preloved Iphone 13 128gb red inter all operator preloved Rp 5,600,000 Like new":
+    - /url: /p/iphone-13-128gb-red-inter-all-operator-preloved-1472002449/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=48
+    - img "Iphone 13 128gb red inter all operator preloved"
+    - paragraph: Iphone 13 128gb red inter all operator preloved
+    - paragraph: Rp 5,600,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "new_buluk 2 days ago":
+    - /url: /u/new_buluk/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: new_buluk
+    - paragraph: 2 days ago
+  - link "IPHONE 13 BASIC 128 GB IPHONE 13 BASIC 128 GB Rp 5,700,000 Like new":
+    - /url: /p/iphone-13-basic-128-gb-1472284089/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=49
+    - img "IPHONE 13 BASIC 128 GB"
+    - paragraph: IPHONE 13 BASIC 128 GB
+    - paragraph: Rp 5,700,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - link "igzstore.vin 2 days ago":
+    - /url: /u/igzstore.vin/?t-id=dzeZZbvrUB_1794040760425&t-source=search_results&t-source_query=iphone%252013
+    - paragraph: igzstore.vin
+    - paragraph: 2 days ago
+  - link "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS Rp 4,950,000 Like new":
+    - /url: /p/iphone-13-128gb-pink-no-minus-super-mulus-fullset-no-minus-1472323026/?t-id=dzeZZbvrUB_1794040760425&t-referrer_browse_type=search_results&t-referrer_filter_price_max=6000000&t-referrer_filter_price_min=3000000&t-referrer_page_type=search&t-referrer_request_id=S5cxV9Jf7_nKzc4K&t-referrer_search_query=iphone%2013&t-referrer_search_query_source=direct_search&t-tap_index=50
+    - img "IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS"
+    - paragraph: IPHONE 13 128GB PINK NO MINUS SUPER MULUS FULLSET NO MINUS
+    - paragraph: Rp 4,950,000
+    - paragraph: Like new
+    - paragraph
+  - button "Like":
+    - generic: "1"
+  - button "Show more results"
+- contentinfo:
+  - heading "Top searches" [level=6]
+  - list:
+    - link "pants":
+      - /url: /pants/q/
+    - text: "|"
+    - link "hoodie":
+      - /url: /hoodie/q/
+    - text: "|"
+    - link "dior":
+      - /url: /dior/q/
+    - text: "|"
+    - link "clarks":
+      - /url: /clarks/q/
+    - text: "|"
+    - link "outer":
+      - /url: /outer/q/
+    - text: "|"
+    - link "bucket hat":
+      - /url: /bucket-hat/q/
+    - text: "|"
+    - link "raket padel":
+      - /url: /raket-padel/q/
+    - text: "|"
+    - link "shopatvelvet":
+      - /url: /shopatvelvet/q/
+    - text: "|"
+    - link "herschel":
+      - /url: /herschel/q/
+    - text: "|"
+    - link "lululemon":
+      - /url: /lululemon/q/
+    - text: "|"
+    - link "mango":
+      - /url: /mango/q/
+    - text: "|"
+    - link "balenciaga":
+      - /url: /balenciaga/q/
+    - text: "|"
+    - link "knit":
+      - /url: /knit/q/
+    - text: "|"
+    - link "sendal":
+      - /url: /sendal/q/
+    - text: "|"
+    - link "rok jeans":
+      - /url: /rok-jeans/q/
+    - text: "|"
+    - link "maison margiela":
+      - /url: /maison-margiela/q/
+    - text: "|"
+    - link "iphone 11 ibox":
+      - /url: /iphone-11-ibox/q/
+    - text: "|"
+    - link "claude":
+      - /url: /claude/q/
+    - text: "|"
+    - link "lebaran":
+      - /url: /lebaran/q/
+    - text: "|"
+    - link "fred perry":
+      - /url: /fred-perry/q/
+    - text: "|"
+    - link "hair dryer":
+      - /url: /hair-dryer/q/
+    - text: "|"
+    - link "labubu":
+      - /url: /labubu/q/
+    - text: "|"
+    - link "patagonia":
+      - /url: /patagonia/q/
+    - text: "|"
+    - link "morningsol":
+      - /url: /morningsol/q/
+    - text: "|"
+    - link "popmart":
+      - /url: /popmart/q/
+    - text: "|"
+    - link "thanksinsomnia":
+      - /url: /thanksinsomnia/q/
+    - text: "|"
+    - link "mothercare":
+      - /url: /mothercare/q/
+    - text: "|"
+    - link "tas":
+      - /url: /tas/q/
+    - text: "|"
+    - link "tas wanita":
+      - /url: /tas-wanita/q/
+    - text: "|"
+    - link "mukena":
+      - /url: /mukena/q/
+    - text: "|"
+    - link "batik":
+      - /url: /batik/q/
+    - text: "|"
+    - link "colorbox":
+      - /url: /colorbox/q/
+    - text: "|"
+    - link "cheongsam":
+      - /url: /cheongsam/q/
+    - text: "|"
+    - link "iphone 12":
+      - /url: /iphone-12/q/
+    - text: "|"
+    - link "adidas samba":
+      - /url: /adidas-samba/q/
+    - text: "|"
+    - link "charles and keith":
+      - /url: /charles-and-keith/q/
+    - text: "|"
+    - link "off shoulder":
+      - /url: /off-shoulder/q/
+    - text: "|"
+    - link "hp":
+      - /url: /hp/q/
+    - text: "|"
+    - link "kucing":
+      - /url: /kucing/q/
+    - text: "|"
+    - link "koper":
+      - /url: /koper/q/
+    - text: "|"
+    - link "sepatu running":
+      - /url: /sepatu-running/q/
+    - text: "|"
+    - link "iwatch":
+      - /url: /iwatch/q/
+    - text: "|"
+    - link "kemeja putih":
+      - /url: /kemeja-putih/q/
+    - text: "|"
+    - link "boots":
+      - /url: /boots/q/
+    - text: "|"
+    - link "flatshoes":
+      - /url: /flatshoes/q/
+    - text: "|"
+    - link "tumblr":
+      - /url: /tumblr/q/
+    - text: "|"
+    - link "ipad pro":
+      - /url: /ipad-pro/q/
+    - text: "|"
+    - link "jorts":
+      - /url: /jorts/q/
+    - text: "|"
+    - link "topi":
+      - /url: /topi/q/
+    - text: "|"
+    - link "nintendo switch":
+      - /url: /nintendo-switch/q/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

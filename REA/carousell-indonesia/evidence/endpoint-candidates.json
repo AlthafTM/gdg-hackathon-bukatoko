@@ -1,0 +1,2284 @@
+[
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 396277,
+    "path": "/ads/1.0/ad-config/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/ads/1.0/ad-config/\",protoRootName:v,protoServiceMethodDefinition:n.vO.GetAdConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 396414,
+    "path": "/vlq/1.0/auto-renewal/discovery/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/vlq/1.0/auto-renewal/discovery/\",protoRootName:v,protoServiceMethodDefinition:s.VL5.GetRenewalDiscovery}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 396569,
+    "path": "/vlq/1.0/auto-renewal/status/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/vlq/1.0/auto-renewal/status/\",protoRootName:v,protoServiceMethodDefinition:s.VL5.UpdateRenewalStatus}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 396721,
+    "path": "/property-leads/1.0/download",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/property-leads/1.0/download\",protoRootName:v,protoServiceMethodDefinition:s.dxr.DownloadLeadsForSeller}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 396875,
+    "path": "/property-leads/1.0/has-subscription",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/property-leads/1.0/has-subscription\",protoRootName:v,protoServiceMethodDefinition:s.dxr.HasSubscriptionToDownloadLead}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397043,
+    "path": "/property-leads/1.0/term-agreement",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/property-leads/1.0/term-agreement\",protoRootName:v,protoServiceMethodDefinition:s.dxr.GetDownloadLeadTermAgreement}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397208,
+    "path": "/property-leads/1.0/agree-on-term",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/property-leads/1.0/agree-on-term\",protoRootName:v,protoServiceMethodDefinition:s.dxr.AgreeOnDownloadLeadTerm}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397368,
+    "path": "/pocket/createprofilecollection",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/createprofilecollection\",protoRootName:v,protoServiceMethodDefinition:s.nOP.CreateProfileCollection}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397526,
+    "path": "/pocket/getprofilecollection",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/getprofilecollection\",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollection}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397678,
+    "path": "/pocket/getprofilecollectionitems",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/getprofilecollectionitems\",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollectionItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397840,
+    "path": "/pocket/deleteprofilecollection",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/deleteprofilecollection\",protoRootName:v,protoServiceMethodDefinition:s.nOP.DeleteProfileCollection}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 397998,
+    "path": "/pocket/getmylistings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/getmylistings\",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetMyListings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398136,
+    "path": "/pocket/createprofilecollectionitems",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/createprofilecollectionitems\",protoRootName:v,protoServiceMethodDefinition:s.nOP.CreateProfileCollectionItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398304,
+    "path": "/pocket/deleteprofilecollectionitems",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/deleteprofilecollectionitems\",protoRootName:v,protoServiceMethodDefinition:s.nOP.DeleteProfileCollectionItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398472,
+    "path": "/pocket/updateprofilecollection",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/updateprofilecollection\",protoRootName:v,protoServiceMethodDefinition:s.nOP.UpdateProfileCollection}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398630,
+    "path": "/user/1.0/check-phishing-warning",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/check-phishing-warning\",protoRootName:v,protoServiceMethodDefinition:p.qR.PhishingWarningChecker}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398787,
+    "path": "/sell/1.0/bp-onboarding-info",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/bp-onboarding-info\",protoResponseType:\"BPOnboardingInfoResponse\",protoRootName:v}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 398927,
+    "path": "/sell/1.0/calculate-seller-earnings",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/calculate-seller-earnings\",protoResponseType:\"CalculateSellerEarningsResponse\",protoRootName:v}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399081,
+    "path": "/sell/1.0/cgproduct/picker",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/sell/1.0/cgproduct/picker\",protoRootName:v,protoServiceMethodDefinition:d.qY.CGProductPicker}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399225,
+    "path": "/sell/1.0/ap-mobile-overall-condition",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/sell/1.0/ap-mobile-overall-condition\",protoRootName:v,protoServiceMethodDefinition:d.qY.CalculateAPMobileOverallCondition}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399398,
+    "path": "/sell/1.0/userfeature",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/userfeature\",protoRootName:v,protoServiceMethodDefinition:d.Px.GetUserFeature}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399535,
+    "path": "/sell/1.0/onboarding/integrated-delivery",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/onboarding/integrated-delivery\",protoRootName:v,protoServiceMethodDefinition:d.sF.GetIntegratedDeliveryOnboardingInfo}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399712,
+    "path": "/sell/1.0/seller-promotions-preview",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/sell/1.0/seller-promotions-preview\",protoRootName:v,protoServiceMethodDefinition:d.R8.PreviewSellerPromotion}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 399872,
+    "path": "/sell/1.0/seller-funded-promotions",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/seller-funded-promotions\",protoRootName:v,protoServiceMethodDefinition:d.R8.SellerFundedPromotions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400030,
+    "path": "/sell/1.0/seller-preferences",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/seller-preferences\",protoRootName:v,protoServiceMethodDefinition:d.sF.GetSellerPreferences}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400180,
+    "path": "/sell/1.0/seller-preferences/buy-button-config",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/sell/1.0/seller-preferences/buy-button-config\",protoRootName:v,protoServiceMethodDefinition:d.sF.SetBuyButtonConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400347,
+    "path": "/sell/1.0/seller/bp-eligible",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/seller/bp-eligible\",protoRootName:v,protoServiceMethodDefinition:d.sF.GetSellerBPEligibility}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400499,
+    "path": "/sell/1.0/mml-listing-creation-eligibility",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/mml-listing-creation-eligibility\",protoRootName:v,protoServiceMethodDefinition:d.Px.GetUserEligibilityForMMLListingCreation}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400682,
+    "path": "/sell/1.0/listing-attribute-suggestions",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/sell/1.0/listing-attribute-suggestions\",protoRootName:v,protoServiceMethodDefinition:d.Re.GetListingAttributeSuggestions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400854,
+    "path": "/sell/1.0/instant-sell/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/instant-sell/\",protoRootName:v,protoServiceMethodDefinition:d.ib.InstantSellOptions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 400997,
+    "path": "/sell/1.0/instant-sell/store-locations",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/instant-sell/store-locations\",protoResponseType:\"InstantSellGetStoreLocationsResponse\",protoRootName:v}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401159,
+    "path": "/sell/1.0/post-listing-actions/:listing_id",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/post-listing-actions/:listing_id\",protoRootName:v,protoServiceMethodDefinition:d.R8.GetPostListingActions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401324,
+    "path": "/sell/1.0/inspirations",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/sell/1.0/inspirations\",protoRootName:v,protoServiceMethodDefinition:d.fh.GetSellInspirations}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401467,
+    "path": "/listing/1.0/get-sell-form-image-tags",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/listing/1.0/get-sell-form-image-tags\",protoRootName:v,protoServiceMethodDefinition:d.rp.GetSellFormImageTags}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401624,
+    "path": "/chat-moderation/1.0/moderate",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-moderation/1.0/moderate\",protoRootName:v,protoServiceMethodDefinition:p.qR.ModerateEntity}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401774,
+    "path": "/chat-moderation/1.0/blocked-keywords-regex",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-moderation/1.0/blocked-keywords-regex\",protoRootName:v,protoServiceMethodDefinition:p.qR.GetBlockedKeywordRegex}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 401943,
+    "path": "/chat-feedback/1.0/can-submit-feedback",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-feedback/1.0/can-submit-feedback\",protoRootName:v,protoServiceMethodDefinition:p.$V.CanSubmitChatFeedback}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402106,
+    "path": "/chat-feedback/1.0/submit-feedback",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-feedback/1.0/submit-feedback\",protoRootName:v,protoServiceMethodDefinition:p.$V.SubmitChatFeedback}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402262,
+    "path": "/chat-feedback/1.0/metadata",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-feedback/1.0/metadata\",protoRootName:v,protoServiceMethodDefinition:p.$V.GetChatFeedbackMetadata}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402416,
+    "path": "/chat/1.0/header",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/chat/1.0/header\",protoRootName:v,protoServiceMethodDefinition:d.Fn.GetChatHeader10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402550,
+    "path": "/chat/1.0/:offerId/translate",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat/1.0/:offerId/translate\",protoRootName:v,protoServiceMethodDefinition:d.Fn.TranslateChat10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402697,
+    "path": "/user/2.0/id-verification/get-verification-form/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/2.0/id-verification/get-verification-form/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetSGIDVerificationForm}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 402872,
+    "path": "/user/2.0/noauth-id-verification/get-verification-form/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/2.0/noauth-id-verification/get-verification-form/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetNoAuthSGIDVerificationForm}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403060,
+    "path": "/user/2.0/id-verification/verify-identity/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/2.0/id-verification/verify-identity/\",protoRootName:v,protoServiceMethodDefinition:p.nW.VerifyIdentityV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403222,
+    "path": "/user/1.0/profile/flags/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/user/1.0/profile/flags/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserFlags}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403361,
+    "path": "/user/1.0/profile/flags/:listing_id",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/user/1.0/profile/flags/:listing_id\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserFlagsV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403513,
+    "path": "/user/1.0/profile/reveal-details",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/profile/reveal-details\",protoRootName:v,protoServiceMethodDefinition:p.nW.RevealUserDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403666,
+    "path": "/user/add-mobile/request/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/add-mobile/request/\",protoRootName:v,protoServiceMethodDefinition:p.vD.RequestCodeFromMessagingProvider}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403827,
+    "path": "/user/add-mobile/verify/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/add-mobile/verify/\",protoRootName:v,protoServiceMethodDefinition:p.vD.VerifyCodeFromMessagingProvider}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 403986,
+    "path": "/user/1.0/third-party-contacts/get/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/third-party-contacts/get/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetThirdPartyMessagingContactsByUserId}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 404163,
+    "path": "/user/1.0/third-party-contacts/delete/",
+    "methodExpression": "g.y.PUT",
+    "source": "registerEndpoint({method:g.y.PUT,pathname:\"/user/1.0/third-party-contacts/delete/\",protoRootName:v,protoServiceMethodDefinition:p.nW.DeleteThirdPartyMessagingContact}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 404336,
+    "path": "/user/1.0/third-party-contacts/has-active-listings/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/third-party-contacts/has-active-listings/\",protoRootName:v,protoServiceMethodDefinition:p.nW.HasActiveListings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 404508,
+    "path": "/listing-quota/1.0/get-purchase-lq-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-purchase-lq-setup\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQSetupV1}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 404673,
+    "path": "/listing-quota/1.0/get-purchase-lq-pricing",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-purchase-lq-pricing\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQPricingV1}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 404842,
+    "path": "/listing-quota/1.0/get-seller-whatsapp-contacts",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-seller-whatsapp-contacts\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetSellerWhatsappContacts}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405019,
+    "path": "/listing-quota/1.0/get-whatsapp-contacts-listing-eligibility",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-whatsapp-contacts-listing-eligibility\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetWhatsappContactsAndListingEligibility}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405224,
+    "path": "/listing-quota/1.0/set-listings-whatsapp-contacts",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/set-listings-whatsapp-contacts\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.SetListingsWhatsappContacts}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405405,
+    "path": "/listing-quota/2.0/get-purchase-lq-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/2.0/get-purchase-lq-setup\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405568,
+    "path": "/listing-quota/2.0/get-purchase-lq-pricing",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/2.0/get-purchase-lq-pricing\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetPurchaseLQPricing}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405735,
+    "path": "/listing-quota/1.0/update-auto-purchase-lq",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/update-auto-purchase-lq\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.UpdateAutoPurchaseLQ}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 405902,
+    "path": "/listing-quota/1.0/enable-auto-purchase",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/enable-auto-purchase\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.EnableAutoPurchaseLQ}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406066,
+    "path": "/listing-quota/1.0/disable-auto-purchase",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/disable-auto-purchase\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.DisableAutoPurchaseLQ}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406232,
+    "path": "/listing-quota/1.0/get-onboarding-categories",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-onboarding-categories\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetOnboardingCategories}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406404,
+    "path": "/listing-quota/1.0/category-quota-summary",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/category-quota-summary\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetCategoryQuotaSummary}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406573,
+    "path": "/listing/1.0/bulk-update",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing/1.0/bulk-update\",protoRootName:v,protoServiceMethodDefinition:d.rp.BulkUpdateListing}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406718,
+    "path": "/listing/1.0/:listing_id/translate",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing/1.0/:listing_id/translate\",protoRootName:v,protoServiceMethodDefinition:d.rp.TranslateListing}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 406872,
+    "path": "/user/1.0/business-details/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/user/1.0/business-details/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetProfessionalSellerBusinessDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407038,
+    "path": "/dogs/1.0/get_bulk_bump_setup/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get_bulk_bump_setup/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBulkBumpSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407189,
+    "path": "/dogs/1.2/checkout/bulk",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/checkout/bulk\",protoRootName:v,protoServiceMethodDefinition:s.SXy.BulkCheckout,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407338,
+    "path": "/dogs/1.0/is_bulk_bumps_running/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/is_bulk_bumps_running/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.IsBulkBumpsRunning}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407497,
+    "path": "/listing-quota/1.0/get-all-chat-limit-quotas",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-all-chat-limit-quotas\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetAllChatLimitQuotas}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407667,
+    "path": "/dogs/1.0/get_chat_limit_banner/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get_chat_limit_banner/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetChatLimitBanner}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407822,
+    "path": "/dogs/1.0/get_bump_purchase_pages_setup/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get_bump_purchase_pages_setup/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBumpPurchasePagesSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 407992,
+    "path": "/dogs/1.2/get-setup-page/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/get-setup-page/\",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSetupPage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 408134,
+    "path": "/dogs/1.0/get_auto_purchase_coin_setup/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get_auto_purchase_coin_setup/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoPurchaseCoinSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 408302,
+    "path": "/dogs/1.0/enable_auto_purchase_coin/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/enable_auto_purchase_coin/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.EnableAutoPurchaseCoin}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 408465,
+    "path": "/dogs/1.0/disable_auto_purchase_coin/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/disable_auto_purchase_coin/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.DisableAutoPurchaseCoin}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 408630,
+    "path": "/merchant-payment/1.0/setup-stripe-recurring-card-payment",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-payment/1.0/setup-stripe-recurring-card-payment\",protoRootName:v,protoServiceMethodDefinition:s.eUU.SetupStripeRecurringCardPayment,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 408835,
+    "path": "/merchant-payment/1.0/complete-recurring-payment",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-payment/1.0/complete-recurring-payment\",protoRootName:v,protoServiceMethodDefinition:s.eUU.CompleteRecurringPayment,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409024,
+    "path": "/dogs/1.0/is_auto_purchase_coin_running/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/is_auto_purchase_coin_running/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.IsAutoPurchaseCoinRunning}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409194,
+    "path": "/dogs/1.0/get-auto-topup-free-coins-info",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-auto-topup-free-coins-info\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpFreeCoinsInfo}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409364,
+    "path": "/merchant-automation/1.0/lead-collection",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-automation/1.0/lead-collection\",protoRootName:v,protoServiceMethodDefinition:s.YRd.LeadCollection}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409523,
+    "path": "/dogs/1.0/get-auto-topup-nudge-coins-page",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-auto-topup-nudge-coins-page\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgeCoinsPage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409695,
+    "path": "/dogs/1.0/get-auto-topup-nudge-page",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-auto-topup-nudge-page\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgePage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 409856,
+    "path": "/dogs/1.0/get-auto-topup-nudge-purchase-page",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-auto-topup-nudge-purchase-page\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAutoTopUpNudgePurchasePage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410034,
+    "path": "/dogs/1.0/get-transactions-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-transactions-setup\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactionsSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410191,
+    "path": "/dogs/1.0/get-transactions",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-transactions\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410337,
+    "path": "/dogs/1.0/get-transaction-details",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-transaction-details\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetTransactionDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410496,
+    "path": "/dogs/1.0/update-transaction-revenue",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/update-transaction-revenue\",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateTransactionRevenue}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410661,
+    "path": "/dogs/1.0/get-subscription-packages/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-subscription-packages/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSubscriptionPackagesV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410827,
+    "path": "/dogs/1.0/get_chat_quota_bundles/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get_chat_quota_bundles/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetChatQuotaBundles}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 410984,
+    "path": "/dogs/1.0/get-bulk-spotlight-daily-budget-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-bulk-spotlight-daily-budget-setup\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBulkSpotlightDailyBudgetSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411168,
+    "path": "/dogs/1.0/get-bulk-spotlight-add-ons",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-bulk-spotlight-add-ons\",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetBulkSpotlightAddOns}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411331,
+    "path": "/dogs/1.0/get-custom-keywords-cpc/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-custom-keywords-cpc/\",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetCustomKeywordsCpc}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411490,
+    "path": "/dogs/1.2/checkout/bulk-spotlight",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/checkout/bulk-spotlight\",protoRootName:v,protoServiceMethodDefinition:s.SXy.BulkCheckoutSpotlight,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411661,
+    "path": "/dogs/1.0/get-campaign-config",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-config\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411812,
+    "path": "/dogs/1.0/get-campaign-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-setup\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 411961,
+    "path": "/dogs/1.0/get-campaign-add-ons",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-add-ons\",protoRootName:v,protoServiceMethodDefinition:s.zTk.GetCampaignAddOns}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412113,
+    "path": "/dogs/1.0/get-campaign-listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-listings\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignListings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412268,
+    "path": "/dogs/1.2/checkout/campaign",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/checkout/campaign\",protoRootName:v,protoServiceMethodDefinition:s.SXy.CreateCampaignCheckout,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412434,
+    "path": "/dogs/1.0/update-campaign",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/update-campaign\",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateCampaign,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412590,
+    "path": "/dogs/1.0/get-campaigns-list",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaigns-list\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignsList}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412739,
+    "path": "/dogs/1.0/get-campaign-detail",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-detail\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 412890,
+    "path": "/dogs/1.0/get-campaign-performance",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-performance\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignPerformance}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413051,
+    "path": "/dogs/1.0/get-campaign-coins-usage",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-coins-usage\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignCoinsUsage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413211,
+    "path": "/dogs/1.0/get-campaign-all-listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-campaign-all-listings\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCampaignAllListings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413373,
+    "path": "/dogs/1.0/stop-campaign/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/stop-campaign/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.StopCampaign}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413514,
+    "path": "/dogs/1.0/perform-campaign-action",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/perform-campaign-action\",protoRootName:v,protoServiceMethodDefinition:s.YSq.PerformCampaignAction}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413673,
+    "path": "/merchant-payment/1.0/get-available-payment-methods",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-payment/1.0/get-available-payment-methods\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAvailablePaymentMethods}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 413855,
+    "path": "/merchant-payment/2.0/get-available-payment-methods",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-payment/2.0/get-available-payment-methods\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAvailablePaymentMethodsV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414039,
+    "path": "/cf/1.0/certified-search/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/1.0/certified-search/\",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchCertifiedsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414187,
+    "path": "/cf/v1/price-insights/listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/price-insights/listings\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPriceInsightsListingsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414348,
+    "path": "/cf/v1/price-insights/comparables",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/price-insights/comparables\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPriceInsightsComparablesV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414515,
+    "path": "/cgproduct/1.0/:cgproductId/detail/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cgproduct/1.0/:cgproductId/detail/\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetCGProductDetails10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414675,
+    "path": "/cf/assistant/1.0/search/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/assistant/1.0/search/\",protoRootName:v,protoServiceMethodDefinition:y.hW.AssistantSearchV10,timeout:3e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414834,
+    "path": "/cf/assistant/1.0/suggestions/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/cf/assistant/1.0/suggestions/\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetPromptSuggestionsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 414990,
+    "path": "/cf/v1/search-garage-sale/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/search-garage-sale/\",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchGarageSaleListingsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415147,
+    "path": "/dogs/1.0/certified-services-reviews",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/certified-services-reviews\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCertifiedServicesReviews}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415315,
+    "path": "/cf/v1/hot-deals/browse",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/hot-deals/browse\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetHotDealsBrowseV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415459,
+    "path": "/cf/v1/hot-deals",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/hot-deals\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetHotDealsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415597,
+    "path": "/drc/1.0/dispute/:disputeId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/1.0/dispute/:disputeId\",protoResponseType:\"GetDisputeByIDResponse\",protoRootName:v}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415735,
+    "path": "/drc/1.0/dispute/order/:orderId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/1.0/dispute/order/:orderId\",protoResponseType:\"GetDisputeByOrderIDResponse\",protoRootName:v}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 415882,
+    "path": "/drc/3.0/ddp/:fulfillmentOrderId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/ddp/:fulfillmentOrderId\",protoResponseType:\"GetDisputeDetailResponse\",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416077,
+    "path": "/drc/4.0/ddp/:fulfillmentOrderId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/4.0/ddp/:fulfillmentOrderId\",protoResponseType:\"GetGroupDisputeDetailResponse\",protoRootName:v,protoServiceMethodDefinition:c.C.GetGroupDisputeDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416282,
+    "path": "/drc/3.0/get-disputable-items/:fulfillmentOrderId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/get-disputable-items/:fulfillmentOrderId\",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputableItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416451,
+    "path": "/drc/3.0/get-proposal-resolution/:lineItemId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/get-proposal-resolution/:lineItemId\",protoRootName:v,protoServiceMethodDefinition:c.C.GetProposalResolution}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416618,
+    "path": "/drc/3.0/dispute/get-proposed-resolution/:disputeId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/dispute/get-proposed-resolution/:disputeId\",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeProposedResolution}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416799,
+    "path": "/drc/4.0/dispute/get-proposed-resolution/:fulfillmentOrderId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/4.0/dispute/get-proposed-resolution/:fulfillmentOrderId\",protoRootName:v,protoServiceMethodDefinition:c.C.GetGroupProposedResolution}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 416987,
+    "path": "/drc/3.0/dispute/confirm-resolution/:disputeId",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/confirm-resolution/:disputeId\",protoRootName:v,protoServiceMethodDefinition:c.C.ConfirmProposedResolution}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417161,
+    "path": "/drc/3.0/dispute",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute\",protoRootName:v,protoServiceMethodDefinition:c.C.RaiseDispute}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417292,
+    "path": "/drc/3.0/rddp/:disputeItemId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/rddp/:disputeItemId\",protoResponseType:\"GetDisputeItemDetailResponse\",protoRootName:v,protoServiceMethodDefinition:c.C.GetDisputeItemDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417491,
+    "path": "/drc/3.0/return-received/:fulfillmentOrderId",
+    "methodExpression": "g.y.PUT",
+    "source": "registerEndpoint({method:g.y.PUT,pathname:\"/drc/3.0/return-received/:fulfillmentOrderId\",protoRootName:v,protoServiceMethodDefinition:c.C.ReturnReceived}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417651,
+    "path": "/drc/3.0/dispute-items",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute-items\",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDisputeItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417794,
+    "path": "/drc/3.0/dispute-item/:disputeItemId",
+    "methodExpression": "g.y.PUT",
+    "source": "registerEndpoint({method:g.y.PUT,pathname:\"/drc/3.0/dispute-item/:disputeItemId\",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDisputeItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 417949,
+    "path": "/drc/2.1/disputes/cancel/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/2.1/disputes/cancel/\",protoRootName:v,protoServiceMethodDefinition:c.C.CancelDispute}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418090,
+    "path": "/drc/3.0/dispute/:disputeId/upload-return-proofs",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/:disputeId/upload-return-proofs\",protoRootName:v,protoServiceMethodDefinition:c.C.UploadReturnProofs}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418259,
+    "path": "/drc/3.0/dispute/:disputeId/return-options",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/drc/3.0/dispute/:disputeId/return-options\",protoRootName:v,protoServiceMethodDefinition:c.C.GetReturnOptions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418419,
+    "path": "/drc/3.0/dispute/:disputeId/return-flow-metadatas",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/:disputeId/return-flow-metadatas\",protoRootName:v,protoServiceMethodDefinition:c.C.GetReturnFlow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418584,
+    "path": "/drc/3.0/dispute/:disputeId/select-return-flow",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/:disputeId/select-return-flow\",protoRootName:v,protoServiceMethodDefinition:c.C.ConfirmReturnFlow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418750,
+    "path": "/drc/3.0/dispute/:disputeId/start-return",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/:disputeId/start-return\",protoRootName:v,protoServiceMethodDefinition:c.C.StartReturnDelivery}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 418912,
+    "path": "/drc/3.0/dispute/:disputeId/add-return-address",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/drc/3.0/dispute/:disputeId/add-return-address\",protoRootName:v,protoServiceMethodDefinition:c.C.AddReturnAddress}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419077,
+    "path": "/cgproduct/1.0/:cgproductId/listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cgproduct/1.0/:cgproductId/listings\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetCGProductListings10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419239,
+    "path": "/els/bulkupload/template/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/els/bulkupload/template/\",protoRootName:v,protoServiceMethodDefinition:d.bW.GetBulkUploadTemplate}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419388,
+    "path": "/els/bulkupload/history/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/els/bulkupload/history/\",protoRootName:v,protoServiceMethodDefinition:d.bW.GetBulkUploadHistory}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419536,
+    "path": "/els/bulkupload/createjob/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/els/bulkupload/createjob/\",protoRootName:v,protoServiceMethodDefinition:d.bW.CreateBulkUploadJob}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419685,
+    "path": "/activity/2.0/activity-feed",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/activity/2.0/activity-feed\",protoRootName:v,protoServiceMethodDefinition:a.Np.GetActivityFeedV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419833,
+    "path": "/activity/2.0/activity-mark-as-read",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/activity/2.0/activity-mark-as-read\",protoRootName:v,protoServiceMethodDefinition:a.Np.ActivityMarkAsReadV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 419992,
+    "path": "/activity/2.0/do-action",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/activity/2.0/do-action\",protoRootName:v,protoServiceMethodDefinition:a.Np.DoActivityActionV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420137,
+    "path": "/me/2.0/unread-counts",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/me/2.0/unread-counts\",protoRootName:v,protoServiceMethodDefinition:a.Np.GetUnreadCountV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420277,
+    "path": "/activity/2.0/has-new-activity",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/activity/2.0/has-new-activity\",protoRootName:v,protoServiceMethodDefinition:a.Np.HasNewActivityV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420426,
+    "path": "/fg/1.0/cart/counts",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/cart/counts\",protoRootName:v,protoServiceMethodDefinition:m.ul.GetCartCounts}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420561,
+    "path": "/fg/1.0/cart",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/cart\",protoRootName:v,protoServiceMethodDefinition:m.ul.GetCartDetailsPage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420694,
+    "path": "/fg/1.0/cart",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/cart\",protoRootName:v,protoServiceMethodDefinition:m.ul.AddCartItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420822,
+    "path": "/fg/1.0/cart/delete",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/cart/delete\",protoRootName:v,protoServiceMethodDefinition:m.ul.DeleteCartItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 420960,
+    "path": "/cf/1.0/related-cart-listings/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/cf/1.0/related-cart-listings/\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetRelatedCartListingsV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421118,
+    "path": "/fg/2.0/orders/:orderId/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/2.0/orders/:orderId/\",protoRootName:v,protoServiceMethodDefinition:m.Me.GetOrderDetailsPageV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421266,
+    "path": "/fg/2.0/orders/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/2.0/orders/\",protoRootName:v,protoServiceMethodDefinition:m.Me.GetUserOrderHistoryV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421406,
+    "path": "/fg/1.0/orders/:orderId/chat-offer/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/orders/:orderId/chat-offer/\",protoRootName:v,protoServiceMethodDefinition:m.Me.GetOrderChatOffer,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421573,
+    "path": "/fg/1.0/order/arrange-delivery-progress/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/order/arrange-delivery-progress/\",protoRootName:v,protoServiceMethodDefinition:m.Me.GetArrangeDeliveryProgress}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421742,
+    "path": "/fg/2.0/order/:orderId/delivery-fulfillment-options",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/2.0/order/:orderId/delivery-fulfillment-options\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryFulfillmentOptionsV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 421927,
+    "path": "/fg/v1/bulk/delivery-fulfillment-options",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/v1/bulk/delivery-fulfillment-options\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetBulkDeliveryFulfillmentOptions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422104,
+    "path": "/fg/1.0/promotion/validate/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotion/validate/\",protoRootName:v,protoServiceMethodDefinition:m.Nc.ValidatePromotion}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422252,
+    "path": "/fg/1.0/promotions/list",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotions/list\",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionsList}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422396,
+    "path": "/fg/1.0/promotions/categories",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotions/categories\",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionCategories}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422551,
+    "path": "/fg/1.0/export/orders/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/export/orders/\",protoRootName:v,protoServiceMethodDefinition:m.Me.ExportOrders}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422689,
+    "path": "/fg/1.0/promotion/get-promotion-setup-config",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotion/get-promotion-setup-config\",protoRootName:v,protoServiceMethodDefinition:m.Nc.GetPromotionSetupConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 422860,
+    "path": "/fg/1.0/promotion/create-promotion",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotion/create-promotion\",protoRootName:v,protoServiceMethodDefinition:m.Nc.CreatePromotion}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 423013,
+    "path": "/fg/1.0/promotion/decline-create-promotion",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/promotion/decline-create-promotion\",protoRootName:v,protoServiceMethodDefinition:m.Nc.DeclineCreatePromotion}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 423181,
+    "path": "/fg/1.0/checkouts/prepare",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/1.0/checkouts/prepare\",protoRootName:v,protoServiceMethodDefinition:m.sr.PrepareCheckoutV1,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 423521,
+    "path": "/fg/1.0/checkouts/:checkoutId/make_payment_info",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/checkouts/:checkoutId/make_payment_info\",protoRootName:v,protoServiceMethodDefinition:m.sr.GetMakePaymentInfoV1}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 423691,
+    "path": "/feedback/2.0/get-review-eligibility/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/feedback/2.0/get-review-eligibility/\",protoRootName:v,protoServiceMethodDefinition:p.ib.GetReviewEligibilityV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 423854,
+    "path": "/user/1.0/experience/advisory/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/experience/advisory/\",protoRootName:v,protoServiceMethodDefinition:p.nW.ShouldUserExperienceAdvisory}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424016,
+    "path": "/user/1.0/update/experience/advisory/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/update/experience/advisory/\",protoRootName:v,protoServiceMethodDefinition:p.nW.UpdateUserAdvisoryDecision}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424183,
+    "path": "/user/3.0/email/get-otp/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/3.0/email/get-otp/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetRegistrationEmailVerificationCode}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424347,
+    "path": "/user/3.0/email/verify/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/3.0/email/verify/\",protoRootName:v,protoServiceMethodDefinition:p.nW.VerifyRegistrationEmailVerificationCode}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424513,
+    "path": "/dogs/1.0/get-profile-insight-banner",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-profile-insight-banner\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileInsightBanner}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424674,
+    "path": "/dogs/1.0/get-competitor-insight",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-competitor-insight\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCompetitorInsight}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424835,
+    "path": "/dogs/2.0/get-competitor-insight",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/2.0/get-competitor-insight\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCompetitorInsightV2}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 424994,
+    "path": "/dogs/1.0/search-insight",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/search-insight\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSearchInsight}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425138,
+    "path": "/dogs/1.0/search-insight/category-detail",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/search-insight/category-detail\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetSearchInsightCategoryDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425313,
+    "path": "/dogs/1.0/get-account-stats",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-account-stats\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetAccountStats}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425460,
+    "path": "/dogs/1.0/get-revenue-vs-spend",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-revenue-vs-spend\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetRevenueVsSpend}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425612,
+    "path": "/self-moderation/1.0/get-my-moderation",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/self-moderation/1.0/get-my-moderation\",protoRootName:v,protoServiceMethodDefinition:p.Ut.GetMyModeration}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425769,
+    "path": "/self-moderation/1.0/moderation/:id",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/self-moderation/1.0/moderation/:id\",protoRootName:v,protoServiceMethodDefinition:p.Ut.GetModerationDetail}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 425926,
+    "path": "/self-moderation/1.0/moderation/:id/close",
+    "methodExpression": "g.y.PUT",
+    "source": "registerEndpoint({method:g.y.PUT,pathname:\"/self-moderation/1.0/moderation/:id/close\",protoRootName:v,protoServiceMethodDefinition:p.Ut.CloseModeration}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426085,
+    "path": "/self-moderation/1.0/moderation/:id/appeal",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/self-moderation/1.0/moderation/:id/appeal\",protoRootName:v,protoServiceMethodDefinition:p.Ut.RaiseAppeal}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426242,
+    "path": "/self-moderation/1.0/appeal/:id/close",
+    "methodExpression": "g.y.PUT",
+    "source": "registerEndpoint({method:g.y.PUT,pathname:\"/self-moderation/1.0/appeal/:id/close\",protoRootName:v,protoServiceMethodDefinition:p.Ut.CloseAppeal}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426393,
+    "path": "/user/1.0/profile/signals/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/profile/signals/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetUserTrustSignals}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426542,
+    "path": "/chat-moderation/1.0/get-char-set",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/chat-moderation/1.0/get-char-set\",protoRootName:v,protoServiceMethodDefinition:p.qR.GetCharSet}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426689,
+    "path": "/interlinks/1.0/list",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/interlinks/1.0/list\",protoRootName:v,protoServiceMethodDefinition:a.LL.GetInterlinks}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426826,
+    "path": "/dogs/1.0/listing_keyword_insight/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/listing_keyword_insight/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.ListingKeywordInsight}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 426986,
+    "path": "/dogs/1.0/get-outreach-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-setup\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427135,
+    "path": "/dogs/1.0/get-category-browse",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-category-browse\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCategoryBrowseSections}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427294,
+    "path": "/dogs/1.0/get-outreach-checkout-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-checkout-setup\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachCheckoutSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427460,
+    "path": "/dogs/1.0/get-outreach-pricing",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-pricing\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachPricing}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427613,
+    "path": "/dogs/1.0/get-outreach-insight",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-insight\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachInsight}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427766,
+    "path": "/dogs/1.0/stop-outreach",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/stop-outreach\",protoRootName:v,protoServiceMethodDefinition:s.wDv.StopOutreach}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 427906,
+    "path": "/dogs/1.0/hide-outreach",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/hide-outreach\",protoRootName:v,protoServiceMethodDefinition:s.wDv.HideOutreach}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428046,
+    "path": "/dogs/1.0/get-user-active-outreach-campaigns",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-user-active-outreach-campaigns\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetUserActiveOutreachCampaigns}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428225,
+    "path": "/dogs/1.0/get-outreach-promo-templates",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/get-outreach-promo-templates\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachPromoTemplates}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428392,
+    "path": "/dogs/1.0/get-outreach-campaigns-for-listing",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-campaigns-for-listing\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetOutreachCampaignsForListing}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428571,
+    "path": "/dogs/1.0/get-all-user-shoutouts",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-all-user-shoutouts\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetAllUserShoutouts}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428724,
+    "path": "/dogs/1.0/get-shoutout-checkout-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-shoutout-checkout-setup\",protoRootName:v,protoServiceMethodDefinition:s.fYQ.GetShoutoutCheckoutSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 428894,
+    "path": "/dogs/1.0/get-postpaid-shoutout-checkout-setup/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-postpaid-shoutout-checkout-setup/\",protoRootName:v,protoServiceMethodDefinition:s.fYQ.GetPostpaidShoutoutCheckoutSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429078,
+    "path": "/dogs/1.0/stop-shoutout/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/stop-shoutout/\",protoRootName:v,protoServiceMethodDefinition:s.fYQ.StopShoutout}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429219,
+    "path": "/dogs/1.2/checkout/init",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/checkout/init\",protoRootName:v,protoServiceMethodDefinition:s.SXy.InitCheckout,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429371,
+    "path": "/dogs/1.2/checkout/complete",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.2/checkout/complete\",protoRootName:v,protoServiceMethodDefinition:s.SXy.CompleteCheckout,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429531,
+    "path": "/merchant-payment/1.0/update-payment-mode-and-get-one-time-payment-data",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-payment/1.0/update-payment-mode-and-get-one-time-payment-data\",protoRootName:v,protoServiceMethodDefinition:s.eUU.UpdatePaymentModeAndGetOneTimePaymentData,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429760,
+    "path": "/dogs/1.0/buyer-magnet/get-setup-page",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/buyer-magnet/get-setup-page\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBuyerMagnetSetupPage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 429925,
+    "path": "/dogs/1.0/buyer-magnet/activate",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/buyer-magnet/activate\",protoRootName:v,protoServiceMethodDefinition:s.YSq.EnableBuyerMagnet,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430090,
+    "path": "/dogs/1.0/buyer-magnet/check-availability",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/buyer-magnet/check-availability\",protoRootName:v,protoServiceMethodDefinition:s.YRd.CheckBuyerMagnetAvailability}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430264,
+    "path": "/dogs/1.0/certified-services-enquiries",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/certified-services-enquiries\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCertifiedServicesEnquiries}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430436,
+    "path": "/dogs/1.0/merchant-certified-services-enquiries",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/merchant-certified-services-enquiries\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetMerchantCertifiedServicesEnquiries}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430625,
+    "path": "/dogs/1.0/get-merchant-service-enquiry-details",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-merchant-service-enquiry-details\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetMerchantCertifiedServicesEnquiryDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430818,
+    "path": "/dogs/1.0/update-merchant-service-enquiries",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/update-merchant-service-enquiries\",protoRootName:v,protoServiceMethodDefinition:s.YSq.UpdateServiceEnquiriesForMerchant}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 430999,
+    "path": "/dogs/1.0/get-merchant-certified-services-quotes",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-merchant-certified-services-quotes\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetMerchantCertifiedServicesQuotes}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 431186,
+    "path": "/dogs/1.0/get-merchant-certified-services-quote-details",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-merchant-certified-services-quote-details\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetCertifiedServicesQuoteDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 431378,
+    "path": "/dogs/1.0/update-enquiry-quotes",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/update-enquiry-quotes\",protoRootName:v,protoServiceMethodDefinition:s.HeU.UpdateEnquiryQuotes}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 431533,
+    "path": "/dogs/1.0/get-enquiry-detail-on-entrypoint",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-enquiry-detail-on-entrypoint\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetEnquiryDetailOnEntrypoint}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 431708,
+    "path": "/dogs/1.0/lta/import-lta-vehicles-data",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/lta/import-lta-vehicles-data\",protoRootName:v,protoServiceMethodDefinition:s.YRd.ImportLTAVehiclesData}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 431872,
+    "path": "/dogs/1.0/get-service-fees",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-service-fees\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetServiceFees}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432017,
+    "path": "/dogs/1.0/get-invoice-pdf",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-invoice-pdf\",protoRootName:v,protoServiceMethodDefinition:s.U7d.GetInvoicePdf}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432160,
+    "path": "/dogs/1.0/get-service-fee-breakdown-report",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-service-fee-breakdown-report\",protoRootName:v,protoServiceMethodDefinition:s.U7d.GetServiceFeeBreakdownReport}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432335,
+    "path": "/dogs/1.0/get-active-outreach-by-ccid",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-active-outreach-by-ccid\",protoRootName:v,protoServiceMethodDefinition:s.wDv.GetActiveOutreachByCcid}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432500,
+    "path": "/dogs/1.0/get-outreach-voucher-details",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-outreach-voucher-details\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetOutreachVoucherDetails}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432668,
+    "path": "/dogs/1.0/get-enquiry-form",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/get-enquiry-form\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetEnquiryForm}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432812,
+    "path": "/dogs/1.0/validate-verticals-promo",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/validate-verticals-promo\",protoRootName:v,protoServiceMethodDefinition:s.HeU.ValidateVerticalsPromo}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 432973,
+    "path": "/dogs/1.0/submit-enquiry-form",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/submit-enquiry-form\",protoRootName:v,protoServiceMethodDefinition:s.HeU.SubmitEnquiryForm}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433124,
+    "path": "/api/1.0/gen-ai/init-session/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/gen-ai/init-session/\",protoRootName:v,protoServiceMethodDefinition:i.qS.InitSession}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433265,
+    "path": "/api/1.0/gen-ai/batch-get-upload-url/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/gen-ai/batch-get-upload-url/\",protoRootName:v,protoServiceMethodDefinition:i.qS.BatchGetMediaUploadURL}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433425,
+    "path": "/api/1.0/gen-ai/get-upload-url/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/gen-ai/get-upload-url/\",protoRootName:v,protoServiceMethodDefinition:i.qS.GetMediaUploadURL}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433581,
+    "path": "/api/1.0/gen-ai/response-create/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/gen-ai/response-create/\",protoRootName:v,protoServiceMethodDefinition:i.qS.ResponseCreate}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433731,
+    "path": "/api/1.0/gen-ai/generate-listing-description/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/gen-ai/generate-listing-description/\",protoRootName:v,protoServiceMethodDefinition:i.qS.GenerateListingDescription,timeout:3e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 433918,
+    "path": "/dogs/1.0/profile-me-header",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/profile-me-header\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileMeHeader}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434068,
+    "path": "/dogs/1.0/profile-tab",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/profile-tab\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetProfileMeTabData}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434213,
+    "path": "/pocket/getprofilecollections",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/pocket/getprofilecollections\",protoRootName:v,protoServiceMethodDefinition:s.nOP.GetProfileCollections}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434368,
+    "path": "/gamification/v1/available-rewards-data",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/gamification/v1/available-rewards-data\",protoRootName:v,protoServiceMethodDefinition:a.Hr.GetAvailableRewardsData}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434534,
+    "path": "/gamification/v1/calculate-rewards",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/gamification/v1/calculate-rewards\",protoRootName:v,protoServiceMethodDefinition:a.Hr.CalculateRewards}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434688,
+    "path": "/gamification/v1/apply-rewards",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/gamification/v1/apply-rewards\",protoRootName:v,protoServiceMethodDefinition:a.Hr.ApplyRewards}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 434834,
+    "path": "/gamification/v1/lifetime-earnings/:sellerId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/gamification/v1/lifetime-earnings/:sellerId\",protoRootName:v,protoServiceMethodDefinition:a.Hr.GetLifetimeEarnings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435000,
+    "path": "/merchant-automation/1.0/declare-job",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/merchant-automation/1.0/declare-job\",protoRootName:v,protoServiceMethodDefinition:s.YRd.DeclareJob}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435151,
+    "path": "/dogs/1.0/get-cplus-subscription-packages/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-cplus-subscription-packages/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetCarouPlusSubscriptionPackages}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435330,
+    "path": "/cf/v1/saved-search-listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/saved-search-listings\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetSavedSearchedListingsV1}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435488,
+    "path": "/user/1.0/suggest-usernames/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/suggest-usernames/\",protoRootName:v,protoServiceMethodDefinition:p.nW.SuggestUsernames}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435636,
+    "path": "/fg/1.0/order/:orderId/delivery-form/pickup",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/1.0/order/:orderId/delivery-form/pickup\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryFormPickup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 435803,
+    "path": "/fg/3.0/orders/:orderId/schedule_pickup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/fg/3.0/orders/:orderId/schedule_pickup\",protoRootName:v,protoServiceMethodDefinition:m.c$.SchedulePickupDelivery,timeout:1e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 436346,
+    "path": "/fg/v1/invoice-info",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/v1/invoice-info\",protoRootName:v,protoServiceMethodDefinition:m.Me.GetInvoiceInfo}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 436482,
+    "path": "/fg/v1/listings/:listingId/delivery-banner",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/v1/listings/:listingId/delivery-banner\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetDeliveryBannerConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 436650,
+    "path": "/dogs/1.0/get-leads-suggestions",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-leads-suggestions\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetLeadsSuggestions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 436805,
+    "path": "/dogs/1.0/leads-recycle-sendmessages",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/leads-recycle-sendmessages\",protoRootName:v,protoServiceMethodDefinition:s.HeU.SendBulkMessage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 437342,
+    "path": "/fg/v1/delivery/enable-delivery-options",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/v1/delivery/enable-delivery-options\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetEnableDeliveryOptions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 437508,
+    "path": "/dogs/v1/banner-action",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/v1/banner-action\",protoRootName:v,protoServiceMethodDefinition:s.YSq.RecordMePageBannerAction}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 437659,
+    "path": "/fg/v1/seller-preference/banner",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/fg/v1/seller-preference/banner\",protoRootName:v,protoServiceMethodDefinition:m.c$.GetSellerPreferenceBanner}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 437818,
+    "path": "/cf/v1/thematic-browse/browse/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/thematic-browse/browse/\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseFeedV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 437976,
+    "path": "/cf/v1/thematic-browse/similar",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/thematic-browse/similar\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseSimilarListingFeedV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438148,
+    "path": "/cf/v1/thematic-browse/homefeed",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/cf/v1/thematic-browse/homefeed\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetThematicBrowseHomeFeedV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438310,
+    "path": "/user/1.0/cross-device-auth-status/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/cross-device-auth-status/\",protoRootName:v,protoServiceMethodDefinition:p.nW.GetCrossDeviceAuthStatus}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438473,
+    "path": "/user/1.0/cross-device-auth/init/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/cross-device-auth/init/\",protoRootName:v,protoServiceMethodDefinition:p.nW.CrossDeviceAuthInit}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438626,
+    "path": "/api/1.0/agentic-chat/1.0/create-chat-session",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/agentic-chat/1.0/create-chat-session\",protoRootName:v,protoServiceMethodDefinition:l.eC.CreateChatSession}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438796,
+    "path": "/api/1.0/agentic-chat/1.0/send-chat-message",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/agentic-chat/1.0/send-chat-message\",protoRootName:v,protoServiceMethodDefinition:l.eC.SendChatMessage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 438958,
+    "path": "/api/1.0/agentic-chat/1.0/get-chat-messages",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/agentic-chat/1.0/get-chat-messages\",protoRootName:v,protoServiceMethodDefinition:l.eC.GetChatMessages}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439120,
+    "path": "/api/1.0/agentic-chat/1.0/init-send-image",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/agentic-chat/1.0/init-send-image\",protoRootName:v,protoServiceMethodDefinition:l.eC.InitSendImage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439278,
+    "path": "/api/1.0/agentic-chat/1.0/retry-chat-message",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/api/1.0/agentic-chat/1.0/retry-chat-message\",protoRootName:v,protoServiceMethodDefinition:l.eC.RetryChatMessage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439442,
+    "path": "/dogs/1.0/manage-listings-banners",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/manage-listings-banners\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetManageListingsBanners}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439604,
+    "path": "/user/1.0/otp-channel-config/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/user/1.0/otp-channel-config/\",protoRootName:v,protoServiceMethodDefinition:p.vD.GetOtpChannelConfig}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439756,
+    "path": "/feedback/1.0/get-offers-by-nudge/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/feedback/1.0/get-offers-by-nudge/\",protoRootName:v,protoServiceMethodDefinition:p.ib.GetOffersByFeedbackNudge}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 439918,
+    "path": "/auction/v1/timed-auction/state",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/auction/v1/timed-auction/state\",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionState}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440072,
+    "path": "/auction/v1/timed-auction/place-bid",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/place-bid\",protoRootName:v,protoServiceMethodDefinition:u.O$.TimedAuctionPlaceBid,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440243,
+    "path": "/auction/v1/timed-auction/set-max-bid",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/set-max-bid\",protoRootName:v,protoServiceMethodDefinition:u.O$.TimedAuctionSetMaxBid,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440417,
+    "path": "/auction/v1/timed-auction/bids",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/auction/v1/timed-auction/bids\",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionBidHistory}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440575,
+    "path": "/auction/v1/timed-auction/buyer-setup",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/auction/v1/timed-auction/buyer-setup\",protoRootName:v,protoServiceMethodDefinition:u.O$.GetBuyerTimedAuctionSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440740,
+    "path": "/auction/v1/timed-auction/buyer-setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/buyer-setup\",protoRootName:v,protoServiceMethodDefinition:u.O$.SetBuyerTimedAuctionSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 440906,
+    "path": "/auction/v1/timed-auction/deal-methods",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/auction/v1/timed-auction/deal-methods\",protoRootName:v,protoServiceMethodDefinition:u.O$.GetTimedAuctionDealMethods}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441073,
+    "path": "/auction/v1/timed-auction/deal-methods",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/deal-methods\",protoRootName:v,protoServiceMethodDefinition:u.O$.SetTimedAuctionDealMethod}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441240,
+    "path": "/auction/v1/timed-auction/reserve-price",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/reserve-price\",protoRootName:v,protoServiceMethodDefinition:u.O$.SetTimedAuctionReservePrice}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441410,
+    "path": "/auction/v1/timed-auction/second-offer",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/timed-auction/second-offer\",protoRootName:v,protoServiceMethodDefinition:u.O$.DecideTimedAuctionSecondOffer}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441581,
+    "path": "/auction/v1/buyer/create-setup-intent",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/buyer/create-setup-intent\",protoRootName:v,protoServiceMethodDefinition:o._n.CreateBuyerSetupIntent,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441756,
+    "path": "/auction/v1/buyer/register-payment-method",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/buyer/register-payment-method\",protoRootName:v,protoServiceMethodDefinition:o._n.RegisterBuyerAuctionPaymentMethod,timeout:2e4}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 441946,
+    "path": "/cf/v1/timed-auction/listings",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/v1/timed-auction/listings\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetDropListings}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442091,
+    "path": "/show/v1/shows/discover",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/discover\",protoRootName:v,protoServiceMethodDefinition:o.w_.DiscoverShows}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442234,
+    "path": "/show/v1/shows/moderator",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/moderator\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetModeratorShows}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442378,
+    "path": "/show/v1/shows/my-shows",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/my-shows\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetMyShows}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442514,
+    "path": "/show/v1/shows/:showId/join-show",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/join-show\",protoRootName:v,protoServiceMethodDefinition:o.w_.JoinShow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442658,
+    "path": "/show/v1/shows/setup",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/setup\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShowSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442793,
+    "path": "/show/v1/shows/:showId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 442925,
+    "path": "/show/v1/shows/:showId/update",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/update\",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateShow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 443367,
+    "path": "/show/v1/shows/create",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/create\",protoRootName:v,protoServiceMethodDefinition:o.w_.CreateShow}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 443502,
+    "path": "/show/v1/shows/:sourceShowId/clone",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:sourceShowId/clone\",protoRootName:v,protoServiceMethodDefinition:o.w_.CloneShow,timeout:15e3}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 443662,
+    "path": "/show/v1/shows/:showId/summary",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId/summary\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetShowSummary}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 443809,
+    "path": "/show/v1/shows/:showId/items",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId/items\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 443948,
+    "path": "/show/v1/shows/:showId/items/add",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/add\",protoRootName:v,protoServiceMethodDefinition:o.w_.AddItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444092,
+    "path": "/show/v1/shows/:showId/items/update",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/update\",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444241,
+    "path": "/show/v1/shows/:showId/items/delete",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/delete\",protoRootName:v,protoServiceMethodDefinition:o.w_.DeleteItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444387,
+    "path": "/show/v1/shows/:showId/items/reorder",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/reorder\",protoRootName:v,protoServiceMethodDefinition:o.w_.ReorderItems}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444536,
+    "path": "/show/v1/shows/:showId/items/move-to-front",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/move-to-front\",protoRootName:v,protoServiceMethodDefinition:o.w_.MoveItemToFront}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444701,
+    "path": "/show/v1/shows/:showId/items/move-to-position",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/move-to-position\",protoRootName:v,protoServiceMethodDefinition:o.w_.MoveItemToPosition}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 444868,
+    "path": "/show/v1/shows/:showId/current-item",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId/current-item\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetCurrentItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445020,
+    "path": "/show/v1/images/generate-upload-url",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/images/generate-upload-url\",protoRootName:v,protoServiceMethodDefinition:o.w_.GenerateShowImageUploadUrl}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445185,
+    "path": "/auction/v1/shows/:showId/mint-ws-token",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/shows/:showId/mint-ws-token\",protoRootName:v,protoServiceMethodDefinition:o._n.MintWsToken}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445336,
+    "path": "/auction/v1/shows/:showId/start-auction",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/shows/:showId/start-auction\",protoRootName:v,protoServiceMethodDefinition:o._n.StartAuction}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445495,
+    "path": "/auction/v1/shows/:showId/start-item",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/shows/:showId/start-item\",protoRootName:v,protoServiceMethodDefinition:o._n.StartItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445644,
+    "path": "/auction/v1/shows/:showId/close-item",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/auction/v1/shows/:showId/close-item\",protoRootName:v,protoServiceMethodDefinition:o._n.CloseItem}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445793,
+    "path": "/show/v1/shows/:showId/giveaways/:itemId/activate",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/giveaways/:itemId/activate\",protoRootName:v,protoServiceMethodDefinition:o.w_.ActivateGiveaway}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 445962,
+    "path": "/show/v1/shows/:showId/giveaways/:itemId/draw",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/giveaways/:itemId/draw\",protoRootName:v,protoServiceMethodDefinition:o.w_.StartGiveawayDraw}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446128,
+    "path": "/show/v1/shows/:showId/giveaways/:itemId/close",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/giveaways/:itemId/close\",protoRootName:v,protoServiceMethodDefinition:o.w_.CloseGiveaway}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446291,
+    "path": "/show/v1/shows/:showId/items/:itemId/flash-sale/start",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/:itemId/flash-sale/start\",protoRootName:v,protoServiceMethodDefinition:o.w_.StartFlashSale}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446462,
+    "path": "/show/v1/shows/:showId/items/:itemId/flash-sale/end",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/:itemId/flash-sale/end\",protoRootName:v,protoServiceMethodDefinition:o.w_.EndFlashSale}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446626,
+    "path": "/show/v1/shows/:showId/items/:itemId/flash-sale/update",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/show/v1/shows/:showId/items/:itemId/flash-sale/update\",protoRootName:v,protoServiceMethodDefinition:o.w_.UpdateFlashSale}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446796,
+    "path": "/show/v1/shows/:showId/giveaways/:itemId/entrants",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId/giveaways/:itemId/entrants\",protoRootName:v,protoServiceMethodDefinition:o.w_.ListGiveawayEntrants}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 446965,
+    "path": "/show/v1/shows/:showId/giveaways/:itemId",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/show/v1/shows/:showId/giveaways/:itemId\",protoRootName:v,protoServiceMethodDefinition:o.w_.GetGiveawayState}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447128,
+    "path": "/dogs/1.0/get-bump-early-stop-info/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/get-bump-early-stop-info/\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetBumpEarlyStopInfo}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447288,
+    "path": "/dogs/1.0/smart-refinement/setup",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/smart-refinement/setup\",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementSetup}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447448,
+    "path": "/dogs/1.0/smart-refinement/edit",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/smart-refinement/edit\",protoRootName:v,protoServiceMethodDefinition:s.aoz.EditSmartRefinement}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447603,
+    "path": "/dogs/1.0/smart-refinement/tag-suggestions",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/smart-refinement/tag-suggestions\",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementTagSuggestions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447782,
+    "path": "/cf/1.0/smart-refinement-search/",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/cf/1.0/smart-refinement-search/\",protoRootName:v,protoServiceMethodDefinition:y.hW.SearchSmartRefinementV10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 447942,
+    "path": "/dogs/1.0/smart-refinement/search-suggestions",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/smart-refinement/search-suggestions\",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetSmartRefinementSearchSuggestions}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 448127,
+    "path": "/dogs/1.0/autos-homepage-hot-keywords",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/autos-homepage-hot-keywords\",protoRootName:v,protoServiceMethodDefinition:s.aoz.GetAutosHomepageHotKeywords}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 448296,
+    "path": "/listing-quota/1.0/get-user-whatsapp-status",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/get-user-whatsapp-status\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.GetUserWhatsappStatusByUserId}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 448473,
+    "path": "/listing-quota/1.0/upsert-user-whatsapp-status",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/listing-quota/1.0/upsert-user-whatsapp-status\",protoRootName:v,protoServiceMethodDefinition:s.Hr9.UpsertUserWhatsappStatusByUserId}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 448656,
+    "path": "/smart-nudge/v1/action",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/smart-nudge/v1/action\",protoRootName:v,protoServiceMethodDefinition:{name:\"DoSmartAction\",requestTypeName:\".api_gw_recommerce.DoSmartActionRequest\",responseTypeName:\".api_gw_recommerce.DoSmartActionResponse\"}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 448917,
+    "path": "/dogs/1.0/listing-tier/get-setup-page",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/listing-tier/get-setup-page\",protoRootName:v,protoServiceMethodDefinition:s.YSq.GetListingTierSetupPage}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 449082,
+    "path": "/cf/1.0/more_from_this_seller/:productId/",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/cf/1.0/more_from_this_seller/:productId/\",protoRootName:v,protoServiceMethodDefinition:y.hW.GetMoreFromThisSeller10}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 449249,
+    "path": "/dogs/1.0/get-home-services-spike-campaign-all-deals",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/get-home-services-spike-campaign-all-deals\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetHomeServicesSpikeCampaignAllDeals}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 449441,
+    "path": "/dogs/1.0/get-home-services-spike-campaign-flash-deals",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/get-home-services-spike-campaign-flash-deals\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetHomeServicesSpikeCampaignFlashDeals}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 449637,
+    "path": "/dogs/1.0/get-spike-campaign-deal",
+    "methodExpression": "g.y.GET",
+    "source": "registerEndpoint({method:g.y.GET,pathname:\"/dogs/1.0/get-spike-campaign-deal\",protoRootName:v,protoServiceMethodDefinition:s.HeU.GetSpikeCampaignDeal}"
+  },
+  {
+    "file": "cc4919ae5cd0f2a7.min.js",
+    "offset": 449794,
+    "path": "/dogs/1.0/schedule-spike-campaign-deal-reminder",
+    "methodExpression": "g.y.POST",
+    "source": "registerEndpoint({method:g.y.POST,pathname:\"/dogs/1.0/schedule-spike-campaign-deal-reminder\",protoRootName:v,protoServiceMethodDefinition:s.HeU.ScheduleSpikeCampaignDealReminder}"
+  }
+]

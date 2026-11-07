@@ -1,0 +1,292 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar&t-source_cc_id=338
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+  - textbox "Search" [active]:
+    - /placeholder: Search for an item
+    - text: zzqxvnonexistent734962
+  - button "Remove":
+  - listbox:
+    - textbox "Indonesia"
+  - listbox:
+    - button "+km":
+      - generic: +km
+  - button "Search":
+    - generic: Search
+- main:
+  - list:
+    - link "Home":
+      - /url: /
+      - paragraph: Home
+    - link "Mobile Phones & Tablets":
+      - /url: /categories/mobile-phones-338/
+      - paragraph: Mobile Phones & Tablets
+  - button "Mobile Phones & Tablets Icon chevron down":
+    - generic: Mobile Phones & Tablets
+    - img "Icon chevron down"
+  - button "Sort:Best Match":
+    - generic: Sort:Best Match
+  - button "Condition":
+    - generic: Condition
+  - button "Price":
+    - generic: Price
+  - button "Deal Option":
+    - generic: Deal Option
+  - button "More filters":
+    - generic: More filters
+  - img "Your search \"zzqxvnonexistent734962\" did not match any listings."
+  - paragraph: Your search "zzqxvnonexistent734962" did not match any listings.
+  - paragraph: Try another search, check if the spelling is correct or try more general keywords
+  - button "See more in Mobile Phones & Tablets":
+    - generic: See more in Mobile Phones & Tablets
+  - paragraph: Advertisement
+  - iframe [id="google_ads_iframe_/325540922/Desktop_Search_RSB_1_1"] [name="google_ads_iframe_/325540922/Desktop_Search_RSB_1_1"]:
+    - iframe [id="te-clr1-60fd1cf7-433c-4423-a04d-856c474d3cf9-icon"]:
+    - link:
+      - /url: https://insight.adsrvr.org/track/clk?imp=3991e6e2-4e28-4ca6-8134-86c0a2c0dd46&ag=vpzgtcb&sfe=1d2664f9&sig=kLFsdQ6a6L8eb9Hk1kHUsF4TkzDqJuqBxNwyIg_2lgs.&crid=iwkat416&cf=10680257&fq=0&t=1&td_s=id.carousell.com&rcats=&mste=&mfld=2&mssi=&mfsi=&sv=google&uhow=159&agsa=&wp=au7k-QAL6soAhMbfACRORVA-mDP-Q-x3iyViMA&rgz=40552&dt=PC&osf=Windows&os=Windows11&br=Chrome&svpid=pub-3880661451400141&rlangs=id&mlang=&did=&rcxt=Other&tmpc=29.5&vrtd=&osi=&osv=&daid=&dnr=0&vpb=&crrelr=&npt=&cc=3~KLUv_WPYfRZoSwIFDgA0EeLmkTkoTqZMEYE0hsCiwN1GQgd2cHpndGNiSKf01g1Qwe-LBVoIaXdrYXQ0MTZg1LS2G2RPR3h4cjVhUkdjbnpoXzkwNVFfTXMCwAGfAQhOZ2FtcHI1NTKXhN3938d2aXUzZWo3bNACrI-KAxviWi1DUk02LaTOtN-srd4_CjAwODfA0MWz-uSLmrEBEK333wsWWG05Sm5oWlE1dXBySVJTdnQ0M0tlMTYtMDgzZjdhMzUtMwybiceRB0TNBQpF-gTdqP66N_tlQhGBRtmPyoXJPLzNtpKD0jrG08bTpPHInhkCmBMAqBM8yBM80BMA_RNYOZQ_gBQBoBQAsBQAuBQAyBQA6hTwFJEBshUA2BUAgBYANPxEAuPebezj6K3Uy_wGvXtiYZpxsq65NQfZFTHv4Gj_5r4qOylN49anCDgeIbUfjRmVxuHXMC0k8RLYisrlsMSxnRNGdIna7YvMIJC5pi9PL8iOdRQ74CHOSQXKexsRzad9wWDy3ZwLB6PcHLwnVrXwDMW-qiyBbLp22hrRkBLK38bHkU9TwolO7fN8C1Lpcwr-3S1xs0yowE-jA1ZLufEQ64hBw6IpS8MC&dur=2~KLUv_SMNLtZUXWUAACAfXjQ-AQBWPk0MCA..&durs=bSqffw&bdc=14&testid=-CRM6-&fpa=455&pcm=3&ict=Unknown&said=Xm9JnhZQ5uprIRSvt43KQg&auct=1&tail=1&r=https://adclick.g.doubleclick.net/aclk%3Fsa%3DL%26ai%3DCa7af-eTuasrVL9-Nk7QPxZyR6QW-p-f2dPb-j45XwI23ARABIOLDyDxg6YKAgNwNyAEJ4AIAqAMByAMCqgS1A0_QDW1V8rZjjEHvzvCXlrGz9sA_b6YUKoTRcO1V9zKvUO1lUE9lvyByDEu43JxZV0BV2eYX8tJg22ZEdXAXE9yTZ8zg3ACrpjLOFNgJcZfap8UDnHoLlgGXlcLAis6yfZXNBHAc5pzLtCR6_zdV0TOIXtZ50KlecvGdNJ_vIdVpA6gjsOSd2bUGZWBQq7SeIYzL_p4l1ct0meRgm6R3ekwFy6GwaOq55x6tZhtEBKPY4Lx58OA1fOHr2dWurs-uz-5Znb921rhVOFMJVmHAhgLduJNj7RMDpi5-spRskTbgq3Uc9Ll1u7RLkuemhKM8SCAQNDw_6u9WVu_hPItBsFW9cAW4PmwPnQuhKXPAd6OQ66hO3ua42Z5Jnhf0cPDuR2-9aY0f0DRUNL3Kg7f8LgErF7xGYu7e9oGVJDUNDDsVdbISJB4Es0OW9kqp2Pvfc6BZCtq6BMUgoimvPryQybOL5y8Q7e4P913rOO4viAuvSUPvtL2VSfNG8LtwY_HL9YCYdlSGz_6ldrqMB1tPXt4Dv6Ci_YHMMKRSbErsUFTq8UiGCTHZJeE40W23-c358W2d-Z8k4AQBgAau9se3yM2rhG6gBiGoB5PYsQKoB5TYsQKoB5XYsQKoB6nrsQKoB6a-G6gHltgbqAeqm7ECqAf_nrECqAffn7ECqAf-6LECqAetvrECqAe_07EC2AcA0gg1CIAhEAEyCIqAgICAgIAIOhSP0ICAgIAEgMCAgICgiIACqIGAGEi9_cE6WNCZj-u79ZcDYAD6CwIIAYAMAaoNAklE4g0TCKjnj-u79ZcDFd_GhAAdRU4kXeoNEwih8ZDru_WXAxXfxoQAHUVOJF2IDv___________wHQFQGAFwGyFxAYDCoKODI3MjY3MzcxNVABqhgXCdz5fmoE-NFAEgo4MjcyNjczNzE1GAE%26num%3D1%26sig%3DAOD64_38iT0YEVklGg6s-NEoiYHHETl3aQ%26adurl%3Dhttps://netshort.onelink.me/XC68?pid=thetradedesk_int&af_siteid=id.carousell.com&c=iu3ej7l&af_c_id=iu3ej7l&af_adset_id=vpzgtcb&af_ad_id=iwkat416&af_click_lookback=7d&clickid=3991e6e2-4e28-4ca6-8134-86c0a2c0dd46&idfa=&advertising_id=&android_id=&af_sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aGV0cmFkZWRlc2tfaW50IiwiYXVkIjpbImNsaWNrIl0sInZlciI6InYxIiwiaWF0IjoxNzk0MDQxMDgxLCJleHAiOjE3OTQwNDQ2ODEsImp0aSI6IjM5OTFlNmUyLTRlMjgtNGNhNi04MTM0LTg2YzBhMmMwZGQ0NiIsInN1YiI6IlhDNjgiLCJwYXJhbXMiOnsicGlkIjoidGhldHJhZGVkZXNrX2ludCIsImMiOiJpdTNlajdsIiwiYWZfc2l0ZWlkIjoiaWQuY2Fyb3VzZWxsLmNvbSJ9fQ.z289bwm750dt9VddYc5icD4Zq-YDn0usSKbz3D0H0rQ
+- contentinfo:
+  - heading "Top searches" [level=6]
+  - list:
+    - link "tongsis":
+      - /url: /tongsis/q/
+    - text: "|"
+    - link "case redmi pad 2":
+      - /url: /case-redmi-pad-2/q/
+    - text: "|"
+    - link "iphone 14 pro":
+      - /url: /iphone-14-pro/q/
+    - text: "|"
+    - link "ip 11 ibox":
+      - /url: /ip-11-ibox/q/
+    - text: "|"
+    - link "huawei p30 pro":
+      - /url: /huawei-p30-pro/q/
+    - text: "|"
+    - link "ugreen charger":
+      - /url: /ugreen-charger/q/
+    - text: "|"
+    - link "hippers":
+      - /url: /hippers/q/
+    - text: "|"
+    - link "strap iphone":
+      - /url: /strap-iphone/q/
+    - text: "|"
+    - link "phone holder":
+      - /url: /phone-holder/q/
+    - text: "|"
+    - link "casetify charm":
+      - /url: /casetify-charm/q/
+    - text: "|"
+    - link "preloved iphone":
+      - /url: /preloved-iphone/q/
+    - text: "|"
+    - link "strap hp":
+      - /url: /strap-hp/q/
+    - text: "|"
+    - link "casing 17":
+      - /url: /casing-17/q/
+    - text: "|"
+    - link "skinarma 17 pro":
+      - /url: /skinarma-17-pro/q/
+    - text: "|"
+    - link "xiaomi pad 5":
+      - /url: /xiaomi-pad-5/q/
+    - text: "|"
+    - link "17e":
+      - /url: /17e/q/
+    - text: "|"
+    - link "case z fold 8":
+      - /url: /case-z-fold-8/q/
+    - text: "|"
+    - link "16":
+      - /url: /16/q/
+    - text: "|"
+    - link "ip 14 ibox":
+      - /url: /ip-14-ibox/q/
+    - text: "|"
+    - link "ps4":
+      - /url: /ps4/q/
+    - text: "|"
+    - link "tripod mixio":
+      - /url: /tripod-mixio/q/
+    - text: "|"
+    - link "iphone 15 pro inter":
+      - /url: /iphone-15-pro-inter/q/
+    - text: "|"
+    - link "samsung a73":
+      - /url: /samsung-a73/q/
+    - text: "|"
+    - link "case redmi pad se":
+      - /url: /case-redmi-pad-se/q/
+    - text: "|"
+    - link "jbl":
+      - /url: /jbl/q/
+    - text: "|"
+    - link "iphone air 256":
+      - /url: /iphone-air-256/q/
+    - text: "|"
+    - link "case 14 pro":
+      - /url: /case-14-pro/q/
+    - text: "|"
+    - link "case 15 plus":
+      - /url: /case-15-plus/q/
+    - text: "|"
+    - link "casing iphone xr":
+      - /url: /casing-iphone-xr/q/
+    - text: "|"
+    - link "iphone 13 case":
+      - /url: /iphone-13-case/q/
+    - text: "|"
+    - link "apple pencil pro":
+      - /url: /apple-pencil-pro/q/
+    - text: "|"
+    - link "google pixel":
+      - /url: /google-pixel/q/
+    - text: "|"
+    - link "s21 fe":
+      - /url: /s21-fe/q/
+    - text: "|"
+    - link "samsung galaxy fit 3":
+      - /url: /samsung-galaxy-fit-3/q/
+    - text: "|"
+    - link "tws":
+      - /url: /tws/q/
+    - text: "|"
+    - link "redmi note 17":
+      - /url: /redmi-note-17/q/
+    - text: "|"
+    - link "iphone pemakaian pribadi":
+      - /url: /iphone-pemakaian-pribadi/q/
+    - text: "|"
+    - link "oppo a53":
+      - /url: /oppo-a53/q/
+    - text: "|"
+    - link "18":
+      - /url: /18/q/
+    - text: "|"
+    - link "samsung fold 8":
+      - /url: /samsung-fold-8/q/
+    - text: "|"
+    - link "uag":
+      - /url: /uag/q/
+    - text: "|"
+    - link "samsung s25 fe":
+      - /url: /samsung-s25-fe/q/
+    - text: "|"
+    - link "samsung a72":
+      - /url: /samsung-a72/q/
+    - text: "|"
+    - link "apple watch 10":
+      - /url: /apple-watch-10/q/
+    - text: "|"
+    - link "samsung buds core":
+      - /url: /samsung-buds-core/q/
+    - text: "|"
+    - link "casing iphone 17 basic":
+      - /url: /casing-iphone-17-basic/q/
+    - text: "|"
+    - link "iphone 17 pro 1tb":
+      - /url: /iphone-17-pro-1tb/q/
+    - text: "|"
+    - link "iphone 17 ex ibox":
+      - /url: /iphone-17-ex-ibox/q/
+    - text: "|"
+    - link "powerbank ugreen":
+      - /url: /powerbank-ugreen/q/
+    - text: "|"
+    - link "17 pro case":
+      - /url: /17-pro-case/q/
+  - img "Carousell logo"
+  - generic: © 2026 Carousell
+  - link "Help Centre":
+    - /url: https://support.carousell.com/hc/en-us?origin=web&platform=web
+  - text: •
+  - link "Contact Us":
+    - /url: https://support.carousell.com/hc/en-us/requests/new?open_chat_bot=true&origin=web&platform=web
+  - text: •
+  - link "Press":
+    - /url: https://press.carousell.com
+  - text: •
+  - link "Sustainability":
+    - /url: https://carousell.com/sustainability/l/
+  - text: •
+  - link "Jobs":
+    - /url: https://careers.carousell.com/
+  - text: •
+  - link "Advertise with Us":
+    - /url: https://docs.google.com/forms/d/1ZhprlP1FZ7Jk55RqlkAnT6YcV9DTDUoFM1gLCM59L6A/
+  - text: •
+  - link "Terms":
+    - /url: https://support.carousell.com/hc/en-us/articles/115011881808
+  - text: •
+  - link "Privacy":
+    - /url: https://support.carousell.com/hc/en-us/articles/115006700307
+  - text: •
+  - link "Business Conduct":
+    - /url: https://support.carousell.com/hc/en-us/articles/45022750135449-Third-Party-Code-of-Business-Conduct-and-Ethics
+  - generic "Country select":
+    - link "Carousell Australia":
+      - /url: https://au.carousell.com
+      - img "Carousell Australia"
+    - link "Carousell Canada":
+      - /url: https://ca.carousell.com
+      - img "Carousell Canada"
+    - link "Carousell Hong Kong":
+      - /url: https://www.carousell.com.hk
+      - img "Carousell Hong Kong"
+    - link "Carousell Indonesia":
+      - /url: https://id.carousell.com
+      - img "Carousell Indonesia"
+    - link "Carousell Malaysia":
+      - /url: https://www.carousell.com.my
+      - img "Carousell Malaysia"
+    - link "Carousell New Zealand":
+      - /url: https://nz.carousell.com
+      - img "Carousell New Zealand"
+    - link "Carousell Philippines":
+      - /url: https://www.carousell.ph
+      - img "Carousell Philippines"
+    - link "Carousell Singapore":
+      - /url: https://www.carousell.sg
+      - img "Carousell Singapore"
+    - link "Carousell Taiwan":
+      - /url: https://tw.carousell.com
+      - img "Carousell Taiwan"
+  - combobox "Language select":
+    - option "English" [selected]
+    - option "繁體中文 (香港)"
+    - option "简体中文 (中国)"
+    - option "繁體中文 (台灣)"
+    - option "Bahasa Melayu"
+    - option "Bahasa Indonesia"
+  - combobox "Theme select":
+    - option "Light"
+    - option "Dark"
+    - option "System" [selected]

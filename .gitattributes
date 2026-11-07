@@ -1,0 +1,2 @@
+# Preserve research artifacts exactly so evidence SHA-256 checks survive checkout.
+REA/carousell-indonesia/** -text

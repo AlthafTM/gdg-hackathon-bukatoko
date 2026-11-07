@@ -1,0 +1,210 @@
+- banner:
+  - button "Skip to content"
+  - link "Carousell logo":
+    - /url: /
+    - img "Carousell logo"
+  - link "Electronics":
+    - /url: /categories/mobile-phones-338/?t-source=top_navigation_bar
+    - paragraph: Electronics
+  - link "Fashion":
+    - /url: /categories/womens-fashion-4/?t-source=top_navigation_bar
+    - paragraph: Fashion
+  - link "Personal Care":
+    - /url: /categories/makeup-309/?t-source=top_navigation_bar
+    - paragraph: Personal Care
+  - link "Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-source=top_navigation_bar
+    - paragraph: Kids
+  - link "Living":
+    - /url: /categories/home-and-gardening-13/?t-source=top_navigation_bar
+    - paragraph: Living
+  - button "All Categories":
+    - generic: All Categories
+  - link "Register":
+    - /url: /signup/
+    - paragraph: Register
+  - link "Login":
+    - /url: /login/
+    - paragraph: Login
+  - link "Sell":
+    - /url: /sell?source=nav_bar
+    - generic: Sell
+- main:
+  - button "Select photos or drag photos here (Up to 10 photos)":
+    - button "Select photos":
+      - generic: Select photos
+    - paragraph: or drag photos here
+    - paragraph: (Up to 10 photos)
+- heading "All Categories" [level=3]
+- button "Close":
+- textbox:
+  - /placeholder: Search categories...
+- list:
+  - link "Following":
+    - /url: /categories/following-1/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Following
+  - list
+  - link "Toys & Collectibles":
+    - /url: /categories/toys-and-board-games-1188/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Toys & Collectibles
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Women's Fashion":
+    - /url: /categories/womens-fashion-4/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Women's Fashion
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Men's Fashion":
+    - /url: /categories/mens-fashion-3/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Men's Fashion
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Health & Beauty":
+    - /url: /categories/health-and-beauty-11/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Health & Beauty
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Electronics":
+    - /url: /categories/electronics-cameras-and-gadgets-7/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Electronics
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Mobile Phones & Tablets":
+    - /url: /categories/mobile-phones-338/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Mobile Phones & Tablets
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Books & Stationery":
+    - /url: /categories/books-and-stationery-5/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Books & Stationery
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Babies & Kids":
+    - /url: /categories/parents-babies-and-kids-19/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Babies & Kids
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Olshop Fashion":
+    - /url: /categories/fashion-olshop-1222/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Olshop Fashion
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Luxury":
+    - /url: /categories/luxury-20/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Luxury
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Photography":
+    - /url: /categories/photography-6/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Photography
+  - list
+  - link "Video Gaming":
+    - /url: /categories/video-gaming-12/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Video Gaming
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Food & Drinks":
+    - /url: /categories/food-drinks-27/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Food & Drinks
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Design & Craft":
+    - /url: /categories/design-and-craft-8/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Design & Craft
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Sports":
+    - /url: /categories/sports-10/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Sports
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Music & Media":
+    - /url: /categories/music-14/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Music & Media
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Motorbikes":
+    - /url: /categories/motorbikes-108/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Motorbikes
+  - list
+  - link "Cars":
+    - /url: /categories/cars-and-motors-32/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Cars
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Auto Accessories":
+    - /url: /categories/auto-accessories-109/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Auto Accessories
+  - list
+  - link "Property":
+    - /url: /categories/property-102/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Property
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Services":
+    - /url: /categories/services-1464/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Services
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Jobs":
+    - /url: /categories/jobs-1477/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Jobs
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Home & Furniture":
+    - /url: /categories/home-and-gardening-13/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Home & Furniture
+  - list
+  - link "Gardening":
+    - /url: /categories/gardening-684/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Gardening
+  - list
+  - link "Kitchen & Appliances":
+    - /url: /categories/kitchen-appliances-30/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Kitchen & Appliances
+  - list
+  - link "Pet Supplies":
+    - /url: /categories/pet-supplies-29/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Pet Supplies
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Tickets & Vouchers":
+    - /url: /categories/tickets-and-voucher-18/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Tickets & Vouchers
+  - button "Expand":
+    - img "Expand"
+  - list
+  - link "Community":
+    - /url: /categories/toys-and-board-games-26/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Community
+  - list
+  - link "Looking For":
+    - /url: /categories/looking-for-21/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Looking For
+  - list
+  - link "Everything Else":
+    - /url: /categories/everything-else-16/?t-id=dzeZZbvrUB_1794040760425&t-source=featured_categories_sidebar
+    - paragraph: Everything Else
+  - button "Expand":
+    - img "Expand"
+  - list

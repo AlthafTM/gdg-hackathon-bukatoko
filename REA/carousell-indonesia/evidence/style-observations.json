@@ -1,0 +1,864 @@
+{
+  "body": {
+    "background": "rgb(0, 0, 0)",
+    "color": "rgb(197, 197, 198)",
+    "font": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Droid Sans\", \"Helvetica Neue\", sans-serif"
+  },
+  "controls": [
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 17.71428680419922,
+        "width": 89.47322082519531,
+        "x": 0,
+        "y": -1000.0000610351562
+      },
+      "tag": "BUTTON",
+      "text": "Skip to content"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 32,
+        "width": 166.3928680419922,
+        "x": 64,
+        "y": 8
+      },
+      "tag": "A",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 99.1964340209961,
+        "x": 254.3928680419922,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Electronics"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 77.5625,
+        "x": 353.58929443359375,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Fashion"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 119.89286041259766,
+        "x": 431.15179443359375,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Personal Care"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 53.375003814697266,
+        "x": 551.044677734375,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Kids"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 65.42857360839844,
+        "x": 604.419677734375,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Living"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 145.6875,
+        "x": 681.8482666015625,
+        "y": 0
+      },
+      "tag": "BUTTON",
+      "text": "All Categories"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 75.5089340209961,
+        "x": 1156.58935546875,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Register"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 59.47321701049805,
+        "x": 1232.0982666015625,
+        "y": 0
+      },
+      "tag": "A",
+      "text": "Login"
+    },
+    {
+      "background": "rgb(204, 30, 43)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 32,
+        "width": 57.57143020629883,
+        "x": 1303.571533203125,
+        "y": 8
+      },
+      "tag": "A",
+      "text": "Sell"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 24.000001907348633,
+        "width": 755.4910888671875,
+        "x": 100.5714340209961,
+        "y": 67.5714340209961
+      },
+      "tag": "INPUT",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(197, 197, 198)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 44.000003814697266,
+        "width": 264.3214416503906,
+        "x": 886.6339721679688,
+        "y": 58.000003814697266
+      },
+      "tag": "INPUT",
+      "text": ""
+    },
+    {
+      "background": "rgb(65, 66, 68)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "0px",
+      "rect": {
+        "height": 48.000003814697266,
+        "width": 104.00000762939452,
+        "x": 1166.9554443359375,
+        "y": 56.000003814697266
+      },
+      "tag": "BUTTON",
+      "text": "+km"
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 40,
+        "width": 80.1875,
+        "x": 1276.9554443359375,
+        "y": 60.000003814697266
+      },
+      "tag": "BUTTON",
+      "text": "Search"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "8px",
+      "rect": {
+        "height": 120.00000762939452,
+        "width": 120.00000762939452,
+        "x": 64,
+        "y": 467.0000305175781
+      },
+      "tag": "BUTTON",
+      "text": "iPhone"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "8px",
+      "rect": {
+        "height": 120.00000762939452,
+        "width": 120.00000762939452,
+        "x": 192.00001525878903,
+        "y": 467.0000305175781
+      },
+      "tag": "BUTTON",
+      "text": "Android Phones"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "8px",
+      "rect": {
+        "height": 120.00000762939452,
+        "width": 120.00000762939452,
+        "x": 320,
+        "y": 467.0000305175781
+      },
+      "tag": "BUTTON",
+      "text": "Tablets"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "8px",
+      "rect": {
+        "height": 120.00000762939452,
+        "width": 120.00000762939452,
+        "x": 448.0000305175781,
+        "y": 467.0000305175781
+      },
+      "tag": "BUTTON",
+      "text": "Mobile & Tablet Accessories"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "8px",
+      "rect": {
+        "height": 120.00000762939452,
+        "width": 120.00000762939452,
+        "x": 576,
+        "y": 467.0000305175781
+      },
+      "tag": "BUTTON",
+      "text": "Others"
+    },
+    {
+      "background": "rgb(0, 57, 48)",
+      "color": "rgb(0, 239, 202)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 236.5535888671875,
+        "x": 64,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Mobile Phones & Tablets"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 171.98214721679688,
+        "x": 308.5535888671875,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Sort:Best Match"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 102.55357360839844,
+        "x": 513.107177734375,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Model"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 111.41964721679688,
+        "x": 623.6607666015625,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Storage"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 126.5089340209961,
+        "x": 743.0803833007812,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Condition"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 91.30357360839844,
+        "x": 877.5892944335938,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Price"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 142.3303680419922,
+        "x": 976.8928833007812,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "Deal Option"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "20px",
+      "rect": {
+        "height": 40,
+        "width": 142.0982208251953,
+        "x": 1151.794677734375,
+        "y": 631
+      },
+      "tag": "BUTTON",
+      "text": "More filters"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(240, 241, 241)",
+      "fontSize": "24px",
+      "fontWeight": "600",
+      "radius": "0px",
+      "rect": {
+        "height": 32,
+        "width": 484.0535888671875,
+        "x": 80,
+        "y": 711.0000610351562
+      },
+      "tag": "H1",
+      "text": "100,000+ listings in Mobile Phones & Tablets"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 16,
+        "width": 16,
+        "x": 1329.1429443359375,
+        "y": 719.0000610351562
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 23.83928680419922,
+        "x": 92.00000762939452,
+        "y": 1231.2857666015625
+      },
+      "tag": "BUTTON",
+      "text": " "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 368.2857360839844,
+        "y": 1233.857177734375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.79998016357422,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 309.4571838378906
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 656.3428955078125
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 27.55357360839844,
+        "x": 408.2857360839844,
+        "y": 1231.2857666015625
+      },
+      "tag": "BUTTON",
+      "text": "2"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 684.5714721679688,
+        "y": 1233.857177734375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.80001449584961,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 332.2571716308594
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 633.5428466796875
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 27.55357360839844,
+        "x": 724.5714721679688,
+        "y": 1231.2857666015625
+      },
+      "tag": "BUTTON",
+      "text": "6"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 1000.857177734375,
+        "y": 1233.857177734375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.80001449584961,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 412.0571594238281
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 553.7428588867188
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 23.83928680419922,
+        "x": 1040.857177734375,
+        "y": 1231.2857666015625
+      },
+      "tag": "BUTTON",
+      "text": " "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 1317.1429443359375,
+        "y": 1233.857177734375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.80001449584961,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 366.4571838378906
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 599.3429565429688
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 23.83928680419922,
+        "x": 408.2857360839844,
+        "y": 1733.571533203125
+      },
+      "tag": "BUTTON",
+      "text": " "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 684.5714721679688,
+        "y": 1736.1429443359375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.79999732971191,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 241.05715942382812
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 724.742919921875
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.000001907348633,
+        "width": 23.83928680419922,
+        "x": 724.5714721679688,
+        "y": 1733.571533203125
+      },
+      "tag": "BUTTON",
+      "text": " "
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 19.428571701049805,
+        "width": 16,
+        "x": 1000.857177734375,
+        "y": 1736.1429443359375
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "radius": "0px",
+      "rect": {
+        "height": 22.79999732971191,
+        "width": 30.400043487548828,
+        "x": 896.8713989257812,
+        "y": 161.2571563720703
+      },
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "background": "rgb(0, 168, 142)",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "radius": "4px",
+      "rect": {
+        "height": 38,
+        "width": 150.32904052734375,
+        "x": 780.742431640625,
+        "y": 804.5428466796875
+      },
+      "tag": "BUTTON",
+      "text": "See listing details"
+    }
+  ],
+  "media": [
+    "@media (max-width:575px)",
+    "@media (min-width:1024px)",
+    "@media (max-width:1023px)",
+    "@media (min-width:768px)",
+    "@media (hover:hover)",
+    "@media (min-width:576px)",
+    "@media (max-width:767px)",
+    "@media (max-width:510px)",
+    "@media (max-width:410px)",
+    "@media (min-width:846px)",
+    "@media (carousell-bigger-than:x-small) and (max-height:492px)",
+    "@media (carousell-smaller-than:x-small) and (max-height:492px)",
+    "@media (max-height:492px)",
+    "@media (max-width:374px)",
+    "@media (max-width:1200px)",
+    "@media (max-width:845px)",
+    "@media (min-height:900px)",
+    "@media (min-width:1440px)",
+    "@media not ((hover:hover) and (pointer:fine))",
+    "@media (max-width:1259px)",
+    "@media (prefers-reduced-motion:reduce)",
+    "@media screen and (-ms-high-contrast:active)",
+    "@media screen and (preferes-contrast:more)",
+    "@media screen and (prefers-contrast:more)"
+  ],
+  "viewport": {
+    "height": 1000,
+    "width": 1440
+  }
+}
