@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.7.1] - 2026-11-09
+
+- Float mobile navigation above the bottom safe area and keep selected labels at normal weight. See [release notes](releases/0.7.1.md).
+
 ## [0.7.0] - 2026-11-08
 
 - Share one HTML shell across the five main screens, add internal navigation/lifecycle guards and refine mobile category text, spacing and bottom-navigation shape. See [release notes](releases/0.7.0.md).
