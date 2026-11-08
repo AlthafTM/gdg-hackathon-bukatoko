@@ -1,6 +1,25 @@
 /* Bukatoko app 2.0: bicara ke API di server.py, bukan localStorage. */
 (function () {
   "use strict";
+  var pageEpoch = 0, pageCleanups = [];
+  function onPage(target, event, callback) {
+    target.addEventListener(event, callback);
+    pageCleanups.push(function () { target.removeEventListener(event, callback); });
+  }
+  function pageRequest(promise) {
+    var epoch = pageEpoch;
+    // Abandoned chains are left unobserved, so old controllers never touch the new screen.
+    return promise.then(function (value) { return epoch === pageEpoch ? value : new Promise(function () {}); }, function (error) {
+      if (epoch !== pageEpoch) return new Promise(function () {});
+      throw error;
+    });
+  }
+  function navigateTo(url) {
+    if (window.BukatokoRouter && window.BukatokoRouter.handles(url)) window.BukatokoRouter.navigate(url);
+    else location.href = url;
+  }
+  function refreshPage() { if(window.BukatokoRouter)window.BukatokoRouter.refresh();else location.reload(); }
+  function updateRouteURL(url) {if(window.BukatokoRouter)window.BukatokoRouter.updateURL(url);else history.replaceState(null,'',url);}
 
   var S = {
     me: null,
@@ -92,7 +111,7 @@
     if (!showCatalogTools) qsa(".searchbar,.quick-category-bar").forEach(function (node) { node.remove(); });
     var homeLink = el("a", {href:"index.html","data-i18n":"home",text:"Beranda"});
     if (document.body.dataset.page === "home") homeLink.setAttribute("aria-current", "page");
-    qs(".nav").prepend(homeLink);
+    if (!qs('.nav [data-i18n="home"]')) qs(".nav").prepend(homeLink);
     if (showCatalogTools && !qs(".searchbar")) {
       var searchInput = el("input", {id:"q-global",type:"search",name:"q",placeholder:"Cari barang yang kamu butuhkan",autocomplete:"off"});
       var search = el("div", {class:"searchbar desktop-search"}, [el("div", {class:"wrap"}, [
@@ -124,13 +143,14 @@
     var maxBudget = qs("#w-max");
     if (maxBudget) { maxBudget.required = true; maxBudget.setAttribute("aria-required", "true"); }
     qsa(".nav a").forEach(function (link) {
+      if (qs(".nav-label",link)) return;
       var key = link.getAttribute("data-i18n");
       var label = el("span", {class: "nav-label", text: link.textContent});
       link.textContent = "";
       link.appendChild(icon(key));
       link.appendChild(label);
     });
-    qsa("[data-icon]").forEach(function (holder) { holder.appendChild(icon(holder.dataset.icon)); });
+    qsa("[data-icon]").forEach(function (holder) { if(!qs('svg',holder))holder.appendChild(icon(holder.dataset.icon)); });
     var categories = qs("#rail-kategori");
     if (categories) {
       [["elektronik", "Elektronik"], ["ponsel", "Ponsel & tablet"], ["fesyen", "Fashion"],
@@ -209,7 +229,7 @@
     catch (error) { return {}; }
   }
   function api(path, opts) {
-    if (window.BukatokoPreview) return window.BukatokoPreview.request(path, opts);
+    if (window.BukatokoPreview) return pageRequest(window.BukatokoPreview.request(path, opts));
     opts = opts || {};
     var init = { method: opts.method || "GET", credentials: API_ORIGIN ? "include" : "same-origin", headers: {} };
     init.headers = csrfHeaders(init.method);
@@ -217,7 +237,7 @@
       init.headers["Content-Type"] = "application/json";
       init.body = JSON.stringify(opts.body);
     }
-    return fetch(backendURL(path), init).then(function (res) {
+    return pageRequest(fetch(backendURL(path), init).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
         if (!res.ok) {
           var err = new Error((data && data.error) || ("Permintaan gagal (" + res.status + ")"));
@@ -226,7 +246,7 @@
         }
         return data;
       });
-    });
+    }));
   }
 
 
@@ -728,7 +748,7 @@
           S.me = null;
           paintUser();
           toast("Kamu keluar.");
-          if (document.body.dataset.page === "akun") location.reload();
+          if (document.body.dataset.page === "akun") refreshPage();
         });
       });
     }
@@ -766,7 +786,7 @@
           S.me = null;
           paintUser();
           toast("Kamu keluar.");
-          if (document.body.dataset.page === "akun") location.reload();
+          if (document.body.dataset.page === "akun") refreshPage();
         });
       });
     }
@@ -970,7 +990,7 @@
 
     function syncUrl() {
       var q = queryString().toString();
-      history.replaceState(null, "", "jelajah.html" + (q ? "?" + q : ""));
+      updateRouteURL("jelajah.html" + (q ? "?" + q : ""));
       sessionStorage.setItem("bk_last_query", q);
     }
 
@@ -1152,7 +1172,7 @@
     if (details) {
       var compactFilters = window.matchMedia("(max-width: 1024px)");
       details.open = !compactFilters.matches;
-      compactFilters.addEventListener("change", function () { details.open = !compactFilters.matches; });
+      onPage(compactFilters,"change", function () { details.open = !compactFilters.matches; });
     }
 
     syncForm();
@@ -1269,7 +1289,7 @@
       api("/api/listings/" + item.id, { method: "PATCH", body: payload })
         .then(function () {
           toast(payload.price < item.price ? "Tersimpan. Harga turun, penyimpan diberi tahu." : "Perubahan tersimpan.");
-          setTimeout(function () { location.reload(); }, 700);
+          setTimeout(function () { refreshPage(); }, 700);
         })
         .catch(function (e2) { save.disabled = false; err.textContent = e2.message; err.hidden = false; });
     });
@@ -1302,7 +1322,7 @@
         error: true,
         title: code === 404 ? "Barang tidak ditemukan" : "Gagal memuat barang",
         body: code === 404 ? "Tautan kedaluwarsa atau barang sudah dihapus penjual." : err.message,
-        action: { label: "Lihat barang lain", onClick: function () { location.href = "jelajah.html"; } }
+        action: { label: "Lihat barang lain", onClick: function () { navigateTo("jelajah.html"); } }
       });
     });
 
@@ -1461,7 +1481,7 @@
               soldBtn.disabled = true;
               api("/api/listings/" + item.id + "/sold", { method: "POST" }).then(function () {
                 toast("Barang ditandai terjual.");
-                setTimeout(function () { location.reload(); }, 600);
+                setTimeout(function () { refreshPage(); }, 600);
               }).catch(function (err) { soldBtn.disabled = false; toast(err.message); });
             });
             tools.appendChild(soldBtn);
@@ -1471,7 +1491,7 @@
             if (!window.confirm("Hapus barang ini? Foto dan tawarannya ikut hilang.")) return;
             api("/api/listings/" + item.id, { method: "DELETE" }).then(function () {
               toast("Barang dihapus.");
-              setTimeout(function () { location.href = "akun.html"; }, 600);
+              setTimeout(function () { navigateTo("akun.html"); }, 600);
             }).catch(function (err) { toast(err.message); });
           });
           tools.appendChild(del);
@@ -1489,7 +1509,7 @@
             renew.addEventListener("click", function () {
               renew.disabled = true;
               api("/api/listings/" + item.id + "/renew", { method: "POST", body: {} })
-                .then(function () { toast("Diperpanjang 30 hari."); setTimeout(function () { location.reload(); }, 600); })
+                .then(function () { toast("Diperpanjang 30 hari."); setTimeout(function () { refreshPage(); }, 600); })
                 .catch(function (err) { renew.disabled = false; toast(err.message); });
             });
             life.appendChild(renew);
@@ -1511,7 +1531,7 @@
             hand.addEventListener("click", function () {
               hand.disabled = true;
               api("/api/offers/" + item.deal.offer_id + "/handover", { method: "POST", body: {} })
-                .then(function () { toast("Serah terima ditandai."); setTimeout(function () { location.reload(); }, 600); })
+                .then(function () { toast("Serah terima ditandai."); setTimeout(function () { refreshPage(); }, 600); })
                 .catch(function (err) { hand.disabled = false; toast(err.message); });
             });
             dealBox.appendChild(hand);
@@ -1604,14 +1624,14 @@
                 acc.disabled = true;
                 api("/api/offers/" + o.id + "/accept", { method: "POST" }).then(function () {
                   toast("Tawaran diterima. Barang ditandai terjual.");
-                  setTimeout(function () { location.reload(); }, 700);
+                  setTimeout(function () { refreshPage(); }, 700);
                 }).catch(function (err) { acc.disabled = false; toast(err.message); });
               });
               var dec = el("button", { class: "btn btn-sm btn-outline", type: "button", text: "Tolak" });
               dec.addEventListener("click", function () {
                 api("/api/offers/" + o.id + "/decline", { method: "POST" }).then(function () {
                   toast("Tawaran ditolak.");
-                  setTimeout(function () { location.reload(); }, 600);
+                  setTimeout(function () { refreshPage(); }, 600);
                 }).catch(function (err) { toast(err.message); });
               });
               actions.appendChild(acc);
@@ -1627,7 +1647,7 @@
             soldBtn.disabled = true;
             api("/api/listings/" + item.id + "/sold", { method: "POST" }).then(function () {
               toast("Barang ditandai terjual.");
-              setTimeout(function () { location.reload(); }, 600);
+              setTimeout(function () { refreshPage(); }, 600);
             }).catch(function (err) { soldBtn.disabled = false; toast(err.message); });
           });
           extra.appendChild(soldBtn);
@@ -1637,7 +1657,7 @@
           if (!window.confirm(uiText("Hapus barang ini? Foto dan tawarannya ikut hilang."))) return;
           api("/api/listings/" + item.id, { method: "DELETE" }).then(function () {
             toast("Barang dihapus.");
-            setTimeout(function () { location.href = "akun.html"; }, 600);
+            setTimeout(function () { navigateTo("akun.html"); }, 600);
           }).catch(function (err) { toast(err.message); });
         });
         extra.appendChild(del);
@@ -1671,7 +1691,7 @@
         rsubmit.addEventListener("click", function () {
           rsubmit.disabled = true;
           api("/api/listings/" + item.id + "/reviews", { method: "POST", body: { stars: stars, body: rbody.value } })
-            .then(function () { toast("Ulasan terkirim. Terima kasih."); setTimeout(function () { location.reload(); }, 700); })
+            .then(function () { toast("Ulasan terkirim. Terima kasih."); setTimeout(function () { refreshPage(); }, 700); })
             .catch(function (err) { rsubmit.disabled = false; toast(err.message); });
         });
         qs("#review-form-wrap").appendChild(rsubmit);
@@ -1710,7 +1730,7 @@
           if (item.is_owner) { toast("Ini barang kamu sendiri."); return; }
           if (!window.confirm(uiText("Blokir " + owner.name + "? Barang mereka tidak akan muncul lagi untukmu."))) return;
           api("/api/blocks", { method: "POST", body: { user_id: owner.id } })
-            .then(function () { toast(owner.name + " diblokir."); setTimeout(function () { location.href = "jelajah.html"; }, 700); })
+            .then(function () { toast(owner.name + " diblokir."); setTimeout(function () { navigateTo("jelajah.html"); }, 700); })
             .catch(function (err) { toast(err.message); });
         });
       });
@@ -1743,7 +1763,7 @@
 
     function openChat(item) {
       if (item.is_owner) {
-        location.href = "akun.html#pesan";
+        navigateTo("akun.html#pesan");
         return;
       }
       var box = el("div", { class: "chat-box", id: "chat-box" });
@@ -1821,7 +1841,7 @@
   }
 
   function uploadPhotos(files, onProgress) {
-    return files.reduce(function (chain, file, i) {
+    return pageRequest(files.reduce(function (chain, file, i) {
       return chain.then(function (urls) {
         return downscale(file, 1600).then(function (prepared) {
           var form = new FormData();
@@ -1838,7 +1858,7 @@
             });
         });
       });
-    }, Promise.resolve([]));
+    }, Promise.resolve([])));
   }
 
   /* ---------- jual ---------- */
@@ -1919,6 +1939,7 @@
           return api("/api/listings", { method: "POST", body: payload });
         }).then(function (item) {
           status.textContent = "Tersimpan. Membuka barang...";
+          if(window.BukatokoRouter)window.BukatokoRouter.checkpoint();
           location.href = "/p/" + item.id;
         }).catch(function (ex) {
           submit.disabled = false;
@@ -1944,7 +1965,7 @@
       nearbyCity.addEventListener("change", function () {
         var params = new URLSearchParams(location.search);
         if (nearbyCity.value) params.set("lok", nearbyCity.value); else params.delete("lok");
-        history.replaceState(null, "", location.pathname + (params.toString() ? "?" + params.toString() : ""));
+        updateRouteURL(location.pathname + (params.toString() ? "?" + params.toString() : ""));
         load();
       });
     }
@@ -2059,6 +2080,7 @@
       requireAuth(function () {
         api("/api/wanted", { method: "POST", body: payload }).then(function () {
           form.reset();
+          if(window.BukatokoRouter)window.BukatokoRouter.checkpoint();
           toast("Permintaan terpasang.");
           load();
           refreshMe();
@@ -2074,7 +2096,7 @@
     var name = new URLSearchParams(location.search).get("u") || "";
     var root = qs("#profil-root");
     if (!name) {
-      stateBox(root, { title: "Nama pengguna kosong", body: "Buka profil dari halaman barang.", action: { label: "Jelajah", onClick: function () { location.href = "jelajah.html"; } } });
+      stateBox(root, { title: "Nama pengguna kosong", body: "Buka profil dari halaman barang.", action: { label: "Jelajah", onClick: function () { navigateTo("jelajah.html"); } } });
       return;
     }
     skeletons(3, qs("#profil-listings"));
@@ -2144,12 +2166,12 @@
         requireAuth(function () {
           if (!window.confirm(uiText("Blokir " + data.user.name + "?"))) return;
           api("/api/blocks", { method: "POST", body: { user_id: data.user.id } })
-            .then(function () { toast("Diblokir."); setTimeout(function () { location.href = "jelajah.html"; }, 600); })
+            .then(function () { toast("Diblokir."); setTimeout(function () { navigateTo("jelajah.html"); }, 600); })
             .catch(function (err) { toast(err.message); });
         });
       });
     }).catch(function (err) {
-      fail(root, err, function () { location.reload(); });
+      fail(root, err, function () { refreshPage(); });
     });
   }
 
@@ -2199,7 +2221,7 @@
     var tabLayout = window.matchMedia("(max-width: 860px)");
     function orientTabs() { qs(".tabs").setAttribute("aria-orientation", tabLayout.matches ? "horizontal" : "vertical"); }
     orientTabs();
-    tabLayout.addEventListener("change", orientTabs);
+    onPage(tabLayout,"change", orientTabs);
     var panels = {
       disimpan: qs("#panel-disimpan"),
       barang: qs("#panel-barang"),
@@ -2265,7 +2287,7 @@
       return api("/api/saved").then(function (data) {
         p.innerHTML = "";
         if (!data.items.length) {
-          panelState(p, "Belum ada barang yang disimpan.", { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+          panelState(p, "Belum ada barang yang disimpan.", { label: "Jelajah barang", onClick: function () { navigateTo("jelajah.html"); } });
           return;
         }
         data.items.forEach(function (i) {
@@ -2291,7 +2313,7 @@
       return api("/api/listings?owner=" + S.me.id + "&status=all&limit=100").then(function (data) {
         p.innerHTML = "";
         if (!data.items.length) {
-          panelState(p, "Belum ada barang yang kamu pasang.", { label: "Pasang barang", onClick: function () { location.href = "jual.html"; } });
+          panelState(p, "Belum ada barang yang kamu pasang.", { label: "Pasang barang", onClick: function () { navigateTo("jual.html"); } });
           return;
         }
         data.items.forEach(function (i) {
@@ -2331,7 +2353,7 @@
         var mine = data.items.filter(function (w) { return w.owner.name === S.me.name; });
         p.innerHTML = "";
         if (!mine.length) {
-          panelState(p, "Belum ada permintaan yang kamu tulis.", { label: "Tulis permintaan", onClick: function () { location.href = "cari.html"; } });
+          panelState(p, "Belum ada permintaan yang kamu tulis.", { label: "Tulis permintaan", onClick: function () { navigateTo("cari.html"); } });
           return;
         }
         mine.forEach(function (w) {
@@ -2408,7 +2430,7 @@
             }));
           });
         }
-        if (!any) panelState(p, "Belum ada tawaran.", { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+        if (!any) panelState(p, "Belum ada tawaran.", { label: "Jelajah barang", onClick: function () { navigateTo("jelajah.html"); } });
       }).catch(function (err) { fail(p, err, loadOffers); });
     }
 
@@ -2418,7 +2440,7 @@
       return api("/api/inbox").then(function (data) {
         p.innerHTML = "";
         if (!data.threads.length) {
-          panelState(p, "Belum ada percakapan.", { label: "Cari barang", onClick: function () { location.href = "jelajah.html"; } });
+          panelState(p, "Belum ada percakapan.", { label: "Cari barang", onClick: function () { navigateTo("jelajah.html"); } });
           return;
         }
         data.threads.forEach(function (t) {
@@ -2444,7 +2466,7 @@
       return api("/api/searches").then(function (data) {
         p.innerHTML = "";
         if (!data.items.length) {
-          panelState(p, "Belum ada pencarian tersimpan.", { label: "Cari barang", onClick: function () { location.href = "jelajah.html"; } });
+          panelState(p, "Belum ada pencarian tersimpan.", { label: "Cari barang", onClick: function () { navigateTo("jelajah.html"); } });
           return;
         }
         data.items.forEach(function (s) {
@@ -2475,7 +2497,7 @@
         p.innerHTML = "";
         if (!data.items.length) {
           panelState(p, "Belum ada transaksi. Transaksi muncul setelah penjual menerima tawaran.",
-            { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+            { label: "Jelajah barang", onClick: function () { navigateTo("jelajah.html"); } });
           return;
         }
         data.items.forEach(function (d) {
@@ -2509,7 +2531,7 @@
       return api("/api/notifications").then(function (data) {
         p.innerHTML = "";
         if (!data.items.length) {
-          panelState(p, "Belum ada notifikasi.", { label: "Jelajah barang", onClick: function () { location.href = "jelajah.html"; } });
+          panelState(p, "Belum ada notifikasi.", { label: "Jelajah barang", onClick: function () { navigateTo("jelajah.html"); } });
           return;
         }
         var head = el("div", { class: "notif-head" });
@@ -2584,7 +2606,7 @@
         b.tabIndex = on ? 0 : -1;
       });
       Object.keys(panels).forEach(function (k) { panels[k].hidden = k !== tab; });
-      history.replaceState(null, "", "akun.html#" + tab);
+      updateRouteURL("akun.html#" + tab);
       if (S.me) loaders[tab]();
     }
 
@@ -2649,7 +2671,7 @@
     });
 
     // tautan #pesan / #tawaran dari halaman lain
-    window.addEventListener("hashchange", function () {
+    onPage(window,"hashchange", function () {
       var h = (location.hash || "").replace("#", "");
       if (panels[h] && h !== current) select(h);
     });
@@ -2673,7 +2695,7 @@
       stateBox(state, {
         title: "Akun ini bukan moderator",
         body: "Peran akun " + S.me.name + " adalah pengguna biasa.",
-        action: { label: "Ke akun saya", onClick: function () { location.href = "akun.html"; } }
+        action: { label: "Ke akun saya", onClick: function () { navigateTo("akun.html"); } }
       });
       return;
     }
@@ -2734,24 +2756,28 @@
     else if (page === "moderasi") initModerasi();
   }
 
+  function activatePage() {
+    initShell(); applyLang(); paintUser();
+    if (window.BukatokoLocation) window.BukatokoLocation.init();
+    return refreshMe().catch(function () { S.me = null; paintUser(); }).then(bootPage);
+  }
   function boot() {
-    initShell();
-    applyLang();
-    initTheme();
-    initAuth();
+    if (window.BukatokoRedirecting) return;
+    if (window.BukatokoRouter) window.BukatokoRouter.prepare();
+    initShell(); applyLang(); initTheme(); initAuth();
     if (window.BukatokoMotion) window.BukatokoMotion.init();
     if (window.BukatokoLocation) window.BukatokoLocation.init();
     S.lastQuery = sessionStorage.getItem("bk_last_query") || "";
-    refreshMe().catch(function () { S.me = null; paintUser(); }).then(function () {
-      bootPage();
-      boot.page = function () {
-        applyLang();
-        if (document.body.dataset.page === "akun") {
-          var p = (location.hash || "").replace("#", "") || "disimpan";
-          if (p) location.reload();
-        }
-      };
+    boot.page = function () { applyLang(); if(document.body.dataset.page === "akun")refreshPage(); };
+    if (window.BukatokoRouter) window.BukatokoRouter.start({
+      before: function () {
+        pageEpoch++; pageCleanups.splice(0).forEach(function (dispose) { dispose(); });
+        if (window.BukatokoReact) qsa('#main .grid,#main .rail-track,#main .recent-rail').forEach(function (node) {window.BukatokoReact.clearCards(node);});
+        closeModals(); window.__afterAuth = null;
+      },
+      after: activatePage
     });
+    refreshMe().catch(function () { S.me = null; paintUser(); }).then(bootPage);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

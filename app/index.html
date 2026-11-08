@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-app-shell>
 <head>
 <meta charset="utf-8">
 <style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
@@ -8,10 +8,11 @@
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Pasar barang bekas warga sekitar. Pasang barang yang mau dijual, atau tulis barang yang sedang kamu cari beserta rentang harganya.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css?v=20261108-6">
-<link rel="stylesheet" href="assets/react-ui.css?v=20261108-6">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-7">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-7">
 <link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
-<script src="assets/locale.js?v=20261108-6"></script>
+<script src="assets/router.js?v=20261108-7"></script>
+<script src="assets/locale.js?v=20261108-7"></script>
 </head>
 <body data-page="home">
 <a class="sr-only" href="#main">Lewati ke konten</a>
@@ -182,9 +183,481 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/motion.js?v=20261108-6"></script>
-<script src="assets/react-ui.js?v=20261108-6"></script>
-<script src="assets/location.js?v=20261108-6"></script>
-<script src="assets/app.js?v=20261108-6"></script>
+<script src="assets/motion.js?v=20261108-7"></script>
+<script src="assets/react-ui.js?v=20261108-7"></script>
+<script src="assets/location.js?v=20261108-7"></script>
+<script src="assets/app.js?v=20261108-7"></script>
+<!-- app-shell:start -->
+<template data-screen="home">
+  <section class="intro">
+    <div class="wrap">
+    <div class="intro-panel intro-grid">
+      <div>
+        <h1>BukaToko - Jual apapun disini.</h1>
+        <p>Bandingkan harga, kondisi, dan lokasi. Jual barang milikmu atau buat permintaan sesuai anggaran.</p>
+        <div class="intro-actions">
+          <a class="btn btn-primary" href="jual.html"><span data-icon="sell" aria-hidden="true"></span>Jual barang</a>
+          <a class="btn btn-outline" href="cari.html"><span data-icon="wanted" aria-hidden="true"></span>Buat permintaan</a>
+        </div>
+        <p class="field-note mt-4" id="home-counts"></p>
+      </div>
+      <aside class="intro-card" aria-labelledby="wanted-heading">
+        <h3 id="wanted-heading">Ada yang sedang mencari</h3>
+        <div id="wanted-mini"></div>
+        <a class="btn btn-quiet btn-sm btn-block mt-3 align-left" href="cari.html">Lihat semua permintaan</a>
+      </aside>
+    </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="state" id="home-state" hidden></div>
+      <div class="sec-head">
+        <h2>Cari sesuai kebutuhan</h2>
+        <p>Langsung ke kategori pilihanmu.</p>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-kategori"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Harga turun</h2>
+        <p>Penjual menurunkan harga dari angka sebelumnya.</p>
+        <a class="more" href="jelajah.html?urut=murah">Urutkan termurah</a>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-turun"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recent-section" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Terakhir kamu lihat</h2>
+        <p>Tersimpan di peramban ini saja, bukan di server.</p>
+      </div>
+      <div class="recent-rail" id="recent-rail"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Baru dipasang</h2>
+        <p>Urut dari yang paling baru.</p>
+        <a class="more" href="jelajah.html">Lihat semua</a>
+      </div>
+      <div class="rail">
+        <div class="rail-track" id="rail-rekomendasi"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Punya barang menganggur?</h2>
+      </div>
+      <div class="form-card">
+        <p class="mb-4">Foto yang jelas, harga yang sesuai, dan kondisi yang jujur membantu pembeli memilih barangmu.</p>
+        <div class="action-group">
+          <a class="btn btn-primary" href="jual.html">Mulai jual</a>
+          <a class="btn btn-outline" href="cari.html">Atau cari barang orang lain</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+<template data-search="home"><div class="searchbar">
+  <div class="wrap">
+    <form class="search-form" action="jelajah.html" method="get" role="search">
+      <div class="search-input-wrap">
+        <span class="ico" data-icon="search" aria-hidden="true"></span>
+        <label class="sr-only" for="q-home">Cari barang</label>
+        <input id="q-home" type="search" name="q" placeholder="Kamera, sepatu 42, kulkas, buku resep" autocomplete="off">
+      </div>
+      <label class="sr-only" for="lok-home">Lokasi</label>
+      <select id="lok-home" name="lok">
+        <option value="">Semua lokasi</option>
+        <option>Bandung</option>
+        <option>Jakarta Selatan</option>
+        <option>Jakarta Pusat</option>
+        <option>Jakarta Barat</option>
+        <option>Surabaya</option>
+        <option>Yogyakarta</option>
+        <option>Semarang</option>
+        <option>Malang</option>
+        <option>Denpasar</option>
+        <option>Tangerang</option>
+        <option>Bekasi</option>
+        <option>Sleman</option>
+      </select>
+      <button class="btn btn-primary" type="submit">Cari barang</button>
+    </form>
+  </div>
+</div></template>
+<template data-screen="jelajah">
+  <div class="wrap page-shell">
+    <nav class="breadcrumb" aria-label="Remah roti">
+      <a href="index.html">Beranda</a> / <span id="crumb-kat">Semua kategori</span>
+    </nav>
+    <h1 id="explore-title">Semua barang</h1>
+    <p class="sr-only" id="jumlah" aria-live="polite"></p>
+    <div class="nearby-tools">
+      <button class="btn btn-outline btn-sm" id="nearby-button" type="button"><span data-icon="location" aria-hidden="true"></span>Gunakan lokasi saya</button>
+      <p id="nearby-status" role="status">Izin lokasi dipakai untuk memilih kota terdekat. Koordinat tidak disimpan.</p>
+    </div>
+
+    <div class="active-filters" id="filter-aktif"></div>
+    <div class="catalog-layout">
+    <details class="filter-details" id="filter-details" open>
+    <summary>Filter dan urutan</summary>
+    <form class="filters" id="filter-form" method="get" action="jelajah.html">
+      <div class="field field-grow">
+        <label for="f-q">Kata kunci</label>
+        <input id="f-q" type="search" name="q" placeholder="misal: kamera, sepatu, kulkas" autocomplete="off" list="saran-q">
+        <datalist id="saran-q"></datalist>
+      </div>
+      <div class="field">
+        <label for="f-kat">Kategori</label>
+        <select id="f-kat" name="kat">
+          <option value="">Semua</option>
+          <option value="elektronik">Elektronik</option>
+          <option value="ponsel">Ponsel &amp; Tablet</option>
+          <option value="fesyen">Fashion</option>
+          <option value="rumah">Rumah Tangga</option>
+          <option value="hobi">Hobi &amp; Koleksi</option>
+          <option value="buku">Buku</option>
+          <option value="otomotif">Otomotif</option>
+          <option value="olahraga">Olahraga</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-lok">Lokasi</label>
+        <select id="f-lok" name="lok">
+          <option value="">Semua lokasi</option>
+          <option>Bandung</option>
+          <option>Jakarta Selatan</option>
+          <option>Jakarta Pusat</option>
+          <option>Jakarta Barat</option>
+          <option>Surabaya</option>
+          <option>Yogyakarta</option>
+          <option>Semarang</option>
+          <option>Malang</option>
+          <option>Denpasar</option>
+          <option>Tangerang</option>
+          <option>Bekasi</option>
+          <option>Sleman</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-kondisi">Kondisi</label>
+        <select id="f-kondisi" name="kondisi">
+          <option value="">Apa saja</option>
+          <option value="mulus">Mulus</option>
+          <option value="ringan">Pemakaian ringan</option>
+          <option value="normal">Berfungsi normal</option>
+          <option value="baik">Kondisi baik</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-min">Harga (Rp)</label>
+        <div class="range-row">
+          <input id="f-min" type="number" name="min" min="0" step="50000" placeholder="min" inputmode="numeric">
+          <input id="f-max" type="number" name="max" min="0" step="50000" placeholder="maks" inputmode="numeric" aria-label="Harga maksimum dalam rupiah">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-urut">Urutkan</label>
+        <select id="f-urut" name="urut">
+          <option value="baru">Paling baru</option>
+          <option value="murah">Termurah</option>
+          <option value="mahal">Termahal</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-status">Status</label>
+        <select id="f-status" name="status">
+          <option value="active">Masih dijual</option>
+          <option value="sold">Sudah terjual</option>
+          <option value="all">Semua</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-foto">Foto</label>
+        <select id="f-foto" name="foto">
+          <option value="">Semua</option>
+          <option value="1">Hanya yang ada foto</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Terapkan</button>
+    </form>
+    <button class="btn btn-outline filter-save" id="save-search" type="button" hidden>Simpan pencarian ini</button>
+    </details>
+
+    <div class="catalog-results">
+
+    <div id="home-state" class="state" hidden></div>
+
+    <div id="loading" hidden>
+      <div class="grid">
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+        <div class="skel"><div class="skel-media"></div><div class="skel-bar"></div><div class="skel-bar short"></div></div>
+      </div>
+    </div>
+
+    <div id="state-box" class="state" hidden></div>
+    <div class="grid" id="hasil"></div>
+    <div class="pagination">
+      <button class="btn btn-outline" id="load-more" type="button" hidden>Muat lagi</button>
+    </div>
+    </div>
+    </div>
+  </div>
+</template>
+<template data-search="jelajah"><div class="searchbar desktop-search">
+  <div class="wrap"><form class="search-form" action="jelajah.html" method="get" role="search" aria-label="Pencarian utama">
+    <div class="search-input-wrap"><span class="ico" data-icon="search" aria-hidden="true"></span><label class="sr-only" for="q-global">Cari barang</label><input id="q-global" type="search" name="q" placeholder="Cari barang yang kamu butuhkan" autocomplete="off"></div>
+    <button class="btn btn-primary" type="submit">Cari barang</button>
+  </form></div>
+</div></template>
+<template data-screen="cari">
+  <div class="wrap page-shell">
+    <div class="page-heading"><h1>Lagi Dicari</h1>
+    <p>Tulis barang yang kamu butuhkan dan rentang anggarannya. Punya barang yang cocok? Temukan permintaan warga di sini.</p></div>
+
+    <div class="nearby-tools">
+      <label class="sr-only" for="nearby-city">Lokasi permintaan</label>
+      <select id="nearby-city"><option value="">Semua lokasi</option></select>
+      <button class="btn btn-outline btn-sm" id="nearby-button" type="button"><span data-icon="location" aria-hidden="true"></span>Gunakan lokasi saya</button>
+      <p id="nearby-status" role="status">Izin lokasi dipakai untuk memilih kota terdekat. Koordinat tidak disimpan.</p>
+    </div>
+    <div class="cari-grid">
+        <h2 id="daftar-heading" class="section-title wanted-list-heading">Permintaan terbaru</h2>
+        <div class="request-form-heading"><h2 id="tulis-heading">Tulis permintaan</h2>
+        <p class="field-note">Semakin spesifik, semakin mudah penjual menemukanmu.</p></div>
+        <div class="wanted-list" id="wanted-list" role="region" aria-labelledby="daftar-heading"></div>
+        <form class="form-card" id="wanted-form" aria-labelledby="tulis-heading" novalidate>
+
+          <div class="field mb-4">
+            <label for="w-judul">Barang yang dicari <span class="req" aria-hidden="true">*</span></label>
+            <input id="w-judul" type="text" maxlength="90" placeholder="misal: Laptop bekas buat kuliah arsitektur">
+          </div>
+
+          <div class="field mb-4">
+            <label for="w-kat">Kategori <span class="req" aria-hidden="true">*</span></label>
+            <select id="w-kat">
+              <option value="">Pilih kategori</option>
+              <option value="elektronik">Elektronik</option>
+              <option value="ponsel">Ponsel &amp; Tablet</option>
+              <option value="fesyen">Fashion</option>
+              <option value="rumah">Rumah Tangga</option>
+              <option value="hobi">Hobi &amp; Koleksi</option>
+              <option value="buku">Buku</option>
+              <option value="otomotif">Otomotif</option>
+              <option value="olahraga">Olahraga</option>
+            </select>
+          </div>
+
+          <div class="field mb-4">
+            <label for="w-min">Rentang harga (Rp) <span class="req" aria-hidden="true">*</span></label>
+            <div class="range-row">
+              <input id="w-min" type="number" min="1000" step="1000" inputmode="numeric" placeholder="min">
+              <input id="w-max" type="number" min="1000" step="1000" inputmode="numeric" placeholder="maks" aria-label="Harga maksimum dalam rupiah">
+            </div>
+          </div>
+
+          <div class="field mb-4">
+            <label for="w-lokasi">Lokasi <span class="req" aria-hidden="true">*</span></label>
+            <select id="w-lokasi">
+              <option value="">Pilih lokasi</option>
+              <option>Bandung</option>
+              <option>Jakarta Selatan</option>
+              <option>Jakarta Pusat</option>
+              <option>Jakarta Barat</option>
+              <option>Surabaya</option>
+              <option>Yogyakarta</option>
+              <option>Semarang</option>
+              <option>Malang</option>
+              <option>Denpasar</option>
+              <option>Tangerang</option>
+              <option>Bekasi</option>
+              <option>Sleman</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="w-catatan">Catatan</label>
+            <textarea id="w-catatan" rows="4" maxlength="400" placeholder="Syarat yang penting: ukuran, kelengkapan, boleh minus di bagian mana."></textarea>
+          </div>
+
+          <div class="form-footer">
+          <p class="required-note">* Wajib diisi.</p>
+          <p class="form-error" id="wanted-error" hidden></p>
+          <button class="btn btn-primary btn-block" type="submit">Pasang permintaan</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</template>
+<template data-screen="jual">
+  <div class="wrap page-shell page-shell-narrow">
+    <div class="page-heading"><h1>Pasang barang</h1>
+    <p>Mulai dari foto, karena itu yang pertama dilihat pembeli. Setelah detail terisi, barang langsung muncul di halaman Jelajah.</p></div>
+
+    <form id="jual-form" class="form-card" novalidate>
+      <fieldset class="form-section">
+        <legend>1. Foto barang</legend>
+        <div class="dropzone" id="dropzone">
+          <p>Tarik foto ke sini, atau pilih dari perangkat. Maksimal 10 foto, format gambar.</p>
+          <label class="btn btn-outline" for="f-foto">Pilih foto</label>
+          <input id="f-foto" type="file" accept="image/*" multiple class="sr-only">
+          <p class="field-note" id="photo-count" aria-live="polite">0 dari 10 foto</p>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>2. Detail barang</legend>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="f-judul">Judul <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-judul" type="text" maxlength="90" placeholder="misal: Kamera mirrorless Fujifilm X-T20 body saja">
+          </div>
+          <div class="field">
+            <label for="f-kat">Kategori <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-kat">
+              <option value="">Pilih kategori</option>
+              <option value="elektronik">Elektronik</option>
+              <option value="ponsel">Ponsel &amp; Tablet</option>
+              <option value="fesyen">Fashion</option>
+              <option value="rumah">Rumah Tangga</option>
+              <option value="hobi">Hobi &amp; Koleksi</option>
+              <option value="buku">Buku</option>
+              <option value="otomotif">Otomotif</option>
+              <option value="olahraga">Olahraga</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-kondisi">Kondisi</label>
+            <select id="f-kondisi">
+              <option value="Bekas, mulus">Bekas, mulus</option>
+              <option value="Bekas, pemakaian ringan">Bekas, pemakaian ringan</option>
+              <option value="Bekas, berfungsi normal">Bekas, berfungsi normal</option>
+              <option value="Bekas, ada minus">Bekas, ada minus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-harga">Harga (Rp) <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-harga" type="number" min="1000" step="1000" inputmode="numeric" placeholder="misal: 850000">
+          </div>
+          <div class="field">
+            <label for="f-lokasi">Lokasi <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-lokasi">
+              <option value="">Pilih lokasi</option>
+              <option>Bandung</option>
+              <option>Jakarta Selatan</option>
+              <option>Jakarta Pusat</option>
+              <option>Jakarta Barat</option>
+              <option>Surabaya</option>
+              <option>Yogyakarta</option>
+              <option>Semarang</option>
+              <option>Malang</option>
+              <option>Denpasar</option>
+              <option>Tangerang</option>
+              <option>Bekasi</option>
+              <option>Sleman</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-deskripsi">Deskripsi</label>
+            <textarea id="f-deskripsi" rows="5" maxlength="1200" placeholder="Tulis kondisi apa adanya: minus, kelengkapan, alasan jual, dan cara ambil."></textarea>
+            <p class="field-note">Sebutkan minus barang kalau ada. Pembeli lebih percaya pada keterangan jujur.</p>
+          </div>
+        </div>
+
+        <div class="form-footer">
+        <p class="required-note">* Wajib diisi.</p>
+        <p class="form-error" id="jual-error" hidden></p>
+        <p class="field-note" id="jual-status" aria-live="polite" hidden></p>
+
+        <div class="action-group">
+          <button class="btn btn-primary" id="jual-submit" type="submit">Terbitkan barang</button>
+          <a class="btn btn-quiet" href="jelajah.html">Batal</a>
+        </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</template>
+<template data-screen="akun">
+  <div class="wrap page-shell account-shell">
+    <div class="page-heading"><h1 data-i18n="account">Akun</h1><p>Kelola barang, permintaan, dan percakapanmu di satu tempat.</p></div>
+
+    <div id="akun-need-login" class="account-login" hidden>
+      <button class="btn btn-primary" id="akun-login" type="button">Masuk atau daftar</button>
+    </div>
+
+    <div id="akun-content" hidden>
+      <div class="account-header">
+      <h2>Ringkasan akun</h2>
+      <p>Masuk sebagai <strong id="akun-nama">-</strong> · <span id="akun-email" class="card-meta"></span></p>
+
+      <div id="verify-banner" class="form-card" hidden style="margin-top:12px;">
+        <p class="field-note" id="verify-note">Email ini belum diverifikasi.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <input id="verify-code" type="text" placeholder="Kode verifikasi" style="flex:1; min-width:180px;">
+          <button class="btn btn-outline" type="button" id="verify-send">Kirim ulang</button>
+          <button class="btn btn-primary" type="button" id="verify-submit">Verifikasi</button>
+        </div>
+      </div>
+
+      <ul class="counts">
+        <li><strong id="c-simpan">0</strong> disimpan</li>
+        <li><strong id="c-barang">0</strong> barang saya</li>
+        <li><strong id="c-minta">0</strong> permintaan</li>
+        <li><strong id="c-tawar">0</strong> tawaran masuk</li>
+        <li><strong id="c-pesan">0</strong> pesan belum dibaca</li>
+        <li><strong id="c-cari">0</strong> barang baru</li>
+      </ul>
+      </div>
+
+      <div class="account-layout">
+      <div class="tabs" role="tablist" aria-label="Isi akun" aria-orientation="vertical">
+        <button type="button" role="tab" data-tab="disimpan" aria-selected="true" aria-controls="panel-disimpan" id="tab-disimpan">Disimpan</button>
+        <button type="button" role="tab" data-tab="barang" aria-selected="false" aria-controls="panel-barang" id="tab-barang" tabindex="-1">Barang saya</button>
+        <button type="button" role="tab" data-tab="permintaan" aria-selected="false" aria-controls="panel-permintaan" id="tab-permintaan" tabindex="-1">Permintaan saya</button>
+        <button type="button" role="tab" data-tab="tawaran" aria-selected="false" aria-controls="panel-tawaran" id="tab-tawaran" tabindex="-1">Tawaran</button>
+        <button type="button" role="tab" data-tab="pesan" aria-selected="false" aria-controls="panel-pesan" id="tab-pesan" tabindex="-1">Pesan</button>
+        <button type="button" role="tab" data-tab="notifikasi" aria-selected="false" aria-controls="panel-notifikasi" id="tab-notifikasi" tabindex="-1">Notifikasi <span class="tab-count" id="c-notif">0</span></button>
+        <button type="button" role="tab" data-tab="transaksi" aria-selected="false" aria-controls="panel-transaksi" id="tab-transaksi" tabindex="-1">Transaksi</button>
+        <button type="button" role="tab" data-tab="pencarian" aria-selected="false" aria-controls="panel-pencarian" id="tab-pencarian" tabindex="-1">Pencarian</button>
+      </div>
+
+      <div class="account-panels">
+      <section id="panel-disimpan" role="tabpanel" aria-labelledby="tab-disimpan"></section>
+      <section id="panel-barang" role="tabpanel" aria-labelledby="tab-barang" hidden></section>
+      <section id="panel-permintaan" role="tabpanel" aria-labelledby="tab-permintaan" hidden></section>
+      <section id="panel-tawaran" role="tabpanel" aria-labelledby="tab-tawaran" hidden></section>
+      <section id="panel-pesan" role="tabpanel" aria-labelledby="tab-pesan" hidden></section>
+      <section id="panel-pencarian" role="tabpanel" aria-labelledby="tab-pencarian" hidden></section>
+      <section id="panel-notifikasi" role="tabpanel" aria-labelledby="tab-notifikasi" hidden></section>
+      <section id="panel-transaksi" role="tabpanel" aria-labelledby="tab-transaksi" hidden></section>
+
+      <aside class="account-note field-note">Menandai barang terjual mematikan tawaran baru. Menerima tawaran juga menandai barang terjual dan membuka kesempatan menulis ulasan bagi dua pihak.</aside>
+      </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- app-shell:end -->
 </body>
 </html>

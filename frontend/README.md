@@ -1,6 +1,10 @@
 # React catalog and Tailwind build
 
-BukaToko uses progressive React rendering for catalog cards on the home page, browse results, similar items, recently viewed items and seller profiles. The existing same-origin API controller retains authentication, CSRF, uploads, offers, messages, moderation and other integrated features. This is not a complete SPA rewrite.
+BukaToko uses a single `app/index.html` shell for Home, Browse, Wanted, Sell and Account. Only the active screen template is mounted, preventing overlapping form IDs. Catalog cards remain React components; the compatible controller retains same-origin authentication, CSRF, uploads, offers, messages and the other integrated backend features.
+
+`frontend/build-shell.mjs` embeds inert screen templates into the marked generated block in `app/index.html`. Edit Home's first `<main>` outside that block, or edit the four corresponding source HTML files, then run `npm run build`. Do not hand-edit the generated block. The old `.html` entry points bootstrap the shell with their query and fragment intact; normal internal navigation changes history and swaps the active template without loading another document. Detail, profile and moderation screens remain standalone.
+
+The router cleans up page-level listeners and React list roots before switching screens. Request continuations from an abandoned screen cannot mutate the next screen. In-flight server writes are not undone by navigation. Sell/Wanted forms ask before discarding edited values, and successful submissions reset the dirty baseline. New screens receive focus and start at the top; Back/Forward restores the route/query rather than previous scroll positions. No drafts are saved to browser storage by this router.
 
 Run from the repository root:
 
@@ -10,7 +14,7 @@ npm run build
 npm test
 ```
 
-The production build writes `app/assets/react-ui.js` and `react-ui.css`, bundled locally with pinned dependencies and a lockfile. Python can serve the checked-in compiled assets without Node. After editing JSX or Tailwind, rebuild those assets. The Pages workflow rebuilds them before its exports and checks. Tailwind utilities use the `tw:` prefix and omit Preflight so they do not reset the integrated forms and moderation screens.
+The production build writes the shell templates, `app/assets/react-ui.js` and `react-ui.css`, bundled locally with pinned dependencies and a lockfile. Python can serve the checked-in shell and compiled assets without Node. Rebuild after editing a screen, JSX or Tailwind. The Pages workflow rebuilds before its exports and checks. Tailwind utilities use the `tw:` prefix and omit Preflight so they do not reset integrated forms and moderation screens.
 
 `renderCards` owns one React root per list, keyed by listing ID. Existing callers pass data and formatting helpers. `clearCards` unmounts a root before the controller replaces its children with skeletons or states. Locale observers skip React-owned subtrees; React subscribes to language changes itself. Product titles and other user content stay in their original language.
 
@@ -26,6 +30,6 @@ Phone:   compact header / categories / [folded filters] / two cards / bottom nav
 
 Text stays left-aligned. Catalog photos use a 4:3 frame with proportional cover, following the user's final clarification: a 16:9 photo fills the frame, so its edges can be cropped. Detail zoom keeps the whole source image. Product hover does not add extra cropping. Rounded controls and gentler line icons match the existing wordmark. Violet/lime hover shadows blend instead of a single-color glow; touch devices do not retain hover glow.
 
-Theme reveal lasts 900ms after a 120ms anticipation delay. Other controls respond immediately with a short press movement. Closing dialogs fade out before hiding. Same-origin cross-document transitions keep the header separate; locale starts in the head, and optional font display avoids a late font replacement. Reduced motion bypasses these effects. Native navigation transitions depend on browser support; HTML links and forms remain usable without them.
+Theme reveal lasts 900ms after a 120ms delay. Internal screen changes use a short exit and entrance, with a timer fallback if a background animation pauses. The persistent navigation's lime indicator slides to the selected item. Mobile selections are rounded rectangles inside a straight full-width bar. Closing dialogs fade out before hiding. Locale starts in the head and optional font display avoids a late font replacement. Reduced motion bypasses animation. Native cross-document transitions are retained for standalone screens.
 
 These changes target clearer layout and reusable/batched rendering. React adds download/runtime cost; no FPS, Lighthouse or net performance gain is claimed without measurement.

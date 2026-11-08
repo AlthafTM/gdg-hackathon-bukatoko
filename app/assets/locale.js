@@ -2,6 +2,7 @@
   "use strict";
   var language = localStorage.getItem("bk_lang") === "en" ? "en" : "id";
   var phrases = {
+    "Tinggalkan formulir yang belum disimpan?":"Leave this form without saving?",
     "Fitur ini belum tersedia di halaman ini.":"This feature is not available on this page yet.",
     "Komentar":"Comments", "Tanggapan":"Replies",
     "Belum ada permintaan di kota ini":"No requests in this city",

@@ -66,7 +66,12 @@ main > section { padding-block: var(--space-6); }
 .brand { display: inline-flex; flex-shrink: 0; }
 .brand-logo { width: 176px; height: auto; aspect-ratio: 486/95; }
 [data-theme="dark"] .brand-logo { filter: invert(1); }
-.nav { display: flex; gap: var(--space-1); }
+.nav { position: relative; isolation: isolate; display: flex; gap: var(--space-1); }
+.nav-indicator { position: absolute; left: 0; top: 0; z-index: -1; background: var(--accent); border-radius: var(--radius-control); pointer-events: none; transition: transform 320ms var(--ease),width 320ms var(--ease),height 320ms var(--ease); }
+.nav-indicator:not([data-ready]) { transition: none; }
+html[data-app-shell] .nav:has(.nav-indicator) a[aria-current="page"] { background: transparent; }
+#main:focus { outline: none; }
+html[data-routing] #main { visibility: hidden; }
 .nav a { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; padding: var(--space-2) var(--space-3); font-size: var(--step-14); color: var(--muted); text-decoration: none; border: 1px solid transparent; border-radius: var(--radius-control); transition: color var(--duration),background var(--duration); }
 .nav a:hover { background: var(--primary-soft); color: var(--primary); }
 .nav a[aria-current="page"] { color: var(--accent-solid-ink); background: var(--accent); font-weight: 750; }
@@ -397,8 +402,12 @@ html[data-transition="theme"] .hdr { view-transition-name: none; }
   .hdr-row { min-height: 72px; padding: var(--space-3) var(--space-4); gap: var(--space-1); }
   .brand-logo { width: 140px; } .hdr-actions { gap: 0; } .hdr-actions .btn { padding-inline: var(--space-2); font-size: var(--step-13); }
   .hdr-actions .btn-primary { display: none; }
-  .nav { position: fixed; bottom: 0; left: 0; right: 0; gap: var(--space-1); padding: var(--space-1) var(--space-2) calc(var(--space-1) + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line-strong); }
-  .nav a { flex: 1; flex-direction: column; justify-content: center; gap: var(--space-1); min-height: 64px; padding: var(--space-2) var(--space-1); font-size: 12px; border-bottom: 0; border-top: 2px solid transparent; }
+  .nav { position: fixed; bottom: 0; left: 0; right: 0; gap: var(--space-1); padding: var(--space-1) var(--space-2) calc(var(--space-1) + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line-strong); border-radius: 0; align-items: stretch; }
+  .nav a { flex: 1 1 0; min-width: 0; flex-direction: column; justify-content: center; gap: var(--space-1); height: 64px; min-height: 64px; padding: var(--space-2) var(--space-1); font-size: 11px; border-radius: var(--radius-sm); border-bottom: 0; border-top: 0; }
+  .nav .nav-label { white-space: nowrap; line-height: 1.2; }
+  .nav-indicator { border-radius: var(--radius-sm); }
+  [data-page="jelajah"] .quick-category-bar { padding-top: var(--space-3); }
+  [data-page="home"] .sec-head h2 { font-size: 1rem; }
   .nav a[aria-current="page"] { border-top-color: transparent; background: var(--accent); }
   .search-form { flex-wrap: wrap; gap: var(--space-2); } .search-input-wrap { flex-basis: 100%; } .search-form select { flex: 1; }
   .searchbar { padding-block: var(--space-3); }
@@ -409,7 +418,8 @@ html[data-transition="theme"] .hdr { view-transition-name: none; }
   .rail-track,.grid,.catalog-results .grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-3); }
   .card-body { padding: var(--space-3); } .card-title { font-size: var(--step-14); }
   .card .tag { font-size: var(--step-14); } .card .tag-old { font-size: 12px; } .card-meta { font-size: 12px; }
-  #rail-kategori { gap: var(--space-2); } #rail-kategori .btn { padding: var(--space-3) var(--space-1); font-size: 12px; }
+  #rail-kategori { gap: var(--space-2); } #rail-kategori .btn { padding: var(--space-3) var(--space-1); font-size: 11px; min-width: 0; }
+  #rail-kategori .btn > span { white-space: normal; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; text-align: center; }
   .sec-head { margin-bottom: var(--space-4); gap: var(--space-2); } .sec-head p { width: 100%; order: 3; }
   .catalog-layout { display: block; } .filter-details { position: static; margin-bottom: var(--space-5); }
   .filter-details > summary { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: var(--space-3) var(--space-4); background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-control); list-style: none; }

@@ -6,6 +6,7 @@ import path from 'node:path';
 import { readFile, writeFile } from 'node:fs/promises';
 
 const require = createRequire(import.meta.url);
+await import('./build-shell.mjs');
 const root = fileURLToPath(new URL('../', import.meta.url));
 await build({
   absWorkingDir: root,

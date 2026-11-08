@@ -12,7 +12,7 @@ PAGES = ('index.html', 'jelajah.html', 'listing.html', 'jual.html', 'cari.html',
 def package():
     version = (ROOT / 'VERSION').read_text(encoding='utf8').strip()
     assets = ROOT / 'app/assets'
-    for required in ('react-ui.js', 'react-ui.css', 'app.js', 'locale.js', 'motion.js'):
+    for required in ('react-ui.js', 'react-ui.css', 'app.js', 'locale.js', 'motion.js', 'router.js'):
         if not (assets / required).is_file():
             raise SystemExit('Run npm run build before packaging the frontend.')
     files = [ROOT / 'app' / name for name in PAGES]

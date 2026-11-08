@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.7.0] - 2026-11-08
+
+- Share one HTML shell across the five main screens, add internal navigation/lifecycle guards and refine mobile category text, spacing and bottom-navigation shape. See [release notes](releases/0.7.0.md).
+
 ## [0.6.5] - 2026-11-08
 
 - Guard task screens against inserted catalog bars, centre guest account content, unify form-footer spacing and remove Pages preview banners/copy. See [release notes](releases/0.6.5.md).

@@ -11,10 +11,18 @@ function fixture(apiOrigin, cookie='') {
     fetch:async (url,options)=>{requests.push({url,options});return {ok:true,json:async()=>({user:null})};}};
   const source=fs.readFileSync(path.resolve(__dirname,'../app/assets/app.js'),'utf8').replace(
     'if (document.readyState === "loading")',
-    'window.connectionTest={api,backendURL}; if (document.readyState === "loading")');
+    'window.connectionTest={api,backendURL,pageRequest,advance:()=>pageEpoch++}; if (document.readyState === "loading")');
   vm.runInNewContext(source,context);
   return {api:window.connectionTest,requests};
 }
+test('responses from an abandoned route cannot invoke its UI success or error handlers',async()=>{
+  const {api}=fixture();let touched=false;
+  api.pageRequest(Promise.resolve({items:[]})).then(()=>touched=true);
+  api.pageRequest(Promise.reject(Error('old request'))).catch(()=>touched=true);
+  api.advance();await new Promise(resolve=>setTimeout(resolve,10));
+  assert.equal(touched,false);
+  assert.equal(await api.pageRequest(Promise.resolve('current')),'current');
+});
 test('local API keeps same-origin credentials and relative paths',async()=>{
   const {api,requests}=fixture();await api.api('/api/me');
   assert.equal(requests[0].url,'/api/me');assert.equal(requests[0].options.credentials,'same-origin');

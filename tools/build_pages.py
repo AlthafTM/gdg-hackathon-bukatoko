@@ -64,7 +64,7 @@ def build(api_origin='', app_url=''):
         html = re.sub(r'(<script src="assets/app\.js(?:\?[^\"]*)?"></script>)',
                       lambda m: '<script src="assets/' + adapter + '?v=20261108-6"></script>\n' + m[1], html)
         (OUTPUT / source.name).write_text(html, encoding='utf8')
-    for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'location.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
+    for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'location.js', 'router.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)
     shutil.copytree(ROOT / 'app/assets/fonts', OUTPUT / 'assets/fonts')
     shutil.copytree(ROOT / 'app/assets/stock', OUTPUT / 'assets/stock')

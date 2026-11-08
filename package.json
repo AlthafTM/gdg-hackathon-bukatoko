@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node frontend/build.mjs",
-    "test": "node --test tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs tests/test_react.cjs tests/test_location.cjs tests/test_wanted.cjs tests/test_shell.cjs",
+    "test": "node --test tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs tests/test_react.cjs tests/test_location.cjs tests/test_wanted.cjs tests/test_shell.cjs tests/test_router.cjs",
     "test:pages": "node --test tests/test_pages.cjs tests/test_connection.cjs"
   },
   "dependencies": {
