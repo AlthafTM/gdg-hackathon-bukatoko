@@ -18,13 +18,15 @@ test('export contains only frontend and public fixtures', () => {
   assert.doesNotMatch(JSON.stringify(data), /example\.com|pass_hash|demo1234/);
   assert.ok(fs.statSync(path.join(root, 'assets/fonts/nunito/Nunito.ttf')).size > 1000);
   assert.match(fs.readFileSync(path.join(root, 'assets/fonts/nunito/OFL.txt'), 'utf8'), /SIL OPEN FONT LICENSE/);
-  assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', '404.html', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html'].sort());
+  assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', '404.html', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html', 'syarat.html', 'privasi.html', 'bantuan.html'].sort());
   for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
     assert.match(html, /src="assets\/logo.svg"/);
-    assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
+    const supportTitles={'syarat.html':'Syarat &amp; ketentuan','privasi.html':'Kebijakan privasi','bantuan.html':'Lapor kendala teknis'};
+    if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 BukaToko</title>'));
+    else assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
     assert.match(html, /assets\/favicon\.svg\?v=2/);
     assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
     assert.match(html, /assets\/react-ui\.css/);

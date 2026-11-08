@@ -1,4 +1,4 @@
-import React, { memo, useSyncExternalStore } from 'react';
+import React, { memo, useEffect, useState, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Icon, paths } from './icons.jsx';
 
@@ -16,6 +16,21 @@ function useText() {
 
 const ProductCard = memo(function ProductCard({ item, helpers }) {
   const text = useText();
+  const [saved, setSaved] = useState(!!item.saved);
+  const [saving, setSaving] = useState(false);
+  useEffect(() => {
+    setSaved(!!item.saved);
+    const update = event => { if (event.detail.id === item.id) setSaved(event.detail.saved); };
+    document.addEventListener('bukatoko:saved', update);
+    return () => document.removeEventListener('bukatoko:saved', update);
+  }, [item.id, item.saved]);
+  async function save() {
+    if (!helpers.toggleSaved) return;
+    setSaving(true);
+    try { const value = await helpers.toggleSaved(item, saved); if (value !== null) setSaved(value); }
+    catch (error) { helpers.notify?.(error.message); }
+    finally { setSaving(false); }
+  }
   const real = item.photo_urls?.[0];
   const reference = !real && helpers.referencePhoto(item.id);
   const href = `listing.html?id=${encodeURIComponent(item.id)}`;
@@ -38,6 +53,13 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
       </span>
       <div className="tw:mt-auto tw:flex tw:flex-wrap tw:gap-x-2 tw:border-t tw:border-[var(--line)] tw:pt-3 tw:text-xs tw:leading-relaxed tw:text-[var(--muted)]">
         <span>{item.owner?.name || ''}</span><span>{text(helpers.timeAgo(item.created_at))}</span>
+      </div>
+      <div className="card-engagement">
+        <a className="btn btn-quiet btn-sm" href={`${href}#social-slot`} aria-label={`${text('Komentar')} ${item.comments || 0}`}>
+          <Icon name="comment" /><span className="reaction-count">{item.comments || 0}</span>
+        </a>
+        <button className="btn btn-quiet btn-sm card-save" type="button" aria-label={text(saved ? 'Tersimpan' : 'Simpan barang')}
+          aria-pressed={saved} disabled={saving} onClick={save}><Icon name="bookmark" /></button>
       </div>
     </div>
     {item.status === 'sold' && <span className="sold-flag">{text('terjual')}</span>}

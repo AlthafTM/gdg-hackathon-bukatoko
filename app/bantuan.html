@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+
+<style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("bukatoko:theme")==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lapor kendala teknis · BukaToko</title>
+<meta name="description" content="Ceritakan kendala teknis di BukaToko.">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css?v=20261109-2">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261109-2">
+<link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
+<script src="assets/router.js?v=20261109-2"></script>
+<script src="assets/locale.js?v=20261109-2"></script>
+</head>
+<body data-page="bantuan">
+<a class="sr-only" href="#main">Lewati ke konten</a>
+
+
+
+<header class="hdr">
+  <div class="wrap hdr-row">
+    <a class="brand" href="index.html" aria-label="BukaToko, beranda"><img class="brand-logo" src="assets/logo.svg" alt="BukaToko" width="486" height="95"></a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
+    </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
+  </div>
+</header>
+
+<main id="main"><div class="wrap support-page"><header class="support-heading"><h1>Lapor kendala teknis</h1><p>Ceritakan apa yang terjadi. Laporan disiapkan di perangkatmu sebelum kamu memilih cara mengirimnya.</p></header>
+<div class="bug-layout"><form id="bug-form" class="form-card bug-form">
+<div class="field"><label for="bug-title">Judul masalah <span class="req" aria-hidden="true">*</span></label><input id="bug-title" required maxlength="100" placeholder="Contoh: filter harga tidak memperbarui hasil"></div>
+<div class="field"><label for="bug-page">Halaman terkait</label><input id="bug-page" maxlength="120" placeholder="Contoh: Jelajah, tanpa informasi akun"></div>
+<div class="field"><label for="bug-steps">Langkah untuk mengulang <span class="req" aria-hidden="true">*</span></label><textarea id="bug-steps" required maxlength="500"></textarea></div>
+<div class="field"><label for="bug-expected">Apa yang kamu harapkan? <span class="req" aria-hidden="true">*</span></label><textarea id="bug-expected" required maxlength="350"></textarea></div>
+<div class="field"><label for="bug-actual">Apa yang terjadi? <span class="req" aria-hidden="true">*</span></label><textarea id="bug-actual" required maxlength="350"></textarea></div>
+<div class="form-footer"><p class="required-note"><span class="req" aria-hidden="true">*</span> wajib diisi</p><button class="btn btn-primary" type="submit">Buat pratinjau laporan</button></div>
+<section id="bug-result" hidden aria-labelledby="bug-result-heading"><h2 id="bug-result-heading">Pratinjau laporan</h2><pre class="bug-preview" id="bug-preview" data-user-content></pre><p class="field-note">Laporan belum dikirim. GitHub akan membuka formulir yang perlu kamu tinjau dan kirim sendiri.</p><p class="field-note" id="bug-link-limit" hidden>Laporan terlalu panjang untuk tautan GitHub. Unduh teks dan tempelkan ke laporan baru.</p><div class="bug-actions"><a class="btn btn-primary" id="bug-github" target="_blank" rel="noopener noreferrer">Lanjut ke GitHub</a><button class="btn btn-outline" id="bug-download" type="button">Unduh laporan teks</button></div></section>
+</form><aside class="bug-help"><h2>Laporan ini bersifat publik</h2><p>Jangan sertakan kata sandi, cookie, token, pesan pribadi, email, atau alamat lengkap. Tidak ada data perangkat atau akun yang diambil otomatis.</p><h2 class="mt-5">Masalah barang atau penjual?</h2><p>Gunakan tombol laporkan pada detail barang agar moderator menerima laporan yang tepat.</p><h2 class="mt-5">Urusan privasi atau keamanan?</h2><p>Buat permintaan umum untuk jalur komunikasi privat. Jangan tulis data pribadi atau rincian celah keamanan di laporan publik.</p></aside></div></div></main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><a class="foot-brand" href="index.html">BukaToko</a><p>Jual barang milikmu dan temukan barang yang kamu cari dari orang di sekitarmu.</p></div>
+    <nav class="foot-links" aria-label="Informasi BukaToko"><a href="syarat.html">Syarat &amp; ketentuan</a><a href="privasi.html">Kebijakan privasi</a></nav>
+    <div class="foot-support"><strong>Ada kendala?</strong><p>Bantu kami memperbaiki BukaToko.</p><a class="btn btn-outline btn-sm" href="bantuan.html">Laporkan bug</a></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/motion.js?v=20261109-2"></script>
+<script src="assets/react-ui.js?v=20261109-2"></script>
+<script src="assets/location.js?v=20261109-2"></script>
+<script src="assets/app.js?v=20261109-2"></script>
+<script src="assets/support.js?v=20261109-2"></script>
+</body>
+</html>

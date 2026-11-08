@@ -1,6 +1,11 @@
 import React from 'react';
 
 export const paths = {
+  bookmark: '<path d="M7 3h10a2 2 0 0 1 2 2v15a1 1 0 0 1-1.6.8L12 17l-5.4 3.8A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2Z"/>',
+  responses: '<path d="M5 4h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-5l-5 4v-4a3 3 0 0 1-3-3V7a3 3 0 0 1 2-3Z"/><path d="M9 8h6M20 10a3 3 0 0 1 2 3v4a3 3 0 0 1-3 3v2l-4-2h-3"/>',
+  link: '<path d="m10 14 4-4M8 16l-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0M16 8l1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 0) scale(.92 1)"/>',
+  danger: '<path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2.3 2.3 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/>',
+
   heart: '<path d="M20 5a5 5 0 0 0-7 0l-1 1-1-1a5 5 0 0 0-7 7l8 8 8-8a5 5 0 0 0 0-7Z"/>',
   comment: '<path d="M7 4h10a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H9l-5 4v-5a4 4 0 0 1-1-3V8a4 4 0 0 1 4-4Z"/><path d="M8 9h8M8 13h5"/>',
   reply: '<path d="m10 5-6 6 6 6M4 11h9a7 7 0 0 1 7 7v2"/>',

@@ -6,13 +6,13 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ('index.html', 'jelajah.html', 'listing.html', 'jual.html', 'cari.html',
-         'akun.html', 'profil.html', 'moderasi.html', '404.html')
+         'akun.html', 'profil.html', 'moderasi.html', '404.html', 'syarat.html', 'privasi.html', 'bantuan.html')
 
 
 def package():
     version = (ROOT / 'VERSION').read_text(encoding='utf8').strip()
     assets = ROOT / 'app/assets'
-    for required in ('react-ui.js', 'react-ui.css', 'app.js', 'locale.js', 'motion.js', 'router.js'):
+    for required in ('react-ui.js', 'react-ui.css', 'app.js', 'locale.js', 'motion.js', 'router.js', 'support.js'):
         if not (assets / required).is_file():
             raise SystemExit('Run npm run build before packaging the frontend.')
     files = [ROOT / 'app' / name for name in PAGES]
