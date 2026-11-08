@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.6.2] - 2026-11-08
+
+- Isolate the circular theme reveal from page animations, thin hover outlines, align dropdown arrows, and move wanted reactions to accessible footer icons. See [release notes](releases/0.6.2.md).
+
 ## [0.6.1] - 2026-11-08
 
 - Fix theme reveal flashes, tighten violet/lime hover outlines, refine input/action spacing and category icons, add permission-based city filtering and publish the branded 404 page. See [release notes](releases/0.6.1.md).

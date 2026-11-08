@@ -2,6 +2,7 @@
   "use strict";
   var language = localStorage.getItem("bk_lang") === "en" ? "en" : "id";
   var phrases = {
+    "Komentar":"Comments", "Tanggapan":"Replies",
     "Belum ada permintaan di kota ini":"No requests in this city",
     "Pilih kota lain atau tampilkan semua lokasi.":"Choose another city or show all locations.",
     "Gunakan lokasi saya":"Use my location",

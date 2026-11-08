@@ -1,6 +1,9 @@
 import React from 'react';
 
 export const paths = {
+  heart: '<path d="M20 5a5 5 0 0 0-7 0l-1 1-1-1a5 5 0 0 0-7 7l8 8 8-8a5 5 0 0 0 0-7Z"/>',
+  comment: '<path d="M7 4h10a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H9l-5 4v-5a4 4 0 0 1-1-3V8a4 4 0 0 1 4-4Z"/><path d="M8 9h8M8 13h5"/>',
+  reply: '<path d="m10 5-6 6 6 6M4 11h9a7 7 0 0 1 7 7v2"/>',
   home: '<path d="m4 10 6-5a3 3 0 0 1 4 0l6 5v8a3 3 0 0 1-3 3h-2v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6H7a3 3 0 0 1-3-3Z"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/>',
   explore: '<rect x="3" y="3" width="7" height="7" rx="2.5"/><rect x="14" y="3" width="7" height="7" rx="2.5"/><rect x="3" y="14" width="7" height="7" rx="2.5"/><rect x="14" y="14" width="7" height="7" rx="2.5"/>',

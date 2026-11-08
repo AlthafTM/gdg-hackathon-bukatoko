@@ -53,6 +53,9 @@
   }
 
   var iconPaths = {
+    heart: '<path d="M20 5a5 5 0 0 0-7 0l-1 1-1-1a5 5 0 0 0-7 7l8 8 8-8a5 5 0 0 0 0-7Z"/>',
+    comment: '<path d="M7 4h10a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H9l-5 4v-5a4 4 0 0 1-1-3V8a4 4 0 0 1 4-4Z"/><path d="M8 9h8M8 13h5"/>',
+    reply: '<path d="m10 5-6 6 6 6M4 11h9a7 7 0 0 1 7 7v2"/>',
     home: '<path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2Z"/>',
     search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5"/>',
     explore: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
@@ -278,20 +281,29 @@
   }
 
   /* ---------- suka & komentar ---------- */
+  function reactionContent(button, name, label, count) {
+    button.textContent = "";
+    button.appendChild(icon(name));
+    button.appendChild(el("span", {class: "sr-only", text: label + " "}));
+    button.appendChild(el("span", {class: "reaction-count", "data-user-content": "", text: String(count || 0)}));
+  }
   function socialBar(targetType, targetId, counts) {
     var wrap = el("div", { class: "social-bar" });
+    var compact = targetType === "wanted";
     var liked = !!counts.liked;
     var likeBtn = el("button", {
       class: "btn btn-quiet btn-sm", type: "button",
       "aria-pressed": liked ? "true" : "false",
       text: (liked ? "Suka · " : "Suka  ") + (counts.likes || 0)
     });
+    if (compact) reactionContent(likeBtn, "heart", "Suka", counts.likes);
     likeBtn.addEventListener("click", function () {
       requireAuth(function () {
         likeBtn.disabled = true;
         api("/api/likes", { method: "POST", body: { target_type: targetType, target_id: targetId } })
           .then(function (data) {
-            likeBtn.textContent = (data.liked ? "Suka · " : "Suka  ") + data.likes;
+            if (compact) reactionContent(likeBtn, "heart", "Suka", data.likes);
+            else likeBtn.textContent = (data.liked ? "Suka · " : "Suka  ") + data.likes;
             likeBtn.setAttribute("aria-pressed", data.liked ? "true" : "false");
           })
           .catch(function (err) { toast(err.message); })
@@ -304,6 +316,7 @@
       text: (counts.comments || 0) + " komentar"
     });
     var box = el("div", { class: "comment-slot" });
+    if (compact) reactionContent(toggle, "comment", "Komentar", counts.comments);
     var loaded = false;
     toggle.addEventListener("click", function () {
       var open = toggle.getAttribute("aria-expanded") === "true";
@@ -1967,6 +1980,7 @@
         var replies = el("div", { class: "wanted-replies" });
         var replyToggle = el("button", { class: "btn btn-quiet btn-sm", type: "button",
           "aria-expanded": "false", text: (w.replies || 0) + " tanggapan" });
+        reactionContent(replyToggle, "reply", "Tanggapan", w.replies);
         replyToggle.addEventListener("click", function () {
           var open = replyToggle.getAttribute("aria-expanded") === "true";
           replyToggle.setAttribute("aria-expanded", open ? "false" : "true");
@@ -1993,6 +2007,9 @@
           }
         });
         replies.hidden = true;
+        var social = socialBar("wanted", w.id, w);
+        var comments = qs(".comment-slot", social);
+        social.removeChild(comments);
 
         list.appendChild(el("article", { class: "wanted-item" }, [
           el("div", {}, [
@@ -2000,12 +2017,12 @@
             el("span", { class: "card-meta" }, [
               el("span", {text:kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at)}),
               document.createTextNode(" · "), el("span", {"data-user-content":"",text:w.owner.name})]),
-            el("p", { class: "wanted-note", text: w.note }),
-            socialBar("wanted", w.id, w),
-            replyToggle,
-            replies
+            el("p", { class: "wanted-note", text: w.note })
           ]),
-          actions
+          el("div", {class: "wanted-footer"}, [actions,
+            el("div", {class: "wanted-social"}, [social, replyToggle])]),
+          comments,
+          replies
         ]));
       });
     }

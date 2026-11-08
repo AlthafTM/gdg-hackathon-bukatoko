@@ -58,7 +58,7 @@ Do not commit/push, merge or alter release metadata without explicit permission.
 
 ## Current local UI changes
 
-Theme snapshots stay clipped before their first paint. Hover outlines use a 2px
+Theme snapshots use a single CSS reveal with an opaque old layer and no page cross-fade. Hover outlines use a 1px
 violet/lime gradient and a narrower glow. The search submit uses lime. Fashion and
 sports icons share rounded strokes; backend category identifiers are unchanged.
 The 404 is styled for both Python and the repository's GitHub Pages subpath.

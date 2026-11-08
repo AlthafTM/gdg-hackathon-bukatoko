@@ -5,7 +5,7 @@
   function theme(button, update) {
     if (transitionBusy) return Promise.resolve();
     if (reduced.matches) { update(); return Promise.resolve(); }
-    if (!document.startViewTransition || !document.documentElement.animate) {
+    if (!document.startViewTransition) {
       document.documentElement.classList.add("theme-fade");
       update();
       window.setTimeout(function () { document.documentElement.classList.remove("theme-fade"); }, 460);
@@ -15,32 +15,29 @@
     document.documentElement.dataset.transition = "theme";
     var rect = button.getBoundingClientRect();
     var x = rect.left + rect.width / 2, y = rect.top + rect.height / 2;
-    // Hold the new snapshot closed before ready resolves, including its first paint.
+    // Set every snapshot style before capture; ready must never start a second animation.
     document.documentElement.style.setProperty("--theme-x", x + "px");
     document.documentElement.style.setProperty("--theme-y", y + "px");
     var radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    document.documentElement.style.setProperty("--theme-radius", (radius + 1) + "px");
+    document.documentElement.style.setProperty("--theme-backdrop", window.getComputedStyle(document.documentElement).backgroundColor);
     var transition;
     var updated = false;
     function commit() { if (!updated) { updated = true; update(); } }
+    function cleanup() {
+      transitionBusy = false; delete document.documentElement.dataset.transition;
+      ["--theme-x", "--theme-y", "--theme-radius", "--theme-backdrop"].forEach(function (name) {
+        document.documentElement.style.removeProperty(name);
+      });
+    }
     try { transition = document.startViewTransition(commit); }
     catch (error) {
-      commit(); transitionBusy = false; delete document.documentElement.dataset.transition;
-      document.documentElement.style.removeProperty("--theme-x");
-      document.documentElement.style.removeProperty("--theme-y");
+      commit(); cleanup();
       return Promise.resolve();
     }
-    return transition.ready.then(function () {
-      return document.documentElement.animate({clipPath: [
-        "circle(0px at " + x + "px " + y + "px)",
-        "circle(" + radius + "px at " + x + "px " + y + "px)"
-      ]}, {duration: 900, delay: 120, easing: "cubic-bezier(.2,.7,.2,1)", pseudoElement: "::view-transition-new(root)", fill: "both"}).finished;
-    }).catch(function () { commit(); }).then(function () {
-      return transition.finished;
-    }).catch(function () { commit(); }).finally(function () {
-      transitionBusy = false; delete document.documentElement.dataset.transition;
-      document.documentElement.style.removeProperty("--theme-x");
-      document.documentElement.style.removeProperty("--theme-y");
-    });
+    // A skipped/failed snapshot still commits the requested theme exactly once.
+    transition.ready.catch(function () { commit(); });
+    return transition.finished.catch(function () { commit(); }).finally(cleanup);
   }
   var exits = new WeakMap();
   function cancelExit(element) {
