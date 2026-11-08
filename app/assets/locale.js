@@ -2,6 +2,7 @@
   "use strict";
   var language = localStorage.getItem("bk_lang") === "en" ? "en" : "id";
   var phrases = {
+    "Fitur ini belum tersedia di halaman ini.":"This feature is not available on this page yet.",
     "Komentar":"Comments", "Tanggapan":"Replies",
     "Belum ada permintaan di kota ini":"No requests in this city",
     "Pilih kota lain atau tampilkan semua lokasi.":"Choose another city or show all locations.",

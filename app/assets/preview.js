@@ -2,7 +2,7 @@
   "use strict";
   var root = new URL("../", document.currentScript.src);
   var snapshot;
-  var message = "Pratinjau ini hanya untuk melihat data contoh. Jalankan server Python lokal untuk masuk, menjual, menyimpan, mengirim pesan atau menawar. Tidak ada data yang dikirim atau disimpan di sini.";
+  var message = "Fitur ini belum tersedia di halaman ini.";
   function denied(status, text) {
     var error = new Error(text);
     error.status = status;

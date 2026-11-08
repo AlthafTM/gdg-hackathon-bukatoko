@@ -21,7 +21,7 @@ test('export contains only frontend and public fixtures', () => {
   assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', '404.html', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html'].sort());
   for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
-    assert.match(html, /Pratinjau GitHub Pages/);
+    assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
     assert.match(html, /src="assets\/logo.svg"/);
     assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);

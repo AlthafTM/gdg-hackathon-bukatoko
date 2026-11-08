@@ -89,6 +89,7 @@
 
   function initShell() {
     var showCatalogTools = ["cari", "jual", "akun"].indexOf(document.body.dataset.page) === -1;
+    if (!showCatalogTools) qsa(".searchbar,.quick-category-bar").forEach(function (node) { node.remove(); });
     var homeLink = el("a", {href:"index.html","data-i18n":"home",text:"Beranda"});
     if (document.body.dataset.page === "home") homeLink.setAttribute("aria-current", "page");
     qs(".nav").prepend(homeLink);
@@ -899,10 +900,9 @@
       }
       var counts = qs("#home-counts");
       if (counts) {
+        counts.hidden = !!window.BukatokoPreview;
         var aktif = listings.filter(function (i) { return i.status === "active"; }).length;
-        counts.textContent = window.BukatokoPreview
-          ? "Pratinjau memuat " + aktif + " barang contoh dan " + wanted.length + " permintaan contoh."
-          : "Server mencatat " + aktif + " barang aktif dan " + wanted.length +
+        counts.textContent = window.BukatokoPreview ? "" : "Server mencatat " + aktif + " barang aktif dan " + wanted.length +
             " permintaan. Angka ini dari basis data, bukan klaim pemasaran.";
       }
       if (homeState) homeState.hidden = true;

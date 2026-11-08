@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.6.5] - 2026-11-08
+
+- Guard task screens against inserted catalog bars, centre guest account content, unify form-footer spacing and remove Pages preview banners/copy. See [release notes](releases/0.6.5.md).
+
 ## [0.6.4] - 2026-11-08
 
 - Remove search from wanted/sell/account screens, simplify the account entry view and normalize location-control spacing in the catalog. See [release notes](releases/0.6.4.md).

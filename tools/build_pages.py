@@ -46,10 +46,7 @@ def build(api_origin='', app_url=''):
     (OUTPUT / 'assets/preview-data.json').write_text(
         json.dumps({'listings': listings, 'wanted': wanted, 'users': list(users.values())},
                    ensure_ascii=False, indent=2) + '\n', encoding='utf8')
-    notice = ('Pratinjau GitHub Pages: hanya lihat. Semua barang, penjual dan permintaan adalah '
-              'data contoh; foto stok hanya referensi. Masuk, jual, pesan dan tawaran memerlukan server Python lokal.')
     if api_origin:
-        notice = 'Demo terhubung ke server. Foto stok hanya referensi. Jangan gunakan kata sandi pribadi atau data sensitif.'
         (OUTPUT / 'assets/runtime-config.js').write_text(
             'window.BukatokoConfig = ' + json.dumps({'apiOrigin': api_origin}).replace('<', '\\u003c') + ';\n', encoding='utf8')
     for name in ('index.html', 'jelajah.html', 'listing.html', 'jual.html', 'cari.html', 'akun.html', 'profil.html', '404.html'):
@@ -57,16 +54,15 @@ def build(api_origin='', app_url=''):
         html = source.read_text(encoding='utf8')
         if name == '404.html':
             html = html.replace('<base href="/">', '<base href="/gdg-hackathon-bukatoko/">')
-        html = re.sub(r'(<div class="strip">\s*<div class="wrap"><p>).*?(</p>)',
-                      lambda m: m[1] + notice + m[2], html, count=1, flags=re.S)
+        html = re.sub(r'<div class="strip">\s*<div class="wrap"><p>.*?</p>\s*</div>\s*</div>\s*',
+                      '', html, count=1, flags=re.S)
+        html = re.sub(r'\s*<p class="foot-note">.*?</p>', '', html, flags=re.S)
         if app_url:
             direct = '"' + escape(app_url + '/index.html', quote=True) + '"'
-            html = html.replace(notice + '</p>', notice + ' <a href=' + direct + '>Buka aplikasi langsung</a></p>', 1)
-        html = re.sub(r'(<p class="foot-note">).*?(</p>)',
-                      lambda m: m[1] + notice + m[2], html, flags=re.S)
+            html = html.replace('</footer>', '<div class="wrap live-app-link"><a href=' + direct + '>Buka aplikasi langsung</a></div>\n</footer>', 1)
         adapter = 'runtime-config.js' if api_origin else 'preview.js'
         html = re.sub(r'(<script src="assets/app\.js(?:\?[^\"]*)?"></script>)',
-                      lambda m: '<script src="assets/' + adapter + '?v=20261107-4"></script>\n' + m[1], html)
+                      lambda m: '<script src="assets/' + adapter + '?v=20261108-6"></script>\n' + m[1], html)
         (OUTPUT / source.name).write_text(html, encoding='utf8')
     for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'location.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)

@@ -87,6 +87,7 @@ main > section { padding-block: var(--space-6); }
 .btn-block { width: 100%; }
 .btn[aria-pressed="true"] { background: var(--secondary); color: var(--secondary-ink); border-color: var(--primary); }
 .searchbar { background: transparent; border: 0; padding-block: var(--space-4); }
+:is([data-page="cari"],[data-page="jual"],[data-page="akun"]) :is(.searchbar,.quick-category-bar) { display: none !important; }
 .search-form { display: flex; gap: var(--space-3); }
 .search-input-wrap { display: flex; align-items: center; flex: 1; min-width: 0; padding-inline: 20px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-control); background: var(--surface); }
 .search-input-wrap:focus-within { outline: 1px solid var(--focus); outline-offset: 2px; border-color: var(--primary); }
@@ -221,8 +222,10 @@ select { appearance: none; padding-right: 48px; background-image: url("data:imag
 .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-5); }
 .form-grid .full { grid-column: 1/-1; }
 .req,.form-error { color: var(--danger); }
-.required-note { margin-block: var(--space-3) var(--space-4); font-size: var(--step-13); line-height: 1.5; color: var(--muted); }
-.wanted-form .required-note { margin: 0; }
+.required-note { margin: 0; font-size: var(--step-13); line-height: 1.5; color: var(--muted); }
+.form-footer { display: grid; gap: var(--space-4); margin-top: var(--space-5); }
+.form-footer > p { margin: 0; }
+.live-app-link { padding-block: var(--space-4); font-size: var(--step-14); }
 .form-error { padding: var(--space-3); border: 1px solid var(--danger); margin-top: var(--space-3); border-radius: var(--radius-sm); font-size: var(--step-14); }
 .dropzone { padding: var(--space-6); text-align: center; background: var(--paper); border: 1px dashed var(--line-strong); border-radius: var(--radius); }
 .dropzone p { color: var(--muted); font-size: var(--step-14); margin-bottom: var(--space-4); }
@@ -269,6 +272,7 @@ select { appearance: none; padding-right: 48px; background-image: url("data:imag
 .account-panels > section { padding: 0; }
 .account-note { padding: var(--space-4); margin-top: var(--space-5); border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
 .account-shell { max-width: 1184px; }
+[data-page="akun"] main:has(#akun-need-login:not([hidden])) { display: grid; align-items: center; }
 .account-shell > .page-heading { text-align: center; }
 .account-shell > .page-heading p { margin-inline: auto; }
 .account-login { margin-inline: auto; text-align: center; }
