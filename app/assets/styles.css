@@ -249,6 +249,9 @@ select { appearance: none; padding-right: 48px; background-image: url("data:imag
 .nearby-tools { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4); }
 .nearby-tools p { margin: 0; font-size: var(--step-13); color: var(--muted); max-width: 60ch; }
 .nearby-tools select { width: auto; max-width: 100%; }
+[data-page="jelajah"] .nearby-tools { display: grid; grid-template-columns: max-content minmax(0,1fr); margin-block: var(--space-5); }
+[data-page="jelajah"] .filter-details > summary { margin-block: 0; }
+[data-page="jelajah"] .filter-details[open] > summary { margin-bottom: var(--space-3); }
 .error-page { display: grid; justify-items: start; gap: var(--space-5); padding-block: var(--space-8); max-width: 880px; }
 .error-code { font-size: clamp(5rem,18vw,10rem); font-weight: 900; line-height: 1; color: var(--primary); letter-spacing: -.06em; }
 .error-page p { max-width: 52ch; color: var(--muted); }
@@ -268,15 +271,14 @@ select { appearance: none; padding-right: 48px; background-image: url("data:imag
 .account-shell { max-width: 1184px; }
 .account-shell > .page-heading { text-align: center; }
 .account-shell > .page-heading p { margin-inline: auto; }
-.account-login { max-width: 640px; margin-inline: auto; padding: var(--space-6); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); text-align: center; }
-.account-login .text-muted { margin-inline: auto; }
+.account-login { margin-inline: auto; text-align: center; }
 .account-shell .account-header { text-align: center; }
 .account-shell .counts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-3); margin-top: var(--space-5); }
 .account-shell .counts li { background: var(--paper); }
 .account-shell .counts strong { font-weight: 750; }
 .account-shell .tabs { margin: 0; border-bottom: 1px solid var(--line); }
 .account-shell .tabs button { border-bottom: 0; }
-.account-login .btn { margin-top: var(--space-5); }
+.account-login .btn { margin: 0; }
 .row-item { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: var(--space-4); padding: var(--space-5); border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); margin-bottom: var(--space-4); align-items: start; }
 .row-item.no-thumb { grid-template-columns: minmax(0,1fr); }
 .row-thumb { width: 112px; height: auto; aspect-ratio: 16/9; object-fit: contain; background: var(--paper); border-radius: var(--radius-sm); }
@@ -410,7 +412,9 @@ html[data-transition="theme"] .hdr { view-transition-name: none; }
   .filter-details > summary::after { content: "+"; } .filter-details[open] > summary::after { content: "−"; }
   .filters { padding: var(--space-4); grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 0; }
   .filters .field-grow,.filters > .btn { grid-column: 1/-1; }
-  .form-card,.account-header,.profile-header,.account-login { padding: var(--space-5); }
+  .form-card,.account-header,.profile-header { padding: var(--space-5); }
+  [data-page="jelajah"] .nearby-tools { grid-template-columns: minmax(0,1fr); }
+  [data-page="jelajah"] .nearby-tools .btn { justify-self: start; }
   .form-grid { grid-template-columns: minmax(0,1fr); gap: var(--space-4); }
   .counts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-3); } .counts li { padding: var(--space-3); }
   .counts strong { font-size: var(--step-20); }

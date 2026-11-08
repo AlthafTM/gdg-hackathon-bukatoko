@@ -88,10 +88,11 @@
   }
 
   function initShell() {
+    var showCatalogTools = ["cari", "jual", "akun"].indexOf(document.body.dataset.page) === -1;
     var homeLink = el("a", {href:"index.html","data-i18n":"home",text:"Beranda"});
     if (document.body.dataset.page === "home") homeLink.setAttribute("aria-current", "page");
     qs(".nav").prepend(homeLink);
-    if (!qs(".searchbar")) {
+    if (showCatalogTools && !qs(".searchbar")) {
       var searchInput = el("input", {id:"q-global",type:"search",name:"q",placeholder:"Cari barang yang kamu butuhkan",autocomplete:"off"});
       var search = el("div", {class:"searchbar desktop-search"}, [el("div", {class:"wrap"}, [
         el("form", {class:"search-form",action:"jelajah.html",method:"get",role:"search","aria-label":"Pencarian utama"}, [
@@ -102,7 +103,7 @@
     }
     var globalInput = qs("#q-global");
     if (globalInput) globalInput.value = new URLSearchParams(location.search).get("q") || "";
-    if (["cari", "jual", "akun"].indexOf(document.body.dataset.page) === -1) {
+    if (showCatalogTools) {
       var categoryBar = el("div", {class:"quick-category-bar"}, [el("div", {class:"wrap"}, [
         el("nav", {class:"quick-categories","aria-label":"Kategori cepat"})])]);
       var categoryNav = qs(".quick-categories", categoryBar);

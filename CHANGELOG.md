@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.6.4] - 2026-11-08
+
+- Remove search from wanted/sell/account screens, simplify the account entry view and normalize location-control spacing in the catalog. See [release notes](releases/0.6.4.md).
+
 ## [0.6.3] - 2026-11-08
 
 - Simplify wanted/sell/account navigation, centre and round account panels, widen the fashion icon, hide the visual catalog count and turn the home introduction into a solid card. See [release notes](releases/0.6.3.md).
