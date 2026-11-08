@@ -64,7 +64,7 @@
     account: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
     elektronik: '<path d="M3 6h18v12H3zM8 21h8M12 18v3"/><path d="m7 10 3 2-3 2M13 14h4"/>',
     ponsel: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M11 19h2"/>',
-    fesyen: '<path d="M8 4 3 7l2 5 3-1v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8l3 1 2-5-5-3a4 4 0 0 1-8 0Z"/>',
+    fesyen: '<path d="M9 4 2 8l3 5 2-1v7a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7l2 1 3-5-7-4a3 3 0 0 1-6 0Z"/>',
     rumah: '<path d="m2 11 10-9 10 9M5 9v12h14V9M10 21v-7h4v7"/>',
     hobi: '<path d="M5 12V9a7 7 0 0 1 14 0v3M3 11h4v9H3zM17 11h4v9h-4zM17 20c0 2-2 2-5 2"/>',
     buku: '<path d="M12 5C9 2 5 2 2 3v16c3-1 7-1 10 2 3-3 7-3 10-2V3c-3-1-7-1-10 2v16Z"/>',
@@ -102,16 +102,18 @@
     }
     var globalInput = qs("#q-global");
     if (globalInput) globalInput.value = new URLSearchParams(location.search).get("q") || "";
-    var categoryBar = el("div", {class:"quick-category-bar"}, [el("div", {class:"wrap"}, [
-      el("nav", {class:"quick-categories","aria-label":"Kategori cepat"})])]);
-    var categoryNav = qs(".quick-categories", categoryBar);
-    var selectedCategory = new URLSearchParams(location.search).get("kat") || "";
-    [["","Semua"],["elektronik","Elektronik"],["ponsel","Ponsel & Tablet"],["fesyen","Fashion"],
-      ["rumah","Rumah Tangga"],["hobi","Hobi & Koleksi"],["buku","Buku"],["otomotif","Otomotif"],["olahraga","Olahraga"]].forEach(function (category) {
-      categoryNav.appendChild(el("a", {class:"btn btn-sm",href:categoryHref(category[0],location.search),
-        "data-category":category[0],"aria-current":category[0]===selectedCategory ? "page" : null,text:category[1]}));
-    });
-    qs(".searchbar").insertAdjacentElement("afterend", categoryBar);
+    if (["cari", "jual", "akun"].indexOf(document.body.dataset.page) === -1) {
+      var categoryBar = el("div", {class:"quick-category-bar"}, [el("div", {class:"wrap"}, [
+        el("nav", {class:"quick-categories","aria-label":"Kategori cepat"})])]);
+      var categoryNav = qs(".quick-categories", categoryBar);
+      var selectedCategory = new URLSearchParams(location.search).get("kat") || "";
+      [["","Semua"],["elektronik","Elektronik"],["ponsel","Ponsel & Tablet"],["fesyen","Fashion"],
+        ["rumah","Rumah Tangga"],["hobi","Hobi & Koleksi"],["buku","Buku"],["otomotif","Otomotif"],["olahraga","Olahraga"]].forEach(function (category) {
+        categoryNav.appendChild(el("a", {class:"btn btn-sm",href:categoryHref(category[0],location.search),
+          "data-category":category[0],"aria-current":category[0]===selectedCategory ? "page" : null,text:category[1]}));
+      });
+      qs(".searchbar").insertAdjacentElement("afterend", categoryBar);
+    }
     qsa("label").forEach(function (label) {
       if (!qs(".req", label)) return;
       var field = document.getElementById(label.htmlFor);

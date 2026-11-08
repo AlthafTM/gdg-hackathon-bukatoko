@@ -12,7 +12,7 @@ export const paths = {
   account: '<circle cx="12" cy="7.5" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/>',
   elektronik: '<rect x="3" y="4" width="18" height="13" rx="3"/><path d="M9 21h6M12 17v4M7 9h4M7 12h7"/>',
   ponsel: '<rect x="6" y="2.5" width="12" height="19" rx="3.5"/><path d="M10 6h4M11 18h2"/>',
-  fesyen: '<path d="M8 4 3 7l2 5 3-1v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8l3 1 2-5-5-3a4 4 0 0 1-8 0Z"/>',
+  fesyen: '<path d="M9 4 2 8l3 5 2-1v7a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7l2 1 3-5-7-4a3 3 0 0 1-6 0Z"/>',
   rumah: '<path d="m3 11 7-6a3 3 0 0 1 4 0l7 6M5 10v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-8M9 21v-5a3 3 0 0 1 6 0v5"/>',
   hobi: '<path d="M5 13v-3a7 7 0 0 1 14 0v3M19 19c0 2-2 3-6 3"/><rect x="3" y="11" width="5" height="9" rx="2.5"/><rect x="16" y="11" width="5" height="9" rx="2.5"/>',
   buku: '<path d="M12 6C9 3 5 3 3 4v14c3-1 6 0 9 3 3-3 6-4 9-3V4c-2-1-6-1-9 2Zm0 0v15"/>',

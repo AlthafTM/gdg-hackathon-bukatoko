@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.6.3] - 2026-11-08
+
+- Simplify wanted/sell/account navigation, centre and round account panels, widen the fashion icon, hide the visual catalog count and turn the home introduction into a solid card. See [release notes](releases/0.6.3.md).
+
 ## [0.6.2] - 2026-11-08
 
 - Isolate the circular theme reveal from page animations, thin hover outlines, align dropdown arrows, and move wanted reactions to accessible footer icons. See [release notes](releases/0.6.2.md).
