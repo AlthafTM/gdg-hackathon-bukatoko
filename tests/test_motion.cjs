@@ -10,15 +10,17 @@ function fixture(options={}) {
   const element={nodeType:1,isConnected:true,classList:{add:v=>classes.add(v),remove:v=>classes.delete(v)},
     getBoundingClientRect:()=>({top:900,bottom:1200}),matches:()=>true,querySelectorAll:()=>[]};
   const rootClasses=new Set();
-  const root={dataset:{},classList:{add:v=>rootClasses.add(v),remove:v=>rootClasses.delete(v)},animate:(frames,settings)=>{
+  const properties=new Map();
+  const root={dataset:{},style:{setProperty:(k,v)=>properties.set(k,v),removeProperty:k=>properties.delete(k)},classList:{add:v=>rootClasses.add(v),remove:v=>rootClasses.delete(v)},animate:(frames,settings)=>{
     animations.push({frames,settings});return {finished:Promise.resolve()};}};
   const document={documentElement:root,body:{nodeType:1,matches:()=>false,querySelectorAll:()=>[element]}};
-  if(!options.fallback)document.startViewTransition=update=>{update();return {ready:Promise.resolve(),finished:Promise.resolve()};};
+  let initialPosition;
+  if(!options.fallback)document.startViewTransition=update=>{initialPosition=[properties.get('--theme-x'),properties.get('--theme-y')];update();return {ready:Promise.resolve(),finished:Promise.resolve()};};
   class IO {constructor(callback){onIntersection=callback;} observe(v){observed.push(v);}unobserve(){}}
   const context={window:{matchMedia:()=>reduced,innerWidth:1200,innerHeight:800,IntersectionObserver:IO,setTimeout:fn=>timers.push(fn)},
     document,IntersectionObserver:IO,MutationObserver:class {observe(){}}};
   vm.runInNewContext(fs.readFileSync(path.resolve(__dirname,'../app/assets/motion.js'),'utf8'),context);
-  return {api:context.window.BukatokoMotion,classes,animations,timers,rootClasses,observed,element,
+  return {api:context.window.BukatokoMotion,classes,animations,timers,rootClasses,observed,element,properties,initialPosition:()=>initialPosition,
     button:{getBoundingClientRect:()=>({left:100,top:40,width:40,height:40})},
     intersection:entry=>onIntersection([Object.assign({target:element},entry)])};
 }
@@ -26,6 +28,9 @@ test('theme reveal starts at the button and reaches the farthest viewport corner
   const f=fixture();let updates=0;
   await f.api.theme(f.button,()=>updates++);
   assert.equal(updates,1);assert.equal(f.animations.length,1);
+  assert.deepEqual(f.initialPosition(),['120px','60px']);
+  assert.equal(f.properties.size,0);
+  assert.match(fs.readFileSync(path.resolve(__dirname,'../app/assets/styles.css'),'utf8'),/html\[data-transition="theme"\]::view-transition-new\(root\) \{ clip-path: circle\(0px at var\(--theme-x\) var\(--theme-y\)\)/);
   assert.equal(f.animations[0].frames.clipPath[0],'circle(0px at 120px 60px)');
   assert.equal(f.animations[0].settings.pseudoElement,'::view-transition-new(root)');
   assert.equal(f.animations[0].settings.duration,900);
@@ -36,6 +41,13 @@ test('theme reveal starts at the button and reaches the farthest viewport corner
 test('reduced motion updates the theme immediately without animated snapshots',async()=>{
   const f=fixture({reduced:true});let updates=0;await f.api.theme(f.button,()=>updates++);
   assert.equal(updates,1);assert.equal(f.animations.length,0);f.api.init();assert.equal(f.observed.length,0);
+});
+test('repeated clicks during a reveal do not reverse the pending theme',async()=>{
+  const f=fixture();let updates=0;
+  const pending=f.api.theme(f.button,()=>updates++);
+  await f.api.theme(f.button,()=>updates++);
+  await pending;
+  assert.equal(updates,1);assert.equal(f.animations.length,1);
 });
 test('unsupported view transitions fall back to a temporary color fade',async()=>{
   const f=fixture({fallback:true});let updates=0;await f.api.theme(f.button,()=>updates++);

@@ -2,16 +2,17 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
+<base href="/">
 <style>html{background:#F6F7F9;color-scheme:light}html[data-theme="dark"]{background:#17191F;color-scheme:dark}</style>
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("bukatoko:theme")==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Halaman tidak ditemukan · Bukatoko</title>
+<title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Alamat ini tidak ada di Bukatoko.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/styles.css?v=20261108-1">
-<link rel="stylesheet" href="assets/react-ui.css?v=20261108-1">
+<link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-2">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-2">
 <link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
-<script src="assets/locale.js?v=20261108-1"></script>
+<script src="assets/locale.js?v=20261108-2"></script>
 </head>
 <body data-page="404">
 <a class="sr-only" href="#main">Lewati ke konten</a>
@@ -24,21 +25,29 @@
   <div class="wrap hdr-row">
     <a class="brand" href="index.html" aria-label="BukaToko, beranda"><img class="brand-logo" src="assets/logo.svg" alt="BukaToko" width="486" height="95"></a>
     <nav class="nav" aria-label="Navigasi utama">
-      <a href="jelajah.html">Jelajah</a>
-      <a href="cari.html">Lagi Dicari</a>
-      <a href="jual.html">Jual</a>
-      <a href="akun.html">Akun</a>
+      <a href="jelajah.html" data-i18n="explore">Jelajah</a>
+      <a href="cari.html" data-i18n="wanted">Lagi Dicari</a>
+      <a href="jual.html" data-i18n="sell">Jual</a>
+      <a href="akun.html" data-i18n="account">Akun</a>
     </nav>
+    <div class="hdr-actions">
+      <button class="btn btn-quiet btn-sm" id="lang-toggle" type="button" aria-label="Ganti ke bahasa Inggris">EN</button>
+      <button class="btn btn-quiet btn-sm" id="theme-toggle" type="button" aria-label="Ganti ke tema gelap">Gelap</button>
+      <span class="notif" id="notif-badge" hidden></span>
+      <button class="btn btn-outline btn-sm" id="auth-button" type="button" data-i18n="login">Masuk</button>
+      <a class="btn btn-primary btn-sm" href="jual.html" data-i18n="sellCta">Pasang barang</a>
+    </div>
   </div>
 </header>
 
 <main id="main">
-  <div class="wrap" style="padding:64px 0 96px;">
-    <h1 style="font-size:32px; margin-bottom:8px;">Alamat ini tidak ada</h1>
-    <p style="color:var(--muted); max-width:52ch; margin-bottom:20px;">Barang bisa sudah dihapus penjual, atau tautannya salah ketik. Coba mulai dari daftar barang yang masih aktif.</p>
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <a class="btn btn-primary" href="jelajah.html">Lihat barang aktif</a>
-      <a class="btn btn-outline" href="index.html">Ke beranda</a>
+  <div class="wrap error-page">
+    <span class="error-code" aria-hidden="true">404</span>
+    <h1>Alamat ini tidak ada</h1>
+    <p>Barang bisa sudah dihapus penjual, atau tautannya salah ketik. Coba mulai dari daftar barang yang masih aktif.</p>
+    <div class="action-group">
+      <a class="btn btn-primary" href="index.html">Ke beranda</a>
+      <a class="btn btn-outline" href="jelajah.html">Lihat barang aktif</a>
     </div>
   </div>
 </main>
@@ -48,5 +57,10 @@
     <p class="foot-note">Situs demo: data di SQLite, foto di folder uploads mesin ini.</p>
   </div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/motion.js?v=20261108-2"></script>
+<script src="assets/react-ui.js?v=20261108-2"></script>
+<script src="assets/location.js?v=20261108-2"></script>
+<script src="assets/app.js?v=20261108-2"></script>
 </body>
 </html>

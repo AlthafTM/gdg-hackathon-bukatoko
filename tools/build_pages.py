@@ -52,9 +52,11 @@ def build(api_origin='', app_url=''):
         notice = 'Demo terhubung ke server. Foto stok hanya referensi. Jangan gunakan kata sandi pribadi atau data sensitif.'
         (OUTPUT / 'assets/runtime-config.js').write_text(
             'window.BukatokoConfig = ' + json.dumps({'apiOrigin': api_origin}).replace('<', '\\u003c') + ';\n', encoding='utf8')
-    for name in ('index.html', 'jelajah.html', 'listing.html', 'jual.html', 'cari.html', 'akun.html', 'profil.html'):
+    for name in ('index.html', 'jelajah.html', 'listing.html', 'jual.html', 'cari.html', 'akun.html', 'profil.html', '404.html'):
         source = ROOT / 'app' / name
         html = source.read_text(encoding='utf8')
+        if name == '404.html':
+            html = html.replace('<base href="/">', '<base href="/gdg-hackathon-bukatoko/">')
         html = re.sub(r'(<div class="strip">\s*<div class="wrap"><p>).*?(</p>)',
                       lambda m: m[1] + notice + m[2], html, count=1, flags=re.S)
         if app_url:
@@ -66,7 +68,7 @@ def build(api_origin='', app_url=''):
         html = re.sub(r'(<script src="assets/app\.js(?:\?[^\"]*)?"></script>)',
                       lambda m: '<script src="assets/' + adapter + '?v=20261107-4"></script>\n' + m[1], html)
         (OUTPUT / source.name).write_text(html, encoding='utf8')
-    for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
+    for name in ('styles.css', 'app.js', 'locale.js', 'motion.js', 'location.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)
     shutil.copytree(ROOT / 'app/assets/fonts', OUTPUT / 'assets/fonts')
     shutil.copytree(ROOT / 'app/assets/stock', OUTPUT / 'assets/stock')

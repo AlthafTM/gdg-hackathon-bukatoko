@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.6.1] - 2026-11-08
+
+- Fix theme reveal flashes, tighten violet/lime hover outlines, refine input/action spacing and category icons, add permission-based city filtering and publish the branded 404 page. See [release notes](releases/0.6.1.md).
+
 ## [0.6.0] - 2026-11-08
 
 - Integrate the moderator-capable backend/features and add React/Tailwind catalog components, 4:3 photos, responsive layouts, rounded icons, lime accents and revised transitions.

@@ -2,6 +2,11 @@
 
 Version 0.6.0 unifies the feature-branch backend and the publicly served integration with the React/Tailwind catalog. See [integration evidence and frontend deployment](INTEGRATION-2026-11-08.md). The GitHub Release includes a frontend-only ZIP for the collaborator with hosting access; publishing the repository does not replace the running Instabox files.
 
+For access requirements and a deployment prompt for the collaborator's AI, see
+[hosting handoff](HOSTING-HANDOFF.md). The user's supplied deployment report
+describes the earlier v0.5.2 deployment. The older investigation and validation
+notes below are historical and do not describe the complete v0.6.0 main frontend.
+
 Configured backend origin:
 https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
 
@@ -21,7 +26,7 @@ These are source observations, not proof of the exact revision currently running
 
 Serve the frontend on the same public origin as the existing backend. Use relative `/api/...` and `/uploads/...` paths, same-origin credentials, and the existing CSRF contract. The local frontend has been updated to send the cookie token on JSON writes and multipart uploads. Tokens are not stored in browser storage or forwarded from an unrelated Pages origin.
 
-Publishing UI assets to the existing frontend directory requires access to that hosting environment. It does not require replacing server.py or restarting/reseeding its database. Preserve the existing moderator page, feature-specific frontend code, uploads and user data; merging the UI with those newer features requires a separate compatibility review. The current main frontend does not yet provide all feature-branch screens.
+Publishing UI assets to the existing frontend directory requires access to that hosting environment. It does not require replacing server.py or restarting/reseeding its database. Preserve the existing moderator page, feature-specific frontend code, uploads and user data. Main v0.6.0 includes the feature-branch screens and the compatibility checks documented in the integration report.
 
 Alternatively, a same-origin reverse proxy can serve the UI and forward API/uploads to the unchanged backend. GitHub Pages alone cannot provide such a proxy. This is an alternative hosting setup, not something configured by this document.
 

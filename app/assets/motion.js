@@ -15,12 +15,20 @@
     document.documentElement.dataset.transition = "theme";
     var rect = button.getBoundingClientRect();
     var x = rect.left + rect.width / 2, y = rect.top + rect.height / 2;
+    // Hold the new snapshot closed before ready resolves, including its first paint.
+    document.documentElement.style.setProperty("--theme-x", x + "px");
+    document.documentElement.style.setProperty("--theme-y", y + "px");
     var radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
     var transition;
     var updated = false;
     function commit() { if (!updated) { updated = true; update(); } }
     try { transition = document.startViewTransition(commit); }
-    catch (error) { commit(); transitionBusy = false; delete document.documentElement.dataset.transition; return Promise.resolve(); }
+    catch (error) {
+      commit(); transitionBusy = false; delete document.documentElement.dataset.transition;
+      document.documentElement.style.removeProperty("--theme-x");
+      document.documentElement.style.removeProperty("--theme-y");
+      return Promise.resolve();
+    }
     return transition.ready.then(function () {
       return document.documentElement.animate({clipPath: [
         "circle(0px at " + x + "px " + y + "px)",
@@ -30,6 +38,8 @@
       return transition.finished;
     }).catch(function () { commit(); }).finally(function () {
       transitionBusy = false; delete document.documentElement.dataset.transition;
+      document.documentElement.style.removeProperty("--theme-x");
+      document.documentElement.style.removeProperty("--theme-y");
     });
   }
   var exits = new WeakMap();

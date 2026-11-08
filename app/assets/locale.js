@@ -2,6 +2,17 @@
   "use strict";
   var language = localStorage.getItem("bk_lang") === "en" ? "en" : "id";
   var phrases = {
+    "Belum ada permintaan di kota ini":"No requests in this city",
+    "Pilih kota lain atau tampilkan semua lokasi.":"Choose another city or show all locations.",
+    "Gunakan lokasi saya":"Use my location",
+    "Lokasi permintaan":"Request location",
+    "Izin lokasi dipakai untuk memilih kota terdekat. Koordinat tidak disimpan.":"Location permission selects the nearest supported city. Coordinates are not stored.",
+    "Lokasi tidak tersedia. Pilih kota secara manual.":"Location is unavailable. Select a city manually.",
+    "Mencari lokasi perangkat…":"Finding your device location…",
+    "Belum ada kota yang didukung di dekatmu. Pilih kota secara manual.":"No supported city nearby. Select a city manually.",
+    "Kota terdekat dipilih. Hasil berdasarkan kota, bukan jarak pasti.":"Nearest city selected. Results use city names, not exact distances.",
+    "Izin lokasi ditolak. Pilih kota secara manual.":"Location permission denied. Select a city manually.",
+    "Lokasi belum ditemukan. Coba lagi atau pilih kota.":"Location could not be found. Try again or select a city.",
     "Halaman tidak ditemukan · Bukatoko":"Page not found · Bukatoko",
     "Demo: alamat yang kamu buka tidak ada di server ini.":"Demo: this address does not exist on this server.",
     "Alamat ini tidak ada":"This page does not exist",
@@ -23,7 +34,7 @@
     "Mulus":"Excellent", "Pemakaian ringan":"Lightly used", "Berfungsi normal":"Working condition", "Kondisi baik":"Good condition", "Harga (Rp)":"Price (Rp)",
     "Urutkan":"Sort by", "Status":"Status", "Masih dijual":"For sale", "Sudah terjual":"Sold", "Filter dan urutan":"Filters and sorting", "Simpan pencarian ini":"Save this search",
     "Harga maksimum dalam rupiah":"Maximum price in rupiah", "misal: kamera, sepatu, kulkas":"e.g. camera, shoes, fridge", "maks":"max", "min":"min",
-    "Elektronik":"Electronics", "Ponsel & Tablet":"Phones & tablets", "Ponsel & tablet":"Phones & tablets", "Fesyen":"Fashion", "Rumah Tangga":"Home & living", "Rumah tangga":"Home & living",
+    "Elektronik":"Electronics", "Ponsel & Tablet":"Phones & tablets", "Ponsel & tablet":"Phones & tablets", "Fashion":"Fashion", "Rumah Tangga":"Home & living", "Rumah tangga":"Home & living",
     "Hobi & Koleksi":"Hobbies & collectibles", "Hobi & koleksi":"Hobbies & collectibles", "Buku":"Books", "Otomotif":"Vehicles & parts", "Olahraga":"Sports",
     "Temukan barang yang pas, dari warga sekitar.":"Find the right item from people nearby.",
     "Bandingkan harga, kondisi, dan lokasi. Jual barang milikmu atau buat permintaan sesuai anggaran.":"Compare prices, condition and location. Sell your own items or post a request within your budget.",

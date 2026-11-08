@@ -61,12 +61,12 @@
     account: '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
     elektronik: '<path d="M3 6h18v12H3zM8 21h8M12 18v3"/><path d="m7 10 3 2-3 2M13 14h4"/>',
     ponsel: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M11 19h2"/>',
-    fesyen: '<path d="m8 3-6 4 3 6 3-2v10h8V11l3 2 3-6-6-4a4 4 0 0 1-8 0Z"/>',
+    fesyen: '<path d="M8 4 3 7l2 5 3-1v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-8l3 1 2-5-5-3a4 4 0 0 1-8 0Z"/>',
     rumah: '<path d="m2 11 10-9 10 9M5 9v12h14V9M10 21v-7h4v7"/>',
     hobi: '<path d="M5 12V9a7 7 0 0 1 14 0v3M3 11h4v9H3zM17 11h4v9h-4zM17 20c0 2-2 2-5 2"/>',
     buku: '<path d="M12 5C9 2 5 2 2 3v16c3-1 7-1 10 2 3-3 7-3 10-2V3c-3-1-7-1-10 2v16Z"/>',
     otomotif: '<path d="m4 10 2-6h12l2 6M3 10h18v9H3zM6 19v3M18 19v3M6 14h2M16 14h2"/>',
-    olahraga: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5 5c9 2 12 5 14 14M19 5C10 7 7 10 5 19"/>',
+    olahraga: '<rect x="3" y="6" width="4" height="12" rx="2"/><rect x="17" y="6" width="4" height="12" rx="2"/><path d="M7 12h10M1 10v4M23 10v4"/>',
     location: '<path d="M19 10c0 5-7 12-7 12S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>'
   };
 
@@ -103,7 +103,7 @@
       el("nav", {class:"quick-categories","aria-label":"Kategori cepat"})])]);
     var categoryNav = qs(".quick-categories", categoryBar);
     var selectedCategory = new URLSearchParams(location.search).get("kat") || "";
-    [["","Semua"],["elektronik","Elektronik"],["ponsel","Ponsel & Tablet"],["fesyen","Fesyen"],
+    [["","Semua"],["elektronik","Elektronik"],["ponsel","Ponsel & Tablet"],["fesyen","Fashion"],
       ["rumah","Rumah Tangga"],["hobi","Hobi & Koleksi"],["buku","Buku"],["otomotif","Otomotif"],["olahraga","Olahraga"]].forEach(function (category) {
       categoryNav.appendChild(el("a", {class:"btn btn-sm",href:categoryHref(category[0],location.search),
         "data-category":category[0],"aria-current":category[0]===selectedCategory ? "page" : null,text:category[1]}));
@@ -126,7 +126,7 @@
     qsa("[data-icon]").forEach(function (holder) { holder.appendChild(icon(holder.dataset.icon)); });
     var categories = qs("#rail-kategori");
     if (categories) {
-      [["elektronik", "Elektronik"], ["ponsel", "Ponsel & tablet"], ["fesyen", "Fesyen"],
+      [["elektronik", "Elektronik"], ["ponsel", "Ponsel & tablet"], ["fesyen", "Fashion"],
         ["rumah", "Rumah tangga"], ["hobi", "Hobi & koleksi"], ["buku", "Buku"],
         ["otomotif", "Otomotif"], ["olahraga", "Olahraga"]].forEach(function (category) {
         categories.appendChild(el("a", {class: "btn", href: "jelajah.html?kat=" + category[0]},
@@ -1145,7 +1145,7 @@
 
   /* ---------- kategori ---------- */
   var KATEGORI = {
-    elektronik: "Elektronik", ponsel: "Ponsel & Tablet", fesyen: "Fesyen", rumah: "Rumah Tangga",
+    elektronik: "Elektronik", ponsel: "Ponsel & Tablet", fesyen: "Fashion", rumah: "Rumah Tangga",
     hobi: "Hobi & Koleksi", buku: "Buku", otomotif: "Otomotif", olahraga: "Olahraga"
   };
   function kategoriName(id) { return KATEGORI[id] || id; }
@@ -1921,17 +1921,30 @@
     var form = qs("#wanted-form");
     var error = qs("#wanted-error");
     var stateEl = qs("#wanted-state");
+    var nearbyCity = qs("#nearby-city");
+    if (nearbyCity) {
+      qsa("#w-lokasi option").forEach(function (option) { if (option.value) nearbyCity.appendChild(option.cloneNode(true)); });
+      nearbyCity.value = new URLSearchParams(location.search).get("lok") || "";
+      nearbyCity.addEventListener("change", function () {
+        var params = new URLSearchParams(location.search);
+        if (nearbyCity.value) params.set("lok", nearbyCity.value); else params.delete("lok");
+        history.replaceState(null, "", location.pathname + (params.toString() ? "?" + params.toString() : ""));
+        load();
+      });
+    }
 
     function paint(rows) {
       list.innerHTML = "";
       if (!rows.length) {
-        stateBox(list, { title: "Belum ada permintaan", body: "Jadilah yang pertama menulis barang yang kamu cari." });
+        stateBox(list, nearbyCity && nearbyCity.value ? {
+          title: "Belum ada permintaan di kota ini", body: "Pilih kota lain atau tampilkan semua lokasi."
+        } : { title: "Belum ada permintaan", body: "Jadilah yang pertama menulis barang yang kamu cari." });
         return;
       }
       rows.forEach(function (w) {
         var mine = !!(S.me && w.owner && w.owner.name === S.me.name);
         var actions = el("div", { class: "wanted-side" }, [
-          el("span", { class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max) })
+          el("div", { class: "wanted-budget" }, [el("span", { class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max) })])
         ]);
         if (!mine) {
           var replyBtn = el("button", { class: "btn btn-primary btn-sm", type: "button", text: "Saya punya barangnya" });
@@ -1999,7 +2012,10 @@
 
     function load() {
       skeletons(2, list);
-      return api("/api/wanted").then(function (data) { paint(data.items); })
+      return api("/api/wanted").then(function (data) {
+        // The existing endpoint returns up to 60 recent requests and has no city filter.
+        paint(data.items.filter(function (item) { return !nearbyCity || !nearbyCity.value || item.city === nearbyCity.value; }));
+      })
         .catch(function (err) { fail(list, err, load); });
     }
 
@@ -2704,6 +2720,7 @@
     initTheme();
     initAuth();
     if (window.BukatokoMotion) window.BukatokoMotion.init();
+    if (window.BukatokoLocation) window.BukatokoLocation.init();
     S.lastQuery = sessionStorage.getItem("bk_last_query") || "";
     refreshMe().catch(function () { S.me = null; paintUser(); }).then(function () {
       bootPage();

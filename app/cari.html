@@ -8,10 +8,10 @@
 <title>BukaToko - Jual apapun disini.</title>
 <meta name="description" content="Warga menulis barang yang mereka cari beserta rentang harga yang sanggup dibayar. Penjual bisa langsung menawarkan.">
 <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any">
-<link rel="stylesheet" href="assets/styles.css?v=20261108-1">
-<link rel="stylesheet" href="assets/react-ui.css?v=20261108-1">
+<link rel="stylesheet" href="assets/styles.css?v=20261108-2">
+<link rel="stylesheet" href="assets/react-ui.css?v=20261108-2">
 <link rel="preload" href="assets/fonts/nunito/Nunito.ttf?v=1" as="font" type="font/ttf" crossorigin>
-<script src="assets/locale.js?v=20261108-1"></script>
+<script src="assets/locale.js?v=20261108-2"></script>
 </head>
 <body data-page="cari">
 <a class="sr-only" href="#main">Lewati ke konten</a>
@@ -44,6 +44,12 @@
     <div class="page-heading"><h1>Lagi Dicari</h1>
     <p>Tulis barang yang kamu butuhkan dan rentang anggarannya. Punya barang yang cocok? Temukan permintaan warga di sini.</p></div>
 
+    <div class="nearby-tools">
+      <label class="sr-only" for="nearby-city">Lokasi permintaan</label>
+      <select id="nearby-city"><option value="">Semua lokasi</option></select>
+      <button class="btn btn-outline btn-sm" id="nearby-button" type="button"><span data-icon="location" aria-hidden="true"></span>Gunakan lokasi saya</button>
+      <p id="nearby-status" role="status">Izin lokasi dipakai untuk memilih kota terdekat. Koordinat tidak disimpan.</p>
+    </div>
     <div class="cari-grid">
         <h2 id="daftar-heading" class="section-title wanted-list-heading">Permintaan terbaru</h2>
         <div class="request-form-heading"><h2 id="tulis-heading">Tulis permintaan</h2>
@@ -62,7 +68,7 @@
               <option value="">Pilih kategori</option>
               <option value="elektronik">Elektronik</option>
               <option value="ponsel">Ponsel &amp; Tablet</option>
-              <option value="fesyen">Fesyen</option>
+              <option value="fesyen">Fashion</option>
               <option value="rumah">Rumah Tangga</option>
               <option value="hobi">Hobi &amp; Koleksi</option>
               <option value="buku">Buku</option>
@@ -138,8 +144,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/motion.js?v=20261108-1"></script>
-<script src="assets/react-ui.js?v=20261108-1"></script>
-<script src="assets/app.js?v=20261108-1"></script>
+<script src="assets/motion.js?v=20261108-2"></script>
+<script src="assets/react-ui.js?v=20261108-2"></script>
+<script src="assets/location.js?v=20261108-2"></script>
+<script src="assets/app.js?v=20261108-2"></script>
 </body>
 </html>
