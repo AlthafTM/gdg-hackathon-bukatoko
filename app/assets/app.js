@@ -318,8 +318,11 @@
     button.appendChild(el("span", {class: "sr-only", text: label + " "}));
     button.appendChild(el("span", {class: "reaction-count", "data-user-content": "", text: String(count || 0)}));
   }
-  function socialBar(targetType, targetId, counts) {
+  function socialBar(targetType, targetId, counts, summary) {
     var wrap = el("div", { class: "social-bar" });
+    function updateSummary(name, count) {
+      if (summary) qs('[data-stat="' + name + '"] .reaction-count', summary).textContent = String(count);
+    }
     var liked = !!counts.liked;
     var likeBtn = el("button", {
       class: "btn btn-quiet btn-sm", type: "button",
@@ -333,6 +336,7 @@
         api("/api/likes", { method: "POST", body: { target_type: targetType, target_id: targetId } })
           .then(function (data) {
             reactionContent(likeBtn, "heart", "Suka", data.likes);
+            updateSummary("heart", data.likes);
             likeBtn.setAttribute("aria-pressed", data.liked ? "true" : "false");
           })
           .catch(function (err) { toast(err.message); })
@@ -354,7 +358,11 @@
       box.hidden = open;
       if (!open && !loaded) {
         loaded = true;
-        box.appendChild(commentSection(targetType, targetId, function () { commentCount++; reactionContent(toggle, "comment", "Komentar", commentCount); }));
+        box.appendChild(commentSection(targetType, targetId, function () {
+          commentCount++;
+          reactionContent(toggle, "comment", "Komentar", commentCount);
+          updateSummary("comment", commentCount);
+        }));
       }
     });
     box.hidden = true;
@@ -812,33 +820,16 @@
   }
 
   /* ---------- kartu & state ---------- */
-  function toggleCardSaved(item, saved) {
-    if (!S.me) { authModal("login"); return Promise.resolve(null); }
-    return api("/api/saved/" + encodeURIComponent(item.id), {method: saved ? "DELETE" : "POST"})
-      .then(function (data) {
-        document.dispatchEvent(new CustomEvent("bukatoko:saved", {detail: {id: item.id, saved: !!data.saved}}));
-        toast(data.saved ? "Disimpan ke Akun." : "Dihapus dari simpanan.");
-        return !!data.saved;
-      });
-  }
-  function cardActions(item) {
-    var saved = !!item.saved;
-    var button = el("button", {class:"btn btn-quiet btn-sm card-save", type:"button", "aria-pressed":String(saved)});
-    function paint(value) {
-      saved = value; button.setAttribute("aria-pressed", String(saved));
-      button.setAttribute("aria-label", uiText(saved ? "Tersimpan" : "Simpan barang"));
-      button.textContent = ""; button.appendChild(icon("bookmark"));
+  function cardEngagement(item) {
+    function stat(name, label, count) {
+      return el("span", {class: "engagement-stat", "data-stat": name}, [
+        icon(name), el("span", {class: "sr-only", text: label + " "}),
+        el("span", {class: "reaction-count", text: String(count || 0)})
+      ]);
     }
-    paint(saved);
-    button.addEventListener("click", function () {
-      button.disabled = true;
-      toggleCardSaved(item, saved).catch(function (err) { toast(err.message); })
-        .then(function () { button.disabled = false; });
-    });
-    onPage(document, "bukatoko:saved", function (event) { if (event.detail.id === item.id) paint(event.detail.saved); });
-    return el("div", {class:"card-engagement"}, [
-      el("a", {class:"btn btn-quiet btn-sm", href:"listing.html?id=" + encodeURIComponent(item.id) + "#social-slot", "aria-label":"Komentar"},
-        [icon("comment"), el("span", {class:"reaction-count",text:String(item.comments || 0)})]), button]);
+    return el("span", {class: "card-engagement"}, [
+      stat("heart", "Suka", item.likes), stat("comment", "Komentar", item.comments)
+    ]);
   }
 
   function card(item) {
@@ -863,7 +854,7 @@
     var imageLink = el("a", { class: "card-image-link", href: "listing.html?id=" + encodeURIComponent(item.id),
       "aria-label": "Lihat " + item.title, tabindex: "-1" }, [media]);
     if (!real && referencePhoto(item.id)) imageLink.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
-    body.appendChild(cardActions(item));
+    body.appendChild(cardEngagement(item));
     var wrap = el("article", { class: "card" }, [imageLink, body]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
@@ -892,7 +883,7 @@
   function renderCards(target, items, append) {
     if (window.BukatokoReact) {
       window.BukatokoReact.renderCards(target, items, {
-        photo: photo, referencePhoto: referencePhoto, backendURL: backendURL, timeAgo: timeAgo, toggleSaved: toggleCardSaved, notify: toast
+        photo: photo, referencePhoto: referencePhoto, backendURL: backendURL, timeAgo: timeAgo
       }, append);
     } else {
       if (!append) target.textContent = "";
@@ -1503,7 +1494,6 @@
 
       if (item.is_owner) {
         qs("#chat").textContent = "Buka pesan pembeli";
-        qs("#simpan").hidden = true;
         var panel = qs("#owner-panel");
         if (panel) {
           var toolsCard = el("div", { class: "form-card", style: "margin-top:16px;" });
@@ -1599,27 +1589,6 @@
             });
         });
       });
-
-      qs("#simpan").addEventListener("click", function () {
-        var btn = this;
-        requireAuth(function () {
-          var method = btn.getAttribute("aria-pressed") === "true" ? "DELETE" : "POST";
-          api("/api/saved/" + encodeURIComponent(item.id), { method: method })
-            .then(function (data) {
-              btn.setAttribute("aria-pressed", data.saved ? "true" : "false");
-              btn.textContent = data.saved ? t("saved") : t("save");
-              toast(data.saved ? "Disimpan ke Akun." : "Dihapus dari simpanan.");
-              refreshMe();
-            })
-            .catch(function (err) { toast(err.message); });
-        });
-      });
-
-      if (item.saved) {
-        var sb = qs("#simpan");
-        sb.setAttribute("aria-pressed", "true");
-        sb.textContent = t("saved");
-      }
 
       qs("#share").addEventListener("click", function () {
         var url = window.BukatokoPreview ? window.BukatokoPreview.listingUrl(item.id) : API_ORIGIN
@@ -2007,9 +1976,7 @@
       }
       rows.forEach(function (w) {
         var mine = !!(S.me && w.owner && w.owner.name === S.me.name);
-        var actions = el("div", { class: "wanted-side" }, [
-          el("div", { class: "wanted-budget" }, [el("span", { class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max) })])
-        ]);
+        var actions = el("div", {class: "wanted-side"});
         if (!mine) {
           var replyBtn = el("button", { class: "btn btn-primary btn-sm", type: "button", text: "Saya punya barangnya" });
           replyBtn.addEventListener("click", function () {
@@ -2060,22 +2027,26 @@
           }
         });
         replies.hidden = true;
-        var social = socialBar("wanted", w.id, w);
-        var comments = qs(".comment-slot", social);
-        social.removeChild(comments);
+        var stats = cardEngagement(w);
+        var social = socialBar("wanted", w.id, w, stats);
+        social.insertBefore(replyToggle, qs(".comment-slot", social));
 
-        list.appendChild(el("article", { class: "wanted-item" }, [
-          el("div", {}, [
-            el("h3", { text: w.title }),
-            el("span", { class: "card-meta" }, [
-              el("span", {text:kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at)}),
-              document.createTextNode(" · "), el("span", {"data-user-content":"",text:w.owner.name})]),
-            el("p", { class: "wanted-note", text: w.note })
+        var summary = el("summary", {class: "wanted-summary"}, [
+          el("span", {class: "wanted-title", "data-user-content": "", text: w.title}),
+          el("span", {class: "card-meta"}, [
+            el("span", {text: kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at)}),
+            document.createTextNode(" · "),
+            el("span", {"data-user-content": "", text: w.owner.name})
           ]),
-          el("div", {class: "wanted-footer"}, [actions,
-            el("div", {class: "wanted-social"}, [social, replyToggle])]),
-          comments,
-          replies
+          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)}),
+          stats
+        ]);
+        var detail = el("div", {class: "wanted-detail"}, [
+          el("p", {class: "wanted-note", text: w.note}),
+          social, replies, actions
+        ]);
+        list.appendChild(el("article", {class: "wanted-item"}, [
+          el("details", {}, [summary, detail])
         ]));
       });
     }

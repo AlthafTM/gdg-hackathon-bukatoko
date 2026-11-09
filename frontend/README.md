@@ -34,4 +34,4 @@ Theme reveal lasts 900ms after a 120ms delay. Internal screen changes use a shor
 
 These changes target clearer layout and reusable/batched rendering. React adds download/runtime cost; no FPS, Lighthouse or net performance gain is claimed without measurement.
 
-The shared footer links to bilingual terms, privacy information and a bug portal. Product cards use the existing saved-item API and link comment counts to the expanded detail discussion. The bug portal prepares a report locally, then offers a GitHub issue link and a text download; it has no backend inbox. See [policy evidence](../docs/POLICY-BEHAVIOR.md) before changing those promises.
+The shared footer links to bilingual terms, privacy information and a bug portal. Item and wanted cards display like and comment counts. Visitors open the post before using either action. The bug portal prepares a report locally, then offers a GitHub issue link and a text download; it has no backend inbox. See [policy evidence](../docs/POLICY-BEHAVIOR.md) before changing those promises.

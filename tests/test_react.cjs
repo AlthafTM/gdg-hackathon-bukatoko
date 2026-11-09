@@ -53,21 +53,13 @@ test('React translates UI state without translating product titles or replacing 
   }finally{await f.close();}
 });
 
-test('card save actions preserve state on failure and expose the real comment count and detail anchor',async()=>{
+test('catalog engagement shows real counts without offering actions on the card',async()=>{
   const f=await fixture();try{
-    let fail=false;
-    const calls=[];
-    f.helpers.toggleSaved=async(item,saved)=>{calls.push([item.id,saved]);if(fail)throw Error('Offline');return !saved;};
-    f.helpers.notify=message=>calls.push(message);
-    f.window.BukatokoReact.renderCards(f.target,[{...f.item,comments:7}],f.helpers);
-    await f.until(()=>f.target.querySelector('.card-save'));
-    const save=f.target.querySelector('.card-save');
-    assert.equal(f.target.querySelector('.reaction-count').textContent,'7');
-    assert.equal(f.target.querySelector('.card-engagement a').getAttribute('href'),'listing.html?id=dummy#social-slot');
-    save.click();await f.until(()=>save.getAttribute('aria-pressed')==='true');
-    assert.deepEqual(calls[0],['dummy',false]);
-    fail=true;save.click();await f.until(()=>calls.at(-1)==='Offline' && !save.disabled);
-    assert.equal(save.getAttribute('aria-pressed'),'true');
-    assert.equal(calls.at(-1),'Offline');
+    f.window.BukatokoReact.renderCards(f.target,[{...f.item,likes:5,comments:7}],f.helpers);
+    await f.until(()=>f.target.querySelector('.card-engagement'));
+    const stats=f.target.querySelector('.card-engagement');
+    assert.deepEqual([...stats.children].map(stat=>stat.textContent.trim()),['Suka 5','Komentar 7']);
+    assert.equal(stats.querySelector('button,a'),null);
+    assert.equal(f.target.querySelector('.product-title').getAttribute('href'),'listing.html?id=dummy');
   }finally{await f.close();}
 });

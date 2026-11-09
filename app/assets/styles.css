@@ -252,7 +252,6 @@ select { appearance: none; padding-right: 48px; background-image: url("data:imag
 .wanted-item { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--space-4); padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
 .wanted-note { font-size: var(--step-14); margin-top: var(--space-2); }
 .wanted-side { display: flex; align-items: center; justify-content: flex-start; gap: var(--space-2); flex-wrap: wrap; }
-.wanted-budget { flex-basis: 100%; margin-bottom: var(--space-1); }
 .wanted-side .btn { white-space: normal; text-align: center; }
 .nearby-tools { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-4); }
 .nearby-tools p { margin: 0; font-size: var(--step-13); color: var(--muted); max-width: 60ch; }
@@ -679,15 +678,7 @@ body.is-loading .detail-grid { opacity: 0.4; }
 /* suka dan komentar */
 .social-slot { margin-top: 16px; }
 .social-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.social-bar .btn[aria-pressed="true"] { color: var(--accent); border-color: var(--line-strong); }
-.wanted-footer { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); }
-.wanted-footer .wanted-side { flex: 1 1 260px; }
-.wanted-social { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-1); margin-left: auto; }
-.wanted-social .social-bar { display: contents; }
-.wanted-social .btn { min-width: 44px; padding: var(--space-2); gap: 6px; }
-.wanted-social .ui-icon { width: 18px; height: 18px; }
-.wanted-social .btn[aria-pressed="true"] { color: var(--primary); background: var(--primary-soft); }
-.wanted-social .btn[aria-pressed="true"] .ui-icon { fill: var(--primary-soft); }
+.social-bar .btn[aria-pressed="true"] { color: var(--primary); background: var(--primary-soft); border-color: var(--line-strong); }
 .comment-slot { flex-basis: 100%; }
 .comment-box { margin-top: 8px; }
 .comment { border-top: 1px solid var(--line); padding: 8px 0; }
@@ -763,11 +754,19 @@ body.is-loading .detail-grid { opacity: 0.4; }
 .modal-head .modal-close { flex: 0 0 auto; min-height: 44px; min-width: 44px; }
 
 /* Supporting pages and shared marketplace actions. */
-.card-engagement { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); border-top: 1px solid var(--line); padding-top: var(--space-2); }
-.card-engagement .btn { min-width: 44px; min-height: 44px; padding: var(--space-2); }
-.card-engagement .ui-icon { width: 20px; height: 20px; }
-.card-save[aria-pressed="true"] { color: var(--primary); background: var(--primary-soft); }
-.card-save[aria-pressed="true"] .ui-icon { fill: var(--primary-soft); }
+.card-engagement { display: flex; align-items: center; gap: var(--space-4); border-top: 1px solid var(--line); padding-top: var(--space-2); color: var(--muted); font-size: var(--step-13); }
+.engagement-stat { display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.engagement-stat .ui-icon { width: 17px; height: 17px; }
+.wanted-summary { display: grid; justify-items: start; gap: var(--space-2); position: relative; padding-inline-end: var(--space-6); cursor: pointer; list-style: none; }
+.wanted-summary::-webkit-details-marker { display: none; }
+.wanted-summary::after { content: ""; position: absolute; inset-inline-end: 4px; top: 8px; width: 8px; height: 8px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
+.wanted-item details[open] > .wanted-summary::after { transform: rotate(225deg); }
+.wanted-summary .card-engagement { justify-self: stretch; }
+.wanted-item details[open] .card-engagement { display: none; }
+.wanted-title { font-weight: 800; overflow-wrap: anywhere; }
+.wanted-detail { display: grid; gap: var(--space-3); padding-top: var(--space-3); }
+.social-bar .btn { min-height: 44px; gap: 6px; }
+.listing-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
 .listing-utility-actions { display: flex; justify-content: flex-end; gap: var(--space-2); }
 .icon-button { width: 44px; height: 44px; padding: 10px; }
 .icon-button [data-icon] { display: flex; }

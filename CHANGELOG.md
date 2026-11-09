@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.8.1] - 2026-11-09
+
+- Unify item and wanted reactions, group passive card counts, and move share/report into the detail toolbar. See [release notes](releases/0.8.1.md).
+
 ## [0.8.0] - 2026-11-09
 
 - Add card save/comment actions, refine home/detail controls, and publish bilingual policy pages plus a bug-report portal. See [release notes](releases/0.8.0.md).
