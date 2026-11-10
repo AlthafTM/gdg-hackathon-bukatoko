@@ -21,9 +21,9 @@ test('export contains only frontend and public fixtures', () => {
   assert.deepEqual(fs.readdirSync(root).sort(), ['.nojekyll', '404.html', 'akun.html', 'assets', 'cari.html', 'index.html', 'jelajah.html', 'jual.html', 'listing.html', 'profil.html', 'syarat.html', 'privasi.html', 'bantuan.html'].sort());
   for (const file of fs.readdirSync(root).filter(f => f.endsWith('.html'))) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
-    assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"/);
+    assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"|live-app-link|Buka aplikasi langsung/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
-    assert.match(html, /src="assets\/logo.svg\?v=5"/);
+    assert.match(html, /src="assets\/logo.svg\?v=6"/);
     const supportTitles={'syarat.html':'Syarat &amp; ketentuan','privasi.html':'Kebijakan privasi','bantuan.html':'Lapor kendala teknis'};
     if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 JualinAja</title>'));
     else assert.match(html, /<title>JualinAja - Jual apapun disini\.<\/title>/);
@@ -43,7 +43,7 @@ test('Pages publishes the self-contained preview rather than the cross-origin bu
   const workflow=fs.readFileSync(path.resolve(__dirname,'../.github/workflows/pages.yml'),'utf8');
   assert.match(workflow,/path: _site\s*\n/);
   assert.doesNotMatch(workflow,/path: _site-live/);
-  assert.match(workflow,/build_pages\.py --app-url https:\/\/8123-agq3khlycogygkr5hikwu5oeiq\.instabox\.tech/);
+  assert.match(workflow,/run: python tools\/build_pages\.py\s*\n/);
 });
 test('export includes the credited reference photos without missing or altered assets', () => {
   const stock=path.join(root,'assets/stock');

@@ -23,7 +23,7 @@ jobs:
       - name: Check the integrated backend in a disposable local fixture
         run: python tools/check_app.py
       - name: Build the self-contained UI preview
-        run: python tools/build_pages.py --app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
+        run: python tools/build_pages.py
       - run: node --test tests/test_pages.cjs tests/test_ui.cjs tests/test_locale.cjs tests/test_motion.cjs tests/test_react.cjs tests/test_location.cjs tests/test_wanted.cjs tests/test_shell.cjs tests/test_router.cjs tests/test_support.cjs
       - run: python tools/build_pages.py --output _site-live --api-origin https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech
       - run: node --test tests/test_connection.cjs

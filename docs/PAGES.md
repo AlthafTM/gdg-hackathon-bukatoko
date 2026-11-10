@@ -1,6 +1,6 @@
 # GitHub Pages read-only preview
 
-Version 0.5.2 restores the Pages workflow's selection of `_site`, the self-contained read-only artifact, rather than `_site-live`. The preview adapter fetches its bundled `assets/preview-data.json` from the same Pages repository path. Browsing does not depend on the Instabox API. A separate **Buka aplikasi langsung** link opens the live Instabox app. See [the existing backend contract](BACKEND-CONNECTION.md); do not replace that backend for this preview repair.
+Version 0.5.2 restores the Pages workflow's selection of `_site`, the self-contained read-only artifact, rather than `_site-live`. The preview adapter fetches its bundled `assets/preview-data.json` from the same Pages repository path. Browsing does not depend on the Instabox API. See [the existing backend contract](BACKEND-CONNECTION.md); do not replace that backend for this preview repair.
 
 URL: https://althaftm.github.io/jualinaja/
 
@@ -13,7 +13,7 @@ Accounts, listing creation, uploads, saved items/searches, offers, messages, rev
 For the React/Tailwind update, run `npm ci --ignore-scripts` and `npm run build` before exporting. `npm test` checks the UI components; `python tools/check_app.py` runs the integrated backend suites using a disposable application/database copy. Node is needed for frontend development, not for serving the checked-in compiled assets with Python.
 
 1. Synchronize `main` using the contributor workflow.
-2. Run `python tools/build_pages.py --app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech` with an empty or absent `_site` directory. The link option does not change the data source or inject the remote API configuration.
+2. Run `python tools/build_pages.py` with an empty or absent `_site` directory.
 3. Run `node --test tests/test_pages.cjs` and `node --check app/assets/app.js`.
 4. Serve the generated directory with `python -m http.server 8124 --directory _site` and open `http://127.0.0.1:8124/`.
 5. Check search, filters, details, seller links, wanted requests, mobile layout and the sign-in explanation. Shared listing URLs must retain the repository subpath on Pages.
