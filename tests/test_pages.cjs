@@ -23,7 +23,7 @@ test('export contains only frontend and public fixtures', () => {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
-    assert.match(html, /src="assets\/logo.svg\?v=4"/);
+    assert.match(html, /src="assets\/logo.svg\?v=5"/);
     const supportTitles={'syarat.html':'Syarat &amp; ketentuan','privasi.html':'Kebijakan privasi','bantuan.html':'Lapor kendala teknis'};
     if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 JualinAja</title>'));
     else assert.match(html, /<title>JualinAja - Jual apapun disini\.<\/title>/);
