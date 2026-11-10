@@ -318,11 +318,8 @@
     button.appendChild(el("span", {class: "sr-only", text: label + " "}));
     button.appendChild(el("span", {class: "reaction-count", "data-user-content": "", text: String(count || 0)}));
   }
-  function socialBar(targetType, targetId, counts, summary) {
+  function socialBar(targetType, targetId, counts) {
     var wrap = el("div", { class: "social-bar" });
-    function updateSummary(name, count) {
-      if (summary) qs('[data-stat="' + name + '"] .reaction-count', summary).textContent = String(count);
-    }
     var liked = !!counts.liked;
     var likeBtn = el("button", {
       class: "btn btn-quiet btn-sm", type: "button",
@@ -336,7 +333,6 @@
         api("/api/likes", { method: "POST", body: { target_type: targetType, target_id: targetId } })
           .then(function (data) {
             reactionContent(likeBtn, "heart", "Suka", data.likes);
-            updateSummary("heart", data.likes);
             likeBtn.setAttribute("aria-pressed", data.liked ? "true" : "false");
           })
           .catch(function (err) { toast(err.message); })
@@ -361,7 +357,6 @@
         box.appendChild(commentSection(targetType, targetId, function () {
           commentCount++;
           reactionContent(toggle, "comment", "Komentar", commentCount);
-          updateSummary("comment", commentCount);
         }));
       }
     });
@@ -822,7 +817,7 @@
   /* ---------- kartu & state ---------- */
   function cardEngagement(item) {
     function stat(name, label, count) {
-      return el("span", {class: "engagement-stat", "data-stat": name}, [
+      return el("span", {class: "engagement-stat"}, [
         icon(name), el("span", {class: "sr-only", text: label + " "}),
         el("span", {class: "reaction-count", text: String(count || 0)})
       ]);
@@ -840,7 +835,7 @@
       alt: (real ? "Foto barang: " : referencePhoto(item.id) ? "Foto referensi: " : "Foto contoh untuk ") + item.title,
       width: "640", height: "480", loading: "lazy", decoding: "async"
     });
-    var title = el("a", { class: "card-title", href: "listing.html?id=" + encodeURIComponent(item.id), text: item.title });
+    var title = el("span", { class: "card-title", text: item.title });
     var foot = el("div", { class: "card-foot" }, [el("span", { class: "tag", text: rp(item.price) })]);
     if (item.old_price) foot.appendChild(el("span", { class: "tag tag-old", text: rp(item.old_price) }));
     var body = el("div", { class: "card-body" }, [
@@ -851,14 +846,17 @@
         el("span", {"data-user-content":"",text:item.owner ? item.owner.name : ""}),
         document.createTextNode(" · "), el("span", {text:timeAgo(item.created_at)})])
     ]);
-    var imageLink = el("a", { class: "card-image-link", href: "listing.html?id=" + encodeURIComponent(item.id),
-      "aria-label": "Lihat " + item.title, tabindex: "-1" }, [media]);
-    if (!real && referencePhoto(item.id)) imageLink.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
+    var image = el("span", { class: "card-image-link" }, [media]);
+    if (!real && referencePhoto(item.id)) image.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
     body.appendChild(cardEngagement(item));
-    var wrap = el("article", { class: "card" }, [imageLink, body]);
+    var link = el("a", {
+      class: "card-link", href: "listing.html?id=" + encodeURIComponent(item.id),
+      "aria-label": "Lihat " + item.title
+    }, [image, body]);
+    var wrap = el("article", { class: "card" }, [link]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
-      wrap.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
+      link.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
     }
     return wrap;
   }
@@ -2027,10 +2025,6 @@
           }
         });
         replies.hidden = true;
-        var stats = cardEngagement(w);
-        var social = socialBar("wanted", w.id, w, stats);
-        social.insertBefore(replyToggle, qs(".comment-slot", social));
-
         var summary = el("summary", {class: "wanted-summary"}, [
           el("span", {class: "wanted-title", "data-user-content": "", text: w.title}),
           el("span", {class: "card-meta"}, [
@@ -2038,15 +2032,15 @@
             document.createTextNode(" · "),
             el("span", {"data-user-content": "", text: w.owner.name})
           ]),
-          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)}),
-          stats
+          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)})
         ]);
         var detail = el("div", {class: "wanted-detail"}, [
           el("p", {class: "wanted-note", text: w.note}),
-          social, replies, actions
+          actions, el("div", {}, [replyToggle]), replies
         ]);
         list.appendChild(el("article", {class: "wanted-item"}, [
-          el("details", {}, [summary, detail])
+          el("details", {}, [summary, detail]),
+          socialBar("wanted", w.id, w)
         ]));
       });
     }

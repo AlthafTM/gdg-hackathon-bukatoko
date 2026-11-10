@@ -6,8 +6,7 @@ const vm=require('node:vm');
 
 test('opening comments retains the total and posting increments it only after API success',async()=>{
   const f=await fixture();try{
-    f.window.document.querySelector('details').open=true;
-    const social=f.window.document.querySelector('.wanted-detail .social-bar');
+    const social=f.window.document.querySelector('.wanted-item .social-bar');
     const button=social.querySelector('button[aria-expanded]');
     button.click();await f.until(()=>f.window.document.querySelector('.comment-form input'));
     assert.equal(button.querySelector('.reaction-count').textContent,'3');
@@ -18,7 +17,6 @@ test('opening comments retains the total and posting increments it only after AP
     assert.equal(call.options.body.target_type,'wanted');
     assert.equal(call.options.body.target_id,'w1');
     assert.equal(call.options.body.body,'Barang masih dicari?');
-    assert.equal(f.window.document.querySelector('[data-stat=comment] .reaction-count').textContent,'4');
   }finally{await f.close();}
 });
 
@@ -44,40 +42,34 @@ async function fixture(){
   window.wantedTest.S.me={name:'tester'};
   window.wantedTest.initCari();
   async function until(check){for(let i=0;i<100&&!check();i++)await new Promise(r=>setTimeout(r,5));assert.ok(check());}
-  await until(()=>window.document.querySelector('.wanted-detail .social-bar'));
+  await until(()=>window.document.querySelector('.wanted-item .social-bar'));
   return {window,requests,until,close:async()=>{await window.happyDOM.abort();window.close();}};
 }
-test('wanted cards show passive counters and keep actions inside the collapsed detail',async()=>{
+test('wanted comments can open while the request details stay collapsed',async()=>{
   const f=await fixture();try{
-    const social=f.window.document.querySelector('.wanted-detail .social-bar');
-    const details=social.closest('details');
-    const summary=details.querySelector('summary');
+    const card=f.window.document.querySelector('.wanted-item');
+    const details=card.querySelector('details');
+    const buttons=card.querySelector('.social-bar').querySelectorAll('button');
+    assert.deepEqual([...buttons].map(b=>b.querySelector('.reaction-count').textContent),['2','3']);
     assert.equal(details.open,false);
-    assert.equal(summary.querySelector('button,a'),null);
-    assert.deepEqual([...summary.querySelectorAll('.reaction-count')].map(stat=>stat.textContent),['2','3']);
-    details.open=true;
-    const buttons=social.querySelectorAll('button');
-    assert.equal(buttons.length,3);
-    assert.deepEqual([...buttons].map(b=>b.querySelector('.sr-only').textContent.trim()),['Suka','Komentar','Lihat tanggapan']);
-    assert.deepEqual([...buttons].map(b=>b.querySelector('.reaction-count').textContent),['2','3','4']);
-    assert.ok([...buttons].every(b=>b.querySelector('svg')));
     buttons[1].click();
-    await f.until(()=>f.window.document.querySelector('.comment-box'));
-    assert.equal(buttons[1].getAttribute('aria-expanded'),'true');
-    assert.equal(f.window.document.querySelector('.comment-slot').hidden,false);
-    buttons[2].click();
-    await f.until(()=>f.window.document.querySelector('.wanted-replies').textContent.includes('Belum ada'));
-    assert.equal(buttons[2].getAttribute('aria-expanded'),'true');
+    await f.until(()=>card.querySelector('.comment-box'));
+    assert.equal(card.querySelector('.comment-slot').hidden,false);
+    assert.equal(details.open,false);
+    buttons[1].click();
+    assert.equal(card.querySelector('.comment-slot').hidden,true);
+    details.open=true;
+    const replies=details.querySelector('button[aria-expanded]');
+    replies.click();
+    await f.until(()=>details.querySelector('.wanted-replies').textContent.includes('Belum ada'));
   }finally{await f.close();}
 });
 test('liking a request retains its icon, updates its count and uses the existing API payload',async()=>{
   const f=await fixture();try{
-    f.window.document.querySelector('details').open=true;
-    const like=f.window.document.querySelector('.wanted-detail .social-bar button');like.click();
+    const like=f.window.document.querySelector('.wanted-item .social-bar button');like.click();
     await f.until(()=>like.getAttribute('aria-pressed')==='true');
     assert.ok(like.querySelector('svg'));
     assert.equal(like.querySelector('.reaction-count').textContent,'3');
-    assert.equal(f.window.document.querySelector('[data-stat=heart] .reaction-count').textContent,'3');
     const write=f.requests.find(r=>r.route==='/api/likes');
     assert.equal(write.options.method,'POST');
     assert.equal(write.options.body.target_type,'wanted');assert.equal(write.options.body.target_id,'w1');

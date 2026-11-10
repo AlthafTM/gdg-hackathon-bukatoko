@@ -41,11 +41,11 @@ test('cards expose 4:3 media, working detail links, price, condition, city and s
   const {api} = fixture();
   const item = {id:'test-1',title:'Kamera bekas',price:900000,condition:'Bekas, mulus',city:'Bandung',
     owner:{name:'penjual'},created_at:'2026-11-07T00:00:00Z',photo_urls:['/uploads/sample.jpg'],status:'active'};
-  const card = api.card(item), link = card.children[0], image = link.children[0], body = card.children[1];
+  const card = api.card(item), link = card.children[0], image = link.children[0].children[0], body = link.children[1];
   assert.equal(link.attrs.href,'listing.html?id=test-1');
   assert.equal(image.attrs.width,'640'); assert.equal(image.attrs.height,'480');
   assert.equal(image.attrs.src,'/uploads/sample.jpg');
-  assert.equal(body.children[1].attrs.href,link.attrs.href);
+  assert.equal(body.children[1].textContent,item.title);
   assert.equal(body.children[2].textContent,item.condition);
   assert.equal(body.children[3].children[1].textContent,item.city);
   assert.match(body.children[4].children[0].textContent,/penjual/);
@@ -54,7 +54,7 @@ test('sample cards stay labeled and sold items retain their state', () => {
   const {api} = fixture();
   const card = api.card({id:'sold',title:'Buku',price:20000,condition:'Bekas',city:'Bogor',created_at:'2026-11-07',status:'sold'});
   assert.match(card.className,/is-sold/);
-  const image = card.children[0].children[0];
+  const image = card.children[0].children[0].children[0];
   assert.match(image.attrs.alt,/Foto contoh/);
   const svg = decodeURIComponent(image.attrs.src.split(',').slice(1).join(','));
   assert.match(svg,/height="640"/);
@@ -64,7 +64,7 @@ test('built-in illustrations match item context without replacing real photos', 
   const {api} = fixture();
   function illustration(title) {
     const card = api.card({id:'demo',title,category:'elektronik',price:10000,condition:'Bekas',city:'Bandung',created_at:'2026-11-07',status:'active'});
-    return decodeURIComponent(card.children[0].children[0].attrs.src);
+    return decodeURIComponent(card.children[0].children[0].children[0].attrs.src);
   }
   const camera=illustration('Kamera Fujifilm'),phone=illustration('iPhone 12'),book=illustration('Set buku sastra');
   assert.notEqual(camera,phone);assert.notEqual(phone,book);
@@ -73,11 +73,11 @@ test('built-in illustrations match item context without replacing real photos', 
 test('seed listings use credited stock photos while uploads take precedence', () => {
   const {api}=fixture();
   const item={id:'l1001',title:'Kamera',price:10000,condition:'Bekas',city:'Bandung',created_at:'2026-11-07',status:'active'};
-  const stock=api.card(item).children[0];
+  const stock=api.card(item).children[0].children[0];
   assert.equal(stock.children[0].attrs.src,'assets/stock/pexels-20377495.jpg');
   assert.match(stock.children[0].attrs.alt,/Foto referensi/);
   assert.equal(stock.children[1].textContent,'Foto referensi');
-  const uploaded=api.card({...item,photo_urls:['/uploads/own.jpg']}).children[0];
+  const uploaded=api.card({...item,photo_urls:['/uploads/own.jpg']}).children[0].children[0];
   assert.equal(uploaded.children[0].attrs.src,'/uploads/own.jpg');
   assert.equal(uploaded.children.length,1);
 });

@@ -60,6 +60,10 @@ test('catalog engagement shows real counts without offering actions on the card'
     const stats=f.target.querySelector('.card-engagement');
     assert.deepEqual([...stats.children].map(stat=>stat.textContent.trim()),['Suka 5','Komentar 7']);
     assert.equal(stats.querySelector('button,a'),null);
-    assert.equal(f.target.querySelector('.product-title').getAttribute('href'),'listing.html?id=dummy');
+    const link=f.target.querySelector('.card-link');
+    assert.equal(link.getAttribute('href'),'listing.html?id=dummy');
+    assert.equal(link.contains(stats),true);
+    assert.equal(link.contains(f.target.querySelector('.product-title')),true);
+    assert.equal(f.target.querySelectorAll('a').length,1);
   }finally{await f.close();}
 });
