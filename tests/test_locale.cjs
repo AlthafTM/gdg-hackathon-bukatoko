@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-function fixture() {
+function fixture(browser = {languages:['id-ID']}, systemLocale = "en-US") {
   const label = {tagName:'LABEL',closest:()=>null};
   const protectedLabel = {tagName:'SPAN',closest:()=>({})};
   const attrs = {placeholder:'misal: kamera, sepatu, kulkas'};
@@ -18,10 +18,17 @@ function fixture() {
   ];
   const document = {body:{},documentElement:{},addEventListener:()=>{},
     createTreeWalker:()=>{let i=0;return {nextNode:()=>nodes[i++]||null};},querySelectorAll:()=>[input]};
-  const context={window:{},localStorage:{getItem:()=> 'id'},document,NodeFilter:{SHOW_TEXT:4}};
+  const context={window:{},navigator:browser,Intl:{DateTimeFormat:()=>({resolvedOptions:()=>({locale:systemLocale})})},document,NodeFilter:{SHOW_TEXT:4}};
   vm.runInNewContext(fs.readFileSync(path.resolve(__dirname,'../app/assets/locale.js'),'utf8'),context);
   return {locale:context.window.BukatokoLocale,nodes,input,attrs,optionAttrs,document};
 }
+test('browser preference precedes system locale, with English for unsupported or missing locales',()=>{
+  assert.equal(fixture({languages:['en-GB','id-ID']},'id-ID').locale.getLanguage(),'en');
+  assert.equal(fixture({language:'id-ID'}).locale.getLanguage(),'id');
+  assert.equal(fixture({},'id-ID').locale.getLanguage(),'id');
+  assert.equal(fixture({language:'fr-FR'},'id-ID').locale.getLanguage(),'en');
+  assert.equal(fixture({},'').locale.getLanguage(),'en');
+});
 test('language switches restore Indonesian, preserve user content, form values and option values',()=>{
   const f=fixture();f.locale.setLanguage('en');
   assert.equal(f.nodes[0].nodeValue,'Keywords');

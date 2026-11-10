@@ -48,7 +48,9 @@ test('cards expose 4:3 media, working detail links, price, condition, city and s
   assert.equal(body.children[1].textContent,item.title);
   assert.equal(body.children[2].textContent,item.condition);
   assert.equal(body.children[3].children[1].textContent,item.city);
-  assert.match(body.children[4].children[0].textContent,/penjual/);
+  assert.equal(body.children[4].children[0].textContent,'P');
+  assert.equal(body.children[4].children[1].children[0].textContent,'penjual');
+  assert.equal(body.children[4].children[1].children[1].attrs.datetime,item.created_at);
 });
 test('sample cards stay labeled and sold items retain their state', () => {
   const {api} = fixture();

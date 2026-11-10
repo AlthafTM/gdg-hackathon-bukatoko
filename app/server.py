@@ -11,24 +11,29 @@ import email
 import hashlib
 import hmac
 import json
+import ipaddress
 import mimetypes
 import os
 import re
 import secrets
 import sqlite3
+import smtplib
+import ssl
 import sys
 import threading
 import time
 import uuid
 from datetime import datetime, timedelta, timezone
 from email import policy
+from email.message import EmailMessage
 from http import cookies
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent
-UPLOAD_DIR = ROOT / "uploads"
+UPLOAD_DIR = Path(os.environ.get("BUKATOKO_UPLOAD_DIR") or ROOT / "uploads")
+AVATAR_DIR = UPLOAD_DIR / "avatars"
 DB_PATH = Path(os.environ.get("BUKATOKO_DB") or (ROOT / "bukatoko.db"))
 
 MAX_BODY = 25 * 1024 * 1024
@@ -42,7 +47,10 @@ UPLOADS_WINDOW = 3600
 LISTING_DAYS = 30
 WANTED_DAYS = 30
 RESET_MINUTES = 30
-DEMO_MAIL = os.environ.get("BUKATOKO_DEMO_MAIL", "1") != "0"
+CLOUD_MODE = os.environ.get("BUKATOKO_CLOUD", "0") == "1"
+DEMO_MAIL = not CLOUD_MODE and os.environ.get("BUKATOKO_DEMO_MAIL", "1") != "0"
+SMTP_HOST = os.environ.get("BUKATOKO_SMTP_HOST", "")
+COOKIE_SECURITY = "; Secure" if CLOUD_MODE else ""
 
 # batas laju: (jendela detik, jumlah maksimum)
 LIMITS = {
@@ -51,6 +59,9 @@ LIMITS = {
     "signup_ip": (3600, 10),
     "reset_ip": (3600, 6),
     "reset_mail": (3600, 4),
+    "reset_confirm_ip": (600, 20),
+    "reset_confirm_mail": (1800, 8),
+    "verify_user": (3600, 4),
     "offer_user": (3600, 30),
     "message_user": (3600, 60),
     "report_user": (86400, 10),
@@ -334,6 +345,7 @@ def init_db() -> None:
     try:
         conn.executescript(SCHEMA)
         for table, column, decl in (
+            ("users", "avatar_url", "TEXT"),
             ("users", "email_verified", "INTEGER NOT NULL DEFAULT 0"),
             ("users", "verify_token", "TEXT"),
             ("users", "reset_token", "TEXT"),
@@ -355,9 +367,10 @@ def init_db() -> None:
             ("reports", "reviewed_at", "TEXT"),
         ):
             ensure_column(conn, table, column, decl)
-        if conn.execute("SELECT COUNT(*) AS n FROM listings").fetchone()["n"] == 0:
-            seed(conn)
-        ensure_moderator(conn)
+        if not CLOUD_MODE:
+            if conn.execute("SELECT COUNT(*) AS n FROM listings").fetchone()["n"] == 0:
+                seed(conn)
+            ensure_moderator(conn)
         conn.commit()
     finally:
         conn.close()
@@ -417,10 +430,10 @@ def seed(conn: sqlite3.Connection) -> None:
 # ---------------------------------------------------------------- bantu
 
 def public_user(conn: sqlite3.Connection, uid: int) -> dict:
-    row = conn.execute("SELECT id, name, created_at FROM users WHERE id=?", (uid,)).fetchone()
+    row = conn.execute("SELECT id, name, created_at, avatar_url FROM users WHERE id=?", (uid,)).fetchone()
     if not row:
         return {"id": 0, "name": "tidak dikenal", "joined": ""}
-    return {"id": row["id"], "name": row["name"], "joined": (row["created_at"] or "")[:7]}
+    return {"id": row["id"], "name": row["name"], "joined": (row["created_at"] or "")[:7], "avatar_url": row["avatar_url"]}
 
 
 def is_moderator(conn: sqlite3.Connection, uid: int | None) -> bool:
@@ -798,7 +811,7 @@ def api_get(path: str, query: dict, uid: int | None, conn: sqlite3.Connection):
 
     m = re.fullmatch(r"/api/users/([^/]+)", path)
     if m:
-        row = conn.execute("SELECT id, name, created_at FROM users WHERE name=?",
+        row = conn.execute("SELECT id, name, created_at, avatar_url FROM users WHERE name=?",
                            (unquote(m.group(1)),)).fetchone()
         if not row:
             return 404, {"error": "pengguna tidak ditemukan"}
@@ -1081,6 +1094,29 @@ NAME_RE = re.compile(r"^[a-zA-Z0-9._-]{3,24}$")
 
 # ---------------------------------------------------------------- POST
 
+def send_account_code(address: str, code: str, purpose: str) -> bool:
+    if DEMO_MAIL:
+        sys.stderr.write(f"[mail-demo] {purpose} {address}: {code}\n")
+        return True
+    if not SMTP_HOST:
+        return False
+    try:
+        message = EmailMessage()
+        message["From"] = os.environ["BUKATOKO_SMTP_FROM"]
+        message["To"] = address
+        message["Subject"] = f"BukaToko: {purpose}"
+        message.set_content(f"Kode BukaToko: {code}")
+        with smtplib.SMTP(SMTP_HOST, int(os.environ.get("BUKATOKO_SMTP_PORT", "587")), timeout=8) as mailer:
+            mailer.starttls(context=ssl.create_default_context())
+            if os.environ.get("BUKATOKO_SMTP_USER"):
+                mailer.login(os.environ["BUKATOKO_SMTP_USER"], os.environ["BUKATOKO_SMTP_PASSWORD"])
+            mailer.send_message(message)
+        return True
+    except (OSError, KeyError, ValueError):
+        sys.stderr.write("[mail] Pengiriman kode gagal. Periksa konfigurasi SMTP.\n")
+        return False
+
+
 def api_post(path: str, body: dict, uid: int | None, conn: sqlite3.Connection, ip: str = ""):
     if path == "/api/signup":
         if not limit_ok("signup_ip", ip or "?"):
@@ -1105,7 +1141,7 @@ def api_post(path: str, body: dict, uid: int | None, conn: sqlite3.Connection, i
                    "verify_required": True}
         if DEMO_MAIL:
             payload["demo_verify_code"] = token_verify
-        sys.stderr.write(f"[mail-demo] verifikasi {mail}: {token_verify}\n")
+        send_account_code(mail, token_verify, "Verifikasi email")
         return 200, payload
 
     if path == "/api/login":
@@ -1144,22 +1180,28 @@ def api_post(path: str, body: dict, uid: int | None, conn: sqlite3.Connection, i
     if path == "/api/verify/resend":
         if not uid:
             return 401, {"error": "masuk dulu"}
+        if not limit_ok("verify_user", str(uid)):
+            return 429, {"error": limit_message("verify_user")}
+        address = conn.execute("SELECT email FROM users WHERE id=?", (uid,)).fetchone()["email"]
         token_verify = secrets.token_urlsafe(18)
         conn.execute("UPDATE users SET verify_token=? WHERE id=?", (token_verify, uid))
         conn.commit()
-        sys.stderr.write(f"[mail-demo] verifikasi ulang uid {uid}: {token_verify}\n")
+        if not send_account_code(address, token_verify, "Verifikasi email"):
+            return 503, {"error": "Pengiriman email belum tersedia."}
         payload = {"ok": True}
         if DEMO_MAIL:
             payload["demo_verify_code"] = token_verify
         return 200, payload
 
     if path == "/api/reset/request":
+        if not DEMO_MAIL and not SMTP_HOST:
+            return 503, {"error": "Pengiriman email belum tersedia."}
         mail = (body.get("email") or "").strip().lower()
         if not limit_ok("reset_ip", ip or "?"):
             return 429, {"error": limit_message("reset_ip")}
         if not limit_ok("reset_mail", mail or "?"):
             return 429, {"error": limit_message("reset_mail")}
-        row = conn.execute("SELECT id FROM users WHERE email=? OR name=?", (mail, mail)).fetchone()
+        row = conn.execute("SELECT id, email FROM users WHERE email=? OR name=?", (mail, mail)).fetchone()
         # jawaban sama untuk email yang tidak ada, supaya tidak jadi alat menebak akun
         payload = {"ok": True,
                    "message": "Kalau email itu terdaftar, kode reset sudah dibuat."}
@@ -1169,7 +1211,7 @@ def api_post(path: str, body: dict, uid: int | None, conn: sqlite3.Connection, i
             conn.execute("UPDATE users SET reset_token=?, reset_expires=? WHERE id=?",
                          (code, expires, row["id"]))
             conn.commit()
-            sys.stderr.write(f"[mail-demo] reset sandi {mail}: {code}\n")
+            send_account_code(row["email"], code, "Reset kata sandi")
             if DEMO_MAIL:
                 payload["demo_reset_code"] = code
                 payload["expires_minutes"] = RESET_MINUTES
@@ -1177,12 +1219,16 @@ def api_post(path: str, body: dict, uid: int | None, conn: sqlite3.Connection, i
 
     if path == "/api/reset/confirm":
         mail = (body.get("email") or "").strip().lower()
+        if not limit_ok("reset_confirm_ip", ip or "?"):
+            return 429, {"error": limit_message("reset_confirm_ip")}
         code = (body.get("code") or "").strip()
         pw = body.get("password") or ""
         if len(pw) < 8:
             return 400, {"error": "Kata sandi minimal 8 karakter."}
         row = conn.execute("SELECT id, reset_token, reset_expires FROM users WHERE email=? OR name=?",
                            (mail, mail)).fetchone()
+        if row and not limit_ok("reset_confirm_mail", str(row["id"])):
+            return 429, {"error": limit_message("reset_confirm_mail")}
         if not row or not row["reset_token"] or not hmac.compare_digest(row["reset_token"], code):
             return 400, {"error": "Kode reset salah atau sudah dipakai."}
         if not row["reset_expires"] or row["reset_expires"] < now_iso():
@@ -1921,6 +1967,18 @@ class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
+    def address_string(self):
+        if CLOUD_MODE and self.client_address[0] == "127.0.0.1":
+            try:
+                return str(ipaddress.ip_address(getattr(self, "headers", {}).get("X-Real-IP", "")))
+            except ValueError:
+                pass
+        return self.client_address[0]
+
+    def list_directory(self, path):
+        self.send_error(404)
+        return None
+
     def log_message(self, fmt, *args):
         sys.stderr.write("%s %s %s\n" % (self.address_string(), self.command, self.path))
 
@@ -2011,9 +2069,10 @@ class Handler(SimpleHTTPRequestHandler):
             self._json(code, payload)
             return
 
-        if path.startswith("/uploads/"):
-            name = path.rsplit("/", 1)[-1]
-            target = UPLOAD_DIR / name
+        if path.startswith(("/uploads/", "/avatars/")):
+            directory = AVATAR_DIR if path.startswith("/avatars/") else UPLOAD_DIR
+            name = path.split("/", 2)[2]
+            target = directory / name
             if not SAFE_UPLOAD.match(name) or not target.is_file():
                 self.send_error(404, "foto tidak ditemukan")
                 return
@@ -2074,8 +2133,8 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):  # noqa: N802
         path = unquote(urlsplit(self.path).path)
 
-        if path == "/api/upload":
-            self._handle_upload()
+        if path in {"/api/upload", "/api/avatar"}:
+            self._handle_upload(avatar=path == "/api/avatar")
             return
         if not path.startswith("/api/"):
             self._json(404, {"error": "endpoint tidak dikenal"})
@@ -2088,17 +2147,19 @@ class Handler(SimpleHTTPRequestHandler):
             if not self._csrf_ok(conn, path):
                 self._json(403, {"error": "Token keamanan tidak cocok. Muat ulang halaman lalu coba lagi."})
                 return
+            if path == "/api/logout":
+                body = {"token": self._cookie_token() or body.get("token", "")}
             code, payload = api_post(path, body, uid, conn, self.address_string())
             if code == 200 and path in ("/api/login", "/api/signup") and payload.get("token"):
                 self._json_with_cookies(code, payload, [
-                    f"{COOKIE}={payload['token']}; Path=/; Max-Age={SESSION_DAYS * 86400}; HttpOnly; SameSite=Lax",
-                    f"{CSRF_COOKIE}={payload.get('csrf', '')}; Path=/; Max-Age={SESSION_DAYS * 86400}; SameSite=Lax",
+                    f"{COOKIE}={payload['token']}; Path=/; Max-Age={SESSION_DAYS * 86400}; HttpOnly; SameSite=Lax{COOKIE_SECURITY}",
+                    f"{CSRF_COOKIE}={payload.get('csrf', '')}; Path=/; Max-Age={SESSION_DAYS * 86400}; SameSite=Lax{COOKIE_SECURITY}",
                 ])
                 return
             if code == 200 and path == "/api/logout":
                 self._json_with_cookies(code, payload, [
-                    f"{COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
-                    f"{CSRF_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax",
+                    f"{COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax{COOKIE_SECURITY}",
+                    f"{CSRF_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax{COOKIE_SECURITY}",
                 ])
                 return
         except Exception as exc:  # noqa: BLE001
@@ -2108,7 +2169,7 @@ class Handler(SimpleHTTPRequestHandler):
             conn.close()
         self._json(code, payload)
 
-    def _handle_upload(self) -> None:
+    def _handle_upload(self, *, avatar: bool = False) -> None:
         conn = db()
         try:
             uid = session_user(conn, self._cookie_token())
@@ -2150,7 +2211,11 @@ class Handler(SimpleHTTPRequestHandler):
         if len(parts) > MAX_FILES:
             self._json(400, {"error": f"maksimal {MAX_FILES} foto per permintaan"})
             return
-        UPLOAD_DIR.mkdir(exist_ok=True)
+        if avatar and len(parts) != 1:
+            self._json(400, {"error": "Pilih satu foto profil."})
+            return
+        directory = AVATAR_DIR if avatar else UPLOAD_DIR
+        directory.mkdir(parents=True, exist_ok=True)
         saved = []
         for part in parts:
             kind = part.get_content_type().lower()
@@ -2173,7 +2238,27 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             data = strip_metadata(data, kind)
             name = uuid.uuid4().hex + ALLOWED_IMAGES[kind]
-            (UPLOAD_DIR / name).write_bytes(data)
+            target = directory / name
+            target.write_bytes(data)
+            if avatar:
+                url = f"/avatars/{name}"
+                conn = db()
+                try:
+                    conn.execute("BEGIN IMMEDIATE")
+                    old_url = conn.execute("SELECT avatar_url FROM users WHERE id=?", (uid,)).fetchone()["avatar_url"]
+                    conn.execute("UPDATE users SET avatar_url=? WHERE id=?", (url, uid))
+                    conn.commit()
+                except sqlite3.Error:
+                    target.unlink(missing_ok=True)
+                    self._json(500, {"error": "kesalahan server"})
+                    return
+                finally:
+                    conn.close()
+                old_name = (old_url or "").removeprefix("/avatars/")
+                if SAFE_UPLOAD.fullmatch(old_name):
+                    (directory / old_name).unlink(missing_ok=True)
+                self._json(200, {"avatar_url": url})
+                return
             saved.append({"url": f"/uploads/{name}", "bytes": len(data), "type": kind, "size": list(size)})
         self._json(200, {"files": saved})
 
@@ -2243,8 +2328,11 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main() -> None:
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8123
+    if CLOUD_MODE and not (os.environ.get("BUKATOKO_DB") and os.environ.get("BUKATOKO_UPLOAD_DIR")):
+        raise SystemExit("Cloud mode requires explicit persistent database and upload paths.")
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db()
-    UPLOAD_DIR.mkdir(exist_ok=True)
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     removed = cleanup_orphans()
     os.chdir(ROOT)
     httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)

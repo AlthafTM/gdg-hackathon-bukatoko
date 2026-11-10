@@ -1,0 +1,24 @@
+[Unit]
+Description=BukaToko application
+After=network.target
+
+[Service]
+User=bukatoko
+Group=bukatoko
+WorkingDirectory=/opt/bukatoko/app
+Environment=BUKATOKO_CLOUD=1
+Environment=BUKATOKO_DB=/var/lib/bukatoko/bukatoko.db
+Environment=BUKATOKO_UPLOAD_DIR=/var/lib/bukatoko/uploads
+EnvironmentFile=-/etc/bukatoko/mail.env
+StateDirectory=bukatoko
+StateDirectoryMode=0750
+ExecStart=/usr/bin/python3 /opt/bukatoko/app/server.py 8123
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

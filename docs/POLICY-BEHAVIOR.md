@@ -6,9 +6,9 @@ The Indonesian and English content in `app/syarat.html`, `app/privasi.html`, and
 
 - `app/server.py`: users store display name, email, password hash, verification and account timestamps; listing/request/social, saved search, message/offer/transaction, notification and moderation tables persist their respective features. Public listing/profile APIs expose display names and public content; authenticated endpoints control private account views.
 - `SESSION_DAYS = 30`, login/logout cookie headers: `bk_session` is HttpOnly; `bk_csrf` is readable for write protection. This documentation does not claim end-to-end encryption or a universally Secure cookie flag.
-- `log_message` records IP/method/path. Reset/verification demo mail can write codes to logs and, when configured, return demo codes to the interface. Do not describe this as production email delivery.
+- `log_message` records IP/method/path. Local demo mail can write codes to logs and return them to the interface. Cloud mode suppresses demo codes and delivers account codes through configured STARTTLS SMTP.
 - `app/assets/location.js` chooses a supported city locally after a user requests geolocation; API filters use the city name. Coordinates are not sent to the API by that module.
-- `app/assets/app.js` and `locale.js` store theme/language/recent IDs locally and the last query in sessionStorage. Reference photos/fonts are local assets. No application analytics or advertising SDK is bundled.
+- `app/assets/app.js` and `locale.js` store theme and recent IDs locally and the last query in sessionStorage. The UI chooses Indonesian or English from browser locale preferences. Reference photos/fonts are bundled assets. No application analytics or advertising SDK is bundled.
 - Item deletion does not establish a general retention policy for messages/logs/backups. There is no self-service account deletion endpoint or universal retention schedule. Hosting-provider retention and backup configuration have not been verified.
 
 ## Bug portal

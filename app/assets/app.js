@@ -24,7 +24,7 @@
 
   var S = {
     me: null,
-    lang: localStorage.getItem("bk_lang") || "id",
+    lang: window.BukatokoLocale ? window.BukatokoLocale.getLanguage() : "en",
     lastQuery: sessionStorage.getItem("bk_last_query") || "",
     home: { listings: [], wanted: [] }
   };
@@ -213,11 +213,6 @@
       var value = t(key);
       if (value) node.setAttribute("placeholder", value);
     });
-    var btn = qs("#lang-toggle");
-    if (btn) {
-      btn.textContent = S.lang === "id" ? "EN" : "ID";
-      btn.setAttribute("aria-label", S.lang === "id" ? "Ganti ke bahasa Inggris" : "Switch to Indonesian");
-    }
     if (window.BukatokoLocale) window.BukatokoLocale.setLanguage(S.lang);
   }
 
@@ -729,7 +724,7 @@
     });
 
     modalShell("modal-reset", "Lupa kata sandi", [
-      el("p", { class: "field-note", text: "Masukkan email akunmu. Mesin ini belum punya SMTP, jadi kode reset ditampilkan di layar." }),
+      el("p", { class: "field-note", text: "Masukkan email akunmu untuk meminta kode reset." }),
       el("div", { class: "field" }, [el("label", { for: "reset-email", text: "Email atau nama" }), mail]),
       ask,
       info,
@@ -761,54 +756,6 @@
         });
       });
     }
-    var lang = qs("#lang-toggle");
-    if (lang) {
-      lang.addEventListener("click", function () {
-        S.lang = S.lang === "id" ? "en" : "id";
-        localStorage.setItem("bk_lang", S.lang);
-        applyLang();
-        var tt = qs("#theme-toggle");
-        if (tt && tt._relabel) tt._relabel();
-        if (document.body.dataset.page === "akun") boot.page && boot.page();
-      });
-    }
-    qsa("[data-open-auth]").forEach(function (b) {
-      b.addEventListener("click", function () { authModal(b.dataset.openAuth || "login"); });
-    });
-  }
-
-  /* ---------- kartu & state ---------- */
-
-  function requireAuth(then) {
-    if (S.me) { then(); return; }
-    window.__afterAuth = then;
-    authModal("login");
-  }
-
-  function initAuth() {
-    paintUser();
-    var btn = qs("#auth-button");
-    if (btn) {
-      btn.addEventListener("click", function () {
-        if (!S.me) { authModal("login"); return; }
-        api("/api/logout", { method: "POST", body: { token: "" } }).then(function () {
-          S.me = null;
-          paintUser();
-          toast("Kamu keluar.");
-          if (document.body.dataset.page === "akun") refreshPage();
-        });
-      });
-    }
-    var lang = qs("#lang-toggle");
-    if (lang) {
-      lang.addEventListener("click", function () {
-        S.lang = S.lang === "id" ? "en" : "id";
-        localStorage.setItem("bk_lang", S.lang);
-        applyLang();
-        var tt = qs("#theme-toggle");
-        if (tt && tt._relabel) tt._relabel();
-      });
-    }
     qsa("[data-open-auth]").forEach(function (b) {
       b.addEventListener("click", function () { authModal(b.dataset.openAuth || "login"); });
     });
@@ -827,6 +774,33 @@
     ]);
   }
 
+  function avatarURL(owner) {
+    var path = owner && owner.avatar_url;
+    return typeof path === "string" && /^\/avatars\/[a-f0-9]{32}\.(jpg|png|webp|gif)$/.test(path) ? backendURL(path) : "";
+  }
+
+  function paintAvatar(node, owner) {
+    node.textContent = (owner && owner.name || "?").slice(0, 1).toUpperCase();
+    var url = avatarURL(owner);
+    if (url) {
+      var photo = el("img", {src: url, alt: "", loading: "lazy", decoding: "async"});
+      photo.addEventListener("error", function () { photo.remove(); });
+      node.appendChild(photo);
+    }
+  }
+
+  function postAuthor(owner, createdAt) {
+    var avatar = el("span", {class: "avatar post-avatar", "aria-hidden": "true"});
+    paintAvatar(avatar, owner);
+    return el("span", {class: "post-author"}, [
+      avatar,
+      el("span", {class: "post-author-copy"}, [
+        el("strong", {"data-user-content": "", text: owner && owner.name || ""}),
+        el("time", {datetime: createdAt, class: "card-meta", text: timeAgo(createdAt)})
+      ])
+    ]);
+  }
+
   function card(item) {
     var real = item.photo_urls && item.photo_urls[0];
     var media = el("img", {
@@ -842,9 +816,7 @@
       foot, title,
       el("span", { class: "card-meta", text: item.condition }),
       el("span", { class: "card-meta card-location" }, [icon("location"), document.createTextNode(item.city)]),
-      el("div", { class: "card-meta card-seller" }, [
-        el("span", {"data-user-content":"",text:item.owner ? item.owner.name : ""}),
-        document.createTextNode(" · "), el("span", {text:timeAgo(item.created_at)})])
+      postAuthor(item.owner, item.created_at)
     ]);
     var image = el("span", { class: "card-image-link" }, [media]);
     if (!real && referencePhoto(item.id)) image.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
@@ -881,7 +853,7 @@
   function renderCards(target, items, append) {
     if (window.BukatokoReact) {
       window.BukatokoReact.renderCards(target, items, {
-        photo: photo, referencePhoto: referencePhoto, backendURL: backendURL, timeAgo: timeAgo
+        photo: photo, referencePhoto: referencePhoto, backendURL: backendURL, timeAgo: timeAgo, avatarURL: avatarURL
       }, append);
     } else {
       if (!append) target.textContent = "";
@@ -1446,7 +1418,7 @@
       qs("#s-nama").textContent = owner.name;
       qs("#s-nama").setAttribute("data-user-content", "");
       qs("#s-nama").href = "profil.html?u=" + encodeURIComponent(owner.name);
-      qs("#s-avatar").textContent = (owner.name || "?").slice(0, 1).toUpperCase();
+      paintAvatar(qs("#s-avatar"), owner);
       qs("#s-bergabung").textContent = "Bergabung " + (owner.joined || "-");
       var rating = item.rating || { count: 0, average: null };
       qs("#s-rating").textContent = rating.count
@@ -2027,12 +1999,9 @@
         replies.hidden = true;
         var summary = el("summary", {class: "wanted-summary"}, [
           el("span", {class: "wanted-title", "data-user-content": "", text: w.title}),
-          el("span", {class: "card-meta"}, [
-            el("span", {text: kategoriName(w.category) + " · " + w.city + " · " + timeAgo(w.created_at)}),
-            document.createTextNode(" · "),
-            el("span", {"data-user-content": "", text: w.owner.name})
-          ]),
-          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)})
+          el("span", {class: "card-meta", text: kategoriName(w.category) + " · " + w.city}),
+          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)}),
+          postAuthor(w.owner, w.created_at)
         ]);
         var detail = el("div", {class: "wanted-detail"}, [
           el("p", {class: "wanted-note", text: w.note}),
@@ -2121,7 +2090,7 @@
     if (sortSel) sortSel.addEventListener("change", paintReviews);
     api("/api/users/" + encodeURIComponent(name)).then(function (data) {
       qs("#p-nama").textContent = data.user.name;
-      qs("#p-avatar").textContent = data.user.name.slice(0, 1).toUpperCase();
+      paintAvatar(qs("#p-avatar"), data.user);
       qs("#p-bergabung").textContent = "Bergabung " + data.user.joined;
       qs("#p-rating").textContent = data.rating.count
         ? String(data.rating.average).replace(".", ",") + " dari " + data.rating.count + " ulasan"
@@ -2343,7 +2312,7 @@
     function loadMyWanted() {
       var p = panels.permintaan;
       skeletons(2, p);
-      return api("/api/wanted").then(function (data) {
+      return api("/api/wanted?mine=1").then(function (data) {
         var mine = data.items.filter(function (w) { return w.owner.name === S.me.name; });
         p.innerHTML = "";
         if (!mine.length) {
@@ -2353,14 +2322,21 @@
         mine.forEach(function (w) {
           p.appendChild(row({
             noThumb: true, title: w.title,
-            meta: rp(w.price_min) + " sampai " + rp(w.price_max) + " · " + w.city + " · " + timeAgo(w.created_at),
-            actions: [{
+            meta: rp(w.price_min) + " sampai " + rp(w.price_max) + " · " + w.city + " · " + timeAgo(w.created_at) + (w.status === "closed" ? " · " + uiText("Ditutup") : ""),
+            actions: (w.status === "open" ? [{
+              label: "Tutup permintaan", onClick: function (btn) {
+                btn.disabled = true;
+                api("/api/wanted/" + encodeURIComponent(w.id) + "/close", {method: "POST"})
+                  .then(loadMyWanted)
+                  .catch(function (err) { btn.disabled = false; toast(err.message); });
+              }
+            }] : []).concat([{
               label: "Hapus", variant: "btn-danger", onClick: function (btn) {
                 btn.disabled = true;
                 api("/api/wanted/" + w.id, { method: "DELETE" }).then(function () { loadMyWanted(); refreshMe(); })
                   .catch(function (err) { btn.disabled = false; toast(err.message); });
               }
-            }]
+            }])
           }));
         });
       }).catch(function (err) { fail(p, err, loadMyWanted); });
@@ -2616,6 +2592,32 @@
       });
     });
 
+    var avatarInput = qs("#akun-avatar-input");
+    avatarInput.addEventListener("change", function () {
+      var file = avatarInput.files[0];
+      if (!file) return;
+      avatarInput.disabled = true;
+      var form = new FormData();
+      form.append("photo", file, file.name);
+      pageRequest(fetch(backendURL("/api/avatar"), {
+        method: "POST", body: form, headers: csrfHeaders("POST"),
+        credentials: API_ORIGIN ? "include" : "same-origin"
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          if (!res.ok) throw new Error(data.error || "unggahan ditolak server");
+          return data;
+        });
+      })).then(function (data) {
+        if (!S.me) return;
+        S.me.avatar_url = data.avatar_url;
+        paintAvatar(qs("#akun-avatar"), S.me);
+        toast("Foto profil diperbarui.");
+      }).catch(function (error) { toast(error.message); }).finally(function () {
+        avatarInput.disabled = false;
+        avatarInput.value = "";
+      });
+    });
+
     function gate() {
       if (!S.me) {
         needLogin.hidden = false;
@@ -2624,6 +2626,7 @@
       }
       needLogin.hidden = true;
       content.hidden = false;
+      paintAvatar(qs("#akun-avatar"), S.me);
       qs("#akun-nama").textContent = S.me.name;
       qs("#akun-email").textContent = S.me.email;
       paintCounts(S.me);

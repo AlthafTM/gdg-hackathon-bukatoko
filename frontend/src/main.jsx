@@ -16,6 +16,7 @@ function useText() {
 
 const ProductCard = memo(function ProductCard({ item, helpers }) {
   const text = useText();
+  const avatar = helpers.avatarURL?.(item.owner);
   const real = item.photo_urls?.[0];
   const reference = !real && helpers.referencePhoto(item.id);
   const href = `listing.html?id=${encodeURIComponent(item.id)}`;
@@ -37,8 +38,15 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
         <span className="tw:flex tw:items-center tw:gap-1.5 tw:text-xs tw:text-[var(--muted)] tw:md:text-sm">
           <Icon name="location" className="tw:size-4 tw:shrink-0" />{item.city}
         </span>
-        <div className="tw:mt-auto tw:flex tw:flex-wrap tw:gap-x-2 tw:text-xs tw:leading-relaxed tw:text-[var(--muted)]">
-          <span>{item.owner?.name || ''}</span><span>{text(helpers.timeAgo(item.created_at))}</span>
+        <div className="post-author tw:mt-auto">
+          <span className="avatar post-avatar" aria-hidden="true">
+            {(item.owner?.name || '?').slice(0, 1).toUpperCase()}
+            {avatar && <img src={avatar} alt="" loading="lazy" decoding="async" onError={event => { event.currentTarget.hidden = true; }} />}
+          </span>
+          <span className="post-author-copy">
+            <strong>{item.owner?.name}</strong>
+            <time className="card-meta" dateTime={item.created_at}>{text(helpers.timeAgo(item.created_at))}</time>
+          </span>
         </div>
         <div className="card-engagement">
           <span className="engagement-stat"><Icon name="heart" /><span className="sr-only">{text('Suka')} </span>{item.likes || 0}</span>

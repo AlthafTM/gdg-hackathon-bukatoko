@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.9.0] - 2026-11-10
+
+- Prepare persistent cloud hosting, add profile photos, and select language from browser preferences. See [release notes](releases/0.9.0.md).
+
 ## [0.8.3] - 2026-11-10
 
 - Enable direct wanted reactions and make the entire item card open its detail. See [release notes](releases/0.8.3.md).

@@ -105,6 +105,23 @@ def main():
     check("daftar mengembalikan token csrf", code == 200 and data.get("csrf"), str(code))
     seller_csrf = getattr(seller, "csrf", "")
 
+    avatar_raw, avatar_type = multipart("photo", "avatar.png", png(), "image/png")
+    avatar_headers = {"Content-Type": avatar_type}
+    code, result = call(seller, "POST", "/api/avatar", raw=avatar_raw, headers=avatar_headers, csrf=False)
+    check("unggah avatar wajib memakai CSRF", code == 403)
+    code, result = call(seller, "POST", "/api/avatar", raw=avatar_raw, headers=avatar_headers)
+    avatar_url = result.get("avatar_url", "")
+    check("unggah avatar mengembalikan URL publik", code == 200 and avatar_url.startswith("/avatars/"))
+    if avatar_url:
+        code, contents = call(client()[0], "GET", avatar_url)
+        check("avatar dapat dimuat publik", code == 200 and contents.startswith(b"\x89PNG"))
+        code, profile = call(client()[0], "GET", f"/api/users/jual.{suffix}")
+        check("profil menampilkan avatar pemilik", code == 200 and profile["user"]["avatar_url"] == avatar_url)
+        code, replacement = call(seller, "POST", "/api/avatar", raw=avatar_raw, headers=avatar_headers)
+        check("mengganti avatar membuat URL baru", code == 200 and replacement.get("avatar_url") != avatar_url)
+        code, _ = call(client()[0], "GET", avatar_url)
+        check("avatar lama dibersihkan setelah diganti", code == 404)
+
     buyer, code, data = signup("beli." + suffix, f"beli.{suffix}@example.com")
     check("daftar kedua", code == 200, str(data)[:100])
 

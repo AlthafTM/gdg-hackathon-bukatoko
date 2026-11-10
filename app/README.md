@@ -11,7 +11,7 @@ cd app
 python3 server.py 8123            # http://127.0.0.1:8123/index.html
 ```
 
-Backend Python tidak membutuhkan dependensi pihak ketiga. Aset frontend hasil build disertakan di repo; perubahan React/Tailwind perlu `npm run build` dari root repo. Server menyajikan file statis, API JSON, dan satu endpoint unggah foto. Basis data SQLite dibuat otomatis di `bukatoko.db` dan diisi data contoh pada jalan pertama.
+Backend Python tidak membutuhkan dependensi pihak ketiga. Aset frontend hasil build disertakan di repo; perubahan React/Tailwind perlu `npm run build` dari root repo. Server menyajikan file statis, API JSON, dan satu endpoint unggah foto. Basis data SQLite dibuat otomatis di `bukatoko.db` dan diisi data contoh pada jalan pertama dalam mode lokal. Untuk penyimpanan di disk cloud dan HTTPS, ikuti [panduan deployment OCI](../docs/CLOUD-DEPLOYMENT.md).
 
 Sebagai service yang tetap hidup:
 
@@ -49,7 +49,7 @@ Bisa juga masuk dengan nama pengguna, misal `rangga.putra`. Akun baru dibuat lew
 Akun dan sesi
 - Daftar dan masuk dengan email + kata sandi. Kata sandi disimpan sebagai PBKDF2-HMAC-SHA256 (200.000 putaran, salt acak).
 - Sesi berupa token acak di cookie HttpOnly + SameSite=Lax, berlaku 30 hari, dicabut saat keluar.
-- Verifikasi email: akun baru dapat kode verifikasi. Mesin ini belum punya SMTP, jadi kode ditampilkan di layar (mode demo) dan juga ditulis ke log server. Set `BUKATOKO_DEMO_MAIL=0` untuk mematikan tampilan kode.
+- Verifikasi email: akun baru dapat kode verifikasi. Pada mode lokal demo, kode ditampilkan di layar dan ditulis ke log server. Set `BUKATOKO_DEMO_MAIL=0` untuk menonaktifkan kode demo. Mode cloud menggunakan SMTP jika dikonfigurasi.
 - Lupa kata sandi: minta kode 6 angka (berlaku 30 menit), lalu ganti sandi. Meminta reset untuk email yang tidak terdaftar dijawab sama, supaya tidak jadi alat menebak akun.
 - Akun bisa dibekukan moderator: login ditolak, semua sesi dihapus, barang aktifnya diturunkan.
 
