@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.8.2] - 2026-11-10
+
+- Remove internal card dividers from items and wanted posts. See [release notes](releases/0.8.2.md).
+
 ## [0.8.1] - 2026-11-09
 
 - Unify item and wanted reactions, group passive card counts, and move share/report into the detail toolbar. See [release notes](releases/0.8.1.md).

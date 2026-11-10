@@ -36,7 +36,7 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
       <span className="tw:flex tw:items-center tw:gap-1.5 tw:text-xs tw:text-[var(--muted)] tw:md:text-sm">
         <Icon name="location" className="tw:size-4 tw:shrink-0" />{item.city}
       </span>
-      <div className="tw:mt-auto tw:flex tw:flex-wrap tw:gap-x-2 tw:border-t tw:border-[var(--line)] tw:pt-3 tw:text-xs tw:leading-relaxed tw:text-[var(--muted)]">
+      <div className="tw:mt-auto tw:flex tw:flex-wrap tw:gap-x-2 tw:text-xs tw:leading-relaxed tw:text-[var(--muted)]">
         <span>{item.owner?.name || ''}</span><span>{text(helpers.timeAgo(item.created_at))}</span>
       </div>
       <div className="card-engagement">
