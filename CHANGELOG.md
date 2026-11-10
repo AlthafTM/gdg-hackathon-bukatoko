@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.9.1] - 2026-11-10
+
+- Move post authors above card content and include PythonAnywhere deployment support. See [release notes](releases/0.9.1.md).
+
 ## [0.9.0] - 2026-11-10
 
 - Prepare persistent cloud hosting, add profile photos, and select language from browser preferences. See [release notes](releases/0.9.0.md).

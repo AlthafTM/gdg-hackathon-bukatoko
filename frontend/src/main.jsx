@@ -23,10 +23,21 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
   const source = helpers.backendURL(real) || helpers.photo(item.id, `${item.title} ${item.category}`);
   return <article className={`card product-card ${item.status === 'sold' ? 'is-sold' : ''}`}>
     <a className="card-link" href={href} aria-label={text(`Lihat ${item.title}`)}>
+      <div className="post-author card-author">
+        <span className="avatar post-avatar" aria-hidden="true">
+          {(item.owner?.name || '?').slice(0, 1).toUpperCase()}
+          {avatar && <img src={avatar} alt="" loading="lazy" decoding="async" onError={event => { event.currentTarget.hidden = true; }} />}
+        </span>
+        <span className="post-author-copy">
+          <strong>{item.owner?.name}</strong>
+          <time className="card-meta" dateTime={item.created_at}>{text(helpers.timeAgo(item.created_at))}</time>
+        </span>
+      </div>
       <div className="card-image-link">
         <img className="card-media" src={source} alt={text(`${real ? 'Foto barang: ' : reference ? 'Foto referensi: ' : 'Foto contoh untuk '}${item.title}`)}
           width="640" height="480" loading="lazy" decoding="async" />
         {reference && <span className="photo-reference">{text('Foto referensi')}</span>}
+        {item.status === 'sold' && <span className="sold-flag">{text('terjual')}</span>}
       </div>
       <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-2 tw:p-3 tw:md:p-4 tw:xl:p-5">
         <div className="tw:flex tw:flex-wrap tw:items-baseline tw:gap-2">
@@ -38,22 +49,11 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
         <span className="tw:flex tw:items-center tw:gap-1.5 tw:text-xs tw:text-[var(--muted)] tw:md:text-sm">
           <Icon name="location" className="tw:size-4 tw:shrink-0" />{item.city}
         </span>
-        <div className="post-author tw:mt-auto">
-          <span className="avatar post-avatar" aria-hidden="true">
-            {(item.owner?.name || '?').slice(0, 1).toUpperCase()}
-            {avatar && <img src={avatar} alt="" loading="lazy" decoding="async" onError={event => { event.currentTarget.hidden = true; }} />}
-          </span>
-          <span className="post-author-copy">
-            <strong>{item.owner?.name}</strong>
-            <time className="card-meta" dateTime={item.created_at}>{text(helpers.timeAgo(item.created_at))}</time>
-          </span>
-        </div>
         <div className="card-engagement">
           <span className="engagement-stat"><Icon name="heart" /><span className="sr-only">{text('Suka')} </span>{item.likes || 0}</span>
           <span className="engagement-stat"><Icon name="comment" /><span className="sr-only">{text('Komentar')} </span>{item.comments || 0}</span>
         </div>
       </div>
-      {item.status === 'sold' && <span className="sold-flag">{text('terjual')}</span>}
     </a>
   </article>;
 });

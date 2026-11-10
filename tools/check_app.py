@@ -12,7 +12,7 @@ from urllib.request import urlopen
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def main():
+def main(*, wsgi=False):
     with tempfile.TemporaryDirectory(prefix='bukatoko-check-') as directory:
         scratch = Path(directory)
         app = scratch / 'app'
@@ -26,7 +26,14 @@ def main():
                    TMP=str(scratch), TEMP=str(scratch), PYTHONIOENCODING='utf-8')
         base = f'http://127.0.0.1:{port}'
         with (scratch / 'server.log').open('w', encoding='utf8') as log:
-            server = subprocess.Popen([sys.executable, str(app / 'server.py'), str(port)],
+            command = [sys.executable, str(app / 'server.py'), str(port)]
+            if wsgi:
+                command = [sys.executable, "-c", (
+                    "from server import init_db; from wsgi_adapter import application; "
+                    "from wsgiref.simple_server import make_server; init_db(); "
+                    "import sys; make_server('127.0.0.1', int(sys.argv[1]), application).serve_forever()"
+                ), str(port)]
+            server = subprocess.Popen(command,
                                       cwd=app, env=env, stdout=log, stderr=log)
             try:
                 ready = False
@@ -61,4 +68,4 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(wsgi="--wsgi" in sys.argv[1:]))

@@ -1,4 +1,25 @@
-# BukaToko on an OCI Always Free VM
+# BukaToko cloud deployment
+
+## PythonAnywhere without a VM
+
+PythonAnywhere's free plan includes one web app and 512 MiB of persistent storage for code, SQLite, and photos. Renew the web app before its monthly expiry. The free plan restricts outbound connections, so treat account email delivery as unavailable on this deployment. [Free plan limits](https://help.pythonanywhere.com/pages/FreeAccountsFeatures/) · [Network restrictions](https://www.pythonanywhere.com/pricing/)
+
+1. Create a free PythonAnywhere account. Upload the prepared backend ZIP in **Files**, then open a Bash console and extract it with `unzip ~/bukatoko-pythonanywhere.zip -d ~/bukatoko`. The ZIP contains application code and assets. Database and uploads are created separately on the host.
+2. In **Web**, add a new app on the provided domain. Choose **Manual configuration** and Python 3.11 or newer. Open its WSGI configuration file and replace the template with:
+
+   ```python
+   import sys
+   from pathlib import Path
+
+   sys.path.insert(0, str(Path.home() / "bukatoko" / "deploy"))
+   from pythonanywhere_wsgi import application
+   ```
+
+3. Enable **Force HTTPS**, reload the app and open the assigned domain. Visit `/api/me` and confirm it returns a guest session. Create a test account and verify posting, photo upload and persistence after reload. The database and uploads live under `~/.bukatoko` on PythonAnywhere. [Web app setup](https://help.pythonanywhere.com/pages/WebAppBasics/) · [Force HTTPS](https://help.pythonanywhere.com/pages/ForcingHTTPS/)
+
+Run `python tools/check_app.py --wsgi` to validate the app locally through the same WSGI adapter.
+
+## OCI Always Free VM
 
 Run the app and its API on the same HTTPS origin. Caddy terminates TLS on the VM and forwards requests to Python on loopback. The database, listing photos and avatars live on the VM's persistent cloud disk under `/var/lib/bukatoko`. The browser keeps session cookies and interface preferences.
 

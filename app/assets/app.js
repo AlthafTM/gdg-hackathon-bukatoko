@@ -815,20 +815,21 @@
     var body = el("div", { class: "card-body" }, [
       foot, title,
       el("span", { class: "card-meta", text: item.condition }),
-      el("span", { class: "card-meta card-location" }, [icon("location"), document.createTextNode(item.city)]),
-      postAuthor(item.owner, item.created_at)
+      el("span", { class: "card-meta card-location" }, [icon("location"), document.createTextNode(item.city)])
     ]);
     var image = el("span", { class: "card-image-link" }, [media]);
     if (!real && referencePhoto(item.id)) image.appendChild(el("span", {class:"photo-reference",text:"Foto referensi"}));
     body.appendChild(cardEngagement(item));
+    var author = postAuthor(item.owner, item.created_at);
+    author.classList.add("card-author");
     var link = el("a", {
       class: "card-link", href: "listing.html?id=" + encodeURIComponent(item.id),
       "aria-label": "Lihat " + item.title
-    }, [image, body]);
+    }, [author, image, body]);
     var wrap = el("article", { class: "card" }, [link]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
-      link.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
+      image.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
     }
     return wrap;
   }
@@ -1998,10 +1999,10 @@
         });
         replies.hidden = true;
         var summary = el("summary", {class: "wanted-summary"}, [
+          postAuthor(w.owner, w.created_at),
           el("span", {class: "wanted-title", "data-user-content": "", text: w.title}),
           el("span", {class: "card-meta", text: kategoriName(w.category) + " · " + w.city}),
-          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)}),
-          postAuthor(w.owner, w.created_at)
+          el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)})
         ]);
         var detail = el("div", {class: "wanted-detail"}, [
           el("p", {class: "wanted-note", text: w.note}),
