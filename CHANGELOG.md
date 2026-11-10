@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.10.1] - 2026-11-10
+
+- See [release notes](releases/0.10.1.md).
+
 ## [0.10.0] - 2026-11-10
 
 - See [release notes](releases/0.10.0.md).
