@@ -7,7 +7,7 @@ const crypto = require('node:crypto');
 const root = process.env.BUKATOKO_PAGES_DIR || path.resolve(__dirname, '../_site');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'assets/preview-data.json')));
 let fetches = [];
-const context = {URL, window: {}, document: {currentScript: {src: 'https://example.test/gdg-hackathon-bukatoko/assets/preview.js'}},
+const context = {URL, window: {}, document: {currentScript: {src: 'https://example.test/jualinaja/assets/preview.js'}},
   fetch: async url => {fetches.push(String(url)); return {ok: true, json: async () => data};}};
 vm.runInNewContext(fs.readFileSync(path.join(root, 'assets/preview.js'), 'utf8'), context);
 const preview = context.window.BukatokoPreview;
@@ -23,11 +23,11 @@ test('export contains only frontend and public fixtures', () => {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
-    assert.match(html, /src="assets\/logo.svg"/);
+    assert.match(html, /src="assets\/logo.svg\?v=3"/);
     const supportTitles={'syarat.html':'Syarat &amp; ketentuan','privasi.html':'Kebijakan privasi','bantuan.html':'Lapor kendala teknis'};
-    if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 BukaToko</title>'));
-    else assert.match(html, /<title>BukaToko - Jual apapun disini\.<\/title>/);
-    assert.match(html, /assets\/favicon\.svg\?v=2/);
+    if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 JualinAja</title>'));
+    else assert.match(html, /<title>JualinAja - Jual apapun disini\.<\/title>/);
+    assert.match(html, /assets\/favicon\.svg\?v=3/);
     assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
     assert.match(html, /assets\/react-ui\.css/);
     assert.match(fs.readFileSync(path.join(root,'assets/THIRD-PARTY-NOTICES.txt'),'utf8'), /MIT/);
@@ -76,8 +76,8 @@ test('details, profiles, wanted, guest state and subpath links work', async () =
   assert.equal((await preview.request('/api/users/rangga.putra')).listings.length, 2);
   assert.equal((await preview.request('/api/wanted')).total, 5);
   assert.equal((await preview.request('/api/me')).user, null);
-  assert.equal(preview.listingUrl('l1001'), 'https://example.test/gdg-hackathon-bukatoko/listing.html?id=l1001');
-  assert.deepEqual(fetches, ['https://example.test/gdg-hackathon-bukatoko/assets/preview-data.json']);
+  assert.equal(preview.listingUrl('l1001'), 'https://example.test/jualinaja/listing.html?id=l1001');
+  assert.deepEqual(fetches, ['https://example.test/jualinaja/assets/preview-data.json']);
 });
 test('writes, private endpoints and missing resources are rejected without network writes', async () => {
   for (const method of ['POST', 'PUT', 'PATCH', 'DELETE']) {

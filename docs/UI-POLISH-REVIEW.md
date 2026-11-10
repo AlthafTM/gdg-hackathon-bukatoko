@@ -5,7 +5,7 @@ Tanggal: 7 November 2026. Pengguna mengizinkan commit/publikasi setelah penambah
 ## Keputusan dan perubahan
 
 - Font aktif Nunito dengan ujung membulat, disimpan lokal beserta SIL OFL 1.1. Nunito Sans ditolak pengguna dan tidak dibundel. Judul halaman memakai bobot 750, judul kartu 700.
-- Judul browser dan heading beranda memakai `BukaToko - Jual apapun disini.`. Favicon memakai logo keranjang, dengan warna untuk kedua tema dan cache versioning. Judul browser dipisahkan dari metadata Open Graph barang agar preview tautan backend tetap berfungsi.
+- Judul browser dan heading beranda memakai `JualinAja - Jual apapun disini.`. Favicon memakai logo keranjang, dengan warna untuk kedua tema dan cache versioning. Judul browser dipisahkan dari metadata Open Graph barang agar preview tautan backend tetap berfungsi.
 - Kontrol satu baris/tombol membulat penuh; kartu dan panel memakai radius 16px, dialog 20px, elemen kecil 12px. Textarea tetap radius panel agar bidang multiline terbaca. Glow ungu ringan hanya saat hover, sebagai umpan balik fokus perhatian, sesuai permintaan pengguna.
 - Ikon satu sistem SVG outline 1.6px dengan cap/join membulat. Simbol kategori dan navigasi memakai ukuran konsisten.
 - Pencarian utama berada di atas konten desktop. Padding kiri ikon hanya berlaku di input yang benar-benar memiliki ikon; placeholder sidebar kembali memakai padding normal. Toolbar simpan pencarian dan filter aktif dipindah di atas kedua kolom katalog sehingga tidak mendorong kartu pertama ke bawah relatif terhadap panel filter.

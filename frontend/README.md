@@ -1,6 +1,6 @@
 # React catalog and Tailwind build
 
-BukaToko uses a single `app/index.html` shell for Home, Browse, Wanted, Sell and Account. Only the active screen template is mounted, preventing overlapping form IDs. Catalog cards remain React components; the compatible controller retains same-origin authentication, CSRF, uploads, offers, messages and the other integrated backend features.
+JualinAja uses a single `app/index.html` shell for Home, Browse, Wanted, Sell and Account. Only the active screen template is mounted, preventing overlapping form IDs. Catalog cards remain React components; the compatible controller retains same-origin authentication, CSRF, uploads, offers, messages and the other integrated backend features.
 
 `frontend/build-shell.mjs` embeds inert screen templates into the marked generated block in `app/index.html`. Edit Home's first `<main>` outside that block, or edit the four corresponding source HTML files, then run `npm run build`. Do not hand-edit the generated block. The old `.html` entry points bootstrap the shell with their query and fragment intact; normal internal navigation changes history and swaps the active template without loading another document. Detail, profile and moderation screens remain standalone.
 

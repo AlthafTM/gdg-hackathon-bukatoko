@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bukatoko: server demo (statis + API JSON + unggah foto).
+"""JualinAja: server demo (statis + API JSON + unggah foto).
 
 Satu proses, tanpa dependensi pihak ketiga. Data di SQLite (bukatoko.db),
 foto di uploads/. Jalankan: python3 server.py 8123
@@ -1104,8 +1104,8 @@ def send_account_code(address: str, code: str, purpose: str) -> bool:
         message = EmailMessage()
         message["From"] = os.environ["BUKATOKO_SMTP_FROM"]
         message["To"] = address
-        message["Subject"] = f"BukaToko: {purpose}"
-        message.set_content(f"Kode BukaToko: {code}")
+        message["Subject"] = f"JualinAja: {purpose}"
+        message.set_content(f"Kode JualinAja: {code}")
         with smtplib.SMTP(SMTP_HOST, int(os.environ.get("BUKATOKO_SMTP_PORT", "587")), timeout=8) as mailer:
             mailer.starttls(context=ssl.create_default_context())
             if os.environ.get("BUKATOKO_SMTP_USER"):
@@ -1962,7 +1962,7 @@ def escape_attr(text: str) -> str:
 
 
 class Handler(SimpleHTTPRequestHandler):
-    server_version = "Bukatoko/2.0"
+    server_version = "JualinAja/2.0"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
@@ -2106,7 +2106,7 @@ class Handler(SimpleHTTPRequestHandler):
         finally:
             conn.close()
         html = (ROOT / "listing.html").read_text(encoding="utf-8")
-        title = f"{data['title']} · Rp {data['price']:,} · Bukatoko".replace(",", ".")
+        title = f"{data['title']} · Rp {data['price']:,} · JualinAja".replace(",", ".")
         desc = f"{data['condition']}, {data['city']}. {data['description'][:150]}".replace("\n", " ")
         image = data["photo_urls"][0] if data["photo_urls"] else "/assets/favicon.svg"
         meta = (
@@ -2336,7 +2336,7 @@ def main() -> None:
     removed = cleanup_orphans()
     os.chdir(ROOT)
     httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Bukatoko di http://127.0.0.1:{port}/index.html (foto yatim dibersihkan: {removed})")
+    print(f"JualinAja di http://127.0.0.1:{port}/index.html (foto yatim dibersihkan: {removed})")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

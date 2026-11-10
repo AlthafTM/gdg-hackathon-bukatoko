@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Salin basis data Bukatoko dengan API backup SQLite.
+"""Salin basis data JualinAja dengan API backup SQLite.
 
 Contoh:
     python3 tools/backup.py                 # simpan ke backups/, sisakan 7 terbaru
@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Backup basis data Bukatoko")
+    ap = argparse.ArgumentParser(description="Backup basis data JualinAja")
     ap.add_argument("--db", default=None, help="jalur basis data (default: bukatoko.db)")
     ap.add_argument("--dir", default=None, help="folder tujuan (default: ./backups)")
     ap.add_argument("--keep", type=int, default=7, help="jumlah salinan yang disimpan")

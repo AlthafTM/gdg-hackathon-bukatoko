@@ -56,7 +56,7 @@ test('dynamic statuses, authentication errors and result counts translate',()=>{
 });
 test('static UI copy including moderation and missing-page screens has an English translation',()=>{
   const f=fixture();
-  const allow=new Set(['Fashion','Bandung','Bekasi','Denpasar','Jakarta Barat','Jakarta Pusat','Jakarta Selatan','Malang','Semarang','Sleman','Surabaya','Tangerang','Yogyakarta','BukaToko','Bukatoko','EN','min','Status']);
+  const allow=new Set(['Fashion','Bandung','Bekasi','Denpasar','Jakarta Barat','Jakarta Pusat','Jakarta Selatan','Malang','Semarang','Sleman','Surabaya','Tangerang','Yogyakarta','JualinAja','JualinAja','EN','min','Status']);
   const decode=s=>s.replace(/&amp;/g,'&').replace(/&larr;/g,'←').replace(/&#(?:x([\da-f]+)|(\d+));/gi,(_,h,d)=>String.fromCodePoint(parseInt(h||d,h?16:10)));
   const missing=[];
   for(const filename of fs.readdirSync(path.resolve(__dirname,'../app')).filter(name=>name.endsWith('.html'))) {

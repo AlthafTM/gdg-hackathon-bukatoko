@@ -25,7 +25,7 @@ workspace owner should identify the supported access route.
 ## Prompt for the AI with hosting access
 
 ```text
-Update the working BukaToko frontend on the existing server from the reviewed main
+Update the working JualinAja frontend on the existing server from the reviewed main
 revision provided by the UI contributor. First report the current deployed Git
 revision, application path and service name. Preserve and inspect all local edits,
 including any unfinished merge; do not run reset --hard, clean or overwrite them.

@@ -21,7 +21,7 @@
       "\n\nExpected:\n" + value("bug-expected") +
       "\n\nActual:\n" + value("bug-actual");
     preview.textContent = report;
-    var url = new URL("https://github.com/AlthafTM/gdg-hackathon-bukatoko/issues/new");
+    var url = new URL("https://github.com/AlthafTM/jualinaja/issues/new");
     url.searchParams.set("title", "[Bug] " + title);
     url.searchParams.set("body", report);
     github.hidden = url.href.length > 7600;
@@ -37,7 +37,7 @@
     var url = URL.createObjectURL(new Blob([report], { type: "text/plain;charset=utf-8" }));
     var link = document.createElement("a");
     link.href = url;
-    link.download = "bukatoko-bug-report.txt";
+    link.download = "jualinaja-bug-report.txt";
     link.click();
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
   });

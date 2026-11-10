@@ -1,4 +1,4 @@
-# Bukatoko 2.0
+# JualinAja 2.0
 
 Pasar barang bekas antar warga: orang bisa menjual barang miliknya, dan bisa menulis barang yang sedang dicari beserta rentang harga. Sekarang ada server, basis data, akun, tawaran, percakapan, ulasan, laporan, dan blokir.
 

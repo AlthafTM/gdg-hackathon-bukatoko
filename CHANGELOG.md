@@ -2,6 +2,10 @@
 
 Each published `main` update gets a new version and matching release notes. Local experiments and uncommitted work do not create releases.
 
+## [0.10.0] - 2026-11-10
+
+- See [release notes](releases/0.10.0.md).
+
 ## [0.9.1] - 2026-11-10
 
 - Move post authors above card content and include PythonAnywhere deployment support. See [release notes](releases/0.9.1.md).
@@ -75,7 +79,7 @@ Each published `main` update gets a new version and matching release notes. Loca
 ## [0.4.0] - 2026-11-07
 
 - Polish rounded typography, search alignment, controls, contextual sample illustrations and required-field labels.
-- Add complete UI translation coverage and the requested BukaToko browser title/favicon; preserve product link metadata. See [validation and limits](releases/0.4.0.md).
+- Add complete UI translation coverage and the requested JualinAja browser title/favicon; preserve product link metadata. See [validation and limits](releases/0.4.0.md).
 
 ## [0.3.0] - 2026-11-07
 
@@ -94,7 +98,7 @@ Each published `main` update gets a new version and matching release notes. Loca
 ## [0.1.0] - 2026-11-07
 
 - Apply the purple/lavender/green palette across all seven pages, shared controls, light/dark themes, favicon and demo illustrations; initialize the system theme correctly while preserving manual selection.
-- Add `app/`: Bukatoko marketplace running on a dependency-free Python server with SQLite storage and photo upload.
+- Add `app/`: JualinAja marketplace running on a dependency-free Python server with SQLite storage and photo upload.
 - Accounts: email and password (PBKDF2-HMAC-SHA256, 200k rounds) with HttpOnly cookie sessions; ownership checked server-side on every write.
 - Marketplace flows: listings (create, mark sold, delete), wanted board with price range, offers with proposed/accepted/declined/withdrawn states, per-listing chat, reviews limited to accepted offers, reports, blocks, saved items, saved searches with new-match counts.
 - Discovery: server-side filters (keyword, category, city, condition, price range, status, sort), pagination with "load more", URL-backed state.
@@ -108,7 +112,7 @@ Each published `main` update gets a new version and matching release notes. Loca
 
 ## [0.0.1] - 2026-11-07
 
-- Establish the shared GDGoC ITB Stack Hackathon workspace and Bukatoko product context.
+- Establish the shared GDGoC ITB Stack Hackathon workspace and JualinAja product context.
 - Include the Carousell REA PDF, full text, screenshots and source evidence.
 - Add AI collaboration rules, explicit publish authorization, remote-overlap checks and versioned GitHub Releases.
 - Add reproducible workflow tests and release validation. See [release notes](releases/0.0.1.md).

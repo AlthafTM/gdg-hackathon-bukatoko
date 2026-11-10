@@ -24,7 +24,7 @@ class GitHub:
         body = data if binary else (json.dumps(data).encode() if data is not None else None)
         headers = {'Authorization': 'Bearer ' + self.token, 'Accept': 'application/vnd.github+json',
                    'Content-Type': 'application/octet-stream' if binary else 'application/json',
-                   'User-Agent': 'Bukatoko-release-workflow'}
+                   'User-Agent': 'JualinAja-release-workflow'}
         try:
             with urlopen(Request(url, data=body, headers=headers, method=method), timeout=90) as response:
                 return json.load(response)
@@ -59,7 +59,7 @@ def publish(api, root, repository, sha):
     if release is None:
         body = notes + f'\n\nCommit: `{sha}`\n\n[Repository at this release](https://github.com/{repository}/tree/{tag})\n'
         release = api.request('POST', '/releases', {'tag_name': tag, 'target_commitish': sha,
-                             'name': f'Bukatoko {version}', 'body': body,
+                             'name': f'JualinAja {version}', 'body': body,
                              'draft': False, 'prerelease': False, 'make_latest': 'legacy'})
     if release.get('draft'):
         raise ValueError('Existing release is a draft; inspect it rather than silently changing its status.')
@@ -67,7 +67,7 @@ def publish(api, root, repository, sha):
     assets = {a['name']: a for a in api.request('GET', f'/releases/{release["id"]}/assets?per_page=100')}
     downloads = [root / 'REA' / 'carousell-indonesia' / name
                  for name in ('CAROUSELL-DESIGN-DOCUMENT.pdf', 'CAROUSELL-DESIGN-DOCUMENT.txt')]
-    downloads.append(root / 'artifacts' / f'bukatoko-frontend-{version}.zip')
+    downloads.append(root / 'artifacts' / f'jualinaja-frontend-{version}.zip')
     for p in downloads:
         name = p.name
         if not p.is_file(): continue

@@ -1,4 +1,4 @@
-# BukaToko: arah desain
+# JualinAja: arah desain
 
 Reading this as: katalog marketplace lokal yang padat informasi, teratur, dan mudah dinavigasi. ENERGY 2 / RHYTHM 2 / MOTION 2. Revisi 8 November 2026 memakai React/Tailwind untuk katalog, bingkai foto 4:3 penuh sesuai klarifikasi terakhir, komponen ponsel/tablet lebih ringkas, ikon membulat, acid lime lebih terlihat dan gerak dengan anticipation ringan. Detail implementasi dan build ada di `../frontend/README.md`.
 
@@ -12,7 +12,7 @@ Akun memiliki ringkasan penuh di atas, enam angka dalam grid, lalu tab vertikal 
 
 Semua halaman dan dialog memakai token spacing 4/8/12/16/24/32/48/64px. Kartu/panel memakai radius 24px, elemen kecil 16px, dialog 28px; tombol dan isian satu baris membulat penuh. Textarea tetap radius panel. Hover menggabungkan bayangan violet/lime yang ringan; tidak dipertahankan pada perangkat touch. Utility Tailwind memakai prefix `tw:` tanpa Preflight agar tidak menimpa formulir/backend yang diintegrasikan.
 
-Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep Bukatoko sendiri.
+Referensi struktur: `../REA/carousell-indonesia`. Gunakan pelajaran navigasi dan state marketplace dari riset; alur permintaan adalah konsep JualinAja sendiri.
 
 ## Token dan alasan
 
@@ -33,7 +33,7 @@ Merah hanya untuk galat dan tindakan destruktif. Gradien linear yang sangat ring
 - Nunito memakai SIL OFL 1.1, dengan teks lisensi utuh di `assets/fonts/nunito/OFL.txt`. Sumber resmi: https://github.com/google/fonts/tree/main/ofl/nunito . Font inpin tidak dibundel; berkas Exo 2 lama dipertahankan sebagai aset historis tetapi tidak dipakai oleh CSS aktif.
 - `assets/logo.svg` adalah salinan SVG gabungan yang diberikan pengguna. Bentuk dan proporsi dipertahankan; tema gelap membalik luminansinya melalui CSS agar terbaca. Dimensi eksplisit mencegah pergeseran layout.
 - `assets/favicon.svg` memakai simbol keranjang yang diberikan pengguna. Ikon navigasi dan kategori dibuat sebagai SVG dalam `app.js`, dengan ukuran dan ketebalan garis konsisten, disertai label teks. Simbol menunjukkan tujuan atau jenis barang.
-- Judul browser dan heading beranda memakai `BukaToko - Jual apapun disini.`; versi Inggris mengikuti pilihan bahasa. Detail barang/profil tidak menimpa judul merek. Metadata Open Graph tetap mendeskripsikan barang, disisipkan terpisah dari judul browser. Favicon keranjang memakai warna ungu adaptif terang/gelap serta URL versi baru untuk memperbarui cache.
+- Judul browser dan heading beranda memakai `JualinAja - Jual apapun disini.`; versi Inggris mengikuti pilihan bahasa. Detail barang/profil tidak menimpa judul merek. Metadata Open Graph tetap mendeskripsikan barang, disisipkan terpisah dari judul browser. Favicon keranjang memakai warna ungu adaptif terang/gelap serta URL versi baru untuk memperbarui cache.
 - Nama, barang, permintaan dan foto bawaan tetap ditandai sebagai data contoh. Tidak membuat angka sosial, ulasan atau identitas baru.
 - Empat belas listing sampel memakai foto asli Pexels yang disimpan lokal. Lisensi, fotografer, halaman sumber dan hash unduhan dicatat di `assets/stock/photos.json`; batas pemakaian di `assets/stock/README.md`. Label bilingual menandai foto referensi, bukan bukti model/kondisi barang sebenarnya. Galeri menghitung foto tersedia, bukan angka foto fiktif fixture. Unggahan penjual selalu didahulukan; SVG kontekstual hanya cadangan ID tanpa foto.
 

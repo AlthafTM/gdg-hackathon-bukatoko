@@ -1,65 +1,25 @@
-# GDGoC ITB Stack Hackathon - Bukatoko
+# JualinAja
 
-This repository is our shared workspace for the **GDGoC ITB Stack Hackathon**. Collaborators use it to develop Bukatoko, an online local-shop marketplace.
+JualinAja is a local marketplace for selling things you own and finding things you want to buy. Browse by category or city, or post a request with your budget so nearby sellers can respond.
 
-The app concept supports both sides of a local transaction:
+- [Open the live app](https://mictlan.pythonanywhere.com/) to create an account, post listings and requests, and message other users.
+- [Explore the GitHub Pages demo](https://althaftm.github.io/jualinaja/) to browse sample listings and requests without an account.
 
-- **Sell an item:** users can list items they own for other people to buy.
-- **Request an item:** users can post what they want to buy and specify a price range, so other users can respond with suitable items.
+## What you can do
 
-The same user can sell their own items and request items they want to buy.
+- **Sell:** post an item with photos, price, condition, and city.
+- **Find:** search and filter listings, view seller profiles, and save items for later.
+- **Request:** describe an item you want and set a minimum and maximum budget.
+- **Arrange a purchase:** message the seller, make an offer, and confirm the handoff. Payment happens between the buyer and seller.
 
-## Repository contents
+## Development
 
-| Location | Purpose |
-|---|---|
-| [`AGENTS.md`](AGENTS.md) | AI rules: local work by default, explicit commit authorization, collaborator checks and REA/design-skill guidance. |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Start, test, synchronize and publish workflow, with an optional local commit guard. |
-| [`docs/SKILLS.md`](docs/SKILLS.md) | Optional design and security skill setup, including Cloudflare's official `security-audit`. |
-| [`VERSION`](VERSION), [`CHANGELOG.md`](CHANGELOG.md), [`releases/`](releases/0.0.1.md) | Versioned history; small updates bump the last number, substantial changes bump the middle number. |
-| [`docs/RELEASING.md`](docs/RELEASING.md) | Release automation, validation, concurrency handling and recovery. |
-| [`REA/`](REA/README.md) | Reference material from the reverse-engineering skill's investigation of Carousell Indonesia. |
-| [`REA/carousell-indonesia/`](REA/carousell-indonesia/README.md) | PDF, full plain text, editable report, screenshots, evidence and reproduction tools. |
-| [`app/`](app/README.md) | Bukatoko web app: static frontend plus a Python API server (SQLite, photo upload). Run locally with `python app/server.py 8123`. |
-| [`LICENSE`](LICENSE) | Repository license. Third-party reference material retains its original ownership. |
+The frontend uses HTML, React, and Tailwind; the Python API stores data in SQLite and serves uploaded photos. Run `python app/server.py 8123` and open `http://127.0.0.1:8123/`. See [local setup](app/README.md) and the [contributor workflow](CONTRIBUTING.md).
 
-## Start here
-
-1. Read the [plain-text reference](REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.txt) for AI-assisted work, or the [PDF](REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.pdf) for a formatted version with screenshots.
-2. Read the [collaborator handoff](REA/carousell-indonesia/HANDOFF.md) for investigation steps, PDF/text generation, verification and a suggested implementation sequence.
-3. Use the [editable Markdown report](REA/carousell-indonesia/CAROUSELL-DESIGN-DOCUMENT.md) and its evidence to discuss product decisions before implementing them.
-
-## What the REA folder means
-
-`REA` contains what the reverse-engineering skill found during its Carousell investigation. It is a reference for designing our hackathon app, including browsing, listings, search, seller profiles, chat, offers and trust flows.
-
-The research distinguishes directly observed behavior, static code candidates, official documentation, proposed implementation choices and unresolved questions. Native app internals and authenticated transactions were not inspected. Proposed architectures and API paths are design suggestions, not recovered production contracts.
-
-Our **wanted-item requests with a listed price range** are part of Bukatoko's intended concept. Their exact behavior is a team design decision; the Carousell investigation did not establish a complete equivalent request workflow.
-
-## Working together
-
-- Read [the repository rules](AGENTS.md) and [contributor workflow](CONTRIBUTING.md) before starting. Local experiments/tests do not authorize committing or publishing; the user must explicitly request it.
-- Contributor AIs should suggest Cloudflare's official `security-audit` skill when missing during implementation/security work. Installation is optional and requires the user's agreement; see [skill setup](docs/SKILLS.md).
-- Run `python tools/repo_workflow.py begin` at task start, `check` before committing/pushing, and `precommit` after staging. Review and reconcile remote advances and overlapping work first.
-- Every approved `main` update includes release metadata. GitHub Actions publishes a tagged release after validation; see [releases](https://github.com/AlthafTM/gdg-hackathon-bukatoko/releases).
-- Keep app implementation and research references distinguishable.
-- Work and commit directly on `main` unless the user explicitly requests a separate branch. Review diffs and synchronize before publishing.
-- Preserve dated research evidence; record new observations separately.
-- Update the editable report, generated PDF/text and integrity manifest together when changing the research package.
-- Do not commit credentials, private account exports or temporary build/review files.
-
-The app uses a Python/SQLite server with a plain HTML/CSS/JavaScript frontend. See [app setup](app/README.md).
-
-
-## Web preview
-
-Open the [read-only Bukatoko preview](https://althaftm.github.io/gdg-hackathon-bukatoko/). Browse sample listings, search/filter/sort, open item details and seller profiles, and view wanted requests with price ranges. The existing purple, lavender and green design is preserved.
-
-GitHub Pages serves public sample fixtures only. Sign-in, posting, uploads, saving, offers, messages and reviews require the local Python server; the preview does not accept credentials or transaction data. See [Pages setup and verification](docs/PAGES.md).
+[REA](REA/README.md) contains the Carousell research and design references. [Releases](https://github.com/AlthafTM/jualinaja/releases) track published changes.
 
 ## Contributors
 
-- [DHO212](https://github.com/DHO212) — marketplace app, Python/SQLite API and API smoke tests ([PR #1](https://github.com/AlthafTM/gdg-hackathon-bukatoko/pull/1)).
-- [ColdCloverr](https://github.com/ColdCloverr) — purple, lavender and green palette ([PR #2](https://github.com/AlthafTM/gdg-hackathon-bukatoko/pull/2)).
+- [DHO212](https://github.com/DHO212) — marketplace app, Python/SQLite API and API smoke tests ([PR #1](https://github.com/AlthafTM/jualinaja/pull/1)).
+- [ColdCloverr](https://github.com/ColdCloverr) — purple, lavender and green palette ([PR #2](https://github.com/AlthafTM/jualinaja/pull/2)).
 - [AlthafTM](https://github.com/AlthafTM) — project maintenance, research references and collaboration workflow.

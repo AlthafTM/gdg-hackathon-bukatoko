@@ -1,4 +1,4 @@
-/* Bukatoko app 2.0: bicara ke API di server.py, bukan localStorage. */
+/* JualinAja app 2.0: bicara ke API di server.py, bukan localStorage. */
 (function () {
   "use strict";
   var pageEpoch = 0, pageCleanups = [];
@@ -653,7 +653,7 @@
     body.push(el("p", { class: "field-note", text: isLogin ? "Masuk untuk menawar, menyimpan, dan memasang barang." : "Daftar dengan email dan kata sandi. Data lain tidak diminta." }));
     body.push(form);
 
-    var back = modalShell("modal-auth", isLogin ? "Masuk ke Bukatoko" : "Daftar akun Bukatoko", body);
+    var back = modalShell("modal-auth", isLogin ? "Masuk ke JualinAja" : "Daftar akun JualinAja", body);
     openModal("modal-auth");
 
     form.addEventListener("submit", function (e) {
@@ -825,13 +825,13 @@
     var link = el("a", {
       class: "card-link", href: "listing.html?id=" + encodeURIComponent(item.id),
       "aria-label": "Lihat " + item.title
-    }, [author, image, body]);
-    var wrap = el("article", { class: "card" }, [link]);
+    }, [image, body]);
+    var wrap = el("div", { class: "card" }, [link]);
     if (item.status === "sold") {
       wrap.classList.add("is-sold");
       image.appendChild(el("span", { class: "sold-flag", text: "terjual" }));
     }
-    return wrap;
+    return el("article", {class: "post-card"}, [author, wrap]);
   }
 
   function skeletons(n, target) {
@@ -1999,7 +1999,6 @@
         });
         replies.hidden = true;
         var summary = el("summary", {class: "wanted-summary"}, [
-          postAuthor(w.owner, w.created_at),
           el("span", {class: "wanted-title", "data-user-content": "", text: w.title}),
           el("span", {class: "card-meta", text: kategoriName(w.category) + " · " + w.city}),
           el("span", {class: "tag", text: rp(w.price_min) + " - " + rp(w.price_max)})
@@ -2008,9 +2007,13 @@
           el("p", {class: "wanted-note", text: w.note}),
           actions, el("div", {}, [replyToggle]), replies
         ]);
-        list.appendChild(el("article", {class: "wanted-item"}, [
-          el("details", {}, [summary, detail]),
-          socialBar("wanted", w.id, w)
+        var author = postAuthor(w.owner, w.created_at);
+        author.classList.add("card-author");
+        list.appendChild(el("article", {class: "post-card"}, [
+          author, el("div", {class: "wanted-item"}, [
+            el("details", {}, [summary, detail]),
+            socialBar("wanted", w.id, w)
+          ])
         ]));
       });
     }

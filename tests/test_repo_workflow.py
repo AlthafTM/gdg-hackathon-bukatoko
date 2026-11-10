@@ -19,7 +19,7 @@ def git(root, *args):
 
 
 def note(version):
-    return f'# Bukatoko {version}\n\n## Summary\n\nA real change.\n\n## Changes\n\nChanged behavior.\n\n## Validation\n\nChecks passed.\n\n## Known limits\n\nNone known for this fixture.\n'
+    return f'# JualinAja {version}\n\n## Summary\n\nA real change.\n\n## Changes\n\nChanged behavior.\n\n## Validation\n\nChecks passed.\n\n## Known limits\n\nNone known for this fixture.\n'
 
 
 class VersionTests(unittest.TestCase):

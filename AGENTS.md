@@ -1,10 +1,10 @@
-# Bukatoko repository rules
+# JualinAja repository rules
 
 These rules apply to AI work throughout this repository. Read `CONTRIBUTING.md` before starting and `docs/RELEASING.md` before preparing a published update. Follow higher-priority instructions and the user's current scope.
 
 ## Project and references
 
-- This is the shared GDGoC ITB Stack Hackathon workspace for Bukatoko, a local marketplace where the same user can sell owned items and request wanted items with a price range.
+- This is the shared development repository for JualinAja, a local marketplace where the same user can sell owned items and request wanted items with a price range.
 - `REA/` is the main inspiration and reference. Read its README and the relevant plain-text report sections before product/UI work. Distinguish observed Carousell behavior from proposals and unknowns. The wanted-item request flow is our own design work; do not pretend the research completely specifies it.
 - Preserve historical research bytes and evidence labels. Follow the package's rebuild/verification instructions when changing generated research files.
 

@@ -21,8 +21,7 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
   const reference = !real && helpers.referencePhoto(item.id);
   const href = `listing.html?id=${encodeURIComponent(item.id)}`;
   const source = helpers.backendURL(real) || helpers.photo(item.id, `${item.title} ${item.category}`);
-  return <article className={`card product-card ${item.status === 'sold' ? 'is-sold' : ''}`}>
-    <a className="card-link" href={href} aria-label={text(`Lihat ${item.title}`)}>
+  return <article className="post-card">
       <div className="post-author card-author">
         <span className="avatar post-avatar" aria-hidden="true">
           {(item.owner?.name || '?').slice(0, 1).toUpperCase()}
@@ -33,6 +32,8 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
           <time className="card-meta" dateTime={item.created_at}>{text(helpers.timeAgo(item.created_at))}</time>
         </span>
       </div>
+    <div className={`card product-card ${item.status === 'sold' ? 'is-sold' : ''}`}>
+    <a className="card-link" href={href} aria-label={text(`Lihat ${item.title}`)}>
       <div className="card-image-link">
         <img className="card-media" src={source} alt={text(`${real ? 'Foto barang: ' : reference ? 'Foto referensi: ' : 'Foto contoh untuk '}${item.title}`)}
           width="640" height="480" loading="lazy" decoding="async" />
@@ -55,6 +56,7 @@ const ProductCard = memo(function ProductCard({ item, helpers }) {
         </div>
       </div>
     </a>
+    </div>
   </article>;
 });
 

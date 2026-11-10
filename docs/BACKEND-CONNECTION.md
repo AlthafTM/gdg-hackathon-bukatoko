@@ -16,9 +16,9 @@ Correction: the earlier instructions assumed that the deployed backend matched m
 
 Sources inspected at immutable commit `09394bf8100a348fc153834e90aa5926277a0953`:
 
-- [Existing app guide](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/README.md): one Python service serves HTML, assets, API and uploaded photos; port 8123 is exposed through `instabox-port`.
-- [Existing frontend](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/assets/app.js): relative API paths, same-origin credentials and the `bk_csrf` cookie forwarded as `X-CSRF-Token` on writes, including uploads.
-- [Existing server](https://github.com/AlthafTM/gdg-hackathon-bukatoko/blob/09394bf8100a348fc153834e90aa5926277a0953/app/server.py): session/CSRF cookies use SameSite=Lax; authenticated writes validate the session's CSRF value. This inspected version does not implement credentialed cross-origin CORS.
+- [Existing app guide](https://github.com/AlthafTM/jualinaja/blob/09394bf8100a348fc153834e90aa5926277a0953/app/README.md): one Python service serves HTML, assets, API and uploaded photos; port 8123 is exposed through `instabox-port`.
+- [Existing frontend](https://github.com/AlthafTM/jualinaja/blob/09394bf8100a348fc153834e90aa5926277a0953/app/assets/app.js): relative API paths, same-origin credentials and the `bk_csrf` cookie forwarded as `X-CSRF-Token` on writes, including uploads.
+- [Existing server](https://github.com/AlthafTM/jualinaja/blob/09394bf8100a348fc153834e90aa5926277a0953/app/server.py): session/CSRF cookies use SameSite=Lax; authenticated writes validate the session's CSRF value. This inspected version does not implement credentialed cross-origin CORS.
 
 These are source observations, not proof of the exact revision currently running at Instabox. The public URL could not be read by the web tool. Moderator credentials from the user's screenshot are not copied into repository files and were not used to sign in.
 

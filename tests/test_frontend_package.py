@@ -28,7 +28,7 @@ class FrontendPackageTests(unittest.TestCase):
             (root / 'app/bukatoko.db').write_text('not public')
             (root / 'app/uploads').mkdir()
             (root / 'app/uploads/fixture.png').write_text('not public')
-            output = root / 'artifacts/bukatoko-frontend-0.6.0.zip'
+            output = root / 'artifacts/jualinaja-frontend-0.6.0.zip'
             with contextlib.redirect_stdout(io.StringIO()):
                 module.package()
                 first = output.read_bytes()

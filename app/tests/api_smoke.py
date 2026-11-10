@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Uji asap API Bukatoko. Jalankan: python3 tests/api_smoke.py [base_url]"""
+"""Uji asap API JualinAja. Jalankan: python3 tests/api_smoke.py [base_url]"""
 
 import http.cookiejar
 import json
@@ -225,7 +225,7 @@ def main():
     code, body = call(anon, "GET", "/p/l1001")
     text = body.decode() if isinstance(body, bytes) else str(body)
     check("halaman /p/<id> punya og:title", code == 200 and 'property="og:title"' in text, str(code))
-    check("judul merek tetap terpisah dari metadata barang", '<title>BukaToko - Jual apapun disini.</title>' in text and
+    check("judul merek tetap terpisah dari metadata barang", '<title>JualinAja - Jual apapun disini.</title>' in text and
           'Kamera mirrorless Fujifilm X-T20' in text, str(code))
 
     print("notifikasi")

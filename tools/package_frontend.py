@@ -20,7 +20,7 @@ def package():
     for source in files:
         if source.is_symlink() or not source.resolve().is_relative_to((ROOT / 'app').resolve()):
             raise SystemExit('Frontend files must be regular files inside app/.')
-    output = ROOT / 'artifacts' / f'bukatoko-frontend-{version}.zip'
+    output = ROOT / 'artifacts' / f'jualinaja-frontend-{version}.zip'
     output.parent.mkdir(exist_ok=True)
     manifest = {'version': version, 'scope': 'frontend only; no server, database or uploads', 'files': []}
     with zipfile.ZipFile(output, 'w', compression=zipfile.ZIP_DEFLATED) as archive:

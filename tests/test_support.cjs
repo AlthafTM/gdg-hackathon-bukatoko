@@ -23,7 +23,7 @@ test('bug reports stay local until an explicit GitHub link is opened, and edits 
     assert.equal(document.querySelector('#bug-preview script'),null);
     const url=new URL(link.href);
     assert.equal(url.origin,'https://github.com');
-    assert.equal(url.pathname,'/AlthafTM/gdg-hackathon-bukatoko/issues/new');
+    assert.equal(url.pathname,'/AlthafTM/jualinaja/issues/new');
     assert.equal(url.searchParams.get('title'),'[Bug] '+values['bug-title']);
     assert.match(url.searchParams.get('body'),/Pilih harga/);
     assert.doesNotMatch(url.searchParams.get('body'),/cookie|userAgent|example\.test/);

@@ -53,7 +53,7 @@ def build(api_origin='', app_url=''):
         source = ROOT / 'app' / name
         html = source.read_text(encoding='utf8')
         if name == '404.html':
-            html = html.replace('<base href="/">', '<base href="/gdg-hackathon-bukatoko/">')
+            html = html.replace('<base href="/">', '<base href="/jualinaja/">')
         html = re.sub(r'<div class="strip">\s*<div class="wrap"><p>.*?</p>\s*</div>\s*</div>\s*',
                       '', html, count=1, flags=re.S)
         html = re.sub(r'\s*<p class="foot-note">.*?</p>', '', html, flags=re.S)

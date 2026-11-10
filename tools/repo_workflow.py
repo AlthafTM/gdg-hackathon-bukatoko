@@ -158,7 +158,7 @@ class Repo:
                 raise ValueError(f'{notes_path} needs a {section} section.')
         if re.search(r'\b(TODO|TBD)\b', notes, re.I):
             raise ValueError('Complete the release-note placeholders before committing.')
-        if not notes.startswith(f'# Bukatoko {current}\n'):
+        if not notes.startswith(f'# JualinAja {current}\n'):
             raise ValueError('Release-note heading must match VERSION.')
         changelog = self.read('CHANGELOG.md', source)
         if not re.search(rf'^## \[{re.escape(current)}\] - \d{{4}}-\d{{2}}-\d{{2}}$', changelog, re.M):
@@ -185,7 +185,7 @@ class Repo:
         if notes.exists():
             raise ValueError(f'{notes.name} already exists; do not overwrite it.')
         notes.parent.mkdir(parents=True, exist_ok=True)
-        notes.write_text(f'# Bukatoko {new}\n\n## Summary\n\nTODO: Describe the update.\n\n## Changes\n\nTODO: List the changes.\n\n## Validation\n\nTODO: Record actual checks.\n\n## Known limits\n\nTODO: State limitations or explicitly say none known.\n', encoding='utf8')
+        notes.write_text(f'# JualinAja {new}\n\n## Summary\n\nTODO: Describe the update.\n\n## Changes\n\nTODO: List the changes.\n\n## Validation\n\nTODO: Record actual checks.\n\n## Known limits\n\nTODO: State limitations or explicitly say none known.\n', encoding='utf8')
         date = datetime.now(timezone(timedelta(hours=7))).date().isoformat()
         changelog = self.root / 'CHANGELOG.md'
         text = changelog.read_text(encoding='utf8')

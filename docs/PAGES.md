@@ -2,7 +2,7 @@
 
 Version 0.5.2 restores the Pages workflow's selection of `_site`, the self-contained read-only artifact, rather than `_site-live`. The preview adapter fetches its bundled `assets/preview-data.json` from the same Pages repository path. Browsing does not depend on the Instabox API. A separate **Buka aplikasi langsung** link opens the live Instabox app. See [the existing backend contract](BACKEND-CONNECTION.md); do not replace that backend for this preview repair.
 
-URL: https://althaftm.github.io/gdg-hackathon-bukatoko/
+URL: https://althaftm.github.io/jualinaja/
 
 The read-only preview uses the existing app design and built-in sample listings. It supports browsing, search, category/city/price filters, sorting, pagination, item details, seller profiles and wanted requests with price ranges. Seed listings use credited reference stock photos bundled with the app.
 

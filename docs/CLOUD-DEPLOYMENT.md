@@ -1,4 +1,4 @@
-# BukaToko cloud deployment
+# JualinAja cloud deployment
 
 ## PythonAnywhere without a VM
 
@@ -32,7 +32,7 @@ Render and Koyeb free web instances do not provide a persistent disk for this se
 
    ```bash
    sudo useradd --system --no-create-home --shell /usr/sbin/nologin bukatoko
-   sudo git clone https://github.com/AlthafTM/gdg-hackathon-bukatoko.git /opt/bukatoko
+   sudo git clone https://github.com/AlthafTM/jualinaja.git /opt/bukatoko
    sudo git -C /opt/bukatoko checkout --detach REVIEWED_COMMIT
    sudo install -m 0644 /opt/bukatoko/deploy/bukatoko.service /etc/systemd/system/bukatoko.service
    sudo systemctl daemon-reload
@@ -72,5 +72,5 @@ Check provider quotas and whether the VM can connect on the chosen submission po
 - Create accounts and verify email, login/logout and reset. Confirm the moderator account is the one you chose.
 - Upload a profile photo and listing photos. Create a listing and a wanted post, then verify the avatar and name appear on both cards.
 - With a separate test account, exercise search and filters, likes, comments, a wanted reply, chat, offer, handover, review and report. Close a wanted post through Account and verify it disappears from the public board.
-- Restart BukaToko and check that accounts, posts, images and interactions persist. Keep the test fixture separate from real user data.
+- Restart JualinAja and check that accounts, posts, images and interactions persist. Keep the test fixture separate from real user data.
 - Use the VM hostname for the interactive app. GitHub Pages is the example catalog.

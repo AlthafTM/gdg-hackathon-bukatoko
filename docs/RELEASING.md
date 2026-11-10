@@ -19,7 +19,7 @@ Prepare one version for an approved update, not for every edit/test. Feature-bra
 
 - `VERSION`, with the next patch/minor value relative to current `main`.
 - `CHANGELOG.md`, with `## [<version>] - YYYY-MM-DD`.
-- `releases/<version>.md`, headed `# Bukatoko <version>` and containing Summary, Changes, Validation and Known limits sections. Fill all placeholders with the actual result.
+- `releases/<version>.md`, headed `# JualinAja <version>` and containing Summary, Changes, Validation and Known limits sections. Fill all placeholders with the actual result.
 
 Use Jakarta calendar dates for release notes. `bump` creates a template and updates the changelog; it does not stage, commit, push, tag or publish. It first reruns the remote/overlap guard. If a version is already prepared locally, edit its notes rather than incrementing it repeatedly.
 

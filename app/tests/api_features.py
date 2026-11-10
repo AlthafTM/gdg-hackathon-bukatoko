@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Uji fitur keamanan dan siklus hidup Bukatoko 0.2.
+"""Uji fitur keamanan dan siklus hidup JualinAja 0.2.
 
 Jalankan terhadap server yang hidup:
     python3 tests/api_features.py [base_url]
