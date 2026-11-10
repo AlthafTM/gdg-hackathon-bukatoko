@@ -23,12 +23,11 @@ test('export contains only frontend and public fixtures', () => {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     assert.doesNotMatch(html, /Pratinjau GitHub Pages|class="strip"|class="foot-note"|live-app-link|Buka aplikasi langsung/);
     assert.doesNotMatch(html, /<script src="assets\/runtime-config\.js/);
-    assert.match(html, /src="assets\/logo.svg\?v=6"/);
+    assert.match(html, /<a class="brand" href="index.html" aria-label="JualinAja, beranda">JualinAja<\/a>/);
     const supportTitles={'syarat.html':'Syarat &amp; ketentuan','privasi.html':'Kebijakan privasi','bantuan.html':'Lapor kendala teknis'};
     if(supportTitles[file])assert.ok(html.includes('<title>'+supportTitles[file]+' \u00b7 JualinAja</title>'));
     else assert.match(html, /<title>JualinAja - Jual apapun disini\.<\/title>/);
     assert.match(html, /assets\/favicon\.svg\?v=4/);
-    assert.ok(fs.existsSync(path.join(root, 'assets/logo.svg')));
     assert.match(html, /assets\/react-ui\.css/);
     assert.match(fs.readFileSync(path.join(root,'assets/THIRD-PARTY-NOTICES.txt'),'utf8'), /MIT/);
     for (const module of ['preview.js','locale.js','motion.js','react-ui.js']) {

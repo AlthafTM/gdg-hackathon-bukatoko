@@ -34,7 +34,7 @@ Alternatively, a same-origin reverse proxy can serve the UI and forward API/uplo
 
 The published v0.5.1 workflow selected a cross-origin build using the Instabox URL. This does not match the inspected existing backend's same-origin contract and has not been shown to work. Version 0.5.2 restores `_site`, retaining the bundled-data adapter and linking to Instabox for live operations. A successful Pages deployment and mocked connection tests do not verify a working deployed API connection.
 
-The default `python tools/build_pages.py` produces a read-only preview. Adding `--app-url https://8123-agq3khlycogygkr5hikwu5oeiq.instabox.tech` adds a link to the existing app without changing where preview data is fetched. No frontend assets are published to Instabox by this command. Do not use `mode: no-cors`, disable CSRF, or copy moderator credentials into frontend code.
+The default `python tools/build_pages.py` produces a read-only preview. No frontend assets are published to Instabox by this command. Do not use `mode: no-cors`, disable CSRF, or copy moderator credentials into frontend code.
 
 The optional CORS/cookie changes previously added to main are not a required migration for the user's existing backend. Do not deploy them over the working service merely to accommodate the Pages configuration.
 

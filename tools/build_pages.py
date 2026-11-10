@@ -20,9 +20,8 @@ def https_origin(value):
     return f'https://{origin.netloc}'
 
 
-def build(api_origin='', app_url=''):
+def build(api_origin=''):
     api_origin = https_origin(api_origin) if api_origin else ''
-    app_url = https_origin(app_url) if app_url else api_origin
     if OUTPUT.exists() and any(OUTPUT.iterdir()):
         raise SystemExit('Use an empty _site directory; refusing to overwrite existing output.')
     (OUTPUT / 'assets').mkdir(parents=True, exist_ok=True)
@@ -57,14 +56,11 @@ def build(api_origin='', app_url=''):
         html = re.sub(r'<div class="strip">\s*<div class="wrap"><p>.*?</p>\s*</div>\s*</div>\s*',
                       '', html, count=1, flags=re.S)
         html = re.sub(r'\s*<p class="foot-note">.*?</p>', '', html, flags=re.S)
-        if app_url:
-            direct = '"' + escape(app_url + '/index.html', quote=True) + '"'
-            html = html.replace('</footer>', '<div class="wrap live-app-link"><a href=' + direct + '>Buka aplikasi langsung</a></div>\n</footer>', 1)
         adapter = 'runtime-config.js' if api_origin else 'preview.js'
         html = re.sub(r'(<script src="assets/app\.js(?:\?[^\"]*)?"></script>)',
                       lambda m: '<script src="assets/' + adapter + '?v=20261108-6"></script>\n' + m[1], html)
         (OUTPUT / source.name).write_text(html, encoding='utf8')
-    for name in ('styles.css', 'support.js', 'app.js', 'locale.js', 'motion.js', 'location.js', 'router.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg', 'logo.svg'):
+    for name in ('styles.css', 'support.js', 'app.js', 'locale.js', 'motion.js', 'location.js', 'router.js', 'react-ui.js', 'react-ui.css', 'THIRD-PARTY-NOTICES.txt', 'preview.js', 'favicon.svg'):
         shutil.copyfile(ROOT / 'app/assets' / name, OUTPUT / 'assets' / name)
     shutil.copytree(ROOT / 'app/assets/fonts', OUTPUT / 'assets/fonts')
     shutil.copytree(ROOT / 'app/assets/stock', OUTPUT / 'assets/stock')
@@ -75,8 +71,7 @@ def build(api_origin='', app_url=''):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--api-origin', default='')
-    parser.add_argument('--app-url', default='', help='Link to the live app without changing the preview data source.')
     parser.add_argument('--output', choices=('_site', '_site-live'), default='_site')
     args = parser.parse_args()
     OUTPUT = ROOT / args.output
-    build(args.api_origin, args.app_url)
+    build(args.api_origin)

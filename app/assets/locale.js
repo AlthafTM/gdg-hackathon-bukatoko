@@ -148,7 +148,6 @@
     "Demo: barang, penjual, dan permintaan di sini data contoh. Foto stok hanya referensi; foto yang kamu unggah sendiri disimpan di server demo ini.":"Demo: items, sellers and requests are sample data. Stock photos are references only; your uploads are stored on this demo server.",
     "Foto referensi":"Reference photo", "Foto referensi stok; model dan kondisi bisa berbeda.":"Stock reference photo; the model and condition may differ.",
     "Demo terhubung ke server. Foto stok hanya referensi. Jangan gunakan kata sandi pribadi atau data sensitif.":"Server-connected demo. Stock photos are references only. Do not use personal passwords or sensitive data.",
-    "Buka aplikasi langsung":"Open the app directly",
     "Origin permintaan tidak diizinkan.":"This request origin is not allowed.",
     "Origin atau preflight tidak diizinkan.":"This origin or preflight request is not allowed.",
     "Demo: permintaan bawaan adalah data contoh. Permintaan yang kamu tulis tersimpan di server demo ini.":"Demo: built-in requests are sample data. Your requests are saved on the demo server.",
